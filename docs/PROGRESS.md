@@ -4,12 +4,12 @@
 > insieme a `docs/SPEC.md`, riparte dal primo task non spuntato e lo aggiorna a ogni commit.
 
 ## M1 — Fondamenta
-- [ ] `project.yml` (XcodeGen) con target iOS 17+, entitlements WeatherKit
-- [ ] Package `SoleaCore`: Fitzpatrick + quiz, MED, SafeExposure, BurnRisk, GoldenHours
-- [ ] Unit test per ogni modulo di `SoleaCore`
-- [ ] App: onboarding con quiz fototipo + disclaimer
-- [ ] App: schermata Oggi (UV attuale + previsioni via WeatherKit, golden hours, burn risk)
-- [ ] Localizzazione it (sorgente) + en, README con istruzioni di setup
+- [x] `project.yml` (XcodeGen) con target iOS 17+, entitlements WeatherKit
+- [x] Package `SoleaCore`: Fitzpatrick + quiz, MED, SafeExposure, BurnRisk, GoldenHours
+- [x] Unit test per ogni modulo di `SoleaCore`
+- [x] App: onboarding con quiz fototipo + disclaimer
+- [x] App: schermata Oggi (UV attuale + previsioni via WeatherKit, golden hours, burn risk)
+- [x] Localizzazione it (sorgente) + en, README con istruzioni di setup
 
 ## M2 — Sessioni
 - [ ] Modelli SwiftData (`TanSession`, …) con sync CloudKit
