@@ -73,6 +73,27 @@
 - Streak di "esposizione intelligente" (giorni con sessioni senza superare la soglia di rischio).
 - Badge: prima sessione, 7 giorni di streak, tan planner completato, 10.000 IU di vitamina D, ecc.
 
+### 2.11 Coach Solare AI (ibrido on-device + Claude)
+
+Un coach conversazionale che conosce il contesto dell'utente (fototipo, UV attuale, storico sessioni, piano vacanze) e risponde a domande tipo *"posso espormi oggi alle 14 senza crema?"*.
+
+**Architettura ibrida — due livelli con router:**
+
+| Livello | Motore | Casi d'uso | Costo |
+|---|---|---|---|
+| **On-device** | Apple Foundation Models (iOS 26+) | Briefing mattutino, tip contestuali rapidi, frasi delle notifiche, Q&A semplici, modalità offline | Zero, privato, offline |
+| **Cloud** | Claude (`claude-opus-4-8` via proxy) | Chat multi-turno, domande complesse, generazione del piano vacanze personalizzato, spiegazioni dei dati | API a consumo |
+
+**Router:** decide il livello in base a complessità della richiesta, disponibilità del modello on-device (device/iOS version) e connettività. Fallback: on-device → Claude se la richiesta è troppo complessa; Claude → on-device se offline.
+
+**Proxy minimale** (Cloudflare Worker / Vercel function, ~50 righe):
+- Custodisce la API key (mai nel binario iOS).
+- Inietta il system prompt del coach (statico, con `cache_control` per il prompt caching → ~90% di risparmio sui token ripetuti) + il contesto utente inviato dall'app.
+- Streaming SSE verso l'app.
+- Rate limit per utente (es. 10 messaggi Claude/giorno, illimitati on-device) per tenere i costi sotto controllo in un'app gratuita.
+
+**Privacy:** al proxy arriva solo il contesto minimo necessario (fototipo, UV, riepilogo sessioni) — mai le foto del tan né dati identificativi.
+
 ---
 
 ## 3. Social leggero (senza backend custom)
@@ -98,6 +119,8 @@
 | Watch | watchOS app + WidgetKit complications |
 | Foto/analisi tono | AVFoundation + Vision/CoreImage (on-device) |
 | Social | GameKit (Game Center) |
+| Coach AI on-device | Apple Foundation Models framework (iOS 26+) |
+| Coach AI cloud | Claude API (`claude-opus-4-8`) dietro proxy serverless (Cloudflare Worker) |
 
 ### Modello dati (bozza)
 - `SkinProfile`: fototipo, risposte quiz, MED base.
@@ -124,6 +147,7 @@
 | **M3 — Sistema** | Live Activity, widget, notifiche, HealthKit + vitamina D |
 | **M4 — Chicche** | Foto-diario, tan planner, lettino, idratazione |
 | **M5 — Social & Watch** | Game Center, share card, app Watch, badge/streak |
+| **M6 — Coach AI** | Coach on-device (Foundation Models), poi proxy Claude + router ibrido e chat completa |
 
 ---
 
