@@ -4,35 +4,106 @@ import SoleaCore
 
 struct TodayView: View {
     let phototype: Fitzpatrick
+    let sessionManager: SessionManager
 
+    @Environment(\.modelContext) private var modelContext
+    @Query private var sessions: [TanSession]
     @State private var viewModel = TodayViewModel()
+    @State private var showSessionSetup = false
+    @State private var finishedSession: FinishedSession?
+    @State private var saveErrorMessage: String?
+
+    /// Dose UV effettiva già accumulata oggi tra sessioni salvate e sessione attiva.
+    private var doseToday: Double {
+        let startOfDay = Calendar.current.startOfDay(for: .now)
+        let saved = sessions
+            .filter { $0.startedAt >= startOfDay }
+            .reduce(0) { $0 + $1.uvDose }
+        return saved + (sessionManager.active?.effectiveDose ?? 0)
+    }
 
     var body: some View {
         NavigationStack {
             Group {
-                switch viewModel.state {
-                case .loading:
-                    ProgressView("Caricamento dati UV…")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                case .failed(let message):
-                    ContentUnavailableView {
-                        Label("Dati UV non disponibili", systemImage: "sun.max.trianglebadge.exclamationmark")
-                    } description: {
-                        Text(message)
-                    } actions: {
-                        Button("Riprova") {
-                            Task { await viewModel.load(phototype: phototype) }
+                if sessionManager.active != nil {
+                    ActiveSessionView(manager: sessionManager) { endSession() }
+                } else {
+                    switch viewModel.state {
+                    case .loading:
+                        ProgressView("Caricamento dati UV…")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    case .failed(let message):
+                        ContentUnavailableView {
+                            Label("Dati UV non disponibili", systemImage: "sun.max.trianglebadge.exclamationmark")
+                        } description: {
+                            Text(message)
+                        } actions: {
+                            Button("Riprova") {
+                                Task { await viewModel.load(phototype: phototype, doseToday: doseToday) }
+                            }
+                            .buttonStyle(.borderedProminent)
                         }
-                        .buttonStyle(.borderedProminent)
+                    case .loaded(let metrics):
+                        content(metrics: metrics)
                     }
-                case .loaded(let metrics):
-                    content(metrics: metrics)
                 }
             }
-            .navigationTitle("Oggi")
-            .task { await viewModel.load(phototype: phototype) }
-            .refreshable { await viewModel.load(phototype: phototype) }
+            .navigationTitle(sessionManager.active != nil ? "Sessione in corso" : "Oggi")
+            .task { await viewModel.load(phototype: phototype, doseToday: doseToday) }
+            .refreshable { await viewModel.load(phototype: phototype, doseToday: doseToday) }
+            .sheet(isPresented: $showSessionSetup) {
+                if case .loaded(let metrics) = viewModel.state {
+                    SessionSetupView(
+                        currentUVIndex: metrics.conditions.currentUVIndex,
+                        phototype: phototype
+                    ) { configuration in
+                        Task {
+                            await sessionManager.start(
+                                configuration: configuration,
+                                phototype: phototype,
+                                initialUVIndex: metrics.conditions.currentUVIndex
+                            )
+                        }
+                    }
+                }
+            }
+            .sheet(item: $finishedSession) { finished in
+                SessionSummaryView(session: finished)
+            }
+            .alert(
+                "Salvataggio non riuscito",
+                isPresented: Binding(
+                    get: { saveErrorMessage != nil },
+                    set: { if !$0 { saveErrorMessage = nil } }
+                )
+            ) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(saveErrorMessage ?? "")
+            }
         }
+    }
+
+    private func endSession() {
+        guard let finished = sessionManager.end() else { return }
+        modelContext.insert(TanSession(
+            startedAt: finished.startedAt,
+            endedAt: finished.endedAt,
+            spf: finished.configuration.spf,
+            exposedZones: finished.configuration.zones,
+            averageUVIndex: finished.averageUVIndex,
+            uvDose: finished.effectiveDose,
+            vitaminDIU: finished.vitaminDIU,
+            phototype: finished.phototype
+        ))
+        do {
+            try modelContext.save()
+        } catch {
+            // La sessione non persiste: l'utente lo deve sapere subito.
+            saveErrorMessage = error.localizedDescription
+        }
+        finishedSession = finished
+        Task { await viewModel.load(phototype: phototype, doseToday: doseToday) }
     }
 
     private func content(metrics: TodayMetrics) -> some View {
@@ -199,23 +270,17 @@ struct TodayView: View {
         }
     }
 
-    // MARK: - CTA sessione (arriva in M2)
+    // MARK: - CTA sessione
 
     private var sessionCTA: some View {
-        VStack(spacing: 8) {
-            Button {
-                // M2: avvio del timer di sessione.
-            } label: {
-                Label("Inizia sessione", systemImage: "timer")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
-            .disabled(true)
-            Text("Il timer di sessione arriva con la prossima milestone.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+        Button {
+            showSessionSetup = true
+        } label: {
+            Label("Inizia sessione", systemImage: "timer")
+                .frame(maxWidth: .infinity)
         }
+        .buttonStyle(.borderedProminent)
+        .controlSize(.large)
     }
 
     // MARK: - Helpers

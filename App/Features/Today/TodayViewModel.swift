@@ -27,7 +27,8 @@ final class TodayViewModel {
     private let locationService = LocationService()
     private let uvService = UVService()
 
-    func load(phototype: Fitzpatrick) async {
+    /// `doseToday`: dose UV effettiva già accumulata oggi (somma delle sessioni).
+    func load(phototype: Fitzpatrick, doseToday: Double) async {
         state = .loading
         do {
             let location = try await locationService.currentLocation()
@@ -35,9 +36,7 @@ final class TodayViewModel {
             let metrics = TodayMetrics(
                 conditions: conditions,
                 burnRisk: BurnRisk.level(
-                    // M1: nessuna sessione tracciata, dose accumulata 0.
-                    // Dalla M2 arriverà la somma delle sessioni del giorno.
-                    doseTodayJoulesPerSquareMeter: 0,
+                    doseTodayJoulesPerSquareMeter: doseToday,
                     phototype: phototype,
                     currentUVIndex: conditions.currentUVIndex
                 ),

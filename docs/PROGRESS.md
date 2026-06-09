@@ -12,11 +12,15 @@
 - [x] Localizzazione it (sorgente) + en, README con istruzioni di setup
 
 ## M2 — Sessioni
-- [ ] Modelli SwiftData (`TanSession`, …) con sync CloudKit
-- [ ] Timer sessione: SPF/zone esposte, countdown sicurezza
-- [ ] Promemoria "girati" / "riapplica crema" (notifiche locali) + alert stop
-- [ ] Riepilogo fine sessione (dose UV, vitamina D stimata)
-- [ ] Diario con storico, statistiche e dose UV cumulativa giornaliera
+- [x] Modello SwiftData `TanSession` (+ `ExposedZones` e `VitaminD` in SoleaCore, con test)
+- [ ] Sync CloudKit — rimandata: richiede il container iCloud configurato
+      dall'utente su developer.apple.com (entitlement + capability); da riprendere
+      quando l'account è pronto
+- [x] Timer sessione: SPF/zone esposte, countdown sicurezza, dose integrata al secondo,
+      UV aggiornato ogni 10 minuti (errori di refresh mostrati come avviso, mai nascosti)
+- [x] Promemoria "girati" / "riapplica crema" (notifiche locali) + alert stop
+- [x] Riepilogo fine sessione (durata, UV medio, dose UV, % MED, vitamina D stimata)
+- [x] Diario con storico, statistiche settimanali e dose UV cumulativa nel burn risk
 
 ## M3 — Integrazione sistema
 - [ ] Live Activity (Dynamic Island + lock screen) per la sessione attiva
