@@ -1,0 +1,17 @@
+# Generato da XcodeGen — rigenerare con `xcodegen generate`
+Solea.xcodeproj/
+
+# Xcode / Swift
+xcuserdata/
+DerivedData/
+.build/
+.swiftpm/
+*.xcresult
+
+# macOS
+.DS_Store
+
+# Node (server/coach-proxy)
+node_modules/
+dist/
+.wrangler/

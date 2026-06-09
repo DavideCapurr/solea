@@ -1,0 +1,42 @@
+name: Solea
+options:
+  bundleIdPrefix: com.davidecapurro
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+packages:
+  SoleaCore:
+    path: SoleaCore
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    CODE_SIGN_STYLE: Automatic
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: "0.1.0"
+
+targets:
+  Solea:
+    type: application
+    platform: iOS
+    sources:
+      - App
+    dependencies:
+      - package: SoleaCore
+    entitlements:
+      path: App/Solea.entitlements
+      properties:
+        com.apple.developer.weatherkit: true
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Solea
+        UILaunchScreen: {}
+        ITSAppUsesNonExemptEncryption: false
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        NSLocationWhenInUseUsageDescription: "Solea usa la tua posizione per mostrarti l'indice UV attuale e calcolare il tuo tempo di esposizione sicura."
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "1"
