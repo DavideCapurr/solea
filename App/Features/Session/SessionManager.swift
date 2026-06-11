@@ -6,6 +6,7 @@ struct SessionConfiguration {
     var spf: Double
     var zones: ExposedZones
     var flipIntervalMinutes: Int
+    var kind: SessionKind = .sun
 }
 
 /// Dati di una sessione conclusa, pronti per essere persistiti e riepilogati.
@@ -59,8 +60,14 @@ final class SessionManager {
 
     private static let uvRefreshIntervalSeconds: Double = 600
     private static let reapplyIntervalMinutes = 120
+    private static let hydrationIntervalMinutes = 45
     /// La Live Activity viene aggiornata una volta ogni N tick (secondi).
     private static let liveActivityUpdateInterval = 30
+
+    /// Orario del promemoria doposole (le 20:00 di oggi), se non è già passato.
+    private static func afterSunTime(calendar: Calendar = .current) -> Date? {
+        calendar.date(bySettingHour: 20, minute: 0, second: 0, of: .now)
+    }
 
     var remainingSafeSeconds: Double? {
         guard let session = active else { return nil }
@@ -168,6 +175,14 @@ final class SessionManager {
             try await notificationService.scheduleReapplyReminder(
                 everyMinutes: Self.reapplyIntervalMinutes
             )
+            try await notificationService.scheduleHydrationReminder(
+                everyMinutes: Self.hydrationIntervalMinutes
+            )
+            // Doposole la sera: solo per le sessioni al sole, non per il lettino.
+            if session.configuration.kind == .sun,
+               let afterSun = Self.afterSunTime() {
+                try await notificationService.scheduleAfterSunReminder(at: afterSun)
+            }
             if let remaining = remainingSafeSeconds, remaining.isFinite {
                 try await notificationService.scheduleStopAlert(afterSeconds: remaining)
             }
@@ -204,6 +219,9 @@ final class SessionManager {
     }
 
     private func startUVRefreshLoop() {
+        // Il lettino ha un UV-equivalente fisso dato dalla potenza delle lampade:
+        // non c'è nulla da aggiornare da WeatherKit.
+        guard active?.configuration.kind == .sun else { return }
         uvRefreshTask?.cancel()
         uvRefreshTask = Task { [weak self] in
             while true {

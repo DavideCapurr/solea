@@ -1601,6 +1601,436 @@
           }
         }
       }
+    },
+    "Planner": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Planner"
+          }
+        }
+      }
+    },
+    "Nessun piano": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No plans"
+          }
+        }
+      }
+    },
+    "Crea un piano per arrivare in vacanza già preparato, senza scottarti.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create a plan to arrive on holiday already prepared, without burning."
+          }
+        }
+      }
+    },
+    "Nuovo piano": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New plan"
+          }
+        }
+      }
+    },
+    "Partenza %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Departure %@"
+          }
+        }
+      }
+    },
+    "Esposizione giorno per giorno": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day-by-day exposure"
+          }
+        }
+      }
+    },
+    "Destinazione": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination"
+          }
+        }
+      }
+    },
+    "Città o località": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "City or place"
+          }
+        }
+      }
+    },
+    "Partenza": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Departure"
+          }
+        }
+      }
+    },
+    "Scegli una data di partenza ad almeno un giorno da oggi.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick a departure date at least one day from today."
+          }
+        }
+      }
+    },
+    "Il piano copre al massimo %lld giorni di preparazione.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The plan covers at most %lld preparation days."
+          }
+        }
+      }
+    },
+    "Giorni di preparazione": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparation days"
+          }
+        }
+      }
+    },
+    "Crea": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create"
+          }
+        }
+      }
+    },
+    "Nessuna località trovata per «%@». Controlla il nome e riprova.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No location found for “%@”. Check the name and try again."
+          }
+        }
+      }
+    },
+    "Previsioni UV non disponibili per questa località.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV forecast unavailable for this location."
+          }
+        }
+      }
+    },
+    "Errore nella ricerca della località: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error searching for the location: %@"
+          }
+        }
+      }
+    },
+    "Impossibile recuperare le previsioni UV: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not fetch UV forecast: %@"
+          }
+        }
+      }
+    },
+    "Tipo di sessione": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Session type"
+          }
+        }
+      }
+    },
+    "Tipo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type"
+          }
+        }
+      }
+    },
+    "Sole": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sun"
+          }
+        }
+      }
+    },
+    "Lettino": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanning bed"
+          }
+        }
+      }
+    },
+    "Potenza lampade": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lamp power"
+          }
+        }
+      }
+    },
+    "Bassa": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Low"
+          }
+        }
+      }
+    },
+    "Alta": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "High"
+          }
+        }
+      }
+    },
+    "Molto alta": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Very high"
+          }
+        }
+      }
+    },
+    "Calcolato per il tuo fototipo %@ sull'UV-equivalente della potenza scelta. È una stima: segui sempre le indicazioni del centro.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calculated for your skin type %@ on the UV-equivalent of the chosen power. It's an estimate: always follow the salon's guidance."
+          }
+        }
+      }
+    },
+    "Bevi un po' d'acqua": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drink some water"
+          }
+        }
+      }
+    },
+    "Il sole disidrata: un sorso d'acqua aiuta pelle e abbronzatura.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sun dehydrates you: a sip of water helps your skin and your tan."
+          }
+        }
+      }
+    },
+    "Doposole": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After-sun"
+          }
+        }
+      }
+    },
+    "Applica una crema doposole e idratati: la tua pelle ti ringrazierà.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apply an after-sun lotion and hydrate: your skin will thank you."
+          }
+        }
+      }
+    },
+    "Foto-diario": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo diary"
+          }
+        }
+      }
+    },
+    "Aggiungi una foto periodica per seguire l'evoluzione del tuo tono pelle. Le foto restano sul tuo dispositivo.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add a periodic photo to track how your skin tone evolves. Photos stay on your device."
+          }
+        }
+      }
+    },
+    "Aggiungi foto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add photo"
+          }
+        }
+      }
+    },
+    "Foto non aggiunta": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo not added"
+          }
+        }
+      }
+    },
+    "Cronologia": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
+        }
+      }
+    },
+    "Impossibile leggere l'immagine selezionata.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not read the selected image."
+          }
+        }
+      }
+    },
+    "Prima / dopo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Before / after"
+          }
+        }
+      }
+    },
+    "Tono più scuro del %lld%% rispetto alla prima foto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tone %lld%% darker than the first photo"
+          }
+        }
+      }
+    },
+    "Tono stabile rispetto alla prima foto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tone steady compared to the first photo"
+          }
+        }
+      }
+    },
+    "Foto-diario del tan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tan photo diary"
+          }
+        }
+      }
+    },
+    "Immagine non valida.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid image."
+          }
+        }
+      }
+    },
+    "Nessun volto rilevato: inquadra il viso per confrontare il tono.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No face detected: frame your face to compare tone."
+          }
+        }
+      }
+    },
+    "Analisi del tono non riuscita: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tone analysis failed: %@"
+          }
+        }
+      }
     }
   }
 }

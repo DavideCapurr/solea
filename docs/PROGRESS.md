@@ -31,10 +31,10 @@
       errori e permessi negati mostrati con retry)
 
 ## M4 — Chicche
-- [ ] Foto-diario: camera con overlay, analisi tono on-device, slider prima/dopo
-- [ ] Tan planner vacanze (`TanPlanner.swift` in SoleaCore)
-- [ ] Modalità lettino/solarium
-- [ ] Promemoria idratazione & after-sun
+- [x] Foto-diario: import foto, analisi tono on-device (Vision/CoreImage), slider prima/dopo
+- [x] Tan planner vacanze (`TanPlanner.swift` in SoleaCore, con test) + UI e persistenza
+- [x] Modalità lettino/solarium (UV-equivalente dalla potenza lampade)
+- [x] Promemoria idratazione & after-sun
 
 ## M5 — Social & Watch
 - [ ] Game Center: classifiche + achievement; streak/badge in SoleaCore

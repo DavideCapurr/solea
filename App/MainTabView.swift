@@ -14,6 +14,9 @@ struct MainTabView: View {
             DiaryView()
                 .tabItem { Label("Diario", systemImage: "book.closed") }
 
+            PlannerView(phototype: phototype)
+                .tabItem { Label("Planner", systemImage: "airplane") }
+
             ProfileView(phototype: phototype)
                 .tabItem { Label("Profilo", systemImage: "person.crop.circle") }
         }

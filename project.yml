@@ -45,6 +45,7 @@ targets:
         NSLocationWhenInUseUsageDescription: "Solea usa la tua posizione per mostrarti l'indice UV attuale e calcolare il tuo tempo di esposizione sicura."
         NSHealthUpdateUsageDescription: "Solea salva su Salute il tempo trascorso alla luce del giorno e la vitamina D stimata delle tue sessioni."
         NSHealthShareUsageDescription: "Solea non legge dati da Salute; il permesso serve solo per la scrittura delle sessioni."
+        NSPhotoLibraryUsageDescription: "Solea usa le foto che scegli per il foto-diario del tan. Le immagini restano sul tuo dispositivo e non vengono mai caricate."
     settings:
       base:
         TARGETED_DEVICE_FAMILY: "1"

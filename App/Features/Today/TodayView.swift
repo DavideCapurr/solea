@@ -56,12 +56,12 @@ struct TodayView: View {
                     SessionSetupView(
                         currentUVIndex: metrics.conditions.currentUVIndex,
                         phototype: phototype
-                    ) { configuration in
+                    ) { configuration, initialUVIndex in
                         Task {
                             await sessionManager.start(
                                 configuration: configuration,
                                 phototype: phototype,
-                                initialUVIndex: metrics.conditions.currentUVIndex
+                                initialUVIndex: initialUVIndex
                             )
                         }
                     }
