@@ -1391,6 +1391,216 @@
           }
         }
       }
+    },
+    "Apple Health non è disponibile su questo dispositivo.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Health is not available on this device."
+          }
+        }
+      }
+    },
+    "Permesso di scrittura su Salute negato. Puoi abilitarlo in Salute > Profilo > App > Solea.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Health write permission denied. You can enable it in Health > Profile > Apps > Solea."
+          }
+        }
+      }
+    },
+    "Salvataggio su Salute non riuscito: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving to Health failed: %@"
+          }
+        }
+      }
+    },
+    "Le Live Activity sono disattivate: abilitale in Impostazioni > Solea per vedere il timer nella Dynamic Island.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live Activities are off: enable them in Settings > Solea to see the timer in the Dynamic Island."
+          }
+        }
+      }
+    },
+    "Avvio della Live Activity non riuscito: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not start the Live Activity: %@"
+          }
+        }
+      }
+    },
+    "App Group non disponibile: verifica la configurazione di firma del progetto.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Group unavailable: check the project's signing configuration."
+          }
+        }
+      }
+    },
+    "Aggiornamento dei widget non riuscito: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget update failed: %@"
+          }
+        }
+      }
+    },
+    "Salva su Salute": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save to Health"
+          }
+        }
+      }
+    },
+    "Salvataggio in corso…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving…"
+          }
+        }
+      }
+    },
+    "Salvato su Salute": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved to Health"
+          }
+        }
+      }
+    },
+    "Salva su Apple Health il tempo alla luce del giorno e la vitamina D stimata.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save time in daylight and estimated vitamin D to Apple Health."
+          }
+        }
+      }
+    },
+    "Apri Solea per caricare i dati UV.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Solea to load UV data."
+          }
+        }
+      }
+    },
+    "Dati non aggiornati": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data out of date"
+          }
+        }
+      }
+    },
+    "Senza limiti di tempo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No time limit"
+          }
+        }
+      }
+    },
+    "%lld min senza crema": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min without sunscreen"
+          }
+        }
+      }
+    },
+    "UV adesso": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV now"
+          }
+        }
+      }
+    },
+    "Indice UV attuale e tempo sicuro per il tuo fototipo.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current UV index and safe time for your skin type."
+          }
+        }
+      }
+    },
+    "UV basso: nessun limite di tempo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Low UV: no time limit"
+          }
+        }
+      }
+    },
+    "Tempo sicuro esaurito — all'ombra!": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safe time is up — get in the shade!"
+          }
+        }
+      }
+    },
+    "Ancora %lld min in sicurezza": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min of safe time left"
+          }
+        }
+      }
+    },
+    "UV %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "UV %@"
+          }
+        }
+      }
     }
   }
 }

@@ -48,15 +48,19 @@ final class SessionManager {
     /// l'ultimo dato valido ma l'utente sa che qualcosa non va.
     private(set) var uvRefreshWarning: String?
     private(set) var reminderWarning: String?
+    private(set) var liveActivityWarning: String?
 
     private let notificationService = NotificationService()
     private let locationService = LocationService()
     private let uvService = UVService()
+    private let liveActivityService = LiveActivityService()
     private var tickTask: Task<Void, Never>?
     private var uvRefreshTask: Task<Void, Never>?
 
     private static let uvRefreshIntervalSeconds: Double = 600
     private static let reapplyIntervalMinutes = 120
+    /// La Live Activity viene aggiornata una volta ogni N tick (secondi).
+    private static let liveActivityUpdateInterval = 30
 
     var remainingSafeSeconds: Double? {
         guard let session = active else { return nil }
@@ -76,6 +80,7 @@ final class SessionManager {
         guard active == nil else { return }
         uvRefreshWarning = nil
         reminderWarning = nil
+        liveActivityWarning = nil
         active = ActiveSession(
             startedAt: .now,
             configuration: configuration,
@@ -87,8 +92,35 @@ final class SessionManager {
             remindersEnabled: false
         )
         await scheduleReminders()
+        startLiveActivity()
         startTicking()
         startUVRefreshLoop()
+    }
+
+    private func startLiveActivity() {
+        guard let session = active, let state = activityState() else { return }
+        do {
+            try liveActivityService.start(
+                phototype: session.phototype,
+                startedAt: session.startedAt,
+                state: state
+            )
+        } catch {
+            // La sessione funziona anche senza Live Activity, ma l'utente lo sa.
+            liveActivityWarning = error.localizedDescription
+        }
+    }
+
+    /// Stato corrente per la Live Activity; `nil` se non c'è sessione attiva.
+    private func activityState() -> SessionActivityAttributes.ContentState? {
+        guard let session = active else { return nil }
+        let remaining = remainingSafeSeconds
+        return SessionActivityAttributes.ContentState(
+            elapsedSeconds: session.elapsedSeconds,
+            doseFraction: session.effectiveDose / session.phototype.med,
+            currentUVIndex: session.currentUVIndex,
+            remainingSafeSeconds: (remaining?.isFinite == true) ? remaining : nil
+        )
     }
 
     func end() -> FinishedSession? {
@@ -98,7 +130,11 @@ final class SessionManager {
         uvRefreshTask?.cancel()
         uvRefreshTask = nil
         notificationService.cancelSessionReminders()
+        let finalState = activityState()
         active = nil
+        if let finalState {
+            Task { await liveActivityService.end(state: finalState) }
+        }
 
         let averageUV = session.uvSamples.reduce(0, +) / Double(session.uvSamples.count)
         return FinishedSession(
@@ -158,6 +194,11 @@ final class SessionManager {
                     * SafeExposure.wattsPerUVIndexUnit
                     / session.configuration.spf
                 self.active = session
+
+                if session.elapsedSeconds % Self.liveActivityUpdateInterval == 0,
+                   let state = self.activityState() {
+                    await self.liveActivityService.update(state: state)
+                }
             }
         }
     }
@@ -187,6 +228,10 @@ final class SessionManager {
             let remindersEnabled = session.remindersEnabled
             active = session
             uvRefreshWarning = nil
+
+            if let state = activityState() {
+                await liveActivityService.update(state: state)
+            }
 
             // L'UV è cambiato: il momento dello stop di sicurezza va ricalcolato.
             if remindersEnabled, let remaining = remainingSafeSeconds, remaining.isFinite {

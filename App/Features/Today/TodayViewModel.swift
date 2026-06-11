@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import WidgetKit
 import SoleaCore
 
 /// Tutti i valori mostrati dalla schermata Oggi, precalcolati in `load()` così
@@ -23,6 +24,9 @@ final class TodayViewModel {
     }
 
     private(set) var state: State = .loading
+    /// Avviso non bloccante: i dati in app sono validi ma i widget non sono
+    /// stati aggiornati (es. App Group non configurato).
+    private(set) var widgetSyncWarning: String?
 
     private let locationService = LocationService()
     private let uvService = UVService()
@@ -52,9 +56,29 @@ final class TodayViewModel {
                 goldenHours: GoldenHours.windows(in: conditions.hourly, phototype: phototype)
             )
             state = .loaded(metrics)
+            publishWidgetSnapshot(metrics: metrics, phototype: phototype)
         } catch {
             // Errore propagato fino alla UI con messaggio e retry, mai nascosto.
             state = .failed(message: error.localizedDescription)
+        }
+    }
+
+    /// Scrive l'istantanea UV nell'App Group e fa ricaricare i widget.
+    private func publishWidgetSnapshot(metrics: TodayMetrics, phototype: Fitzpatrick) {
+        do {
+            try SharedStore.save(UVSnapshot(
+                currentUVIndex: metrics.conditions.currentUVIndex,
+                safeMinutesBareSkin: metrics.safeMinutesBareSkin,
+                burnRiskRawValue: metrics.burnRisk.rawValue,
+                phototypeRawValue: phototype.rawValue,
+                updatedAt: .now
+            ))
+            WidgetCenter.shared.reloadAllTimelines()
+            widgetSyncWarning = nil
+        } catch {
+            widgetSyncWarning = String(
+                localized: "Aggiornamento dei widget non riuscito: \(error.localizedDescription)"
+            )
         }
     }
 }

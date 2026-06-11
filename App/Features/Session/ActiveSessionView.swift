@@ -101,6 +101,9 @@ struct ActiveSessionView: View {
             if let warning = manager.reminderWarning {
                 warningLabel(warning)
             }
+            if let warning = manager.liveActivityWarning {
+                warningLabel(warning)
+            }
         }
     }
 

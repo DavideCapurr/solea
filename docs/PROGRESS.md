@@ -23,9 +23,12 @@
 - [x] Diario con storico, statistiche settimanali e dose UV cumulativa nel burn risk
 
 ## M3 — Integrazione sistema
-- [ ] Live Activity (Dynamic Island + lock screen) per la sessione attiva
-- [ ] Widget home/lock screen (UV, burn risk, tempo sicuro)
-- [ ] HealthKit: Time in Daylight + vitamina D (`VitaminD.swift` in SoleaCore)
+- [x] Live Activity (Dynamic Island + lock screen) per la sessione attiva,
+      aggiornata ogni 30 s e a ogni refresh UV
+- [x] Widget home/lock screen (UV, burn risk, tempo sicuro) via snapshot in App Group;
+      dati mancanti o vecchi dichiarati esplicitamente, mai inventati
+- [x] HealthKit: Time in Daylight + vitamina D (pulsante "Salva su Salute" nel riepilogo,
+      errori e permessi negati mostrati con retry)
 
 ## M4 — Chicche
 - [ ] Foto-diario: camera con overlay, analisi tono on-device, slider prima/dopo

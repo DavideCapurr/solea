@@ -114,6 +114,12 @@ struct TodayView: View {
                 goldenHoursCard(metrics: metrics)
                 forecastCard(metrics: metrics)
                 sessionCTA
+                if let warning = viewModel.widgetSyncWarning {
+                    Label(warning, systemImage: "exclamationmark.triangle.fill")
+                        .font(.footnote)
+                        .foregroundStyle(.orange)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
             .padding()
         }
