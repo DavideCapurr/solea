@@ -37,9 +37,12 @@
 - [x] Promemoria idratazione & after-sun
 
 ## M5 — Social & Watch
-- [ ] Game Center: classifiche + achievement; streak/badge in SoleaCore
-- [ ] Share card per condivisione social
-- [ ] App watchOS: UV, avvio sessione, timer con haptic
+- [x] Game Center: classifiche (minuti smart settimanali, streak) + achievement;
+      streak/badge in SoleaCore con test
+- [x] Share card per condivisione social (ImageRenderer + share sheet)
+- [x] App watchOS: UV a colpo d'occhio, tempo sicuro, timer sessione con haptic
+- [ ] Sync profilo iPhone↔Watch via WatchConnectivity — rimandata: ora il Watch
+      sceglie il fototipo localmente; da collegare quando si affina il flusso
 
 ## M6 — Coach Solare AI
 - [ ] Proxy Claude (`server/coach-proxy`, Cloudflare Worker TS) con streaming SSE,

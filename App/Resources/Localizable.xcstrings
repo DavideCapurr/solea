@@ -2031,6 +2031,236 @@
           }
         }
       }
+    },
+    "Accedi a Game Center (Impostazioni > Game Center) per classifiche e obiettivi.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in to Game Center (Settings > Game Center) for leaderboards and achievements."
+          }
+        }
+      }
+    },
+    "Errore Game Center: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Game Center error: %@"
+          }
+        }
+      }
+    },
+    "Streak": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Streak"
+          }
+        }
+      }
+    },
+    "Giorni di sole intelligente": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smart-sun days"
+          }
+        }
+      }
+    },
+    "Traguardi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Achievements"
+          }
+        }
+      }
+    },
+    "Prima sessione": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First session"
+          }
+        }
+      }
+    },
+    "7 giorni smart": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 smart days"
+          }
+        }
+      }
+    },
+    "Vacanza preparata": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Holiday ready"
+          }
+        }
+      }
+    },
+    "10.000 IU di vitamina D": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10,000 IU of vitamin D"
+          }
+        }
+      }
+    },
+    "Hai completato la tua prima sessione.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You completed your first session."
+          }
+        }
+      }
+    },
+    "Sette giorni di fila di esposizione intelligente.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seven days in a row of smart exposure."
+          }
+        }
+      }
+    },
+    "Hai completato un piano di preparazione vacanza.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You completed a holiday preparation plan."
+          }
+        }
+      }
+    },
+    "Hai accumulato 10.000 IU di vitamina D stimata.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You accumulated 10,000 IU of estimated vitamin D."
+          }
+        }
+      }
+    },
+    "Condividi i tuoi progressi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share your progress"
+          }
+        }
+      }
+    },
+    "Impossibile generare l'immagine da condividere.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not generate the image to share."
+          }
+        }
+      }
+    },
+    "giorni di sole intelligente": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "smart-sun days"
+          }
+        }
+      }
+    },
+    "Fototipo %@ · ≈ %lld IU vitamina D": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skin type %@ · ≈ %lld IU vitamin D"
+          }
+        }
+      }
+    },
+    "Tempo illimitato": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlimited time"
+          }
+        }
+      }
+    },
+    "Permesso di posizione negato.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location permission denied."
+          }
+        }
+      }
+    },
+    "Posizione non disponibile.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location unavailable."
+          }
+        }
+      }
+    },
+    "Sessione": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Session"
+          }
+        }
+      }
+    },
+    "Pausa": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause"
+          }
+        }
+      }
+    },
+    "Termina": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "End"
+          }
+        }
+      }
     }
   }
 }
