@@ -8,6 +8,7 @@ struct PlannerView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \VacationPlan.createdAt, order: .reverse) private var plans: [VacationPlan]
     @State private var showNewPlan = false
+    @State private var deleteErrorMessage: String?
 
     var body: some View {
         NavigationStack {
@@ -38,6 +39,17 @@ struct PlannerView: View {
             .sheet(isPresented: $showNewPlan) {
                 NewPlanView(phototype: phototype)
             }
+            .alert(
+                "Eliminazione non riuscita",
+                isPresented: Binding(
+                    get: { deleteErrorMessage != nil },
+                    set: { if !$0 { deleteErrorMessage = nil } }
+                )
+            ) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(deleteErrorMessage ?? "")
+            }
         }
     }
 
@@ -64,9 +76,11 @@ struct PlannerView: View {
         for index in offsets {
             modelContext.delete(plans[index])
         }
-        // L'eventuale errore di save emerge al prossimo accesso; qui la delete
-        // in memoria è già riflessa dalla @Query.
-        try? modelContext.save()
+        do {
+            try modelContext.save()
+        } catch {
+            deleteErrorMessage = error.localizedDescription
+        }
     }
 }
 
