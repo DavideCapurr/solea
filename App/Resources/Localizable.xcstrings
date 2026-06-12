@@ -2261,6 +2261,106 @@
           }
         }
       }
+    },
+    "Coach": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coach"
+          }
+        }
+      }
+    },
+    "Coach non disponibile": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coach unavailable"
+          }
+        }
+      }
+    },
+    "Il Coach richiede il modello on-device (iOS 26+) oppure la configurazione del proxy Claude.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Coach requires the on-device model (iOS 26+) or the Claude proxy to be configured."
+          }
+        }
+      }
+    },
+    "Ciao! Sono il tuo Coach Solare ☀️": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hi! I'm your Sun Coach ☀️"
+          }
+        }
+      }
+    },
+    "Chiedimi quanto puoi startene al sole oggi, che SPF usare, o come prepararti per le vacanze.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask me how long you can stay in the sun today, which SPF to use, or how to prepare for your holiday."
+          }
+        }
+      }
+    },
+    "Scrivi al coach…": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Message the coach…"
+          }
+        }
+      }
+    },
+    "Il modello on-device non è disponibile su questo dispositivo.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The on-device model isn't available on this device."
+          }
+        }
+      }
+    },
+    "Problema di connessione: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connection problem: %@"
+          }
+        }
+      }
+    },
+    "Risposta del coach non leggibile.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The coach's reply couldn't be read."
+          }
+        }
+      }
+    },
+    "Errore del server (codice %lld).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server error (code %lld)."
+          }
+        }
+      }
     }
   }
 }

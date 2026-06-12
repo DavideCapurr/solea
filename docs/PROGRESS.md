@@ -45,11 +45,14 @@
       sceglie il fototipo localmente; da collegare quando si affina il flusso
 
 ## M6 — Coach Solare AI
-- [ ] Proxy Claude (`server/coach-proxy`, Cloudflare Worker TS) con streaming SSE,
-      prompt caching e rate limit
-- [ ] OnDeviceCoach (FoundationModels, gated iOS 26)
-- [ ] CoachRouter ibrido con fallback bidirezionale
-- [ ] Chat UI del Coach Solare
+- [x] Proxy Claude (`server/coach-proxy`, Cloudflare Worker TS) con streaming SSE,
+      prompt caching e rate limit per utente (verificato qui: typecheck + test logica)
+- [x] OnDeviceCoach (FoundationModels, gated iOS 26)
+- [x] CloudCoach (consumo SSE dal proxy, errori propagati)
+- [x] CoachRouter ibrido con fallback bidirezionale (complessità/connettività)
+- [x] Chat UI del Coach Solare con contesto utente (solo fototipo/UV/sessioni, mai foto)
+- [ ] Deploy proxy + `proxyURL` in CoachConfiguration — a carico dell'utente
+      (istruzioni nel README)
 
 ## Attività a carico dell'utente (fuori dal codice)
 - [ ] Asset grafici con Claude Design (vedi `docs/ASSETS.md`)
