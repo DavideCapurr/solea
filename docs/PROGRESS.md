@@ -24,7 +24,7 @@
 
 ## M3 — Integrazione sistema
 - [ ] Live Activity (Dynamic Island + lock screen) per la sessione attiva
-- [ ] Widget home/lock screen (UV, burn risk, tempo sicuro)
+- [ ] Widget home/lock screen (UV, burn risk, limite prudente)
 - [ ] HealthKit: Time in Daylight + vitamina D (`VitaminD.swift` in SoleaCore)
 
 ## M4 — Chicche

@@ -22,21 +22,23 @@ final class GoldenHoursTests: XCTestCase {
     }
 
     func testMiddayPeakSplitsWindowForFairSkin() {
-        // UV 3, 4, 6, 8, 8, 6, 4, 3: per fototipo I (cap 5) restano due finestre
+        // UV 3, 4, 6, 8, 8, 6, 4, 3: per fototipo I (cap ≈3.2) restano due finestre
         // (mattina e tardo pomeriggio), il picco è escluso.
         let forecast = makeForecast(startHour: 9, uvValues: [3, 4, 6, 8, 8, 6, 4, 3])
         let windows = GoldenHours.windows(in: forecast, phototype: .typeI)
         XCTAssertEqual(windows.count, 2)
-        XCTAssertEqual(windows[0].duration, 2 * 3600)
-        XCTAssertEqual(windows[1].duration, 2 * 3600)
+        XCTAssertEqual(windows[0].duration, 3600)
+        XCTAssertEqual(windows[1].duration, 3600)
     }
 
-    func testDarkSkinKeepsPeak() {
-        // Stesso scenario: per fototipo VI (cap 10) è un'unica finestra di 8 ore.
+    func testDarkSkinStillExcludesVeryHighUVPeak() {
+        // Stesso scenario: anche per fototipo VI il picco UV 8 resta fuori
+        // dalle finestre prudenti.
         let forecast = makeForecast(startHour: 9, uvValues: [3, 4, 6, 8, 8, 6, 4, 3])
         let windows = GoldenHours.windows(in: forecast, phototype: .typeVI)
-        XCTAssertEqual(windows.count, 1)
-        XCTAssertEqual(windows[0].duration, 8 * 3600)
+        XCTAssertEqual(windows.count, 2)
+        XCTAssertEqual(windows[0].duration, 3 * 3600)
+        XCTAssertEqual(windows[1].duration, 3 * 3600)
     }
 
     func testNoUsefulUVMeansNoWindows() {

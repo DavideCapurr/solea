@@ -29,7 +29,7 @@ struct ActiveSessionView: View {
                     Text(session.currentUVIndex, format: .number.precision(.fractionLength(0)))
                         .bold()
                 }
-                LabeledContent("Tempo sicuro rimanente") {
+                LabeledContent("Limite prudente rimanente") {
                     remainingLabel
                 }
                 LabeledContent("SPF") {
@@ -39,6 +39,7 @@ struct ActiveSessionView: View {
                 }
 
                 warnings
+                reapplyButton(session: session)
 
                 Button(role: .destructive) {
                     onEnd()
@@ -55,19 +56,21 @@ struct ActiveSessionView: View {
     }
 
     private func doseRing(session: SessionManager.ActiveSession) -> some View {
-        let fraction = min(session.effectiveDose / session.phototype.med, 1)
+        let limit = SafeExposure.recommendedDoseLimit(phototype: session.phototype)
+        let fraction = min(session.effectiveDose / limit, 1)
+        let warningFractionOfLimit = 0.8
         return Gauge(value: fraction) {
             Text("Dose UV")
         } currentValueLabel: {
             VStack {
                 Text(fraction, format: .percent.precision(.fractionLength(0)))
                     .font(.title.bold())
-                Text("della dose massima")
+                Text("della soglia prudente")
                     .font(.caption2)
             }
         }
         .gaugeStyle(.accessoryCircularCapacity)
-        .tint(fraction < 0.5 ? .green : (fraction < 0.8 ? .yellow : .red))
+        .tint(fraction < 0.5 ? .green : (fraction < warningFractionOfLimit ? .yellow : .red))
         .scaleEffect(2.2)
         .frame(width: 180, height: 180)
         .padding(.top, 24)
@@ -76,12 +79,16 @@ struct ActiveSessionView: View {
     @ViewBuilder
     private var remainingLabel: some View {
         if let remaining = manager.remainingSafeSeconds {
-            if remaining <= 0 {
-                Text("Esaurito — mettiti all'ombra")
+            if manager.sunscreenNeedsReapplication {
+                Text("Riapplica SPF o vai all'ombra")
+                    .bold()
+                    .foregroundStyle(.red)
+            } else if remaining <= 0 {
+                Text("Soglia raggiunta — mettiti all'ombra")
                     .bold()
                     .foregroundStyle(.red)
             } else if remaining.isInfinite {
-                Text("Illimitato")
+                Text("UV trascurabile")
             } else {
                 Text(formattedElapsed(Int(remaining)))
                     .bold()
@@ -111,6 +118,20 @@ struct ActiveSessionView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(10)
             .background(.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
+    }
+
+    @ViewBuilder
+    private func reapplyButton(session: SessionManager.ActiveSession) -> some View {
+        if session.configuration.spf > 1 {
+            Button {
+                Task { await manager.reapplySunscreen() }
+            } label: {
+                Label("Ho riapplicato la crema", systemImage: "checkmark.shield")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+        }
     }
 
     private func formattedElapsed(_ seconds: Int) -> String {

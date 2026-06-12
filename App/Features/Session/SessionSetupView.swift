@@ -46,9 +46,9 @@ struct SessionSetupView: View {
                 }
 
                 Section {
-                    safeTimePreview
+                    recommendedLimitPreview
                 } footer: {
-                    Text("Calcolato per il tuo fototipo \(phototype.romanNumeral) all'UV attuale; si aggiorna se l'UV cambia.")
+                    Text("Stimato per il tuo fototipo \(phototype.romanNumeral) all'UV attuale; si aggiorna se l'UV cambia.")
                 }
             }
             .navigationTitle("Nuova sessione")
@@ -82,14 +82,14 @@ struct SessionSetupView: View {
     }
 
     @ViewBuilder
-    private var safeTimePreview: some View {
+    private var recommendedLimitPreview: some View {
         switch Result(catching: {
             try SafeExposure.minutes(phototype: phototype, uvIndex: currentUVIndex, spf: spf)
         }) {
         case .success(let minutes):
-            LabeledContent("Tempo sicuro stimato") {
+            LabeledContent("Limite prudente stimato") {
                 Text(minutes.isInfinite
-                     ? String(localized: "Illimitato")
+                     ? String(localized: "UV trascurabile")
                      : String(localized: "\(Int(minutes.rounded())) min"))
                 .bold()
             }

@@ -41,6 +41,7 @@ final class SessionManager {
         var uvSamples: [Double]
         var elapsedSeconds: Int
         var remindersEnabled: Bool
+        var sunscreenAppliedAtElapsedSeconds: Int?
     }
 
     private(set) var active: ActiveSession?
@@ -57,15 +58,31 @@ final class SessionManager {
 
     private static let uvRefreshIntervalSeconds: Double = 600
     private static let reapplyIntervalMinutes = 120
+    private static let reapplyIntervalSeconds = reapplyIntervalMinutes * 60
 
     var remainingSafeSeconds: Double? {
         guard let session = active else { return nil }
-        let remainingDose = session.phototype.med - session.effectiveDose
+        let remainingDose = SafeExposure.recommendedDoseLimit(phototype: session.phototype)
+            - session.effectiveDose
         guard remainingDose > 0 else { return 0 }
         guard session.currentUVIndex > SafeExposure.negligibleUVIndex else { return .infinity }
         let dosePerSecond = session.currentUVIndex * SafeExposure.wattsPerUVIndexUnit
-            / session.configuration.spf
-        return remainingDose / dosePerSecond
+            / currentSPFFactor(for: session)
+        let doseLimitedSeconds = remainingDose / dosePerSecond
+        if let secondsUntilReapplication = secondsUntilSunscreenReapplication(for: session) {
+            return max(0, min(doseLimitedSeconds, secondsUntilReapplication))
+        }
+        return doseLimitedSeconds
+    }
+
+    var sunscreenNeedsReapplication: Bool {
+        guard let session = active,
+              session.configuration.spf > 1,
+              let seconds = secondsUntilSunscreenReapplication(for: session)
+        else {
+            return false
+        }
+        return seconds <= 0
     }
 
     func start(
@@ -84,11 +101,32 @@ final class SessionManager {
             effectiveDose: 0,
             uvSamples: [initialUVIndex],
             elapsedSeconds: 0,
-            remindersEnabled: false
+            remindersEnabled: false,
+            sunscreenAppliedAtElapsedSeconds: configuration.spf > 1 ? 0 : nil
         )
         await scheduleReminders()
         startTicking()
         startUVRefreshLoop()
+    }
+
+    func reapplySunscreen() async {
+        guard var session = active, session.configuration.spf > 1 else { return }
+        session.sunscreenAppliedAtElapsedSeconds = session.elapsedSeconds
+        let remindersEnabled = session.remindersEnabled
+        active = session
+
+        guard remindersEnabled else { return }
+        do {
+            try await notificationService.scheduleReapplyReminder(
+                everyMinutes: Self.reapplyIntervalMinutes
+            )
+            if let remaining = remainingSafeSeconds, remaining.isFinite {
+                try await notificationService.scheduleStopAlert(afterSeconds: remaining)
+            }
+            reminderWarning = nil
+        } catch {
+            reminderWarning = error.localizedDescription
+        }
     }
 
     func end() -> FinishedSession? {
@@ -154,9 +192,10 @@ final class SessionManager {
                 }
                 guard let self, var session = self.active else { return }
                 session.elapsedSeconds += 1
+                let spfFactor = self.currentSPFFactor(for: session)
                 session.effectiveDose += session.currentUVIndex
                     * SafeExposure.wattsPerUVIndexUnit
-                    / session.configuration.spf
+                    / spfFactor
                 self.active = session
             }
         }
@@ -201,5 +240,25 @@ final class SessionManager {
             // visibile finché un refresh non riesce.
             uvRefreshWarning = error.localizedDescription
         }
+    }
+
+    private func currentSPFFactor(for session: ActiveSession) -> Double {
+        guard session.configuration.spf > 1,
+              let secondsUntilReapplication = secondsUntilSunscreenReapplication(for: session),
+              secondsUntilReapplication > 0
+        else {
+            return 1
+        }
+        return min(session.configuration.spf, SafeExposure.maximumModeledSPF)
+    }
+
+    private func secondsUntilSunscreenReapplication(for session: ActiveSession) -> Double? {
+        guard session.configuration.spf > 1,
+              let appliedAt = session.sunscreenAppliedAtElapsedSeconds
+        else {
+            return nil
+        }
+        let secondsSinceApplication = max(0, session.elapsedSeconds - appliedAt)
+        return Double(Self.reapplyIntervalSeconds - secondsSinceApplication)
     }
 }

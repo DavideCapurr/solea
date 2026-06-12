@@ -19,12 +19,12 @@
 
 ### 1.2 Profilo pelle
 - Onboarding con quiz fototipo (scala Fitzpatrick I–VI): tono pelle, colore occhi/capelli, lentiggini, reazione tipica al sole.
-- Da fototipo + UV + SPF l'app calcola il **tempo di esposizione sicura** (basato su MED — Minimal Erythema Dose — per fototipo).
+- Da fototipo + UV + SPF l'app calcola un **limite prudente di esposizione** (sotto la MED — Minimal Erythema Dose — per fototipo).
 - Il profilo è modificabile e si raffina nel tempo con i dati delle sessioni.
 
 ### 1.3 Sessione di abbronzatura (timer)
 - Avvio sessione con scelta SPF applicato e zone esposte (fronte/retro, viso, gambe…).
-- Countdown del tempo sicuro rimanente, ricalcolato se l'UV cambia.
+- Countdown del limite prudente rimanente, ricalcolato se l'UV cambia.
 - Promemoria **"girati!"** a intervalli configurabili per un tan uniforme.
 - Promemoria **riapplica la crema** (ogni 2h o dopo il bagno, configurabile).
 - Alert di stop all'avvicinarsi della soglia di rischio scottatura.
@@ -43,7 +43,7 @@
 - La sessione attiva vive nella Dynamic Island e in Live Activity sulla lock screen: countdown, UV attuale, prossimo promemoria.
 
 ### 2.2 Widget
-- Widget home e lock screen: UV attuale, burn risk, tempo sicuro rimanente per il proprio fototipo.
+- Widget home e lock screen: UV attuale, burn risk, limite prudente rimanente per il proprio fototipo.
 
 ### 2.3 Vitamina D + HealthKit
 - Stima vitamina D sintetizzata per sessione (f(UV, pelle esposta, durata, fototipo)).
@@ -143,7 +143,7 @@ Un coach conversazionale che conosce il contesto dell'utente (fototipo, UV attua
 | Milestone | Contenuto |
 |---|---|
 | **M1 — Fondamenta** | Progetto Xcode, profilo pelle + quiz, UV via WeatherKit, schermata Oggi |
-| **M2 — Sessioni** | Timer, calcolo esposizione sicura, promemoria, diario base |
+| **M2 — Sessioni** | Timer, calcolo limite prudente, promemoria, diario base |
 | **M3 — Sistema** | Live Activity, widget, notifiche, HealthKit + vitamina D |
 | **M4 — Chicche** | Foto-diario, tan planner, lettino, idratazione |
 | **M5 — Social & Watch** | Game Center, share card, app Watch, badge/streak |

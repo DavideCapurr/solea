@@ -41,7 +41,7 @@ final class FitzpatrickQuizTests: XCTestCase {
     func testMEDIsMonotonicInPhototype() {
         let meds = Fitzpatrick.allCases.map(\.med)
         XCTAssertEqual(meds, meds.sorted())
-        XCTAssertEqual(Fitzpatrick.typeI.med, 200)
+        XCTAssertEqual(Fitzpatrick.typeI.med, 150)
         XCTAssertEqual(Fitzpatrick.typeVI.med, 1000)
     }
 }

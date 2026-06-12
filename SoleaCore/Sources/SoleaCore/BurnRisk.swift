@@ -13,10 +13,10 @@ public enum BurnRisk: String, CaseIterable, Sendable {
         currentUVIndex uv: Double
     ) -> BurnRisk {
         let fractionOfMED = max(0, dose) / phototype.med
-        if fractionOfMED >= 0.8 || (uv >= 8 && fractionOfMED >= 0.4) {
+        if fractionOfMED >= SafeExposure.recommendedLimitFractionOfMED || uv >= 8 {
             return .high
         }
-        if fractionOfMED >= 0.4 || uv >= 6 {
+        if fractionOfMED >= 0.4 || uv >= 3 {
             return .moderate
         }
         return .low

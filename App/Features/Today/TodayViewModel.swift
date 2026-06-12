@@ -8,8 +8,8 @@ import SoleaCore
 struct TodayMetrics {
     let conditions: UVConditions
     let burnRisk: BurnRisk
-    let safeMinutesBareSkin: Double
-    let safeMinutesSPF30: Double
+    let recommendedMinutesBareSkin: Double
+    let recommendedMinutesSPF30: Double
     let goldenHours: [DateInterval]
 }
 
@@ -40,11 +40,11 @@ final class TodayViewModel {
                     phototype: phototype,
                     currentUVIndex: conditions.currentUVIndex
                 ),
-                safeMinutesBareSkin: try SafeExposure.minutes(
+                recommendedMinutesBareSkin: try SafeExposure.minutes(
                     phototype: phototype,
                     uvIndex: conditions.currentUVIndex
                 ),
-                safeMinutesSPF30: try SafeExposure.minutes(
+                recommendedMinutesSPF30: try SafeExposure.minutes(
                     phototype: phototype,
                     uvIndex: conditions.currentUVIndex,
                     spf: 30
