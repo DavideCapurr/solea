@@ -90,7 +90,7 @@ struct DiaryView: View {
                         fraction.formatted(.percent.precision(.fractionLength(0))),
                         systemImage: "gauge.with.needle"
                     )
-                    .foregroundStyle(fraction < 0.8 ? Color.secondary : .red)
+                    .foregroundStyle(fraction < SafeExposure.recommendedLimitFractionOfMED ? Color.secondary : .red)
                 }
                 Label("≈ \(Int(session.vitaminDIU)) IU", systemImage: "pills")
             }

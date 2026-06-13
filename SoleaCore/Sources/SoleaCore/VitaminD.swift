@@ -5,7 +5,8 @@ import Foundation
 /// Riferimento: una MED a corpo intero produce ~10.000–25.000 IU; usiamo un
 /// valore prudente di 15.000 IU, scalato per superficie esposta ed efficienza
 /// di sintesi del fototipo (la pelle più scura sintetizza più lentamente).
-/// È una stima informativa, non un dato clinico.
+/// La stima non conosce età, BMI, vetro, nuvole locali, spessore applicato di
+/// crema o spettro UVB: è informativa, non clinica.
 public enum VitaminD {
     /// IU prodotte da una MED ricevuta a corpo intero (valore prudente).
     public static let iuPerFullBodyMED = 15_000.0

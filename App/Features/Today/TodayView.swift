@@ -1,4 +1,5 @@
 import SwiftUI
+import _SwiftData_SwiftUI
 import Charts
 import SoleaCore
 
@@ -110,7 +111,7 @@ struct TodayView: View {
         ScrollView {
             VStack(spacing: 16) {
                 uvCard(metrics: metrics)
-                safeTimeCard(metrics: metrics)
+                recommendedLimitCard(metrics: metrics)
                 goldenHoursCard(metrics: metrics)
                 forecastCard(metrics: metrics)
                 sessionCTA
@@ -172,23 +173,23 @@ struct TodayView: View {
         }
     }
 
-    // MARK: - Tempo sicuro
+    // MARK: - Limite prudente
 
-    private func safeTimeCard(metrics: TodayMetrics) -> some View {
+    private func recommendedLimitCard(metrics: TodayMetrics) -> some View {
         card {
             VStack(alignment: .leading, spacing: 12) {
-                Text("Tempo sicuro al sole")
+                Text("Limite prudente al sole")
                     .font(.headline)
                 HStack {
-                    safeTimeColumn(title: "Senza protezione", minutes: metrics.safeMinutesBareSkin)
+                    recommendedLimitColumn(title: "Senza protezione", minutes: metrics.recommendedMinutesBareSkin)
                     Divider()
-                    safeTimeColumn(title: "Con SPF 30", minutes: metrics.safeMinutesSPF30)
+                    recommendedLimitColumn(title: "Con SPF 30", minutes: metrics.recommendedMinutesSPF30)
                 }
             }
         }
     }
 
-    private func safeTimeColumn(title: LocalizedStringKey, minutes: Double) -> some View {
+    private func recommendedLimitColumn(title: LocalizedStringKey, minutes: Double) -> some View {
         VStack(spacing: 4) {
             Text(title)
                 .font(.caption)
@@ -201,7 +202,7 @@ struct TodayView: View {
 
     private func formattedMinutes(_ minutes: Double) -> String {
         if minutes.isInfinite {
-            return String(localized: "Illimitato")
+            return String(localized: "UV trascurabile")
         }
         if minutes >= 120 {
             let hours = minutes / 60
@@ -230,7 +231,7 @@ struct TodayView: View {
                                 .font(.subheadline.monospacedDigit())
                         }
                     }
-                    Text("Le fasce in cui ti abbronzi bene con il minor rischio per il tuo fototipo.")
+                    Text("Le fasce più prudenti tra quelle utili per il tuo fototipo.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }

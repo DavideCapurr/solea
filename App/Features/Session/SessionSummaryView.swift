@@ -28,9 +28,9 @@ struct SessionSummaryView: View {
                     LabeledContent("Dose UV assorbita") {
                         Text("\(Int(session.effectiveDose.rounded())) J/m²")
                     }
-                    LabeledContent("Quota della dose massima") {
+                    LabeledContent("Quota della MED") {
                         Text(session.fractionOfMED, format: .percent.precision(.fractionLength(0)))
-                            .foregroundStyle(session.fractionOfMED < 0.8 ? .primary : Color.red)
+                            .foregroundStyle(session.fractionOfMED < SafeExposure.recommendedLimitFractionOfMED ? .primary : Color.red)
                     }
                     LabeledContent("Vitamina D stimata") {
                         Text("≈ \(Int(session.vitaminDIU.rounded())) IU")
@@ -38,9 +38,9 @@ struct SessionSummaryView: View {
                 }
 
                 Section {
-                    Text(session.fractionOfMED < 0.8
-                         ? "Bella sessione! Sei rimasto sotto la soglia di sicurezza."
-                         : "Hai sfiorato la dose massima: domani concedi una pausa alla tua pelle e idratati bene.")
+                    Text(session.fractionOfMED < SafeExposure.recommendedLimitFractionOfMED
+                         ? "Bella sessione: sei rimasto sotto la soglia prudente."
+                         : "Hai raggiunto la soglia prudente: concedi una pausa alla pelle e resta all'ombra.")
                     .font(.subheadline)
                 }
 

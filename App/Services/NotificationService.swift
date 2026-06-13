@@ -59,13 +59,13 @@ final class NotificationService {
         )
     }
 
-    /// Programma (o riprogramma) l'avviso di stop quando si esaurirà il tempo sicuro.
+    /// Programma (o riprogramma) l'avviso quando si esaurisce il limite prudente.
     func scheduleStopAlert(afterSeconds seconds: Double) async throws {
         center.removePendingNotificationRequests(withIdentifiers: [Identifier.stop])
         guard seconds.isFinite, seconds >= 1 else { return }
         let content = UNMutableNotificationContent()
-        content.title = String(localized: "Tempo sicuro esaurito")
-        content.body = String(localized: "Hai raggiunto la dose massima per la tua pelle: mettiti all'ombra.")
+        content.title = String(localized: "Limite prudente esaurito")
+        content.body = String(localized: "Mettiti all'ombra o aggiorna la protezione prima di continuare.")
         content.sound = .defaultCritical
         try await schedule(
             id: Identifier.stop,

@@ -7,16 +7,18 @@ public enum GoldenHours {
     /// UV minimo perché l'esposizione abbia un effetto abbronzante apprezzabile.
     public static let minimumTanningUVIndex = 2.5
 
-    /// UV massimo consigliato per abbronzarsi in base al fototipo.
+    /// Una finestra "golden" non dovrebbe richiedere stop quasi immediato.
+    public static let minimumRecommendedBareMinutes = 25.0
+
+    /// Sopra UV 7 si entra in fasce alte/molto alte: non vengono marcate come ideali.
+    public static let absoluteMaximumGoldenUVIndex = 7.0
+
+    /// UV massimo consigliato per abbronzarsi in base al fototipo e alla soglia prudente.
     public static func maximumUVIndex(for phototype: Fitzpatrick) -> Double {
-        switch phototype {
-        case .typeI: return 5
-        case .typeII: return 6
-        case .typeIII: return 7
-        case .typeIV: return 8
-        case .typeV: return 9
-        case .typeVI: return 10
-        }
+        let dosePerMinuteAtUVI1 = SafeExposure.wattsPerUVIndexUnit * 60
+        let exposureBasedCap = SafeExposure.recommendedDoseLimit(phototype: phototype)
+            / (minimumRecommendedBareMinutes * dosePerMinuteAtUVI1)
+        return min(absoluteMaximumGoldenUVIndex, exposureBasedCap)
     }
 
     /// Estrae dalle previsioni orarie le finestre contigue ideali per il fototipo.

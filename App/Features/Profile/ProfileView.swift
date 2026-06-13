@@ -158,7 +158,7 @@ struct ProfileView: View {
                 showResetConfirmation = true
             }
         } footer: {
-            Text("Il fototipo determina i tempi di esposizione sicura: rifai il quiz se pensi che non ti rappresenti.")
+            Text("Il fototipo determina i limiti prudenti di esposizione: rifai il quiz se pensi che non ti rappresenti.")
         }
     }
 

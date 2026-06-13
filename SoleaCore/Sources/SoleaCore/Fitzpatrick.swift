@@ -11,11 +11,12 @@ public enum Fitzpatrick: Int, CaseIterable, Codable, Sendable, Identifiable {
 
     public var id: Int { rawValue }
 
-    /// Minimal Erythema Dose in J/m² (pesatura eritemale CIE): la dose UV
-    /// oltre la quale compare l'eritema per questo fototipo.
+    /// Minimal Erythema Dose di pianificazione in J/m² (pesatura eritemale CIE).
+    /// La MED reale varia molto tra individui; questi valori sono volutamente
+    /// conservativi per stime informative, non per dosaggio clinico.
     public var med: Double {
         switch self {
-        case .typeI: return 200
+        case .typeI: return 150
         case .typeII: return 250
         case .typeIII: return 300
         case .typeIV: return 450

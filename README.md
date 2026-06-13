@@ -3,13 +3,14 @@
 App iOS per abbronzarsi al meglio, senza scottarsi. **Tan-first, ma smart.**
 
 La specifica completa è in [`docs/SPEC.md`](docs/SPEC.md), lo stato di avanzamento in
-[`docs/PROGRESS.md`](docs/PROGRESS.md).
+[`docs/PROGRESS.md`](docs/PROGRESS.md), e le assunzioni scientifiche sono in
+[`docs/SCIENTIFIC_MODEL.md`](docs/SCIENTIFIC_MODEL.md).
 
 ## Struttura
 
 | Cartella | Contenuto |
 |---|---|
-| `SoleaCore/` | Package SwiftPM con la logica di dominio pura (fototipo, esposizione sicura, burn risk, golden hours) + unit test |
+| `SoleaCore/` | Package SwiftPM con la logica di dominio pura (fototipo, limite prudente, burn risk, golden hours) + unit test |
 | `App/` | Target iOS (SwiftUI, iOS 17+) |
 | `docs/` | Specifica, avanzamento, asset richiesti |
 | `server/coach-proxy/` | (M6) Proxy Cloudflare Worker per il Coach AI |
@@ -73,7 +74,7 @@ cd server/coach-proxy && npm run typecheck
 
 1. Primo avvio → onboarding con disclaimer e quiz fototipo (6 domande).
 2. Al termine il fototipo calcolato viene salvato; riavviando l'app si va dritti alla tab "Oggi".
-3. "Oggi" mostra: UV attuale, semaforo burn risk, tempo sicuro (senza protezione e con SPF 30),
+3. "Oggi" mostra: UV attuale, semaforo burn risk, limite prudente (senza protezione e con SPF 30),
    golden hours del giorno e grafico UV delle prossime ore.
 4. Negando i permessi di posizione compare un errore chiaro con pulsante Riprova.
 5. Tab Profilo → "Rifai il quiz" riporta all'onboarding.

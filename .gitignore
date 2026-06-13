@@ -1,5 +1,12 @@
 # Generato da XcodeGen — rigenerare con `xcodegen generate`
 Solea.xcodeproj/
+# Info.plist ed entitlements sono generati da project.yml (properties inline)
+App/Info.plist
+App/Solea.entitlements
+Widgets/Info.plist
+Widgets/SoleaWidgets.entitlements
+WatchApp/Info.plist
+WatchApp/SoleaWatch.entitlements
 
 # Xcode / Swift
 xcuserdata/

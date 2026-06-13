@@ -4,20 +4,27 @@ import XCTest
 final class BurnRiskTests: XCTestCase {
     func testFreshSkinLowUV() {
         XCTAssertEqual(
-            BurnRisk.level(doseTodayJoulesPerSquareMeter: 0, phototype: .typeIII, currentUVIndex: 3),
+            BurnRisk.level(doseTodayJoulesPerSquareMeter: 0, phototype: .typeIII, currentUVIndex: 2),
             .low
         )
     }
 
-    func testHighUVAloneIsModerate() {
+    func testModerateUVAloneIsModerate() {
         XCTAssertEqual(
             BurnRisk.level(doseTodayJoulesPerSquareMeter: 0, phototype: .typeIII, currentUVIndex: 6),
             .moderate
         )
     }
 
+    func testVeryHighUVAloneIsHigh() {
+        XCTAssertEqual(
+            BurnRisk.level(doseTodayJoulesPerSquareMeter: 0, phototype: .typeIII, currentUVIndex: 8),
+            .high
+        )
+    }
+
     func testNearMEDIsHigh() {
-        let dose = Fitzpatrick.typeII.med * 0.8
+        let dose = Fitzpatrick.typeII.med * SafeExposure.recommendedLimitFractionOfMED
         XCTAssertEqual(
             BurnRisk.level(doseTodayJoulesPerSquareMeter: dose, phototype: .typeII, currentUVIndex: 2),
             .high
