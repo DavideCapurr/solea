@@ -44,6 +44,32 @@ cd SoleaCore && swift test        # da terminale (macOS)
 
 oppure apri il package in Xcode ed esegui ⌘U.
 
+## Coach AI (M6)
+
+Il Coach è ibrido:
+
+- **On-device** (Apple Foundation Models, iOS 26+): funziona da solo, gratis e offline, senza alcuna configurazione.
+- **Cloud** (Claude via proxy): più capace, per chat lunghe e domande complesse.
+
+Per abilitare il livello cloud serve deployare il proxy in `server/coach-proxy`:
+
+```sh
+cd server/coach-proxy
+npm install
+npx wrangler kv namespace create RATE_LIMIT     # incolla l'id in wrangler.toml
+npx wrangler secret put ANTHROPIC_API_KEY        # la chiave resta lato server
+npm run deploy
+```
+
+Poi imposta l'URL del deploy in `App/Services/Coach/CoachConfiguration.swift` (`proxyURL`).
+Finché `proxyURL` è `nil`, l'app usa solo il coach on-device. La `ANTHROPIC_API_KEY` non è **mai** nell'app: vive solo come secret di Cloudflare.
+
+Verifica locale del proxy (senza deploy):
+
+```sh
+cd server/coach-proxy && npm run typecheck
+```
+
 ## Smoke test M1
 
 1. Primo avvio → onboarding con disclaimer e quiz fototipo (6 domande).

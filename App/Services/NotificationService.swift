@@ -18,7 +18,9 @@ final class NotificationService {
         static let flip = "session.flip"
         static let reapply = "session.reapply"
         static let stop = "session.stop"
-        static let all = [flip, reapply, stop]
+        static let hydration = "session.hydration"
+        static let afterSun = "session.afterSun"
+        static let all = [flip, reapply, stop, hydration, afterSun]
     }
 
     private let center = UNUserNotificationCenter.current()
@@ -69,6 +71,34 @@ final class NotificationService {
             id: Identifier.stop,
             content: content,
             trigger: UNTimeIntervalNotificationTrigger(timeInterval: max(seconds, 1), repeats: false)
+        )
+    }
+
+    /// Promemoria idratazione ricorrente durante le sessioni lunghe.
+    func scheduleHydrationReminder(everyMinutes minutes: Int) async throws {
+        let content = UNMutableNotificationContent()
+        content.title = String(localized: "Bevi un po' d'acqua")
+        content.body = String(localized: "Il sole disidrata: un sorso d'acqua aiuta pelle e abbronzatura.")
+        content.sound = .default
+        try await schedule(
+            id: Identifier.hydration,
+            content: content,
+            trigger: UNTimeIntervalNotificationTrigger(timeInterval: Double(minutes) * 60, repeats: true)
+        )
+    }
+
+    /// Promemoria doposole la sera, dopo una giornata di esposizione.
+    func scheduleAfterSunReminder(at date: Date) async throws {
+        guard date > .now else { return }
+        let content = UNMutableNotificationContent()
+        content.title = String(localized: "Doposole")
+        content.body = String(localized: "Applica una crema doposole e idratati: la tua pelle ti ringrazierà.")
+        content.sound = .default
+        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+        try await schedule(
+            id: Identifier.afterSun,
+            content: content,
+            trigger: UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         )
     }
 

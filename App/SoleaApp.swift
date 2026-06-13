@@ -7,6 +7,6 @@ struct SoleaApp: App {
         WindowGroup {
             RootView()
         }
-        .modelContainer(for: [UserProfile.self, TanSession.self])
+        .modelContainer(for: [UserProfile.self, TanSession.self, VacationPlan.self, TanPhoto.self])
     }
 }

@@ -22,21 +22,79 @@ targets:
     platform: iOS
     sources:
       - App
+      - Shared
     dependencies:
       - package: SoleaCore
+      - target: SoleaWidgets
     entitlements:
       path: App/Solea.entitlements
       properties:
         com.apple.developer.weatherkit: true
+        com.apple.developer.healthkit: true
+        com.apple.developer.game-center: true
+        com.apple.security.application-groups:
+          - group.com.davidecapurro.solea
     info:
       path: App/Info.plist
       properties:
         CFBundleDisplayName: Solea
+        GKGameCenterEnabled: true
         UILaunchScreen: {}
         ITSAppUsesNonExemptEncryption: false
+        NSSupportsLiveActivities: true
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
-        NSLocationWhenInUseUsageDescription: "Solea usa la tua posizione per mostrarti l'indice UV attuale e calcolare il tuo tempo di esposizione sicura."
+        NSLocationWhenInUseUsageDescription: "Solea usa la tua posizione per mostrarti l'indice UV attuale e calcolare un limite prudente di esposizione."
+        NSHealthUpdateUsageDescription: "Solea salva su Salute il tempo trascorso alla luce del giorno e la vitamina D stimata delle tue sessioni."
+        NSHealthShareUsageDescription: "Solea non legge dati da Salute; il permesso serve solo per la scrittura delle sessioni."
+        NSPhotoLibraryUsageDescription: "Solea usa le foto che scegli per il foto-diario del tan. Le immagini restano sul tuo dispositivo e non vengono mai caricate."
     settings:
       base:
         TARGETED_DEVICE_FAMILY: "1"
+
+  SoleaWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Widgets
+      - Shared
+      - path: App/Resources/Localizable.xcstrings
+    dependencies:
+      - package: SoleaCore
+    entitlements:
+      path: Widgets/SoleaWidgets.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.davidecapurro.solea
+    info:
+      path: Widgets/Info.plist
+      properties:
+        CFBundleDisplayName: Solea Widgets
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "1"
+        PRODUCT_BUNDLE_IDENTIFIER: com.davidecapurro.Solea.Widgets
+
+  SoleaWatch:
+    type: application
+    platform: watchOS
+    deploymentTarget: "10.0"
+    sources:
+      - WatchApp
+    dependencies:
+      - package: SoleaCore
+    entitlements:
+      path: WatchApp/SoleaWatch.entitlements
+      properties:
+        com.apple.developer.weatherkit: true
+    info:
+      path: WatchApp/Info.plist
+      properties:
+        CFBundleDisplayName: Solea
+        WKApplication: true
+        NSLocationWhenInUseUsageDescription: "Solea usa la tua posizione per mostrarti l'indice UV attuale al polso."
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.davidecapurro.Solea.watchkitapp

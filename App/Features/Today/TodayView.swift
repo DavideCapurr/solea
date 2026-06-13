@@ -57,12 +57,12 @@ struct TodayView: View {
                     SessionSetupView(
                         currentUVIndex: metrics.conditions.currentUVIndex,
                         phototype: phototype
-                    ) { configuration in
+                    ) { configuration, initialUVIndex in
                         Task {
                             await sessionManager.start(
                                 configuration: configuration,
                                 phototype: phototype,
-                                initialUVIndex: metrics.conditions.currentUVIndex
+                                initialUVIndex: initialUVIndex
                             )
                         }
                     }
@@ -115,6 +115,12 @@ struct TodayView: View {
                 goldenHoursCard(metrics: metrics)
                 forecastCard(metrics: metrics)
                 sessionCTA
+                if let warning = viewModel.widgetSyncWarning {
+                    Label(warning, systemImage: "exclamationmark.triangle.fill")
+                        .font(.footnote)
+                        .foregroundStyle(.orange)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
             .padding()
         }

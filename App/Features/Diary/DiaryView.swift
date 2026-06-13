@@ -9,17 +9,7 @@ struct DiaryView: View {
 
     var body: some View {
         NavigationStack {
-            Group {
-                if sessions.isEmpty {
-                    ContentUnavailableView(
-                        "Nessuna sessione",
-                        systemImage: "sun.haze",
-                        description: Text("Avvia la tua prima sessione dalla schermata Oggi: la troverai qui.")
-                    )
-                } else {
-                    list
-                }
-            }
+            list
             .navigationTitle("Diario")
             .alert(
                 "Eliminazione non riuscita",
@@ -40,11 +30,24 @@ struct DiaryView: View {
             Section("Questa settimana") {
                 weeklyStats
             }
-            Section("Sessioni") {
-                ForEach(sessions) { session in
-                    row(session: session)
+            Section {
+                NavigationLink {
+                    PhotoDiaryView()
+                } label: {
+                    Label("Foto-diario del tan", systemImage: "camera")
                 }
-                .onDelete(perform: delete)
+            }
+            Section("Sessioni") {
+                if sessions.isEmpty {
+                    Text("Avvia la tua prima sessione dalla schermata Oggi: la troverai qui.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                } else {
+                    ForEach(sessions) { session in
+                        row(session: session)
+                    }
+                    .onDelete(perform: delete)
+                }
             }
         }
     }

@@ -23,27 +23,36 @@
 - [x] Diario con storico, statistiche settimanali e dose UV cumulativa nel burn risk
 
 ## M3 — Integrazione sistema
-- [ ] Live Activity (Dynamic Island + lock screen) per la sessione attiva
-- [ ] Widget home/lock screen (UV, burn risk, limite prudente)
-- [ ] HealthKit: Time in Daylight + vitamina D (`VitaminD.swift` in SoleaCore)
+- [x] Live Activity (Dynamic Island + lock screen) per la sessione attiva,
+      aggiornata ogni 30 s e a ogni refresh UV
+- [x] Widget home/lock screen (UV, burn risk, tempo sicuro) via snapshot in App Group;
+      dati mancanti o vecchi dichiarati esplicitamente, mai inventati
+- [x] HealthKit: Time in Daylight + vitamina D (pulsante "Salva su Salute" nel riepilogo,
+      errori e permessi negati mostrati con retry)
 
 ## M4 — Chicche
-- [ ] Foto-diario: camera con overlay, analisi tono on-device, slider prima/dopo
-- [ ] Tan planner vacanze (`TanPlanner.swift` in SoleaCore)
-- [ ] Modalità lettino/solarium
-- [ ] Promemoria idratazione & after-sun
+- [x] Foto-diario: import foto, analisi tono on-device (Vision/CoreImage), slider prima/dopo
+- [x] Tan planner vacanze (`TanPlanner.swift` in SoleaCore, con test) + UI e persistenza
+- [x] Modalità lettino/solarium (UV-equivalente dalla potenza lampade)
+- [x] Promemoria idratazione & after-sun
 
 ## M5 — Social & Watch
-- [ ] Game Center: classifiche + achievement; streak/badge in SoleaCore
-- [ ] Share card per condivisione social
-- [ ] App watchOS: UV, avvio sessione, timer con haptic
+- [x] Game Center: classifiche (minuti smart settimanali, streak) + achievement;
+      streak/badge in SoleaCore con test
+- [x] Share card per condivisione social (ImageRenderer + share sheet)
+- [x] App watchOS: UV a colpo d'occhio, tempo sicuro, timer sessione con haptic
+- [ ] Sync profilo iPhone↔Watch via WatchConnectivity — rimandata: ora il Watch
+      sceglie il fototipo localmente; da collegare quando si affina il flusso
 
 ## M6 — Coach Solare AI
-- [ ] Proxy Claude (`server/coach-proxy`, Cloudflare Worker TS) con streaming SSE,
-      prompt caching e rate limit
-- [ ] OnDeviceCoach (FoundationModels, gated iOS 26)
-- [ ] CoachRouter ibrido con fallback bidirezionale
-- [ ] Chat UI del Coach Solare
+- [x] Proxy Claude (`server/coach-proxy`, Cloudflare Worker TS) con streaming SSE,
+      prompt caching e rate limit per utente (verificato qui: typecheck + test logica)
+- [x] OnDeviceCoach (FoundationModels, gated iOS 26)
+- [x] CloudCoach (consumo SSE dal proxy, errori propagati)
+- [x] CoachRouter ibrido con fallback bidirezionale (complessità/connettività)
+- [x] Chat UI del Coach Solare con contesto utente (solo fototipo/UV/sessioni, mai foto)
+- [ ] Deploy proxy + `proxyURL` in CoachConfiguration — a carico dell'utente
+      (istruzioni nel README)
 
 ## Attività a carico dell'utente (fuori dal codice)
 - [ ] Asset grafici con Claude Design (vedi `docs/ASSETS.md`)

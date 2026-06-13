@@ -6,6 +6,7 @@ struct SessionConfiguration {
     var spf: Double
     var zones: ExposedZones
     var flipIntervalMinutes: Int
+    var kind: SessionKind = .sun
 }
 
 /// Dati di una sessione conclusa, pronti per essere persistiti e riepilogati.
@@ -49,16 +50,26 @@ final class SessionManager {
     /// l'ultimo dato valido ma l'utente sa che qualcosa non va.
     private(set) var uvRefreshWarning: String?
     private(set) var reminderWarning: String?
+    private(set) var liveActivityWarning: String?
 
     private let notificationService = NotificationService()
     private let locationService = LocationService()
     private let uvService = UVService()
+    private let liveActivityService = LiveActivityService()
     private var tickTask: Task<Void, Never>?
     private var uvRefreshTask: Task<Void, Never>?
 
     private static let uvRefreshIntervalSeconds: Double = 600
     private static let reapplyIntervalMinutes = 120
     private static let reapplyIntervalSeconds = reapplyIntervalMinutes * 60
+    private static let hydrationIntervalMinutes = 45
+    /// La Live Activity viene aggiornata una volta ogni N tick (secondi).
+    private static let liveActivityUpdateInterval = 30
+
+    /// Orario del promemoria doposole (le 20:00 di oggi), se non è già passato.
+    private static func afterSunTime(calendar: Calendar = .current) -> Date? {
+        calendar.date(bySettingHour: 20, minute: 0, second: 0, of: .now)
+    }
 
     var remainingSafeSeconds: Double? {
         guard let session = active else { return nil }
@@ -93,6 +104,7 @@ final class SessionManager {
         guard active == nil else { return }
         uvRefreshWarning = nil
         reminderWarning = nil
+        liveActivityWarning = nil
         active = ActiveSession(
             startedAt: .now,
             configuration: configuration,
@@ -105,8 +117,35 @@ final class SessionManager {
             sunscreenAppliedAtElapsedSeconds: configuration.spf > 1 ? 0 : nil
         )
         await scheduleReminders()
+        startLiveActivity()
         startTicking()
         startUVRefreshLoop()
+    }
+
+    private func startLiveActivity() {
+        guard let session = active, let state = activityState() else { return }
+        do {
+            try liveActivityService.start(
+                phototype: session.phototype,
+                startedAt: session.startedAt,
+                state: state
+            )
+        } catch {
+            // La sessione funziona anche senza Live Activity, ma l'utente lo sa.
+            liveActivityWarning = error.localizedDescription
+        }
+    }
+
+    /// Stato corrente per la Live Activity; `nil` se non c'è sessione attiva.
+    private func activityState() -> SessionActivityAttributes.ContentState? {
+        guard let session = active else { return nil }
+        let remaining = remainingSafeSeconds
+        return SessionActivityAttributes.ContentState(
+            elapsedSeconds: session.elapsedSeconds,
+            doseFraction: session.effectiveDose / session.phototype.med,
+            currentUVIndex: session.currentUVIndex,
+            remainingSafeSeconds: (remaining?.isFinite == true) ? remaining : nil
+        )
     }
 
     func reapplySunscreen() async {
@@ -136,7 +175,11 @@ final class SessionManager {
         uvRefreshTask?.cancel()
         uvRefreshTask = nil
         notificationService.cancelSessionReminders()
+        let finalState = activityState()
         active = nil
+        if let finalState {
+            Task { await liveActivityService.end(state: finalState) }
+        }
 
         let averageUV = session.uvSamples.reduce(0, +) / Double(session.uvSamples.count)
         return FinishedSession(
@@ -170,6 +213,14 @@ final class SessionManager {
             try await notificationService.scheduleReapplyReminder(
                 everyMinutes: Self.reapplyIntervalMinutes
             )
+            try await notificationService.scheduleHydrationReminder(
+                everyMinutes: Self.hydrationIntervalMinutes
+            )
+            // Doposole la sera: solo per le sessioni al sole, non per il lettino.
+            if session.configuration.kind == .sun,
+               let afterSun = Self.afterSunTime() {
+                try await notificationService.scheduleAfterSunReminder(at: afterSun)
+            }
             if let remaining = remainingSafeSeconds, remaining.isFinite {
                 try await notificationService.scheduleStopAlert(afterSeconds: remaining)
             }
@@ -197,11 +248,19 @@ final class SessionManager {
                     * SafeExposure.wattsPerUVIndexUnit
                     / spfFactor
                 self.active = session
+
+                if session.elapsedSeconds % Self.liveActivityUpdateInterval == 0,
+                   let state = self.activityState() {
+                    await self.liveActivityService.update(state: state)
+                }
             }
         }
     }
 
     private func startUVRefreshLoop() {
+        // Il lettino ha un UV-equivalente fisso dato dalla potenza delle lampade:
+        // non c'è nulla da aggiornare da WeatherKit.
+        guard active?.configuration.kind == .sun else { return }
         uvRefreshTask?.cancel()
         uvRefreshTask = Task { [weak self] in
             while true {
@@ -226,6 +285,10 @@ final class SessionManager {
             let remindersEnabled = session.remindersEnabled
             active = session
             uvRefreshWarning = nil
+
+            if let state = activityState() {
+                await liveActivityService.update(state: state)
+            }
 
             // L'UV è cambiato: il momento dello stop di sicurezza va ricalcolato.
             if remindersEnabled, let remaining = remainingSafeSeconds, remaining.isFinite {

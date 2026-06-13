@@ -1,7 +1,7 @@
 import Foundation
 
 /// Un campione orario della previsione UV.
-public struct UVHour: Hashable, Sendable {
+public struct UVHour: Hashable, Codable, Sendable {
     public let date: Date
     public let uvIndex: Double
 

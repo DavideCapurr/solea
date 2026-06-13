@@ -2,9 +2,18 @@ import SwiftUI
 import SoleaCore
 
 struct SessionSummaryView: View {
+    private enum HealthSaveState: Equatable {
+        case idle
+        case saving
+        case saved
+        case failed(String)
+    }
+
     let session: FinishedSession
 
     @Environment(\.dismiss) private var dismiss
+    @State private var healthSaveState: HealthSaveState = .idle
+    private let healthKitService = HealthKitService()
 
     var body: some View {
         NavigationStack {
@@ -34,6 +43,12 @@ struct SessionSummaryView: View {
                          : "Hai raggiunto la soglia prudente: concedi una pausa alla pelle e resta all'ombra.")
                     .font(.subheadline)
                 }
+
+                Section {
+                    healthSection
+                } footer: {
+                    Text("Salva su Apple Health il tempo alla luce del giorno e la vitamina D stimata.")
+                }
             }
             .navigationTitle("Sessione completata")
             .navigationBarTitleDisplayMode(.inline)
@@ -41,6 +56,45 @@ struct SessionSummaryView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Fine") { dismiss() }
                 }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var healthSection: some View {
+        switch healthSaveState {
+        case .idle:
+            Button {
+                saveToHealth()
+            } label: {
+                Label("Salva su Salute", systemImage: "heart.fill")
+            }
+        case .saving:
+            HStack {
+                ProgressView()
+                Text("Salvataggio in corso…")
+            }
+        case .saved:
+            Label("Salvato su Salute", systemImage: "checkmark.circle.fill")
+                .foregroundStyle(.green)
+        case .failed(let message):
+            VStack(alignment: .leading, spacing: 8) {
+                Label(message, systemImage: "exclamationmark.triangle.fill")
+                    .font(.footnote)
+                    .foregroundStyle(.red)
+                Button("Riprova") { saveToHealth() }
+            }
+        }
+    }
+
+    private func saveToHealth() {
+        healthSaveState = .saving
+        Task {
+            do {
+                try await healthKitService.saveSession(session)
+                healthSaveState = .saved
+            } catch {
+                healthSaveState = .failed(error.localizedDescription)
             }
         }
     }
