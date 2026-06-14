@@ -3,6 +3,7 @@ import SoleaCore
 
 struct MainTabView: View {
     let phototype: Fitzpatrick
+    var connectivity: PhoneConnectivityService
 
     @State private var sessionManager = SessionManager()
 
@@ -20,7 +21,7 @@ struct MainTabView: View {
             CoachView(phototype: phototype, currentUVIndex: nil)
                 .tabItem { Label("Coach", systemImage: "bubble.left.and.bubble.right.fill") }
 
-            ProfileView(phototype: phototype)
+            ProfileView(phototype: phototype, connectivity: connectivity)
                 .tabItem { Label("Profilo", systemImage: "person.crop.circle") }
         }
     }

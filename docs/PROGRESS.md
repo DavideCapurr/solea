@@ -41,8 +41,10 @@
       streak/badge in SoleaCore con test
 - [x] Share card per condivisione social (ImageRenderer + share sheet)
 - [x] App watchOS: UV a colpo d'occhio, tempo sicuro, timer sessione con haptic
-- [ ] Sync profilo iPhone↔Watch via WatchConnectivity — rimandata: ora il Watch
-      sceglie il fototipo localmente; da collegare quando si affina il flusso
+- [x] Sync profilo iPhone↔Watch via WatchConnectivity: il fototipo viaggia
+      dall'iPhone al Watch via `updateApplicationContext` (`PhoneConnectivityService`
+      / `WatchProfileSync`); il picker al polso resta come override/fallback,
+      errori di sync mostrati nel Profilo (mai silenziati)
 
 ## M6 — Coach Solare AI
 - [x] Proxy Claude (`server/coach-proxy`, Cloudflare Worker TS) con streaming SSE,

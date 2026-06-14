@@ -10,11 +10,12 @@ struct WatchRootView: View {
         case failed(String)
     }
 
-    // Il Watch non ha (ancora) il profilo sincronizzato: si sceglie il fototipo
-    // qui. La sincronizzazione del profilo via WatchConnectivity è un'estensione
-    // futura, annotata in PROGRESS.
+    // Il fototipo arriva dall'iPhone via WatchConnectivity (`WatchProfileSync`
+    // scrive su questa stessa chiave). Il picker resta come override locale e
+    // come fallback finché non arriva la prima sincronizzazione.
     @AppStorage("watch.phototype") private var phototypeRaw = Fitzpatrick.typeIII.rawValue
     @State private var state: State = .loading
+    @State private var profileSync = WatchProfileSync()
 
     private let service = WatchUVService()
 
@@ -44,7 +45,10 @@ struct WatchRootView: View {
             }
             .navigationTitle("Solea")
         }
-        .task { await load() }
+        .task {
+            profileSync.activate()
+            await load()
+        }
     }
 
     @ViewBuilder

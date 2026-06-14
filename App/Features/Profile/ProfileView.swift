@@ -4,6 +4,7 @@ import SoleaCore
 
 struct ProfileView: View {
     let phototype: Fitzpatrick
+    var connectivity: PhoneConnectivityService
 
     @Environment(\.modelContext) private var modelContext
     @Query private var sessions: [TanSession]
@@ -98,6 +99,14 @@ struct ProfileView: View {
                 Text("Dose massima (MED)")
                 Spacer()
                 Text("\(Int(phototype.med)) J/m²").foregroundStyle(.secondary)
+            }
+            if let warning = connectivity.lastError {
+                Label(
+                    "Sincronizzazione del fototipo con l'Apple Watch non riuscita: \(warning)",
+                    systemImage: "applewatch.slash"
+                )
+                .font(.footnote)
+                .foregroundStyle(.orange)
             }
         }
     }

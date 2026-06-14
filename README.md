@@ -78,3 +78,16 @@ cd server/coach-proxy && npm run typecheck
    golden hours del giorno e grafico UV delle prossime ore.
 4. Negando i permessi di posizione compare un errore chiaro con pulsante Riprova.
 5. Tab Profilo → "Rifai il quiz" riporta all'onboarding.
+
+## Smoke test sync Watch (M5)
+
+Con iPhone + Apple Watch abbinati e l'app installata su entrambi:
+
+1. Completa l'onboarding sull'iPhone: il fototipo viene inviato al Watch via
+   WatchConnectivity (`updateApplicationContext`).
+2. Apri l'app sul Watch: il picker "Fototipo" riflette il valore dell'iPhone
+   (puoi comunque cambiarlo come override locale).
+3. Rifai il quiz sull'iPhone con un fototipo diverso → al successivo apri/refresh
+   del Watch il valore si aggiorna.
+4. Se la sincronizzazione fallisce, la tab Profilo dell'iPhone mostra un avviso
+   (l'errore non viene mai nascosto); il Watch resta usabile con la scelta manuale.
