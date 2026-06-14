@@ -29,11 +29,17 @@ targets:
     entitlements:
       path: App/Solea.entitlements
       properties:
+        # WeatherKit — UV index e previsioni orarie
         com.apple.developer.weatherkit: true
+        # HealthKit — scrittura Time in Daylight e vitamina D
         com.apple.developer.healthkit: true
+        # Game Center — classifiche e achievement
         com.apple.developer.game-center: true
+        # App Groups — condivisione snapshot UV con il Widget
         com.apple.security.application-groups:
           - group.com.davidecapurro.solea
+        # Push Notifications (development) — richiesto da Live Activity / ActivityKit
+        aps-environment: development
     info:
       path: App/Info.plist
       properties:
@@ -64,6 +70,7 @@ targets:
     entitlements:
       path: Widgets/SoleaWidgets.entitlements
       properties:
+        # App Groups — lettura snapshot UV scritto dall'app principale
         com.apple.security.application-groups:
           - group.com.davidecapurro.solea
     info:
@@ -88,6 +95,7 @@ targets:
     entitlements:
       path: WatchApp/SoleaWatch.entitlements
       properties:
+        # WeatherKit — UV index al polso
         com.apple.developer.weatherkit: true
     info:
       path: WatchApp/Info.plist
