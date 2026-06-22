@@ -48,6 +48,15 @@ eritema osservabile, quindi non è un obiettivo da raggiungere.
 - `VitaminD` è una stima euristica: parte da 15.000 IU per una MED a corpo
   intero, scala per superficie esposta e fototipo, e satura a 20.000 IU. Non
   può sostituire 25(OH)D sierica o indicazioni cliniche.
+- `SunExposureAdvisor` trasforma il limite prudente in un piano consigliato:
+  sceglie automaticamente tra vitamina D, tan graduale e prudenza usando
+  fototipo, UV attuale, dose già accumulata oggi e condizione pelle. Vitamina D
+  punta a ~800 IU ma non oltre il 35% della MED, tan graduale usa il 55% della
+  MED, massima prudenza il 30%. Ogni consiglio sottrae la dose già accumulata
+  oggi e resta sotto il limite prudente dell'80% MED.
+- La condizione pelle modula il piano: pelle calda riduce la dose verso la
+  prudenza; pelle che tira o arrossata blocca il sole diretto e produce un piano
+  "ombra/recupero" da 0 minuti.
 
 ## Limiti noti
 

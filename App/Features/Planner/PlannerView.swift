@@ -17,7 +17,7 @@ struct PlannerView: View {
                     ContentUnavailableView {
                         Label("Nessun piano", systemImage: "airplane.departure")
                     } description: {
-                        Text("Crea un piano per arrivare in vacanza già preparato, senza scottarti.")
+                        Text("Crea un piano graduale con tempi e SPF stimati per la vacanza.")
                     } actions: {
                         Button("Nuovo piano") { showNewPlan = true }
                             .buttonStyle(.borderedProminent)

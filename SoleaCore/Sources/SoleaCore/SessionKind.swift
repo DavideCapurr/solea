@@ -7,7 +7,7 @@ public enum SessionKind: String, Codable, Sendable, CaseIterable {
 }
 
 /// Conversione della potenza di un lettino solare in un indice UV equivalente,
-/// così che il calcolo di dose ed esposizione sicura sia lo stesso del sole.
+/// così che il calcolo di dose ed esposizione prudente sia lo stesso del sole.
 ///
 /// I lettori commerciali si classificano in tipi 1–4 per irradianza UV totale;
 /// usiamo un UV-equivalente indicativo per ciascun livello. Resta una stima.

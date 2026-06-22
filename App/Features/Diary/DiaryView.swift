@@ -44,7 +44,11 @@ struct DiaryView: View {
                         .foregroundStyle(.secondary)
                 } else {
                     ForEach(sessions) { session in
-                        row(session: session)
+                        NavigationLink {
+                            sessionDetail(session)
+                        } label: {
+                            row(session: session)
+                        }
                     }
                     .onDelete(perform: delete)
                 }
@@ -81,6 +85,7 @@ struct DiaryView: View {
                     .foregroundStyle(.secondary)
             }
             HStack(spacing: 16) {
+                Label(goalTitle(session.goal), systemImage: "target")
                 Label(
                     session.averageUVIndex.formatted(.number.precision(.fractionLength(1))),
                     systemImage: "sun.max"
@@ -96,8 +101,88 @@ struct DiaryView: View {
             }
             .font(.caption)
             .foregroundStyle(.secondary)
+
+            HStack(spacing: 16) {
+                if session.plannedMinutes > 0 {
+                    Label("\(session.plannedMinutes) min target", systemImage: "timer")
+                }
+                if session.pauseSeconds > 0 {
+                    Label("\(durationText(seconds: session.pauseSeconds)) pausa", systemImage: "pause.circle")
+                }
+                Label(sideSplitText(session), systemImage: "arrow.left.and.right")
+                if session.skinResponse != .notLogged {
+                    Label(skinResponseTitle(session.skinResponse), systemImage: "hand.raised")
+                }
+            }
+            .font(.caption2)
+            .foregroundStyle(.secondary)
         }
         .padding(.vertical, 2)
+    }
+
+    private func sessionDetail(_ session: TanSession) -> some View {
+        List {
+            Section("Riepilogo") {
+                LabeledContent("Obiettivo") {
+                    Text(goalTitle(session.goal))
+                }
+                LabeledContent("Durata") {
+                    Text(durationText(session.duration))
+                }
+                if session.pauseSeconds > 0 {
+                    LabeledContent("Pausa") {
+                        Text(durationText(seconds: session.pauseSeconds))
+                    }
+                }
+                if session.plannedMinutes > 0 {
+                    LabeledContent("Target") {
+                        Text("\(session.plannedMinutes) min")
+                    }
+                }
+                LabeledContent("UV medio") {
+                    Text(session.averageUVIndex, format: .number.precision(.fractionLength(1)))
+                }
+                LabeledContent("SPF") {
+                    Text(session.spf == 1 ? String(localized: "Nessuna") : "SPF \(Int(session.spf))")
+                }
+                LabeledContent("Vitamina D stimata") {
+                    Text("≈ \(Int(session.vitaminDIU.rounded())) IU")
+                }
+                if let fraction = session.fractionOfMED {
+                    LabeledContent("Quota della MED") {
+                        Text(fraction, format: .percent.precision(.fractionLength(0)))
+                            .foregroundStyle(fraction < SafeExposure.recommendedLimitFractionOfMED ? .primary : Color.red)
+                    }
+                }
+            }
+
+            Section("Uniformità") {
+                LabeledContent("Fronte") {
+                    Text(durationText(seconds: session.frontSeconds))
+                }
+                LabeledContent("Retro") {
+                    Text(durationText(seconds: session.backSeconds))
+                }
+                Text(sideBalanceText(session))
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+
+            Section("Pelle e note") {
+                LabeledContent("Sensazione") {
+                    Text(skinResponseTitle(session.skinResponse))
+                }
+                if session.noteText.isEmpty {
+                    Text("Nessuna nota salvata.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                } else {
+                    Text(session.noteText)
+                }
+            }
+        }
+        .navigationTitle(session.startedAt.formatted(date: .abbreviated, time: .omitted))
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private func durationText(_ duration: TimeInterval) -> String {
@@ -106,6 +191,53 @@ struct DiaryView: View {
             return String(localized: "\(minutes / 60) h \(minutes % 60) min")
         }
         return String(localized: "\(minutes) min")
+    }
+
+    private func durationText(seconds: Int) -> String {
+        let minutes = seconds / 60
+        if minutes >= 60 {
+            return String(localized: "\(minutes / 60) h \(minutes % 60) min")
+        }
+        return String(localized: "\(minutes) min")
+    }
+
+    private func sideSplitText(_ session: TanSession) -> String {
+        let front = session.frontSeconds / 60
+        let back = session.backSeconds / 60
+        return String(localized: "F \(front) / R \(back) min")
+    }
+
+    private func sideBalanceText(_ session: TanSession) -> String {
+        let total = session.frontSeconds + session.backSeconds
+        let difference = abs(session.frontSeconds - session.backSeconds)
+        if total == 0 {
+            return String(localized: "Questa sessione non ha tracciamento fronte/retro.")
+        }
+        if difference >= 10 * 60 {
+            return String(localized: "Sbilanciata: parti dal lato meno esposto nella prossima sessione.")
+        }
+        if difference >= 5 * 60 {
+            return String(localized: "Quasi uniforme: manca poco per pareggiare i lati.")
+        }
+        return String(localized: "Uniforme: fronte e retro sono ben bilanciati.")
+    }
+
+    private func goalTitle(_ goal: SunExposureGoal) -> LocalizedStringKey {
+        switch goal {
+        case .vitaminD: return "Vitamina D"
+        case .gradualTan: return "Tan graduale"
+        case .lowRisk: return "Prudenza"
+        }
+    }
+
+    private func skinResponseTitle(_ response: SkinResponse) -> LocalizedStringKey {
+        switch response {
+        case .notLogged: return "Non registrata"
+        case .comfortable: return "Bene"
+        case .warm: return "Calda"
+        case .tight: return "Tira"
+        case .red: return "Arrossata"
+        }
     }
 
     private func delete(at offsets: IndexSet) {

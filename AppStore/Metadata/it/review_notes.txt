@@ -1,0 +1,5 @@
+Solea usa WeatherKit per indice UV e previsioni, CoreLocation per calcoli locali basati sulla posizione corrente, HealthKit solo su azione dell'utente per scrivere Time in Daylight, Game Center per leaderboard/achievement e notifiche locali per promemoria di sessione.
+
+Solea richiede Critical Alerts per lo stop alert di sicurezza quando il limite prudente di esposizione è esaurito. Nel codice questo avviso usa UNNotificationSound.defaultCritical; gli altri promemoria usano suoni standard. Critical Alerts non vengono usate per marketing, engagement o promemoria ricorrenti.
+
+Il coach cloud è disabilitato nella build corrente (CoachConfiguration.proxyURL = nil); il codice usa solo il motore on-device quando disponibile. Le foto del diario restano sul dispositivo e non vengono caricate su server.

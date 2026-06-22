@@ -11,6 +11,8 @@ struct TodayMetrics {
     let burnRisk: BurnRisk
     let recommendedMinutesBareSkin: Double
     let recommendedMinutesSPF30: Double
+    let recommendedPlan: SunExposureRecommendation
+    let goalRecommendations: [SunExposureGoal: SunExposureRecommendation]
     let goldenHours: [DateInterval]
 }
 
@@ -32,8 +34,19 @@ final class TodayViewModel {
     private let uvService = UVService()
 
     /// `doseToday`: dose UV effettiva già accumulata oggi (somma delle sessioni).
-    func load(phototype: Fitzpatrick, doseToday: Double) async {
+    func load(phototype: Fitzpatrick, doseToday: Double, skinResponse: SkinResponse = .notLogged) async {
         state = .loading
+        #if DEBUG
+        if ScreenshotDemoSeeder.isEnabled {
+            state = .loaded(Self.demoMetrics(
+                phototype: phototype,
+                doseToday: doseToday,
+                skinResponse: skinResponse
+            ))
+            widgetSyncWarning = nil
+            return
+        }
+        #endif
         do {
             let location = try await locationService.currentLocation()
             let conditions = try await uvService.conditions(for: location)
@@ -53,6 +66,24 @@ final class TodayViewModel {
                     uvIndex: conditions.currentUVIndex,
                     spf: 30
                 ),
+                recommendedPlan: try SunExposureAdvisor.recommendedPlan(
+                    phototype: phototype,
+                    uvIndex: conditions.currentUVIndex,
+                    doseAlreadyToday: doseToday,
+                    skinResponse: skinResponse
+                ),
+                goalRecommendations: try Dictionary(uniqueKeysWithValues: SunExposureGoal.allCases.map { goal in
+                    (
+                        goal,
+                        try SunExposureAdvisor.recommendation(
+                            phototype: phototype,
+                            uvIndex: conditions.currentUVIndex,
+                            goal: goal,
+                            doseAlreadyToday: doseToday,
+                            skinResponse: skinResponse
+                        )
+                    )
+                }),
                 goldenHours: GoldenHours.windows(in: conditions.hourly, phototype: phototype)
             )
             state = .loaded(metrics)
@@ -68,7 +99,7 @@ final class TodayViewModel {
         do {
             try SharedStore.save(UVSnapshot(
                 currentUVIndex: metrics.conditions.currentUVIndex,
-                safeMinutesBareSkin: metrics.safeMinutesBareSkin,
+                safeMinutesBareSkin: metrics.recommendedMinutesBareSkin,
                 burnRiskRawValue: metrics.burnRisk.rawValue,
                 phototypeRawValue: phototype.rawValue,
                 updatedAt: .now
@@ -82,3 +113,76 @@ final class TodayViewModel {
         }
     }
 }
+
+#if DEBUG
+private extension TodayViewModel {
+    static func demoMetrics(
+        phototype: Fitzpatrick,
+        doseToday: Double,
+        skinResponse: SkinResponse
+    ) -> TodayMetrics {
+        do {
+            let now = Calendar.current.date(from: DateComponents(
+                year: 2026,
+                month: 6,
+                day: 16,
+                hour: 10
+            )) ?? .now
+            let hourly = (0..<18).map { offset in
+                let uv = max(0.5, 7.2 - abs(Double(offset - 4)) * 0.7)
+                return UVHour(
+                    date: now.addingTimeInterval(TimeInterval(offset * 3600)),
+                    uvIndex: uv
+                )
+            }
+            let conditions = UVConditions(
+                currentUVIndex: 6.4,
+                hourly: hourly,
+                fetchedAt: now
+            )
+            let plan = try SunExposureAdvisor.recommendedPlan(
+                phototype: phototype,
+                uvIndex: conditions.currentUVIndex,
+                doseAlreadyToday: doseToday,
+                skinResponse: skinResponse
+            )
+
+            let goalRecommendations = try Dictionary(uniqueKeysWithValues: SunExposureGoal.allCases.map { goal in
+                (
+                    goal,
+                    try SunExposureAdvisor.recommendation(
+                        phototype: phototype,
+                        uvIndex: conditions.currentUVIndex,
+                        goal: goal,
+                        doseAlreadyToday: doseToday,
+                        skinResponse: skinResponse
+                    )
+                )
+            })
+
+            return TodayMetrics(
+                conditions: conditions,
+                burnRisk: BurnRisk.level(
+                    doseTodayJoulesPerSquareMeter: doseToday,
+                    phototype: phototype,
+                    currentUVIndex: conditions.currentUVIndex
+                ),
+                recommendedMinutesBareSkin: try SafeExposure.minutes(
+                    phototype: phototype,
+                    uvIndex: conditions.currentUVIndex
+                ),
+                recommendedMinutesSPF30: try SafeExposure.minutes(
+                    phototype: phototype,
+                    uvIndex: conditions.currentUVIndex,
+                    spf: 30
+                ),
+                recommendedPlan: plan,
+                goalRecommendations: goalRecommendations,
+                goldenHours: GoldenHours.windows(in: hourly, phototype: phototype)
+            )
+        } catch {
+            preconditionFailure("Invalid screenshot demo data: \(error)")
+        }
+    }
+}
+#endif

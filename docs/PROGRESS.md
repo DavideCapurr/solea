@@ -9,6 +9,9 @@
 - [x] Unit test per ogni modulo di `SoleaCore`
 - [x] App: onboarding con quiz fototipo + disclaimer
 - [x] App: schermata Oggi (UV attuale + previsioni via WeatherKit, golden hours, burn risk)
+- [x] App: piano consigliato automatico ("quanto tempo stare al sole" o "ombra
+      oggi") in base a fototipo, UV attuale, dose già accumulata oggi e
+      condizione pelle; l'utente non deve scegliere l'obiettivo tecnico
 - [x] Localizzazione it (sorgente) + en, README con istruzioni di setup
 
 ## M2 — Sessioni
@@ -16,18 +19,22 @@
 - [ ] Sync CloudKit — rimandata: richiede il container iCloud configurato
       dall'utente su developer.apple.com (entitlement + capability); da riprendere
       quando l'account è pronto
-- [x] Timer sessione: SPF/zone esposte, countdown sicurezza, dose integrata al secondo,
-      UV aggiornato ogni 10 minuti (errori di refresh mostrati come avviso, mai nascosti)
-- [x] Promemoria "girati" / "riapplica crema" (notifiche locali) + alert stop
-- [x] Riepilogo fine sessione (durata, UV medio, dose UV, % MED, vitamina D stimata)
-- [x] Diario con storico, statistiche settimanali e dose UV cumulativa nel burn risk
+- [x] Timer sessione: obiettivo con durata target, pausa/riprendi, SPF/zone
+      esposte, countdown sicurezza, tracking fronte/retro, timeline promemoria,
+      dose integrata al secondo solo mentre esposto, UV aggiornato ogni 10 minuti
+      (errori di refresh mostrati come avviso, mai nascosti)
+- [x] Promemoria "girati" / "obiettivo raggiunto" / "riapplica crema"
+      (notifiche locali) + alert stop
+- [x] Riepilogo fine sessione (tempo effettivo al sole, pause, UV medio, dose UV,
+      % MED, vitamina D stimata, uniformità fronte/retro, riflessione pelle/note e prossima azione)
+- [x] Diario con storico, dettaglio sessioni, statistiche settimanali e dose UV cumulativa nel burn risk
 
 ## M3 — Integrazione sistema
 - [x] Live Activity (Dynamic Island + lock screen) per la sessione attiva,
       aggiornata ogni 30 s e a ogni refresh UV
-- [x] Widget home/lock screen (UV, burn risk, tempo sicuro) via snapshot in App Group;
+- [x] Widget home/lock screen (UV, burn risk, limite prudente) via snapshot in App Group;
       dati mancanti o vecchi dichiarati esplicitamente, mai inventati
-- [x] HealthKit: Time in Daylight + vitamina D (pulsante "Salva su Salute" nel riepilogo,
+- [x] HealthKit: Time in Daylight (pulsante "Salva su Salute" nel riepilogo,
       errori e permessi negati mostrati con retry)
 
 ## M4 — Chicche
@@ -39,8 +46,10 @@
 ## M5 — Social & Watch
 - [x] Game Center: classifiche (minuti smart settimanali, streak) + achievement;
       streak/badge in SoleaCore con test
-- [x] Share card per condivisione social (ImageRenderer + share sheet)
-- [x] App watchOS: UV a colpo d'occhio, tempo sicuro, timer sessione con haptic
+- [x] Share card verticali 1080×1920 (ImageRenderer + share sheet) da onboarding,
+      check quotidiano, riepilogo sessione, streak e foto prima/dopo; link App Store
+      aggiunto automaticamente quando configurato
+- [x] App watchOS: UV a colpo d'occhio, limite prudente, timer sessione con haptic
 - [x] Sync profilo iPhone↔Watch via WatchConnectivity: il fototipo viaggia
       dall'iPhone al Watch via `updateApplicationContext` (`PhoneConnectivityService`
       / `WatchProfileSync`); il picker al polso resta come override/fallback,

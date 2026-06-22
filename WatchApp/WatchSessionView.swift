@@ -3,7 +3,7 @@ import WatchKit
 import SoleaCore
 
 /// Timer di sessione al polso: integra la dose e dà un feedback haptic ai
-/// promemoria "girati" e quando il tempo sicuro si esaurisce.
+/// promemoria "girati" e quando il limite prudente si esaurisce.
 struct WatchSessionView: View {
     let phototype: Fitzpatrick
     let uvIndex: Double

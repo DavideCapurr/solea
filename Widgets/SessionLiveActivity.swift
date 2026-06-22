@@ -101,9 +101,9 @@ struct SessionLiveActivity: Widget {
             return String(localized: "UV basso: nessun limite di tempo")
         }
         if remaining <= 0 {
-            return String(localized: "Tempo sicuro esaurito — all'ombra!")
+            return String(localized: "Limite prudente esaurito — all'ombra!")
         }
         let minutes = Int((remaining / 60).rounded())
-        return String(localized: "Ancora \(minutes) min in sicurezza")
+        return String(localized: "Ancora \(minutes) min nel limite prudente")
     }
 }

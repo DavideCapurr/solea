@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import PhotosUI
+import UIKit
 
 struct PhotoDiaryView: View {
     @Environment(\.modelContext) private var modelContext
@@ -135,6 +136,7 @@ private struct ComparisonSlider: View {
     let after: TanPhoto
 
     @State private var position: Double = 0.5
+    @State private var sharePayload: SharePayload?
 
     var body: some View {
         VStack(spacing: 12) {
@@ -163,7 +165,24 @@ private struct ComparisonSlider: View {
                 .frame(height: 360)
                 Slider(value: $position, in: 0...1)
                 toneTrend
+
+                Button {
+                    shareComparison(beforeImage: beforeImage, afterImage: afterImage)
+                } label: {
+                    Label("Condividi il prima / dopo", systemImage: "square.and.arrow.up")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.orange)
+
+                Text("Condividerai solo queste due foto e le relative date, mai posizione o dati del profilo.")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
             }
+        }
+        .sheet(item: $sharePayload) { payload in
+            ShareSheet(payload: payload)
         }
     }
 
@@ -180,5 +199,131 @@ private struct ComparisonSlider: View {
             .font(.caption)
             .foregroundStyle(.secondary)
         }
+    }
+
+    @MainActor
+    private func shareComparison(beforeImage: UIImage, afterImage: UIImage) {
+        let card = PhotoComparisonShareCard(
+            beforeImage: beforeImage,
+            afterImage: afterImage,
+            beforeDate: before.capturedAt,
+            afterDate: after.capturedAt,
+            trend: shareTrend
+        )
+        sharePayload = renderSharePayload(
+            content: card,
+            caption: String(localized: "Il mio prima / dopo con Solea. Foto condivise su mia scelta; gli originali restano sul dispositivo. ☀️"),
+            source: "photo_comparison"
+        )
+    }
+
+    private var shareTrend: String {
+        guard let beforeTone = before.skinLightness, let afterTone = after.skinLightness else {
+            return String(localized: "Il mio percorso, un check alla volta.")
+        }
+        let delta = beforeTone - afterTone
+        if delta > 0.02 {
+            return String(localized: "Tono più scuro del \(Int((delta * 100).rounded()))% rispetto alla prima foto")
+        }
+        return String(localized: "Tono stabile rispetto alla prima foto")
+    }
+}
+
+private struct PhotoComparisonShareCard: View {
+    let beforeImage: UIImage
+    let afterImage: UIImage
+    let beforeDate: Date
+    let afterDate: Date
+    let trend: String
+
+    var body: some View {
+        ZStack {
+            LinearGradient(
+                colors: [
+                    Color(red: 1.00, green: 0.96, blue: 0.86),
+                    Color(red: 1.00, green: 0.69, blue: 0.24),
+                    Color(red: 0.92, green: 0.30, blue: 0.17)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+
+            VStack(alignment: .leading, spacing: 18) {
+                HStack {
+                    Label("SOLEA", systemImage: "sun.max.fill")
+                        .font(.system(size: 18, weight: .black, design: .rounded))
+                    Spacer()
+                    Text("MY SUN, SMARTER")
+                        .font(.system(size: 9, weight: .bold, design: .rounded))
+                        .tracking(0.8)
+                }
+
+                Text("IL MIO PRIMA / DOPO")
+                    .font(.system(size: 13, weight: .bold, design: .rounded))
+                    .tracking(1.4)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
+                    .background(.black.opacity(0.82), in: Capsule())
+                    .foregroundStyle(.white)
+
+                Text("Il percorso si vede.")
+                    .font(.system(size: 38, weight: .black, design: .rounded))
+                    .foregroundStyle(.black.opacity(0.84))
+
+                HStack(spacing: 8) {
+                    storyPhoto(beforeImage, label: "PRIMA", date: beforeDate)
+                    storyPhoto(afterImage, label: "DOPO", date: afterDate)
+                }
+
+                Label(trend, systemImage: "sparkles")
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .foregroundStyle(.black.opacity(0.72))
+                    .lineLimit(2)
+
+                Spacer(minLength: 0)
+
+                HStack {
+                    Text("Foto condivise su scelta dell'utente")
+                    Spacer()
+                    Image(systemName: "lock.fill")
+                }
+                .font(.system(size: 10, weight: .bold, design: .rounded))
+                .foregroundStyle(.white)
+                .padding(14)
+                .background(.black.opacity(0.82), in: RoundedRectangle(cornerRadius: 18))
+            }
+            .padding(26)
+        }
+        .frame(width: 360, height: 640)
+        .clipped()
+        .environment(\.colorScheme, .light)
+    }
+
+    private func storyPhoto(_ image: UIImage, label: String, date: Date) -> some View {
+        ZStack(alignment: .bottomLeading) {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 150, height: 300)
+                .clipped()
+
+            LinearGradient(
+                colors: [.clear, .black.opacity(0.72)],
+                startPoint: .center,
+                endPoint: .bottom
+            )
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(label)
+                    .font(.system(size: 13, weight: .black, design: .rounded))
+                    .tracking(1)
+                Text(date, format: .dateTime.day().month(.abbreviated).year())
+                    .font(.system(size: 10, weight: .semibold, design: .rounded))
+            }
+            .foregroundStyle(.white)
+            .padding(12)
+        }
+        .frame(maxWidth: .infinity)
+        .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 }

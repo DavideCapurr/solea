@@ -3,6 +3,7 @@ import SwiftData
 import SoleaCore
 
 struct RootView: View {
+    @Environment(\.modelContext) private var modelContext
     @Query(sort: \UserProfile.createdAt, order: .reverse) private var profiles: [UserProfile]
     @State private var connectivity = PhoneConnectivityService()
 
@@ -15,6 +16,9 @@ struct RootView: View {
             }
         }
         .task {
+            #if DEBUG
+            ScreenshotDemoSeeder.seedIfNeeded(in: modelContext)
+            #endif
             connectivity.activate()
             if let phototype = profiles.first?.phototype {
                 connectivity.sync(phototype: phototype)

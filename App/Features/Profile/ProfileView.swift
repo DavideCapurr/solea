@@ -13,8 +13,9 @@ struct ProfileView: View {
     @State private var gameCenter = GameCenterService()
     @State private var showResetConfirmation = false
     @State private var resetErrorMessage: String?
-    @State private var shareImage: ShareImage?
+    @State private var sharePayload: SharePayload?
     @State private var gameCenterWarning: String?
+    @Environment(\.openURL) private var openURL
 
     // MARK: - Progressi derivati (logica in SoleaCore)
 
@@ -56,6 +57,7 @@ struct ProfileView: View {
                 streakSection
                 badgesSection
                 shareSection
+                informationSection
                 resetSection
             }
             .navigationTitle("Profilo")
@@ -79,8 +81,8 @@ struct ProfileView: View {
             } message: {
                 Text(resetErrorMessage ?? "")
             }
-            .sheet(item: $shareImage) { item in
-                ShareSheet(items: [item.image])
+            .sheet(item: $sharePayload) { payload in
+                ShareSheet(payload: payload)
             }
         }
     }
@@ -151,13 +153,42 @@ struct ProfileView: View {
             Button {
                 makeShareCard()
             } label: {
-                Label("Condividi i tuoi progressi", systemImage: "square.and.arrow.up")
+                HStack {
+                    Label("Crea la tua Solea Story", systemImage: "sparkles")
+                        .font(.headline)
+                    Spacer()
+                    Image(systemName: "square.and.arrow.up")
+                }
             }
             if let warning = gameCenterWarning {
                 Text(warning)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
+        }
+    }
+
+    private var informationSection: some View {
+        Section("Informazioni") {
+            if let privacyPolicyURL = AppStoreLinks.privacyPolicyURL {
+                Button {
+                    openURL(privacyPolicyURL)
+                } label: {
+                    Label("Informativa privacy", systemImage: "hand.raised")
+                }
+            }
+
+            if let supportURL = AppStoreLinks.supportURL {
+                Button {
+                    openURL(supportURL)
+                } label: {
+                    Label("Supporto", systemImage: "questionmark.circle")
+                }
+            }
+
+            Text("Solea fornisce stime informative, non consigli medici.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
     }
 
@@ -198,17 +229,30 @@ struct ProfileView: View {
     }
 
     private func makeShareCard() {
-        let card = ShareCardView(
-            phototype: phototype,
-            streak: currentStreak,
-            unlockedBadges: unlockedBadges,
-            totalVitaminDIU: totalVitaminD
-        )
-        guard let image = card.renderedImage() else {
+        let message = currentStreak > 0
+            ? String(localized: "Una streak costruita restando sotto la soglia prudente.")
+            : String(localized: "Ogni giornata smart inizia da un check consapevole.")
+        let card = ShareCardView(content: ShareCardContent(
+            eyebrow: String(localized: "La mia streak Solea"),
+            headline: "\(currentStreak)",
+            unit: String(localized: "giorni di sole intelligente"),
+            message: message,
+            metrics: [
+                ShareCardMetric(icon: "sun.max.fill", value: "\(sessions.count)", label: String(localized: "sessioni")),
+                ShareCardMetric(icon: "medal.fill", value: "\(unlockedBadges.count)", label: String(localized: "traguardi")),
+                ShareCardMetric(icon: "person.fill", value: phototype.romanNumeral, label: String(localized: "Fototipo"))
+            ],
+            symbol: "flame.fill"
+        ))
+        guard let payload = renderSharePayload(
+            content: card,
+            caption: String(localized: "La mia streak Solea è di \(currentStreak) giorni di sole intelligente. ☀️"),
+            source: "profile_streak"
+        ) else {
             gameCenterWarning = String(localized: "Impossibile generare l'immagine da condividere.")
             return
         }
-        shareImage = ShareImage(image: image)
+        sharePayload = payload
     }
 
     private func resetProfile() {
@@ -219,19 +263,4 @@ struct ProfileView: View {
             resetErrorMessage = error.localizedDescription
         }
     }
-}
-
-private struct ShareImage: Identifiable {
-    let id = UUID()
-    let image: UIImage
-}
-
-private struct ShareSheet: UIViewControllerRepresentable {
-    let items: [Any]
-
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        UIActivityViewController(activityItems: items, applicationActivities: nil)
-    }
-
-    func updateUIViewController(_ controller: UIActivityViewController, context: Context) {}
 }

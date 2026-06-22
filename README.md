@@ -1,10 +1,13 @@
 # ☀️ Solea
 
-App iOS per abbronzarsi al meglio, senza scottarsi. **Tan-first, ma smart.**
+App iOS per abbronzarsi con più consapevolezza. **Tan-first, ma smart.**
 
 La specifica completa è in [`docs/SPEC.md`](docs/SPEC.md), lo stato di avanzamento in
 [`docs/PROGRESS.md`](docs/PROGRESS.md), e le assunzioni scientifiche sono in
 [`docs/SCIENTIFIC_MODEL.md`](docs/SCIENTIFIC_MODEL.md).
+La checklist per App Store Connect è in [`docs/APP_STORE_SUBMISSION.md`](docs/APP_STORE_SUBMISSION.md).
+La procedura completa di upload e invio in review è in
+[`docs/APP_STORE_UPLOAD_RUNBOOK.md`](docs/APP_STORE_UPLOAD_RUNBOOK.md).
 
 ## Struttura
 
@@ -24,6 +27,16 @@ brew install xcodegen
 xcodegen generate
 open Solea.xcodeproj
 ```
+
+Prima dell'archivio finale puoi eseguire il preflight locale, che controlla anche build Release device e archive unsigned:
+
+```sh
+scripts/app-store-preflight.sh
+```
+
+Le opzioni di export/upload App Store Connect sono in `AppStore/ExportOptions-AppStoreConnect.plist`.
+Gli screenshot App Store si validano con `scripts/validate-app-store-screenshots.sh --required`.
+Dopo un archive firmato puoi controllare firma e capability finali con `scripts/validate-signed-archive.sh <path>.xcarchive`.
 
 In Xcode:
 1. **Signing & Capabilities** → seleziona il tuo team (account Apple Developer).
@@ -61,7 +74,7 @@ npx wrangler secret put ANTHROPIC_API_KEY        # la chiave resta lato server
 npm run deploy
 ```
 
-Poi imposta l'URL del deploy in `App/Services/Coach/CoachConfiguration.swift` (`proxyURL`).
+Poi imposta l'URL del deploy in `App/Services/Coach/CoachRouter.swift` (`CoachConfiguration.proxyURL`).
 Finché `proxyURL` è `nil`, l'app usa solo il coach on-device. La `ANTHROPIC_API_KEY` non è **mai** nell'app: vive solo come secret di Cloudflare.
 
 Verifica locale del proxy (senza deploy):

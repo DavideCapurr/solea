@@ -154,7 +154,7 @@ struct UVWidget: Widget {
             UVWidgetView(entry: entry)
         }
         .configurationDisplayName("UV adesso")
-        .description("Indice UV attuale e tempo sicuro per il tuo fototipo.")
+        .description("Indice UV attuale e limite prudente stimato per il tuo fototipo.")
         .supportedFamilies([.systemSmall, .accessoryCircular, .accessoryRectangular])
     }
 }

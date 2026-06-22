@@ -1,8 +1,8 @@
 # ☀️ Solea — Specifica di prodotto v1
 
-> App iOS per abbronzarsi al meglio, senza scottarsi. **Tan-first, ma smart.**
+> App iOS per abbronzarsi con più consapevolezza. **Tan-first, ma smart.**
 
-- **Filosofia**: l'obiettivo dell'utente è un'abbronzatura bella e uniforme; l'app lo aiuta a raggiungerla in modo intelligente e sicuro. Tono motivazionale, non medicale.
+- **Filosofia**: l'obiettivo dell'utente è un'abbronzatura bella e uniforme; l'app lo aiuta a raggiungerla in modo intelligente e prudente. Tono motivazionale, non medicale.
 - **Prezzo**: completamente gratuita, nessun paywall.
 - **Piattaforma**: iOS 17+, SwiftUI, companion Apple Watch.
 - **Backend**: nessun server custom — WeatherKit, Game Center e CloudKit coprono tutto.
@@ -20,18 +20,34 @@
 ### 1.2 Profilo pelle
 - Onboarding con quiz fototipo (scala Fitzpatrick I–VI): tono pelle, colore occhi/capelli, lentiggini, reazione tipica al sole.
 - Da fototipo + UV + SPF l'app calcola un **limite prudente di esposizione** (sotto la MED — Minimal Erythema Dose — per fototipo).
+- La schermata Oggi chiede solo la **condizione attuale della pelle** (bene, calda,
+  tira, arrossata): è un dato fisico, non una scelta di obiettivo.
 - Il profilo è modificabile e si raffina nel tempo con i dati delle sessioni.
 
 ### 1.3 Sessione di abbronzatura (timer)
-- Avvio sessione con scelta SPF applicato e zone esposte (fronte/retro, viso, gambe…).
+- Piano consigliato automatico: Solea decide cosa fare in base a fototipo, UV
+  attuale, dose già presa oggi e condizione pelle. L'utente vede un'azione
+  chiara (es. "41 min al sole" oppure "Ombra oggi"), non un picker di obiettivi.
+- L'obiettivo tecnico della sessione (vitamina D, tan graduale, prudenza) è
+  scelto dall'advisor e salvato nel diario.
+- Avvio sessione dal piano: durata, SPF e zone sono precompilati; l'utente può
+  correggere dettagli pratici come SPF realmente applicato e zone esposte.
 - Countdown del limite prudente rimanente, ricalcolato se l'UV cambia.
+- Progresso verso il target della sessione, separato dal limite di sicurezza.
+- Pausa/riprendi per ombra, bagno o interruzioni: dose e target avanzano solo
+  durante il tempo effettivamente esposto.
+- Tracking fronte/retro durante la sessione per mantenere uniforme l'abbronzatura.
 - Promemoria **"girati!"** a intervalli configurabili per un tan uniforme.
+- Promemoria quando la durata obiettivo è raggiunta.
 - Promemoria **riapplica la crema** (ogni 2h o dopo il bagno, configurabile).
+- Timeline dei prossimi promemoria visibile durante la sessione.
 - Alert di stop all'avvicinarsi della soglia di rischio scottatura.
-- A fine sessione: riepilogo (durata, UV medio, dose UV stimata, vitamina D stimata).
+- A fine sessione: riepilogo (tempo effettivo al sole, pause, UV medio, dose UV
+  stimata, vitamina D stimata), bilanciamento fronte/retro e riflessione pelle/note.
 
 ### 1.4 Diario e statistiche
-- Storico sessioni con durata, UV medio, SPF, dose UV cumulativa.
+- Storico sessioni con tempo effettivo al sole, pause, obiettivo, UV medio, SPF,
+  bilanciamento fronte/retro, sensazione pelle, note e dose UV cumulativa.
 - Statistiche settimanali/mensili: tempo totale al sole, trend, giorni di streak.
 - Dose UV cumulata della giornata sempre visibile (somma di più sessioni).
 
@@ -47,7 +63,7 @@
 
 ### 2.3 Vitamina D + HealthKit
 - Stima vitamina D sintetizzata per sessione (f(UV, pelle esposta, durata, fototipo)).
-- Scrittura su Apple Health: *Time in Daylight* e vitamina D; lettura opzionale per arricchire le statistiche.
+- Scrittura su Apple Health: *Time in Daylight* solo su azione dell'utente. La vitamina D resta una stima in-app e non viene scritta su HealthKit.
 
 ### 2.4 Foto-diario del tan
 - Selfie periodici in condizioni di luce guidate (overlay di allineamento).
@@ -55,7 +71,7 @@
 - Analisi locale del tono pelle (Vision/CoreImage, nessun upload).
 
 ### 2.5 Tan planner vacanze
-- Inserisci meta e date: previsioni UV della località e **piano di esposizione graduale** giorno per giorno per arrivare alla vacanza già preparato e abbronzarsi senza scottature.
+- Inserisci meta e date: previsioni UV della località e **piano di esposizione graduale** giorno per giorno per arrivare alla vacanza con tempi e SPF stimati.
 
 ### 2.6 Apple Watch companion
 - Timer al polso, haptic per "girati" e "riapplica crema", UV a colpo d'occhio, avvio sessione dal polso.
@@ -144,7 +160,7 @@ Un coach conversazionale che conosce il contesto dell'utente (fototipo, UV attua
 |---|---|
 | **M1 — Fondamenta** | Progetto Xcode, profilo pelle + quiz, UV via WeatherKit, schermata Oggi |
 | **M2 — Sessioni** | Timer, calcolo limite prudente, promemoria, diario base |
-| **M3 — Sistema** | Live Activity, widget, notifiche, HealthKit + vitamina D |
+| **M3 — Sistema** | Live Activity, widget, notifiche, HealthKit Time in Daylight + vitamina D in-app |
 | **M4 — Chicche** | Foto-diario, tan planner, lettino, idratazione |
 | **M5 — Social & Watch** | Game Center, share card, app Watch, badge/streak |
 | **M6 — Coach AI** | Coach on-device (Foundation Models), poi proxy Claude + router ibrido e chat completa |

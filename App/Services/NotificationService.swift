@@ -17,10 +17,11 @@ final class NotificationService {
     private enum Identifier {
         static let flip = "session.flip"
         static let reapply = "session.reapply"
+        static let goal = "session.goal"
         static let stop = "session.stop"
         static let hydration = "session.hydration"
         static let afterSun = "session.afterSun"
-        static let all = [flip, reapply, stop, hydration, afterSun]
+        static let all = [flip, reapply, goal, stop, hydration, afterSun]
     }
 
     private let center = UNUserNotificationCenter.current()
@@ -29,7 +30,7 @@ final class NotificationService {
     /// legittima, la UI lo segnala); lancia solo per errori reali del sistema.
     func requestAuthorization() async throws -> Bool {
         do {
-            return try await center.requestAuthorization(options: [.alert, .sound])
+            return try await center.requestAuthorization(options: [.alert, .sound, .criticalAlert])
         } catch {
             throw NotificationError.underlying(error)
         }
@@ -48,6 +49,12 @@ final class NotificationService {
     }
 
     func scheduleReapplyReminder(everyMinutes minutes: Int) async throws {
+        try await scheduleReapplyReminder(afterSeconds: Double(minutes) * 60)
+    }
+
+    func scheduleReapplyReminder(afterSeconds seconds: Double) async throws {
+        center.removePendingNotificationRequests(withIdentifiers: [Identifier.reapply])
+        guard seconds.isFinite, seconds >= 1 else { return }
         let content = UNMutableNotificationContent()
         content.title = String(localized: "Riapplica la crema")
         content.body = String(localized: "Sono passate quasi due ore: rimetti la protezione solare.")
@@ -55,7 +62,22 @@ final class NotificationService {
         try await schedule(
             id: Identifier.reapply,
             content: content,
-            trigger: UNTimeIntervalNotificationTrigger(timeInterval: Double(minutes) * 60, repeats: true)
+            trigger: UNTimeIntervalNotificationTrigger(timeInterval: max(seconds, 1), repeats: false)
+        )
+    }
+
+    /// Avviso quando la durata-obiettivo della sessione è stata raggiunta.
+    func scheduleGoalReminder(afterSeconds seconds: Double) async throws {
+        center.removePendingNotificationRequests(withIdentifiers: [Identifier.goal])
+        guard seconds.isFinite, seconds >= 1 else { return }
+        let content = UNMutableNotificationContent()
+        content.title = String(localized: "Obiettivo raggiunto")
+        content.body = String(localized: "Hai completato il tempo previsto: valuta ombra, doposole o una pausa.")
+        content.sound = .default
+        try await schedule(
+            id: Identifier.goal,
+            content: content,
+            trigger: UNTimeIntervalNotificationTrigger(timeInterval: max(seconds, 1), repeats: false)
         )
     }
 
@@ -66,7 +88,7 @@ final class NotificationService {
         let content = UNMutableNotificationContent()
         content.title = String(localized: "Limite prudente esaurito")
         content.body = String(localized: "Mettiti all'ombra o aggiorna la protezione prima di continuare.")
-        content.sound = .defaultCritical
+        content.sound = UNNotificationSound.defaultCritical
         try await schedule(
             id: Identifier.stop,
             content: content,
@@ -105,6 +127,16 @@ final class NotificationService {
     func cancelSessionReminders() {
         center.removePendingNotificationRequests(withIdentifiers: Identifier.all)
         center.removeDeliveredNotifications(withIdentifiers: Identifier.all)
+    }
+
+    func cancelExposureReminders() {
+        center.removePendingNotificationRequests(withIdentifiers: [
+            Identifier.flip,
+            Identifier.reapply,
+            Identifier.goal,
+            Identifier.stop,
+            Identifier.hydration
+        ])
     }
 
     private func schedule(
