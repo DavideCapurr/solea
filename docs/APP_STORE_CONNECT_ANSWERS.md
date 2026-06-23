@@ -1,6 +1,6 @@
 # App Store Connect answers draft
 
-Bozza operativa aggiornata al 23 giugno 2026. Verifica sempre in App Store Connect prima dell'invio, soprattutto se cambi `CoachConfiguration.proxyURL`, capability, prodotti In-App Purchase o flussi dati.
+Bozza operativa aggiornata al 23 giugno 2026. Verifica sempre in App Store Connect prima dell'invio, soprattutto se cambi `SoleaCoachProxyURL`, capability, prodotti In-App Purchase o flussi dati.
 
 ## Export Compliance
 
@@ -27,7 +27,7 @@ Data types per build corrente:
 Da non dichiarare nella build corrente:
 
 - Contact Info: non raccolta dall'app.
-- Identifiers raccolti da Solea: no, finché `CoachConfiguration.proxyURL = nil`.
+- Identifiers raccolti da Solea: no, finché `SoleaCoachProxyURL` è vuoto.
 - Usage Data / Diagnostics raccolti da Solea: no.
 - Sensitive Info raccolte da Solea: no.
 
@@ -82,7 +82,7 @@ Usa il testo in `docs/APP_STORE_METADATA.md`, sezione `Review notes`.
 
 Includi anche:
 
-- Il coach cloud è disabilitato nella build corrente (`CoachConfiguration.proxyURL = nil`).
+- Il coach cloud è disabilitato nella build corrente (`SoleaCoachProxyURL` vuoto).
 - HealthKit è usato solo per la scrittura opzionale di Time in Daylight.
 - Critical Alerts sono limitate allo stop alert di sicurezza.
 - Game Center deve avere classifiche e traguardi già creati in App Store Connect.

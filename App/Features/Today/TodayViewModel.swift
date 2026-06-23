@@ -29,9 +29,12 @@ final class TodayViewModel {
     /// Avviso non bloccante: i dati in app sono validi ma i widget non sono
     /// stati aggiornati (es. App Group non configurato).
     private(set) var widgetSyncWarning: String?
+    private(set) var goldenHourReminderMessage: String?
+    private(set) var isSchedulingGoldenHourReminders = false
 
     private let locationService = LocationService()
     private let uvService = UVService()
+    private let notificationService = NotificationService()
 
     /// `doseToday`: dose UV effettiva già accumulata oggi (somma delle sessioni).
     func load(phototype: Fitzpatrick, doseToday: Double, skinResponse: SkinResponse = .notLogged) async {
@@ -111,6 +114,39 @@ final class TodayViewModel {
                 localized: "Aggiornamento dei widget non riuscito: \(error.localizedDescription)"
             )
         }
+    }
+
+    @discardableResult
+    func scheduleGoldenHourReminders(for metrics: TodayMetrics) async -> Bool {
+        isSchedulingGoldenHourReminders = true
+        defer { isSchedulingGoldenHourReminders = false }
+
+        do {
+            let granted = try await notificationService.requestStandardAuthorization()
+            guard granted else {
+                goldenHourReminderMessage = String(localized: "Notifiche disattivate: abilita Solea in Impostazioni > Notifiche per ricevere gli avvisi sulle ore ideali.")
+                return false
+            }
+
+            let scheduledCount = try await notificationService.scheduleGoldenHourReminders(
+                for: metrics.goldenHours
+            )
+            if scheduledCount > 0 {
+                goldenHourReminderMessage = String(localized: "Ti avviso 30 minuti prima e all'inizio della prossima fascia ideale.")
+                return true
+            } else {
+                goldenHourReminderMessage = String(localized: "Nessuna fascia futura da programmare: riapri Oggi quando cambiano le previsioni UV.")
+                return true
+            }
+        } catch {
+            goldenHourReminderMessage = error.localizedDescription
+            return false
+        }
+    }
+
+    func cancelGoldenHourReminders() {
+        notificationService.cancelGoldenHourReminders()
+        goldenHourReminderMessage = nil
     }
 }
 

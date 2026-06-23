@@ -63,6 +63,8 @@ struct PlannerView: View {
                 Text(deleteErrorMessage ?? "")
             }
         }
+        .background(SoleaTheme.screenGradient.ignoresSafeArea())
+        .tint(SoleaTheme.sunset)
     }
 
     private var planList: some View {
@@ -82,6 +84,8 @@ struct PlannerView: View {
             }
             .onDelete(perform: delete)
         }
+        .scrollContentBackground(.hidden)
+        .background(SoleaTheme.screenGradient.ignoresSafeArea())
     }
 
     private func delete(at offsets: IndexSet) {
@@ -120,6 +124,8 @@ private struct PlanDetailView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(SoleaTheme.screenGradient.ignoresSafeArea())
         .navigationTitle(plan.destinationName)
         .navigationBarTitleDisplayMode(.inline)
     }

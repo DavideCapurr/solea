@@ -62,25 +62,34 @@ oppure apri il package in Xcode ed esegui ⌘U.
 Il Coach è ibrido:
 
 - **On-device** (Apple Foundation Models, iOS 26+): funziona da solo, gratis e offline, senza alcuna configurazione.
-- **Cloud** (Claude via proxy): più capace, per chat lunghe e domande complesse.
+- **Cloud** (proxy provider-agnostic): più capace, per chat lunghe e domande complesse.
+  Il Worker incluso usa Gemini 2.5 Flash-Lite come adapter cloud scelto;
+  Mistral `ministral-3b-latest` e Anthropic Claude Sonnet restano fallback configurabili.
 
 Per abilitare il livello cloud serve deployare il proxy in `server/coach-proxy`:
 
 ```sh
 cd server/coach-proxy
 npm install
+cp .dev.vars.example .dev.vars                 # per `npm run dev`; inserisci la tua chiave Gemini
 npx wrangler kv namespace create RATE_LIMIT     # incolla l'id in wrangler.toml
-npx wrangler secret put ANTHROPIC_API_KEY        # la chiave resta lato server
+npx wrangler secret put GEMINI_API_KEY           # la chiave resta lato server
 npm run deploy
 ```
 
-Poi imposta l'URL del deploy in `App/Services/Coach/CoachRouter.swift` (`CoachConfiguration.proxyURL`).
-Finché `proxyURL` è `nil`, l'app usa solo il coach on-device. La `ANTHROPIC_API_KEY` non è **mai** nell'app: vive solo come secret di Cloudflare.
+Verifica il deploy con `GET https://<tuo-worker>/health`: deve rispondere con
+`"ready": true`, provider `gemini` e modello `gemini-2.5-flash-lite`.
+
+Poi imposta l'URL del deploy in `project.yml` / `App/Info.plist` (`SoleaCoachProxyURL`).
+Finché `SoleaCoachProxyURL` è vuoto, l'app usa solo il coach on-device. Le API key dei provider non sono **mai** nell'app: vivono solo come secret di Cloudflare.
 
 Verifica locale del proxy (senza deploy):
 
 ```sh
-cd server/coach-proxy && npm run typecheck
+cd server/coach-proxy
+npm run check
+npm run dev
+curl http://localhost:8787/health
 ```
 
 ## Smoke test M1

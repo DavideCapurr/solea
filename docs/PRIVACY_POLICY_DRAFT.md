@@ -17,7 +17,7 @@ Solea usa i dati inseriti o autorizzati dall'utente per calcolare stime informat
 
 I dati principali dell'app sono salvati sul dispositivo tramite le tecnologie Apple usate dall'app. Le foto del diario non vengono caricate su server di Solea.
 
-La build corrente non invia dati a un proxy AI cloud perché `CoachConfiguration.proxyURL` è disabilitato. Se in futuro il coach cloud verrà abilitato, la privacy policy dovrà essere aggiornata prima della pubblicazione.
+La build corrente non invia dati a un proxy AI cloud perché `SoleaCoachProxyURL` è vuoto. Se in futuro il coach cloud verrà abilitato, la privacy policy dovrà essere aggiornata prima della pubblicazione.
 
 ## Servizi Apple usati
 

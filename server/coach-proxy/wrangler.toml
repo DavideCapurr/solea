@@ -3,8 +3,12 @@ main = "src/index.ts"
 compatibility_date = "2026-01-01"
 compatibility_flags = ["nodejs_compat"]
 
-# Limite di messaggi Claude al giorno per utente.
+# Limite di messaggi cloud al giorno per utente.
 [vars]
+COACH_PROVIDER = "gemini"
+MISTRAL_MODEL = "ministral-3b-latest"
+GEMINI_MODEL = "gemini-2.5-flash-lite"
+ANTHROPIC_MODEL = "claude-sonnet-4-6"
 DAILY_MESSAGE_LIMIT = "10"
 
 # Conteggio rate-limit per utente. Crea il namespace con:
@@ -14,5 +18,9 @@ DAILY_MESSAGE_LIMIT = "10"
 binding = "RATE_LIMIT"
 id = "REPLACE_WITH_KV_NAMESPACE_ID"
 
-# La chiave Anthropic NON va qui: impostala come secret cifrato con
+# La chiave del provider NON va qui: impostala come secret cifrato con
+#   wrangler secret put GEMINI_API_KEY
+# oppure, se usi l'adapter Mistral:
+#   wrangler secret put MISTRAL_API_KEY
+# oppure, se usi l'adapter Anthropic:
 #   wrangler secret put ANTHROPIC_API_KEY

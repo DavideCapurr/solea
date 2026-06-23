@@ -40,7 +40,7 @@ Solea Plus usa due prodotti promossi nel paywall: annuale auto-rinnovabile (`com
 
 Solea richiede Critical Alerts per l'avviso di sicurezza quando il limite prudente di esposizione è esaurito. Nel codice questo avviso usa `UNNotificationSound.defaultCritical`; gli altri promemoria usano suoni standard. Critical Alerts non vengono usate per marketing, coinvolgimento o promemoria ricorrenti.
 
-Il coach cloud è disabilitato nella build corrente (`CoachConfiguration.proxyURL = nil`); il codice usa solo il motore on-device quando disponibile. Le foto del diario restano sul dispositivo e non vengono caricate su server.
+Il coach cloud è disabilitato nella build corrente (`SoleaCoachProxyURL` vuoto); il codice usa solo il motore on-device quando disponibile. Le foto del diario restano sul dispositivo e non vengono caricate su server.
 
 ## Privacy label draft
 
@@ -51,7 +51,7 @@ Verifica sempre in App Store Connect prima della pubblicazione. Per la build cor
 - Photos or Videos: le foto del diario sono selezionate dall'utente e restano locali. Non sono caricate su server.
 - Purchases: Solea usa StoreKit per verificare l'accesso a Solea Plus. Nessun pagamento esterno o tracking.
 - Gameplay Content / Game Center activity: leaderboard e achievement passano tramite Game Center se l'utente è autenticato.
-- Identifiers: l'ID anonimo del coach cloud resta inutilizzato finché `proxyURL` è `nil`; aggiorna questa sezione se abiliti il proxy.
+- Identifiers: l'ID anonimo del coach cloud resta inutilizzato finché `SoleaCoachProxyURL` è vuoto; aggiorna questa sezione se abiliti il proxy.
 
 Tracking: no.
 

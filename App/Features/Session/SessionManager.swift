@@ -54,6 +54,7 @@ final class SessionManager {
         var elapsedSeconds: Int
         var remindersEnabled: Bool
         var sunscreenAppliedAtElapsedSeconds: Int?
+        var lastHydrationAtElapsedSeconds: Int
         var currentSide: ExposureSide
         var frontExposureSeconds: Int
         var backExposureSeconds: Int
@@ -126,7 +127,8 @@ final class SessionManager {
         guard let session = active else { return nil }
         guard !session.isPaused else { return nil }
         let interval = Self.hydrationIntervalMinutes * 60
-        let elapsedInInterval = session.elapsedSeconds % interval
+        let sinceLast = max(0, session.elapsedSeconds - session.lastHydrationAtElapsedSeconds)
+        let elapsedInInterval = sinceLast % interval
         return elapsedInInterval == 0 ? interval : interval - elapsedInInterval
     }
 
@@ -166,6 +168,7 @@ final class SessionManager {
             elapsedSeconds: 0,
             remindersEnabled: false,
             sunscreenAppliedAtElapsedSeconds: configuration.spf > 1 ? 0 : nil,
+            lastHydrationAtElapsedSeconds: 0,
             currentSide: .front,
             frontExposureSeconds: 0,
             backExposureSeconds: 0,
@@ -206,9 +209,11 @@ final class SessionManager {
     }
 
     func reapplySunscreen() async {
+        // Disponibile anche senza Solea Plus (usato dalla Modalità spiaggia):
+        // resetta il timestamp di applicazione per la matematica della dose; la
+        // schedulazione notifiche resta protetta da `remindersEnabled` più sotto.
         guard var session = active,
-              session.configuration.spf > 1,
-              session.configuration.advancedRemindersEnabled
+              session.configuration.spf > 1
         else {
             return
         }
@@ -234,6 +239,29 @@ final class SessionManager {
         guard var session = active else { return }
         session.currentSide = side
         active = session
+    }
+
+    /// Registra un sorso d'acqua: resetta il countdown idratazione in-app
+    /// (mostrato dalla Modalità spiaggia) e, per le sessioni con promemoria
+    /// avanzati attivi, riallinea la notifica ripetuta.
+    func logHydration() async {
+        guard var session = active else { return }
+        session.lastHydrationAtElapsedSeconds = session.elapsedSeconds
+        active = session
+
+        guard session.remindersEnabled,
+              session.configuration.advancedRemindersEnabled
+        else {
+            return
+        }
+        do {
+            try await notificationService.scheduleHydrationReminder(
+                everyMinutes: Self.hydrationIntervalMinutes
+            )
+            reminderWarning = nil
+        } catch {
+            reminderWarning = error.localizedDescription
+        }
     }
 
     func pause() {

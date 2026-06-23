@@ -23,6 +23,7 @@ struct TodayView: View {
     @State private var sharePayload: SharePayload?
     @State private var showPlusPaywall = false
     @State private var saveErrorMessage: String?
+    @AppStorage("goldenHourRemindersEnabled") private var goldenHourRemindersEnabled = false
     @AppStorage("currentSkinResponse") private var currentSkinResponseRawValue = SkinResponse.comfortable.rawValue
 
     /// Dose UV effettiva già accumulata oggi tra sessioni salvate e sessione attiva.
@@ -129,6 +130,7 @@ struct TodayView: View {
             doseToday: doseToday,
             skinResponse: currentSkinResponse
         )
+        await rescheduleGoldenHourRemindersIfNeeded()
     }
 
     private func endSession() {
@@ -170,7 +172,6 @@ struct TodayView: View {
                 recommendedLimitCard(metrics: metrics)
                 goldenHoursCard(metrics: metrics)
                 forecastCard(metrics: metrics)
-                sessionCTA(metrics: metrics)
                 if let warning = viewModel.widgetSyncWarning {
                     Label(warning, systemImage: "exclamationmark.triangle.fill")
                         .font(.footnote)
@@ -180,6 +181,8 @@ struct TodayView: View {
             }
             .padding()
         }
+        .background(SoleaTheme.screenGradient.ignoresSafeArea())
+        .tint(SoleaTheme.sunset)
     }
 
     // MARK: - Solea Check
@@ -223,6 +226,8 @@ struct TodayView: View {
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(.black.opacity(0.68))
 
+            primarySessionCTA(metrics: metrics)
+
             HStack(spacing: 8) {
                 checkMetric(
                     value: metrics.conditions.currentUVIndex.formatted(.number.precision(.fractionLength(0))),
@@ -258,14 +263,7 @@ struct TodayView: View {
         }
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            LinearGradient(
-                colors: [.yellow.opacity(0.72), .orange.opacity(0.40)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            ),
-            in: RoundedRectangle(cornerRadius: 24)
-        )
+        .background(SoleaTheme.sunriseGradient, in: RoundedRectangle(cornerRadius: 24))
         .overlay {
             RoundedRectangle(cornerRadius: 24)
                 .stroke(.orange.opacity(0.18), lineWidth: 1)
@@ -479,9 +477,72 @@ struct TodayView: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
+                Divider()
+                goldenHourReminderControls(metrics: metrics)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+
+    private func goldenHourReminderControls(metrics: TodayMetrics) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 12) {
+                Label(
+                    goldenHourRemindersEnabled ? "Avvisi ore ideali attivi" : "Avvisami per le ore ideali",
+                    systemImage: goldenHourRemindersEnabled ? "bell.badge.fill" : "bell"
+                )
+                .font(.subheadline.weight(.semibold))
+
+                Spacer()
+
+                if viewModel.isSchedulingGoldenHourReminders {
+                    ProgressView()
+                        .controlSize(.small)
+                } else {
+                    Button(goldenHourRemindersEnabled ? "Disattiva" : "Attiva") {
+                        if goldenHourRemindersEnabled {
+                            disableGoldenHourReminders()
+                        } else {
+                            enableGoldenHourReminders(metrics: metrics)
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+                }
+            }
+
+            Text("Solea ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione prudente.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            if let message = viewModel.goldenHourReminderMessage {
+                Label(message, systemImage: goldenHourRemindersEnabled ? "checkmark.circle.fill" : "exclamationmark.triangle.fill")
+                    .font(.caption)
+                    .foregroundStyle(goldenHourRemindersEnabled ? .green : .orange)
+            }
+        }
+    }
+
+    private func enableGoldenHourReminders(metrics: TodayMetrics) {
+        Task {
+            let scheduled = await viewModel.scheduleGoldenHourReminders(for: metrics)
+            goldenHourRemindersEnabled = scheduled
+        }
+    }
+
+    private func disableGoldenHourReminders() {
+        viewModel.cancelGoldenHourReminders()
+        goldenHourRemindersEnabled = false
+    }
+
+    private func rescheduleGoldenHourRemindersIfNeeded() async {
+        guard goldenHourRemindersEnabled,
+              case .loaded(let metrics) = viewModel.state
+        else {
+            return
+        }
+        let scheduled = await viewModel.scheduleGoldenHourReminders(for: metrics)
+        goldenHourRemindersEnabled = scheduled
     }
 
     private func intervalText(_ interval: DateInterval) -> String {
@@ -523,21 +584,31 @@ struct TodayView: View {
 
     // MARK: - CTA sessione
 
-    private func sessionCTA(metrics: TodayMetrics) -> some View {
+    private func primarySessionCTA(metrics: TodayMetrics) -> some View {
         let title: LocalizedStringKey = metrics.recommendedPlan.minutes <= 0
-            ? "Vedi piano"
-            : "Avvia piano"
+            ? "Vedi piano sicuro"
+            : "Avvia sessione"
         return Button {
             showSessionSetup = true
         } label: {
-            Label(
-                title,
-                systemImage: metrics.recommendedPlan.minutes <= 0 ? "sun.horizon" : "timer"
-            )
-                .frame(maxWidth: .infinity)
+            HStack(spacing: 10) {
+                Label(
+                    title,
+                    systemImage: metrics.recommendedPlan.minutes <= 0 ? "sun.horizon.fill" : "timer"
+                )
+                .font(.headline)
+                Spacer()
+                Image(systemName: "arrow.right.circle.fill")
+                    .font(.title3)
+            }
+            .foregroundStyle(.white)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            .frame(maxWidth: .infinity)
+            .background(.black.opacity(0.84), in: RoundedRectangle(cornerRadius: 18))
         }
-        .buttonStyle(.borderedProminent)
-        .controlSize(.large)
+        .buttonStyle(.plain)
+        .accessibilityHint("Apre il piano con durata, SPF e promemoria suggeriti")
     }
 
     // MARK: - Helpers

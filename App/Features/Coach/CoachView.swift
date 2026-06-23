@@ -40,7 +40,7 @@ struct CoachView: View {
                     ContentUnavailableView {
                         Label("Coach non disponibile", systemImage: "bubble.left.and.exclamationmark.bubble.right")
                     } description: {
-                        Text("Il Coach richiede il modello on-device (iOS 26+) oppure la configurazione del proxy Claude.")
+                        Text("Il Coach richiede il modello on-device (iOS 26+) oppure la configurazione del proxy cloud.")
                     }
                 }
             }

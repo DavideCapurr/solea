@@ -3,9 +3,21 @@ import Network
 
 /// Configurazione del coach: dove vive il proxy e l'id anonimo dell'utente.
 enum CoachConfiguration {
-    /// Imposta qui l'URL del tuo deploy Cloudflare (vedi server/coach-proxy).
-    /// Finché è nil, il coach funziona solo on-device.
-    static let proxyURL: URL? = nil
+    /// URL del deploy Cloudflare letto da `SoleaCoachProxyURL` in Info.plist.
+    /// Finché è vuoto o non valido, il coach funziona solo on-device.
+    static var proxyURL: URL? {
+        guard let rawValue = Bundle.main.object(forInfoDictionaryKey: "SoleaCoachProxyURL") as? String else {
+            return nil
+        }
+        let trimmed = rawValue.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty,
+              !trimmed.lowercased().contains("example.com"),
+              let url = URL(string: trimmed),
+              url.scheme == "https" else {
+            return nil
+        }
+        return url
+    }
 
     /// Identificativo anonimo e stabile (non personale), per il rate limit.
     static var anonymousUserID: String {

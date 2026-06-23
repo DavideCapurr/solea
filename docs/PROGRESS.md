@@ -56,16 +56,26 @@
       errori di sync mostrati nel Profilo (mai silenziati)
 
 ## M6 — Coach Solare AI
-- [x] Proxy Claude (`server/coach-proxy`, Cloudflare Worker TS) con streaming SSE,
-      prompt caching e rate limit per utente (verificato qui: typecheck + test logica)
+- [x] Decisione LLM tracciata: Apple on-device come default locale, cloud provider-agnostic,
+      Gemini 2.5 Flash-Lite come default cloud scelto, Mistral/Claude fallback
+- [x] Proxy cloud (`server/coach-proxy`, Cloudflare Worker TS) con adapter Mistral,
+      Gemini e Anthropic, streaming SSE e rate limit per utente
+- [x] Test locali del proxy cloud: contratto SSE Gemini, secret mancante senza consumo
+      quota, rate limit per utente e richieste malformate
+- [x] Limiti input lato proxy per contenere costi/abusi: max messaggi,
+      max caratteri per messaggio/contesto, ruoli validati prima del provider
+- [x] Health check proxy (`GET /health`) e setup locale sicuro con `.dev.vars`
+      ignorato da git per verificare Gemini senza consumare quota
+- [x] Limiti input lato app: messaggi troppo lunghi bloccati prima dell'invio
+      e cronologia inviata al coach ridotta alla coda utile più recente
 - [x] OnDeviceCoach (FoundationModels, gated iOS 26)
 - [x] CloudCoach (consumo SSE dal proxy, errori propagati)
 - [x] CoachRouter ibrido con fallback bidirezionale (complessità/connettività)
 - [x] Chat UI del Coach Solare con contesto utente (solo fototipo/UV/sessioni, mai foto)
-- [ ] Deploy proxy + `proxyURL` in CoachConfiguration — a carico dell'utente
+- [ ] Deploy proxy + `SoleaCoachProxyURL` in Info.plist — a carico dell'utente
       (istruzioni nel README)
 
 ## Attività a carico dell'utente (fuori dal codice)
 - [ ] Asset grafici con Claude Design (vedi `docs/ASSETS.md`)
 - [ ] Account Apple Developer: capability WeatherKit + signing in Xcode
-- [ ] Deploy del proxy su Cloudflare (M6) con `ANTHROPIC_API_KEY`
+- [ ] Deploy del proxy su Cloudflare (M6) con `GEMINI_API_KEY`

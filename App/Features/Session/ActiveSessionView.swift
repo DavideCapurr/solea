@@ -7,6 +7,7 @@ struct ActiveSessionView: View {
     let onEnd: () -> Void
 
     @State private var showPaywall = false
+    @State private var showBeachMode = false
 
     var body: some View {
         Group {
@@ -20,12 +21,19 @@ struct ActiveSessionView: View {
         .sheet(isPresented: $showPaywall) {
             SoleaPlusPaywallView(source: "active_session")
         }
+        .fullScreenCover(isPresented: $showBeachMode) {
+            BeachModeView(manager: manager, onEnd: {
+                showBeachMode = false
+                onEnd()
+            })
+        }
     }
 
     private func content(session: SessionManager.ActiveSession) -> some View {
         ScrollView {
             VStack(spacing: 20) {
                 doseRing(session: session)
+                beachModeButton
                 if hasSoleaPlus {
                     goalProgress(session: session)
                     sideTracker(session: session)
@@ -88,6 +96,19 @@ struct ActiveSessionView: View {
             .padding(.bottom, 96)
         }
         .navigationTitle("Sessione in corso")
+    }
+
+    private var beachModeButton: some View {
+        Button {
+            showBeachMode = true
+        } label: {
+            Label("Modalità spiaggia", systemImage: "beach.umbrella.fill")
+                .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.bordered)
+        .controlSize(.large)
+        .tint(SoleaTheme.sunset)
+        .accessibilityHint("Schermata super rapida e leggibile al sole con solo target, lato, SPF, acqua e stop")
     }
 
     private var plusUpgradePanel: some View {

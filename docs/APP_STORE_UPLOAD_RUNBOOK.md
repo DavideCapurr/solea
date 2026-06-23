@@ -100,7 +100,7 @@ In `App Privacy`:
 - inserisci il Privacy Policy URL;
 - rispondi usando `docs/APP_STORE_CONNECT_ANSWERS.md`;
 - verifica che il coach cloud sia ancora disabilitato
-  (`CoachConfiguration.proxyURL = nil`);
+  (`SoleaCoachProxyURL` vuoto);
 - completa ogni data type e premi `Publish`.
 
 Le risposte devono coprire anche i servizi Apple usati dalla build, inclusa

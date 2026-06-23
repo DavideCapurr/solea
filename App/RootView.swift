@@ -16,6 +16,7 @@ struct RootView: View {
                 OnboardingView()
             }
         }
+        .tint(SoleaTheme.sunset)
         .task {
             #if DEBUG
             ScreenshotDemoSeeder.seedIfNeeded(in: modelContext)

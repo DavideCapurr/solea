@@ -406,6 +406,16 @@
         }
       }
     },
+    "La finestra migliore si avvicina. Apri Solea per controllare UV, SPF e durata prima di esporti.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The best window is coming up. Open Solea to check UV, SPF and duration before you go into the sun."
+          }
+        }
+      }
+    },
     "Arrossata": {
       "extractionState": "stale",
       "localizations": {
@@ -417,6 +427,16 @@
         }
       }
     },
+    "Attiva": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on"
+          }
+        }
+      }
+    },
     "Avvia": {
       "extractionState": "stale",
       "localizations": {
@@ -424,6 +444,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Start"
+          }
+        }
+      }
+    },
+    "Avvisami per le ore ideali": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remind me for ideal hours"
+          }
+        }
+      }
+    },
+    "Avvisi ore ideali attivi": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ideal-hours alerts are on"
           }
         }
       }
@@ -988,6 +1028,16 @@
         }
       }
     },
+    "Disattiva": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn off"
+          }
+        }
+      }
+    },
     "Di che colore sono i tuoi occhi?": {
       "extractionState": "stale",
       "localizations": {
@@ -1201,6 +1251,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Time to switch sides for an even tan."
+          }
+        }
+      }
+    },
+    "È il momento giusto per abbronzarti": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "It's a good time to tan"
+          }
+        }
+      }
+    },
+    "Le condizioni sono tra le più favorevoli per il tuo fototipo. Entra in Solea e avvia una sessione prudente.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conditions are among the best for your skin type. Open Solea and start a cautious session."
           }
         }
       }
@@ -2407,6 +2477,16 @@
         }
       }
     },
+    "Messaggio troppo lungo: resta entro 2000 caratteri.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Message too long: stay within 2000 characters."
+          }
+        }
+      }
+    },
     "Mettiti all'ombra o aggiorna la protezione prima di continuare.": {
       "extractionState": "stale",
       "localizations": {
@@ -2546,6 +2626,16 @@
         }
       }
     },
+    "Nessuna fascia futura da programmare: riapri Oggi quando cambiano le previsioni UV.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No future window to schedule: reopen Today when the UV forecast changes."
+          }
+        }
+      }
+    },
     "Nessuna località trovata per «%@». Controlla il nome e riprova.": {
       "extractionState": "stale",
       "localizations": {
@@ -2629,6 +2719,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Notifications are off: you won't get reminders. Enable them in Settings > Notifications."
+          }
+        }
+      }
+    },
+    "Notifiche disattivate: abilita Solea in Impostazioni > Notifiche per ricevere gli avvisi sulle ore ideali.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications are off: enable Solea in Settings > Notifications to get ideal-hours alerts."
           }
         }
       }
@@ -4047,6 +4147,16 @@
         }
       }
     },
+    "Solea ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione prudente.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solea reminds you 30 minutes before and when an ideal window starts, so you can open the app and begin a cautious session."
+          }
+        }
+      }
+    },
     "Sono passate quasi due ore: rimetti la protezione solare.": {
       "extractionState": "stale",
       "localizations": {
@@ -4187,6 +4297,16 @@
         }
       }
     },
+    "Ti avviso 30 minuti prima e all'inizio della prossima fascia ideale.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I'll remind you 30 minutes before and at the start of the next ideal window."
+          }
+        }
+      }
+    },
     "Tempo al sole": {
       "extractionState": "stale",
       "localizations": {
@@ -4314,6 +4434,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Achievements"
+          }
+        }
+      }
+    },
+    "Tra poco sole ideale": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ideal sun time soon"
           }
         }
       }

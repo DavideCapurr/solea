@@ -5,6 +5,10 @@ import SoleaCore
 @MainActor
 @Observable
 final class CoachViewModel {
+    private let maxMessageCharacters = 2_000
+    private let maxMessagesPerRequest = 12
+    private let maxTotalRequestCharacters = 8_000
+
     private(set) var messages: [CoachMessage] = []
     private(set) var isResponding = false
     private(set) var errorMessage: String?
@@ -22,6 +26,10 @@ final class CoachViewModel {
     func send(context: CoachContext) {
         let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
+        guard text.count <= maxMessageCharacters else {
+            errorMessage = String(localized: "Messaggio troppo lungo: resta entro 2000 caratteri.")
+            return
+        }
         draft = ""
         errorMessage = nil
         messages.append(CoachMessage(role: .user, text: text))
@@ -57,8 +65,26 @@ final class CoachViewModel {
         isResponding = false
     }
 
-    /// Esclude l'ultima bolla (placeholder vuoto dell'assistente) dalla richiesta.
+    /// Invio solo la coda utile: niente placeholder e niente cronologie troppo costose.
     private func conversationForRequest() -> [CoachMessage] {
-        messages.filter { !($0.role == .assistant && $0.text.isEmpty) }
+        let usableMessages = messages.filter { message in
+            let text = message.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            return !text.isEmpty && !(message.role == .assistant && message.text.isEmpty)
+        }
+
+        var selected: [CoachMessage] = []
+        var totalCharacters = 0
+
+        for message in usableMessages.reversed() {
+            let nextTotal = totalCharacters + message.text.count
+            guard selected.count < maxMessagesPerRequest,
+                  nextTotal <= maxTotalRequestCharacters else {
+                break
+            }
+            selected.append(message)
+            totalCharacters = nextTotal
+        }
+
+        return selected.reversed()
     }
 }

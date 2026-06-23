@@ -25,5 +25,8 @@ struct MainTabView: View {
             ProfileView(phototype: phototype, connectivity: connectivity)
                 .tabItem { Label("Profilo", systemImage: "person.crop.circle") }
         }
+        .tint(SoleaTheme.sunset)
+        .toolbarBackground(.visible, for: .tabBar)
+        .toolbarBackground(SoleaTheme.sunshine.opacity(0.14), for: .tabBar)
     }
 }

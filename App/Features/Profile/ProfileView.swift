@@ -63,6 +63,8 @@ struct ProfileView: View {
                 informationSection
                 resetSection
             }
+            .scrollContentBackground(.hidden)
+            .background(SoleaTheme.screenGradient.ignoresSafeArea())
             .navigationTitle("Profilo")
             .task { await authenticateAndSync() }
             .confirmationDialog(
@@ -91,6 +93,7 @@ struct ProfileView: View {
                 SoleaPlusPaywallView(source: "profile")
             }
         }
+        .tint(SoleaTheme.sunset)
     }
 
     private var skinSection: some View {

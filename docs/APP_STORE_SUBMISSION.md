@@ -81,7 +81,7 @@ Testo suggerito per la richiesta Apple:
 - Quando è disponibile l'URL pubblico della scheda App Store, valorizza `SoleaAppStoreURL` in `project.yml`: verrà aggiunto automaticamente alle condivisioni social.
 - Gli screenshot minimi sono gia' in `AppStore/Screenshots`; sostituiscili o aggiungine altri se vuoi una scheda piu' completa, poi valida con `scripts/validate-app-store-screenshots.sh --required`.
 - Compila Export Compliance, App Privacy, Regulated Medical Device e Age Rating usando la bozza in `docs/APP_STORE_CONNECT_ANSWERS.md`.
-- App Privacy: per la configurazione attuale con `CoachConfiguration.proxyURL = nil`, le foto del diario, il fototipo, le sessioni, il Time in Daylight HealthKit e la posizione restano sul dispositivo o nei servizi Apple richiesti dall'utente. La vitamina D resta una stima in-app. Se abiliti il proxy cloud, aggiorna le risposte privacy perché il contesto del coach viene inviato al server.
+- App Privacy: per la configurazione attuale con `SoleaCoachProxyURL` vuoto, le foto del diario, il fototipo, le sessioni, il Time in Daylight HealthKit e la posizione restano sul dispositivo o nei servizi Apple richiesti dall'utente. La vitamina D resta una stima in-app. Se abiliti il proxy cloud, aggiorna le risposte privacy perché il contesto del coach viene inviato al server.
 - In-App Purchase: crea e localizza `com.davidecapurro.Solea.plus.annual`
   (auto-renewable, €19,99/anno) e `com.davidecapurro.Solea.plus.seasonal`
   (non-renewing, €9,99, accesso app-side 120 giorni). Il mensile
