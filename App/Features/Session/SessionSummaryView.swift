@@ -270,7 +270,11 @@ struct SessionSummaryView: View {
     }
 
     private var sessionDurationText: String {
-        let minutes = Int((session.duration / 60).rounded())
+        let seconds = Int(session.duration.rounded())
+        if seconds < 60 {
+            return String(localized: "\(seconds) s")
+        }
+        let minutes = Int((Double(seconds) / 60).rounded())
         if minutes >= 60 {
             return String(localized: "\(minutes / 60) h \(minutes % 60) min")
         }
@@ -282,6 +286,9 @@ struct SessionSummaryView: View {
     }
 
     private func durationText(seconds: Int) -> String {
+        if seconds < 60 {
+            return String(localized: "\(seconds) s")
+        }
         let minutes = seconds / 60
         if minutes >= 60 {
             return String(localized: "\(minutes / 60) h \(minutes % 60) min")

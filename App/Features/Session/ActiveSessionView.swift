@@ -37,6 +37,15 @@ struct ActiveSessionView: View {
                     Text(formattedElapsed(session.elapsedSeconds))
                         .font(.title3.bold().monospacedDigit())
                 }
+                if !hasSoleaPlus {
+                    LabeledContent("Piano consigliato") {
+                        Text("\(session.configuration.plannedDurationMinutes) min")
+                            .bold()
+                    }
+                    LabeledContent("Target rimanente") {
+                        targetRemainingLabel(session: session)
+                    }
+                }
                 if session.pausedSeconds > 0 || session.isPaused {
                     LabeledContent("Pausa") {
                         Text(formattedElapsed(session.pausedSeconds))
@@ -76,6 +85,7 @@ struct ActiveSessionView: View {
                 .controlSize(.large)
             }
             .padding()
+            .padding(.bottom, 96)
         }
         .navigationTitle("Sessione in corso")
     }
@@ -84,7 +94,7 @@ struct ActiveSessionView: View {
         VStack(alignment: .leading, spacing: 10) {
             Label("Timer base attivo", systemImage: "timer")
                 .font(.headline)
-            Text("Solea continuerà a mostrarti tempo, UV e limite prudente. Plus aggiunge tracciamento fronte/retro, obiettivo, reminder personalizzati e Live Activity avanzata.")
+            Text("Solea continuerà a mostrarti target, tempo, UV e limite prudente. Plus aggiunge tracciamento fronte/retro, promemoria personalizzati e Live Activity avanzata.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Button {
@@ -176,6 +186,25 @@ struct ActiveSessionView: View {
             return String(localized: "Obiettivo raggiunto: valuta ombra, doposole o una pausa.")
         }
         return String(localized: "\(formattedElapsed(remaining)) al raggiungimento dell'obiettivo di oggi.")
+    }
+
+    @ViewBuilder
+    private func targetRemainingLabel(session: SessionManager.ActiveSession) -> some View {
+        let plannedSeconds = max(0, session.configuration.plannedDurationMinutes * 60)
+        let remaining = max(0, plannedSeconds - session.elapsedSeconds)
+        if session.isPaused {
+            Text("In pausa")
+                .bold()
+                .foregroundStyle(.orange)
+        } else if remaining == 0 {
+            Text("raggiunto")
+                .bold()
+                .foregroundStyle(.green)
+        } else {
+            Text(formattedElapsed(remaining))
+                .bold()
+                .monospacedDigit()
+        }
     }
 
     private func sideTracker(session: SessionManager.ActiveSession) -> some View {

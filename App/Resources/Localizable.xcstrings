@@ -113,6 +113,16 @@
         }
       }
     },
+    "%lld s": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld s"
+          }
+        }
+      }
+    },
     "%lld min al sole": {
       "extractionState": "stale",
       "localizations": {
@@ -4027,6 +4037,16 @@
         }
       }
     },
+    "Solea continuerà a mostrarti target, tempo, UV e limite prudente. Plus aggiunge tracciamento fronte/retro, promemoria personalizzati e Live Activity avanzata.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solea will keep showing your target, time, UV and recommended limit. Plus adds front/back tracking, custom reminders and advanced Live Activity."
+          }
+        }
+      }
+    },
     "Sono passate quasi due ore: rimetti la protezione solare.": {
       "extractionState": "stale",
       "localizations": {
@@ -4153,6 +4173,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Support"
+          }
+        }
+      }
+    },
+    "Target rimanente": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target remaining"
           }
         }
       }

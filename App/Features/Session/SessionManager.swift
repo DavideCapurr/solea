@@ -315,14 +315,16 @@ final class SessionManager {
                 try await notificationService.scheduleHydrationReminder(
                     everyMinutes: Self.hydrationIntervalMinutes
                 )
-                try await notificationService.scheduleGoalReminder(
-                    afterSeconds: Double(max(1, session.configuration.plannedDurationMinutes * 60 - session.elapsedSeconds))
-                )
                 // Doposole la sera: solo per le sessioni al sole, non per il lettino.
                 if session.configuration.kind == .sun,
                    let afterSun = Self.afterSunTime() {
                     try await notificationService.scheduleAfterSunReminder(at: afterSun)
                 }
+            }
+
+            let goalRemainingSeconds = session.configuration.plannedDurationMinutes * 60 - session.elapsedSeconds
+            if goalRemainingSeconds > 0 {
+                try await notificationService.scheduleGoalReminder(afterSeconds: Double(goalRemainingSeconds))
             }
 
             if let remaining = remainingSafeSeconds, remaining.isFinite {

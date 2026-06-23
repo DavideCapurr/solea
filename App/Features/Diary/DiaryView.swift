@@ -256,7 +256,11 @@ struct DiaryView: View {
     }
 
     private func durationText(_ duration: TimeInterval) -> String {
-        let minutes = Int((duration / 60).rounded())
+        let seconds = Int(duration.rounded())
+        if seconds < 60 {
+            return String(localized: "\(seconds) s")
+        }
+        let minutes = Int((Double(seconds) / 60).rounded())
         if minutes >= 60 {
             return String(localized: "\(minutes / 60) h \(minutes % 60) min")
         }
@@ -264,6 +268,9 @@ struct DiaryView: View {
     }
 
     private func durationText(seconds: Int) -> String {
+        if seconds < 60 {
+            return String(localized: "\(seconds) s")
+        }
         let minutes = seconds / 60
         if minutes >= 60 {
             return String(localized: "\(minutes / 60) h \(minutes % 60) min")
