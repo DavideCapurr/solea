@@ -4,6 +4,8 @@ import PhotosUI
 import UIKit
 
 struct PhotoDiaryView: View {
+    let hasSoleaPlus: Bool
+
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \TanPhoto.capturedAt, order: .forward) private var photos: [TanPhoto]
 
@@ -14,25 +16,36 @@ struct PhotoDiaryView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if photos.isEmpty {
-                    ContentUnavailableView {
-                        Label("Foto-diario", systemImage: "camera")
-                    } description: {
-                        Text("Aggiungi una foto periodica per seguire l'evoluzione del tuo tono pelle. Le foto restano sul tuo dispositivo.")
-                    } actions: {
-                        photoPicker
+                if hasSoleaPlus {
+                    if photos.isEmpty {
+                        ContentUnavailableView {
+                            Label("Diario fotografico", systemImage: "camera")
+                        } description: {
+                            Text("Aggiungi una foto periodica per seguire l'evoluzione del tuo tono pelle. Le foto restano sul tuo dispositivo.")
+                        } actions: {
+                            photoPicker
+                        }
+                    } else {
+                        content
                     }
                 } else {
-                    content
+                    SoleaPlusLockedView(
+                        title: "Foto-diario Plus",
+                        message: "Sblocca timeline fotografica, confronto prima/dopo, analisi tono e condivisione premium.",
+                        systemImage: "camera.filters",
+                        source: "photo_diary"
+                    )
                 }
             }
-            .navigationTitle("Foto-diario")
+            .navigationTitle("Diario fotografico")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    if isImporting {
-                        ProgressView()
-                    } else {
-                        photoPicker
+                    if hasSoleaPlus {
+                        if isImporting {
+                            ProgressView()
+                        } else {
+                            photoPicker
+                        }
                     }
                 }
             }
@@ -190,10 +203,11 @@ private struct ComparisonSlider: View {
     private var toneTrend: some View {
         if let beforeTone = before.skinLightness, let afterTone = after.skinLightness {
             let delta = beforeTone - afterTone
+            let trend = delta > 0.02
+                ? String(localized: "Tono più scuro del \(Int((delta * 100).rounded()))% rispetto alla prima foto")
+                : String(localized: "Tono stabile rispetto alla prima foto")
             Label(
-                delta > 0.02
-                    ? "Tono più scuro del \(Int((delta * 100).rounded()))% rispetto alla prima foto"
-                    : "Tono stabile rispetto alla prima foto",
+                trend,
                 systemImage: delta > 0.02 ? "arrow.down.right.circle" : "equal.circle"
             )
             .font(.caption)
@@ -212,7 +226,7 @@ private struct ComparisonSlider: View {
         )
         sharePayload = renderSharePayload(
             content: card,
-            caption: String(localized: "Il mio prima / dopo con Solea. Foto condivise su mia scelta; gli originali restano sul dispositivo. ☀️"),
+            caption: String(localized: "Il mio prima / dopo con Solea. Ho scelto io di condividere queste foto; gli originali restano sul dispositivo. ☀️"),
             source: "photo_comparison"
         )
     }

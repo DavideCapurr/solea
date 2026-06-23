@@ -3,4 +3,4 @@
 "NSLocationWhenInUseUsageDescription" = "Solea usa la tua posizione per mostrarti l'indice UV attuale e calcolare un limite prudente di esposizione.";
 "NSHealthUpdateUsageDescription" = "Solea salva su Salute il tempo trascorso alla luce del giorno durante le tue sessioni.";
 "NSHealthShareUsageDescription" = "Solea non legge dati da Salute; il permesso serve solo per la scrittura delle sessioni.";
-"NSPhotoLibraryUsageDescription" = "Solea usa le foto che scegli per il foto-diario del tan. Le immagini restano sul tuo dispositivo e non vengono mai caricate.";
+"NSPhotoLibraryUsageDescription" = "Solea usa le foto che scegli per il diario fotografico dell'abbronzatura. Le immagini restano sul tuo dispositivo e non vengono mai caricate.";

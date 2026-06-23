@@ -21,6 +21,7 @@ iPhone 6.9" and Apple Watch screenshot sets fail the command.
 Expected folders:
   AppStore/Screenshots/iPhone-6.9
   AppStore/Screenshots/Apple-Watch
+  AppStore/Screenshots/iPhone-6.5    optional
   AppStore/Screenshots/iPhone-6.3    optional
 USAGE
       exit 0
@@ -54,6 +55,13 @@ sets = {
         "dimensions": {
             (1179, 2556), (2556, 1179),
             (1206, 2622), (2622, 1206),
+        },
+    },
+    "iPhone-6.5": {
+        "required": False,
+        "dimensions": {
+            (1242, 2688), (2688, 1242),
+            (1284, 2778), (2778, 1284),
         },
     },
     "Apple-Watch": {

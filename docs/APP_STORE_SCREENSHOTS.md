@@ -1,8 +1,8 @@
 # App Store screenshot checklist
 
-Specifica aggiornata al 17 giugno 2026 per la scheda App Store di Solea.
+Specifica aggiornata al 23 giugno 2026 per la scheda App Store di Solea.
 
-Fonti Apple consultate il 17 giugno 2026:
+Fonti Apple consultate il 23 giugno 2026:
 
 - `Screenshot specifications` in App Store Connect Help.
 - `Upload app previews and screenshots` in App Store Connect Help.
@@ -16,6 +16,7 @@ Carica da 1 a 10 screenshot in `.png`, `.jpg` o `.jpeg` per set richiesto.
 Percorso validato dal preflight:
 
 - `AppStore/Screenshots/iPhone-6.9`
+- `AppStore/Screenshots/iPhone-6.5`
 
 Set principale consigliato:
 
@@ -24,16 +25,25 @@ Set principale consigliato:
 
 Set opzionale se vuoi controllare rendering su display medio:
 
+- iPhone 6.5" Display: `1242 x 2688` o `1284 x 2778` portrait.
+- Percorso opzionale/compatibilita' ASC: `AppStore/Screenshots/iPhone-6.5`
 - iPhone 6.3" Display: `1179 x 2556` o `1206 x 2622` portrait.
 - Percorso opzionale: `AppStore/Screenshots/iPhone-6.3`
 
-Shot list consigliata:
+Ordine di caricamento consigliato:
 
-- Today: indice UV, limite prudente, suggerimento sessione.
-- Sessione attiva: timer, stop alert/limite prudente, fronte-retro.
-- Diario: storico sessioni e risposta della pelle.
-- Planner: piano graduale di esposizione.
-- Profilo: fototipo, streak, badge/Game Center.
+1. `01-solea-check.png`: consiglio giornaliero personalizzato, UV, fototipo e SPF.
+2. `02-live-session.png`: monitoraggio della soglia prudente e bilanciamento fronte/retro.
+3. `03-safety-reminders.png`: promemoria per girarsi, bere, riapplicare SPF e fermarsi.
+4. `04-session-plan.png`: durata, obiettivo, protezione e zone esposte configurabili.
+5. `05-progress-diary.png`: riepilogo settimanale e storico delle sessioni.
+6. `06-vacation-planner.png`: piano di esposizione graduale giorno per giorno.
+
+I primi tre sono intenzionalmente i benefici piu' immediati: Apple puo' mostrarli
+nei risultati di ricerca quando non e' presente un'app preview. Mantieni questo
+ordine anche nel Media Manager di App Store Connect. Se App Store Connect mostra
+il riquadro `iPhone Display da 6,5"`, usa la cartella `iPhone-6.5`; se mostra
+`iPhone Display da 6,9"`, usa la cartella `iPhone-6.9`.
 
 ## Apple Watch
 

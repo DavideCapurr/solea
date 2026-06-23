@@ -14,12 +14,14 @@ struct TodayView: View {
     let phototype: Fitzpatrick
     let sessionManager: SessionManager
 
+    @Environment(SoleaPlusStore.self) private var plusStore
     @Environment(\.modelContext) private var modelContext
     @Query private var sessions: [TanSession]
     @State private var viewModel = TodayViewModel()
     @State private var showSessionSetup = false
     @State private var finishedSession: FinishedSessionLog?
     @State private var sharePayload: SharePayload?
+    @State private var showPlusPaywall = false
     @State private var saveErrorMessage: String?
     @AppStorage("currentSkinResponse") private var currentSkinResponseRawValue = SkinResponse.comfortable.rawValue
 
@@ -36,7 +38,10 @@ struct TodayView: View {
         NavigationStack {
             Group {
                 if sessionManager.active != nil {
-                    ActiveSessionView(manager: sessionManager) { endSession() }
+                    ActiveSessionView(
+                        manager: sessionManager,
+                        hasSoleaPlus: plusStore.hasPlus
+                    ) { endSession() }
                 } else {
                     switch viewModel.state {
                     case .loading:
@@ -58,7 +63,11 @@ struct TodayView: View {
                     }
                 }
             }
-            .navigationTitle(sessionManager.active != nil ? "Sessione in corso" : "Oggi")
+            .navigationTitle(
+                sessionManager.active != nil
+                    ? String(localized: "Sessione in corso")
+                    : String(localized: "Oggi")
+            )
             .task(id: currentSkinResponseRawValue) { await reloadToday() }
             .refreshable { await reloadToday() }
             .sheet(isPresented: $showSessionSetup) {
@@ -68,7 +77,8 @@ struct TodayView: View {
                         phototype: phototype,
                         suggestedGoal: metrics.recommendedPlan.goal,
                         currentSkinResponse: currentSkinResponse,
-                        goalRecommendations: metrics.goalRecommendations
+                        goalRecommendations: metrics.goalRecommendations,
+                        hasSoleaPlus: plusStore.hasPlus
                     ) { configuration, initialUVIndex in
                         Task {
                             await sessionManager.start(
@@ -84,7 +94,8 @@ struct TodayView: View {
                 SessionSummaryView(
                     session: finished.finished,
                     initialSkinResponse: finished.persistedSession?.skinResponse ?? .notLogged,
-                    initialNote: finished.persistedSession?.noteText ?? ""
+                    initialNote: finished.persistedSession?.noteText ?? "",
+                    hasSoleaPlus: plusStore.hasPlus
                 ) { skinResponse, note in
                     guard let persistedSession = finished.persistedSession else { return }
                     persistedSession.updateReflection(skinResponse: skinResponse, note: note)
@@ -94,6 +105,9 @@ struct TodayView: View {
             }
             .sheet(item: $sharePayload) { payload in
                 ShareSheet(payload: payload)
+            }
+            .sheet(isPresented: $showPlusPaywall) {
+                SoleaPlusPaywallView(source: "today_share")
             }
             .alert(
                 "Salvataggio non riuscito",
@@ -229,7 +243,11 @@ struct TodayView: View {
                     .foregroundStyle(riskColor(metrics.burnRisk))
                 Spacer()
                 Button {
-                    shareDailyCheck(metrics)
+                    if plusStore.hasPlus {
+                        shareDailyCheck(metrics)
+                    } else {
+                        showPlusPaywall = true
+                    }
                 } label: {
                     Label("Condividi", systemImage: "square.and.arrow.up")
                 }
@@ -337,7 +355,7 @@ struct TodayView: View {
     private func goalTitle(_ goal: SunExposureGoal) -> LocalizedStringKey {
         switch goal {
         case .vitaminD: return "Vitamina D"
-        case .gradualTan: return "Tan graduale"
+        case .gradualTan: return "Abbronzatura graduale"
         case .lowRisk: return "Prudenza"
         }
     }
@@ -366,13 +384,13 @@ struct TodayView: View {
         case .tight:
             return String(localized: "La pelle tira: meglio fermarsi, stare all'ombra e recuperare.")
         case .warm:
-            return String(localized: "Pelle calda: piano ridotto, niente ricerca aggressiva del tan.")
+            return String(localized: "Pelle calda: piano ridotto, senza forzare l'abbronzatura.")
         case .comfortable, .notLogged:
             break
         }
 
         if recommendation.minutes.isInfinite {
-            return String(localized: "UV molto basso: puoi stare fuori, ma l'effetto su tan e vitamina D sarà minimo.")
+            return String(localized: "UV molto basso: puoi stare fuori, ma l'effetto su abbronzatura e vitamina D sarà minimo.")
         }
         if recommendation.minutes <= 0 {
             return String(localized: "Hai già preso abbastanza UV oggi: ombra, acqua e doposole.")
@@ -385,7 +403,7 @@ struct TodayView: View {
         case .gradualTan:
             return String(localized: "Dose pensata per abbronzarti gradualmente restando sotto il limite prudente del tuo fototipo.")
         case .lowRisk:
-            return String(localized: "Dose ridotta per giornate in cui vuoi minimizzare il rischio e non inseguire il tan.")
+            return String(localized: "Dose ridotta per le giornate in cui vuoi minimizzare il rischio senza forzare l'abbronzatura.")
         }
     }
 
@@ -437,12 +455,12 @@ struct TodayView: View {
         return String(localized: "\(Int(minutes.rounded())) min")
     }
 
-    // MARK: - Golden hours
+    // MARK: - Ore ideali
 
     private func goldenHoursCard(metrics: TodayMetrics) -> some View {
         card {
             VStack(alignment: .leading, spacing: 12) {
-                Label("Golden hours", systemImage: "sparkles")
+                Label("Ore ideali", systemImage: "sparkles")
                     .font(.headline)
                 if metrics.goldenHours.isEmpty {
                     Text("Nessuna finestra ideale nelle prossime 24 ore per il tuo fototipo.")
@@ -506,11 +524,14 @@ struct TodayView: View {
     // MARK: - CTA sessione
 
     private func sessionCTA(metrics: TodayMetrics) -> some View {
-        Button {
+        let title: LocalizedStringKey = metrics.recommendedPlan.minutes <= 0
+            ? "Vedi piano"
+            : "Avvia piano"
+        return Button {
             showSessionSetup = true
         } label: {
             Label(
-                metrics.recommendedPlan.minutes <= 0 ? "Vedi piano" : "Avvia piano",
+                title,
                 systemImage: metrics.recommendedPlan.minutes <= 0 ? "sun.horizon" : "timer"
             )
                 .frame(maxWidth: .infinity)

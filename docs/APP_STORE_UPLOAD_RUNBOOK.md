@@ -17,6 +17,8 @@ dell'upload.
   `com.apple.developer.usernotifications.critical-alerts`. Solea usa
   `UNNotificationSound.defaultCritical`, quindi non procedere con un profilo
   che non contiene questo entitlement.
+  - Richiesta inviata il 2026-06-22, request ID `SKFHX9458G`; in attesa di
+    approvazione Apple.
 - Crea in App Store Connect tutti i componenti elencati in
   `docs/GAME_CENTER_SETUP.md`.
 - Pubblica Privacy Policy e pagina Support su URL HTTPS pubblici.
@@ -76,10 +78,17 @@ Completa inoltre:
 - dichiarazione Regulated Medical Device: No;
 - export compliance coerente con `ITSAppUsesNonExemptEncryption = false`.
 
-Carica gli screenshot validati:
+Carica gli screenshot validati in questo ordine:
 
-- iPhone: `AppStore/Screenshots/iPhone-6.9/`;
-- Apple Watch: `AppStore/Screenshots/Apple-Watch/`.
+- iPhone 6,9": `AppStore/Screenshots/iPhone-6.9/01-solea-check.png`;
+- iPhone 6,9": `AppStore/Screenshots/iPhone-6.9/02-live-session.png`;
+- iPhone 6,9": `AppStore/Screenshots/iPhone-6.9/03-safety-reminders.png`;
+- iPhone 6,9": `AppStore/Screenshots/iPhone-6.9/04-session-plan.png`;
+- iPhone 6,9": `AppStore/Screenshots/iPhone-6.9/05-progress-diary.png`;
+- iPhone 6,9": `AppStore/Screenshots/iPhone-6.9/06-vacation-planner.png`;
+- iPhone 6,5" se richiesto dal riquadro ASC: stessi nomi in
+  `AppStore/Screenshots/iPhone-6.5/`;
+- Apple Watch: `AppStore/Screenshots/Apple-Watch/01-uv.png`.
 
 La descrizione deve includere la funzionalità Apple Watch. Apple richiede anche
 lo screenshot Watch per un'app iOS con companion watchOS.

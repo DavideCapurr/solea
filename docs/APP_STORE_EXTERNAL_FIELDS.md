@@ -58,5 +58,6 @@ scripts/sync-app-store-urls.sh
 
 ## External Portal Gates
 
-- Critical Alerts approval: pending
+- Critical Alerts approval: requested on 2026-06-22; Apple request ID
+  `SKFHX9458G`; approval pending
 - Game Center components: pending

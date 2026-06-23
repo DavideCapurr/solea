@@ -15,7 +15,13 @@ Review`, usa `docs/APP_STORE_UPLOAD_RUNBOOK.md`.
 - App Group: `group.com.davidecapurro.solea`.
 - Privacy manifest presenti per app, widget e Watch app.
 - Screenshot minimi App Store presenti e validati:
-  - `AppStore/Screenshots/iPhone-6.9/01-today.png`
+  - `AppStore/Screenshots/iPhone-6.9/01-solea-check.png`
+  - `AppStore/Screenshots/iPhone-6.9/02-live-session.png`
+  - `AppStore/Screenshots/iPhone-6.9/03-safety-reminders.png`
+  - `AppStore/Screenshots/iPhone-6.9/04-session-plan.png`
+  - `AppStore/Screenshots/iPhone-6.9/05-progress-diary.png`
+  - `AppStore/Screenshots/iPhone-6.9/06-vacation-planner.png`
+  - stessi nomi in `AppStore/Screenshots/iPhone-6.5/` se App Store Connect richiede il riquadro 6,5"
   - `AppStore/Screenshots/Apple-Watch/01-uv.png`
 - Icona app: da inserire in `App/Resources/Assets.xcassets/AppIcon.appiconset` prima dell'upload.
   Usa `scripts/install-app-icon.sh <path-to-1024-png>` quando il PNG finale e' pronto.
@@ -76,6 +82,11 @@ Testo suggerito per la richiesta Apple:
 - Gli screenshot minimi sono gia' in `AppStore/Screenshots`; sostituiscili o aggiungine altri se vuoi una scheda piu' completa, poi valida con `scripts/validate-app-store-screenshots.sh --required`.
 - Compila Export Compliance, App Privacy, Regulated Medical Device e Age Rating usando la bozza in `docs/APP_STORE_CONNECT_ANSWERS.md`.
 - App Privacy: per la configurazione attuale con `CoachConfiguration.proxyURL = nil`, le foto del diario, il fototipo, le sessioni, il Time in Daylight HealthKit e la posizione restano sul dispositivo o nei servizi Apple richiesti dall'utente. La vitamina D resta una stima in-app. Se abiliti il proxy cloud, aggiorna le risposte privacy perché il contesto del coach viene inviato al server.
+- In-App Purchase: crea e localizza `com.davidecapurro.Solea.plus.annual`
+  (auto-renewable, €19,99/anno) e `com.davidecapurro.Solea.plus.seasonal`
+  (non-renewing, €9,99, accesso app-side 120 giorni). Il mensile
+  `com.davidecapurro.Solea.plus.monthly` resta opzionale/non promosso finché non
+  decidi di attivarlo. Sottoponi gli IAP alla review con la build.
 - Encryption: `ITSAppUsesNonExemptEncryption = false` è già impostato.
 - Push Notifications: `aps-environment` usa `$(APS_ENVIRONMENT)` nel file sorgente; Debug imposta `development`, Release imposta `production`. Il profilo di distribuzione deve comunque firmare il bundle finale con ambiente APNs `production`.
 - Critical Alerts: richieste. Lo stop alert usa `UNNotificationSound.defaultCritical`, quindi l'App ID e il profilo di provisioning devono includere l'entitlement Apple `com.apple.developer.usernotifications.critical-alerts`. Senza approvazione Apple, la validazione dell'archivio o la review possono fallire anche se il preflight locale passa.

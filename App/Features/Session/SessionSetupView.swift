@@ -6,6 +6,7 @@ struct SessionSetupView: View {
     let phototype: Fitzpatrick
     let currentSkinResponse: SkinResponse
     let goalRecommendations: [SunExposureGoal: SunExposureRecommendation]
+    let hasSoleaPlus: Bool
     /// Restituisce la configurazione e l'indice UV iniziale (sole = WeatherKit,
     /// lettino = UV-equivalente della potenza scelta).
     let onStart: (SessionConfiguration, Double) -> Void
@@ -32,12 +33,14 @@ struct SessionSetupView: View {
         suggestedGoal: SunExposureGoal = .gradualTan,
         currentSkinResponse: SkinResponse = .notLogged,
         goalRecommendations: [SunExposureGoal: SunExposureRecommendation] = [:],
+        hasSoleaPlus: Bool = false,
         onStart: @escaping (SessionConfiguration, Double) -> Void
     ) {
         self.currentUVIndex = currentUVIndex
         self.phototype = phototype
         self.currentSkinResponse = currentSkinResponse
         self.goalRecommendations = goalRecommendations
+        self.hasSoleaPlus = hasSoleaPlus
         self.onStart = onStart
         let recommendation = goalRecommendations[suggestedGoal]
         _goal = State(initialValue: suggestedGoal)
@@ -120,19 +123,27 @@ struct SessionSetupView: View {
                 }
 
                 Section("Promemoria") {
-                    Picker("Girati ogni", selection: $flipIntervalMinutes) {
-                        ForEach(Self.flipOptions, id: \.self) { minutes in
-                            Text("\(minutes) min").tag(minutes)
+                    if hasSoleaPlus {
+                        Picker("Girati ogni", selection: $flipIntervalMinutes) {
+                            ForEach(Self.flipOptions, id: \.self) { minutes in
+                                Text("\(minutes) min").tag(minutes)
+                            }
                         }
+                    } else {
+                        LabeledContent("Timer base") {
+                            Text("20 min")
+                                .foregroundStyle(.secondary)
+                        }
+                        Text("Gli alert di sicurezza restano attivi. Solea Plus sblocca promemoria personalizzati per lato, SPF, acqua e obiettivo.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
                 }
 
                 Section {
                     recommendedLimitPreview
                 } footer: {
-                    Text(kind == .sun
-                         ? "Stimato per il tuo fototipo \(phototype.romanNumeral) all'UV attuale; si aggiorna se l'UV cambia."
-                         : "Stimato per il tuo fototipo \(phototype.romanNumeral) sull'UV-equivalente della potenza scelta. È una stima: segui sempre le indicazioni del centro.")
+                    Text(limitExplanation)
                 }
             }
             .navigationTitle("Piano sessione")
@@ -150,7 +161,9 @@ struct SessionSetupView: View {
                                 flipIntervalMinutes: flipIntervalMinutes,
                                 kind: kind,
                                 goal: goal,
-                                plannedDurationMinutes: targetMinutes
+                                plannedDurationMinutes: targetMinutes,
+                                advancedRemindersEnabled: hasSoleaPlus,
+                                advancedCompanionsEnabled: hasSoleaPlus
                             ),
                             effectiveUVIndex
                         )
@@ -229,7 +242,7 @@ struct SessionSetupView: View {
     private func goalTitle(_ goal: SunExposureGoal) -> LocalizedStringKey {
         switch goal {
         case .vitaminD: return "Vitamina D"
-        case .gradualTan: return "Tan graduale"
+        case .gradualTan: return "Abbronzatura graduale"
         case .lowRisk: return "Prudenza"
         }
     }
@@ -239,7 +252,7 @@ struct SessionSetupView: View {
             return String(localized: "Controlla i dati")
         }
         if minutes.isInfinite {
-            return String(localized: "Stai fuori senza inseguire il tan")
+            return String(localized: "Stai all'aperto senza forzare l'abbronzatura")
         }
         if minutes <= 0 {
             return String(localized: "Ombra e recupero")
@@ -270,6 +283,13 @@ struct SessionSetupView: View {
         case .lowRisk:
             return String(localized: "UV, dose di oggi o pelle suggeriscono una sessione ridotta.")
         }
+    }
+
+    private var limitExplanation: String {
+        if kind == .sun {
+            return String(localized: "Stimato per il tuo fototipo \(phototype.romanNumeral) all'UV attuale; si aggiorna se l'UV cambia.")
+        }
+        return String(localized: "Stimato per il tuo fototipo \(phototype.romanNumeral) in base all'equivalente UV della potenza scelta. È una stima: segui sempre le indicazioni del centro.")
     }
 
     private func skinResponseTitle(_ response: SkinResponse) -> LocalizedStringKey {

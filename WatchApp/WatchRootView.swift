@@ -14,6 +14,7 @@ struct WatchRootView: View {
     // scrive su questa stessa chiave). Il picker resta come override locale e
     // come fallback finché non arriva la prima sincronizzazione.
     @AppStorage("watch.phototype") private var phototypeRaw = Fitzpatrick.typeIII.rawValue
+    @AppStorage("watch.soleaPlusActive") private var hasSoleaPlus = false
     @State private var state: ViewState = .loading
     @State private var profileSync = WatchProfileSync()
 
@@ -83,7 +84,11 @@ struct WatchRootView: View {
         .frame(height: 60)
 
         NavigationLink {
-            WatchSessionView(phototype: phototype, uvIndex: uvIndex)
+            WatchSessionView(
+                phototype: phototype,
+                uvIndex: uvIndex,
+                hasSoleaPlus: hasSoleaPlus
+            )
         } label: {
             Label("Sessione", systemImage: "timer")
         }

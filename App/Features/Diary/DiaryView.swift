@@ -3,14 +3,20 @@ import SwiftData
 import SoleaCore
 
 struct DiaryView: View {
+    let hasSoleaPlus: Bool
+
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \TanSession.startedAt, order: .reverse) private var sessions: [TanSession]
     @State private var deleteErrorMessage: String?
+    @State private var showPlusPaywall = false
 
     var body: some View {
         NavigationStack {
             list
             .navigationTitle("Diario")
+            .sheet(isPresented: $showPlusPaywall) {
+                SoleaPlusPaywallView(source: "diary")
+            }
             .alert(
                 "Eliminazione non riuscita",
                 isPresented: Binding(
@@ -31,10 +37,32 @@ struct DiaryView: View {
                 weeklyStats
             }
             Section {
-                NavigationLink {
-                    PhotoDiaryView()
-                } label: {
-                    Label("Foto-diario del tan", systemImage: "camera")
+                if hasSoleaPlus {
+                    NavigationLink {
+                        PhotoDiaryView(hasSoleaPlus: hasSoleaPlus)
+                    } label: {
+                        Label("Diario fotografico dell'abbronzatura", systemImage: "camera")
+                    }
+                } else {
+                    Button {
+                        showPlusPaywall = true
+                    } label: {
+                        Label("Foto-diario prima/dopo", systemImage: "camera")
+                    }
+                }
+            }
+            Section("Trend storici") {
+                if hasSoleaPlus {
+                    historicalStats
+                } else {
+                    Button {
+                        showPlusPaywall = true
+                    } label: {
+                        Label("Sblocca statistiche e trend", systemImage: "chart.xyaxis.line")
+                    }
+                    Text("Il diario base resta gratuito. Plus aggiunge andamento mensile, dose media e progressi nel tempo.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
             Section("Sessioni") {
@@ -56,6 +84,39 @@ struct DiaryView: View {
         }
     }
 
+    private var historicalStats: some View {
+        let calendar = Calendar.current
+        let last30Start = calendar.date(byAdding: .day, value: -30, to: .now) ?? .now
+        let previous30Start = calendar.date(byAdding: .day, value: -60, to: .now) ?? .now
+        let last30 = sessions.filter { $0.startedAt >= last30Start }
+        let previous30 = sessions.filter { $0.startedAt >= previous30Start && $0.startedAt < last30Start }
+        let smartMinutes = Int(last30
+            .filter { ($0.fractionOfMED ?? 0) <= Streaks.smartThreshold }
+            .reduce(0) { $0 + $1.duration } / 60)
+        let previousSmartMinutes = Int(previous30
+            .filter { ($0.fractionOfMED ?? 0) <= Streaks.smartThreshold }
+            .reduce(0) { $0 + $1.duration } / 60)
+        let doseAverage = last30.isEmpty
+            ? 0
+            : last30.reduce(0) { $0 + (($1.fractionOfMED ?? 0) * 100) } / Double(last30.count)
+
+        return Group {
+            LabeledContent("Sessioni ultimi 30 giorni") {
+                Text("\(last30.count)")
+            }
+            LabeledContent("Minuti smart") {
+                Text("\(smartMinutes) min")
+            }
+            LabeledContent("Trend vs 30 giorni precedenti") {
+                Text(trendText(current: smartMinutes, previous: previousSmartMinutes))
+                    .foregroundStyle(smartMinutes >= previousSmartMinutes ? .green : .secondary)
+            }
+            LabeledContent("Dose media") {
+                Text("\(Int(doseAverage.rounded()))% MED")
+            }
+        }
+    }
+
     private var weeklyStats: some View {
         let calendar = Calendar.current
         let weekStart = calendar.dateInterval(of: .weekOfYear, for: .now)?.start ?? .now
@@ -72,6 +133,15 @@ struct DiaryView: View {
             }
             LabeledContent("Vitamina D stimata") { Text("≈ \(totalVitaminD) IU") }
         }
+    }
+
+    private func trendText(current: Int, previous: Int) -> String {
+        let delta = current - previous
+        if delta == 0 {
+            return String(localized: "stabile")
+        }
+        let sign = delta > 0 ? "+" : ""
+        return "\(sign)\(delta) min"
     }
 
     private func row(session: TanSession) -> some View {
@@ -104,7 +174,7 @@ struct DiaryView: View {
 
             HStack(spacing: 16) {
                 if session.plannedMinutes > 0 {
-                    Label("\(session.plannedMinutes) min target", systemImage: "timer")
+                    Label("\(session.plannedMinutes) min obiettivo", systemImage: "timer")
                 }
                 if session.pauseSeconds > 0 {
                     Label("\(durationText(seconds: session.pauseSeconds)) pausa", systemImage: "pause.circle")
@@ -135,7 +205,7 @@ struct DiaryView: View {
                     }
                 }
                 if session.plannedMinutes > 0 {
-                    LabeledContent("Target") {
+                    LabeledContent("Durata obiettivo") {
                         Text("\(session.plannedMinutes) min")
                     }
                 }
@@ -225,7 +295,7 @@ struct DiaryView: View {
     private func goalTitle(_ goal: SunExposureGoal) -> LocalizedStringKey {
         switch goal {
         case .vitaminD: return "Vitamina D"
-        case .gradualTan: return "Tan graduale"
+        case .gradualTan: return "Abbronzatura graduale"
         case .lowRisk: return "Prudenza"
         }
     }

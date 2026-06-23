@@ -1,3 +1,3 @@
 - Capability richiesta: `com.apple.developer.usernotifications.critical-alerts`.
-- Uso dichiarato: solo stop alert locale quando il limite prudente di esposizione e' esaurito.
+- Uso dichiarato: solo per l'avviso locale di arresto quando il limite prudente di esposizione è esaurito.
 - Non usare Critical Alerts per marketing, engagement o promemoria generici.

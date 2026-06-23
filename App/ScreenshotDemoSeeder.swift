@@ -24,13 +24,12 @@ enum ScreenshotDemoSeeder {
 
     @MainActor
     private static func seed(in context: ModelContext) throws {
-        let now = Calendar.current.date(from: DateComponents(
-            year: 2026,
-            month: 6,
-            day: 16,
-            hour: 10,
-            minute: 30
-        )) ?? .now
+        let now = Calendar.current.date(
+            bySettingHour: 10,
+            minute: 30,
+            second: 0,
+            of: .now
+        ) ?? .now
 
         let phototype = Fitzpatrick.typeIII
         context.insert(UserProfile(phototype: phototype, quizScore: 18, createdAt: now.addingTimeInterval(-14 * 86_400)))

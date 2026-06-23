@@ -115,9 +115,11 @@ struct UVWidgetView: View {
                 .tint(riskColor(snapshot))
                 Text(safeTimeText(snapshot))
                     .font(.caption)
-                Text(stale
-                     ? "Dati non aggiornati"
-                     : snapshot.updatedAt.formatted(date: .omitted, time: .shortened))
+                Text(
+                    stale
+                        ? String(localized: "Dati non aggiornati")
+                        : snapshot.updatedAt.formatted(date: .omitted, time: .shortened)
+                )
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }

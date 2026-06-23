@@ -9,6 +9,8 @@ struct SessionConfiguration {
     var kind: SessionKind = .sun
     var goal: SunExposureGoal = .gradualTan
     var plannedDurationMinutes: Int = 20
+    var advancedRemindersEnabled = false
+    var advancedCompanionsEnabled = false
 }
 
 /// Dati di una sessione conclusa, pronti per essere persistiti e riepilogati.
@@ -178,6 +180,7 @@ final class SessionManager {
 
     private func startLiveActivity() {
         guard let session = active, let state = activityState() else { return }
+        guard session.configuration.advancedCompanionsEnabled else { return }
         do {
             try liveActivityService.start(
                 phototype: session.phototype,
@@ -203,7 +206,12 @@ final class SessionManager {
     }
 
     func reapplySunscreen() async {
-        guard var session = active, session.configuration.spf > 1 else { return }
+        guard var session = active,
+              session.configuration.spf > 1,
+              session.configuration.advancedRemindersEnabled
+        else {
+            return
+        }
         session.sunscreenAppliedAtElapsedSeconds = session.elapsedSeconds
         let remindersEnabled = session.remindersEnabled
         active = session
@@ -296,23 +304,27 @@ final class SessionManager {
                 }
             }
             notificationService.cancelExposureReminders()
-            try await notificationService.scheduleFlipReminder(
-                everyMinutes: session.configuration.flipIntervalMinutes
-            )
-            if let reapplySeconds = secondsUntilSunscreenReapplication(for: session), reapplySeconds > 0 {
-                try await notificationService.scheduleReapplyReminder(afterSeconds: reapplySeconds)
+
+            if session.configuration.advancedRemindersEnabled {
+                try await notificationService.scheduleFlipReminder(
+                    everyMinutes: session.configuration.flipIntervalMinutes
+                )
+                if let reapplySeconds = secondsUntilSunscreenReapplication(for: session), reapplySeconds > 0 {
+                    try await notificationService.scheduleReapplyReminder(afterSeconds: reapplySeconds)
+                }
+                try await notificationService.scheduleHydrationReminder(
+                    everyMinutes: Self.hydrationIntervalMinutes
+                )
+                try await notificationService.scheduleGoalReminder(
+                    afterSeconds: Double(max(1, session.configuration.plannedDurationMinutes * 60 - session.elapsedSeconds))
+                )
+                // Doposole la sera: solo per le sessioni al sole, non per il lettino.
+                if session.configuration.kind == .sun,
+                   let afterSun = Self.afterSunTime() {
+                    try await notificationService.scheduleAfterSunReminder(at: afterSun)
+                }
             }
-            try await notificationService.scheduleHydrationReminder(
-                everyMinutes: Self.hydrationIntervalMinutes
-            )
-            try await notificationService.scheduleGoalReminder(
-                afterSeconds: Double(max(1, session.configuration.plannedDurationMinutes * 60 - session.elapsedSeconds))
-            )
-            // Doposole la sera: solo per le sessioni al sole, non per il lettino.
-            if session.configuration.kind == .sun,
-               let afterSun = Self.afterSunTime() {
-                try await notificationService.scheduleAfterSunReminder(at: afterSun)
-            }
+
             if let remaining = remainingSafeSeconds, remaining.isFinite {
                 try await notificationService.scheduleStopAlert(afterSeconds: remaining)
             }
@@ -352,7 +364,8 @@ final class SessionManager {
                     / spfFactor
                 self.active = session
 
-                if session.elapsedSeconds % Self.liveActivityUpdateInterval == 0,
+                if session.configuration.advancedCompanionsEnabled,
+                   session.elapsedSeconds % Self.liveActivityUpdateInterval == 0,
                    let state = self.activityState() {
                     await self.liveActivityService.update(state: state)
                 }
@@ -389,7 +402,8 @@ final class SessionManager {
             active = session
             uvRefreshWarning = nil
 
-            if let state = activityState() {
+            if session.configuration.advancedCompanionsEnabled,
+               let state = activityState() {
                 await liveActivityService.update(state: state)
             }
 

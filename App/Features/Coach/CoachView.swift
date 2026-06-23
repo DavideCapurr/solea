@@ -6,6 +6,7 @@ struct CoachView: View {
     let phototype: Fitzpatrick
     /// UV attuale se già noto dalla schermata Oggi (può essere nil).
     let currentUVIndex: Double?
+    let hasSoleaPlus: Bool
 
     @Query private var sessions: [TanSession]
     @State private var viewModel = CoachViewModel()
@@ -26,7 +27,14 @@ struct CoachView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if viewModel.isAvailable {
+                if !hasSoleaPlus {
+                    SoleaPlusLockedView(
+                        title: "Coach AI Plus",
+                        message: "Sblocca il coach cloud per domande su SPF, progressione e preparazione alle vacanze.",
+                        systemImage: "bubble.left.and.bubble.right.fill",
+                        source: "coach"
+                    )
+                } else if viewModel.isAvailable {
                     chat
                 } else {
                     ContentUnavailableView {

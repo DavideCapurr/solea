@@ -10,10 +10,12 @@ struct ProfileView: View {
     @Query private var sessions: [TanSession]
     @Query private var plans: [VacationPlan]
 
+    @Environment(SoleaPlusStore.self) private var plusStore
     @State private var gameCenter = GameCenterService()
     @State private var showResetConfirmation = false
     @State private var resetErrorMessage: String?
     @State private var sharePayload: SharePayload?
+    @State private var showPlusPaywall = false
     @State private var gameCenterWarning: String?
     @Environment(\.openURL) private var openURL
 
@@ -54,6 +56,7 @@ struct ProfileView: View {
         NavigationStack {
             List {
                 skinSection
+                plusSection
                 streakSection
                 badgesSection
                 shareSection
@@ -83,6 +86,9 @@ struct ProfileView: View {
             }
             .sheet(item: $sharePayload) { payload in
                 ShareSheet(payload: payload)
+            }
+            .sheet(isPresented: $showPlusPaywall) {
+                SoleaPlusPaywallView(source: "profile")
             }
         }
     }
@@ -114,13 +120,44 @@ struct ProfileView: View {
     }
 
     private var streakSection: some View {
-        Section("Streak") {
+        Section("Serie") {
             HStack {
                 Label("Giorni di sole intelligente", systemImage: "flame.fill")
                     .foregroundStyle(.orange)
                 Spacer()
                 Text("\(currentStreak)").bold()
             }
+        }
+    }
+
+    private var plusSection: some View {
+        Section("Solea Plus") {
+            HStack {
+                Label(
+                    plusStore.hasPlus ? "Plus attivo" : "Piano gratuito",
+                    systemImage: plusStore.hasPlus ? "sparkles" : "sun.max"
+                )
+                .foregroundStyle(plusStore.hasPlus ? .orange : .primary)
+                Spacer()
+                if let validUntil = plusStore.entitlement.validUntil, plusStore.hasPlus {
+                    Text(validUntil, format: .dateTime.day().month().year())
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
+            Button {
+                showPlusPaywall = true
+            } label: {
+                Label(
+                    plusStore.hasPlus ? "Vedi opzioni App Store" : "Passa a Solea Plus",
+                    systemImage: plusStore.hasPlus ? "checkmark.seal" : "sparkles"
+                )
+            }
+
+            Text("Gratis: UV live, rischio scottatura, limite prudente, quiz, timer base, diario base e alert sicurezza. Plus: planner, coach cloud, foto-diario, trend, reminder, Watch/Live Activity e share card premium.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
     }
 
@@ -151,7 +188,11 @@ struct ProfileView: View {
     private var shareSection: some View {
         Section {
             Button {
-                makeShareCard()
+                if plusStore.hasPlus {
+                    makeShareCard()
+                } else {
+                    showPlusPaywall = true
+                }
             } label: {
                 HStack {
                     Label("Crea la tua Solea Story", systemImage: "sparkles")
@@ -230,10 +271,10 @@ struct ProfileView: View {
 
     private func makeShareCard() {
         let message = currentStreak > 0
-            ? String(localized: "Una streak costruita restando sotto la soglia prudente.")
+            ? String(localized: "Una serie costruita restando sotto la soglia prudente.")
             : String(localized: "Ogni giornata smart inizia da un check consapevole.")
         let card = ShareCardView(content: ShareCardContent(
-            eyebrow: String(localized: "La mia streak Solea"),
+            eyebrow: String(localized: "La mia serie Solea"),
             headline: "\(currentStreak)",
             unit: String(localized: "giorni di sole intelligente"),
             message: message,
@@ -246,7 +287,7 @@ struct ProfileView: View {
         ))
         guard let payload = renderSharePayload(
             content: card,
-            caption: String(localized: "La mia streak Solea è di \(currentStreak) giorni di sole intelligente. ☀️"),
+            caption: String(localized: "La mia serie Solea è di \(currentStreak) giorni di sole intelligente. ☀️"),
             source: "profile_streak"
         ) else {
             gameCenterWarning = String(localized: "Impossibile generare l'immagine da condividere.")

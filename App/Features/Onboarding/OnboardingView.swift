@@ -11,10 +11,12 @@ struct OnboardingView: View {
     }
 
     @Environment(\.modelContext) private var modelContext
+    @Environment(SoleaPlusStore.self) private var plusStore
     @State private var step: Step = .welcome
     @State private var answers: [Int: Int] = [:] // id domanda → punteggio
     @State private var saveErrorMessage: String?
     @State private var sharePayload: SharePayload?
+    @State private var showPlusPaywall = false
 
     var body: some View {
         NavigationStack {
@@ -42,6 +44,9 @@ struct OnboardingView: View {
             }
             .sheet(item: $sharePayload) { payload in
                 ShareSheet(payload: payload)
+            }
+            .sheet(isPresented: $showPlusPaywall) {
+                SoleaPlusPaywallView(source: "onboarding_share")
             }
         }
     }
@@ -209,7 +214,11 @@ struct OnboardingView: View {
                 )
 
                 Button {
-                    sharePhototype(phototype)
+                    if plusStore.hasPlus {
+                        sharePhototype(phototype)
+                    } else {
+                        showPlusPaywall = true
+                    }
                 } label: {
                     Label("Condividi il mio fototipo", systemImage: "square.and.arrow.up")
                         .frame(maxWidth: .infinity)

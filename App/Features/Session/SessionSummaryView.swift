@@ -16,6 +16,7 @@ struct SessionSummaryView: View {
     }
 
     let session: FinishedSession
+    let hasSoleaPlus: Bool
     let onSaveReflection: ((SkinResponse, String) throws -> Void)?
 
     @Environment(\.dismiss) private var dismiss
@@ -24,15 +25,18 @@ struct SessionSummaryView: View {
     @State private var skinResponse: SkinResponse
     @State private var note: String
     @State private var sharePayload: SharePayload?
+    @State private var showPlusPaywall = false
     private let healthKitService = HealthKitService()
 
     init(
         session: FinishedSession,
         initialSkinResponse: SkinResponse = .notLogged,
         initialNote: String = "",
+        hasSoleaPlus: Bool = false,
         onSaveReflection: ((SkinResponse, String) throws -> Void)? = nil
     ) {
         self.session = session
+        self.hasSoleaPlus = hasSoleaPlus
         self.onSaveReflection = onSaveReflection
         _skinResponse = State(initialValue: initialSkinResponse == .notLogged ? .comfortable : initialSkinResponse)
         _note = State(initialValue: initialNote)
@@ -58,7 +62,7 @@ struct SessionSummaryView: View {
                             Text(durationText(seconds: session.pausedSeconds))
                         }
                     }
-                    LabeledContent("Target") {
+                    LabeledContent("Durata obiettivo") {
                         Text("\(session.plannedDurationMinutes) min")
                     }
                     LabeledContent("UV medio") {
@@ -131,6 +135,9 @@ struct SessionSummaryView: View {
             .sheet(item: $sharePayload) { payload in
                 ShareSheet(payload: payload)
             }
+            .sheet(isPresented: $showPlusPaywall) {
+                SoleaPlusPaywallView(source: "session_share")
+            }
         }
     }
 
@@ -154,7 +161,11 @@ struct SessionSummaryView: View {
                 .font(.subheadline.weight(.medium))
 
             Button {
-                shareSession()
+                if hasSoleaPlus {
+                    shareSession()
+                } else {
+                    showPlusPaywall = true
+                }
             } label: {
                 Label("Condividi la sessione", systemImage: "square.and.arrow.up")
                     .frame(maxWidth: .infinity)
@@ -301,10 +312,10 @@ struct SessionSummaryView: View {
             return String(localized: "Hai raggiunto la soglia prudente: oggi basta sole diretto.")
         }
         if session.fractionOfMED >= 0.55 {
-            return String(localized: "Sessione intensa ma ancora sotto soglia: buona per costruire colore, senza aggiungere altro sole oggi.")
+            return String(localized: "Sessione intensa ma ancora sotto soglia: utile per abbronzarti gradualmente, senza aggiungere altro sole oggi.")
         }
         if session.duration < Double(session.plannedDurationMinutes * 60) * 0.8 {
-            return String(localized: "Sessione più breve del target: utile come esposizione leggera, ma il risultato sarà graduale.")
+            return String(localized: "Sessione più breve dell'obiettivo: utile come esposizione leggera, ma il risultato sarà graduale.")
         }
         return String(localized: "Bella sessione: sei rimasto sotto la soglia prudente.")
     }
@@ -316,7 +327,7 @@ struct SessionSummaryView: View {
         case .tight:
             return String(localized: "La prossima volta riduci qualche minuto o aumenta SPF; stasera doposole.")
         case .warm:
-            return String(localized: "Recupero leggero: acqua, ombra e prossima sessione nelle golden hours.")
+            return String(localized: "Recupero leggero: acqua, ombra e prossima sessione nelle ore ideali.")
         case .comfortable, .notLogged:
             return sideBalanceText
         }
@@ -325,7 +336,7 @@ struct SessionSummaryView: View {
     private func goalTitle(_ goal: SunExposureGoal) -> LocalizedStringKey {
         switch goal {
         case .vitaminD: return "Vitamina D"
-        case .gradualTan: return "Tan graduale"
+        case .gradualTan: return "Abbronzatura graduale"
         case .lowRisk: return "Prudenza"
         }
     }

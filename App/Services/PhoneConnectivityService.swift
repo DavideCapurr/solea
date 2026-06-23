@@ -18,9 +18,11 @@ final class PhoneConnectivityService: NSObject {
     /// Chiave dell'application context: deve combaciare con quella letta dal
     /// Watch in `WatchProfileSync`.
     static let phototypeKey = "phototypeRawValue"
+    static let plusKey = "soleaPlusActive"
 
     private(set) var lastError: String?
     private var pendingPhototypeRawValue: Int?
+    private var pendingHasSoleaPlus = false
 
     /// Da chiamare una volta all'avvio dell'app.
     func activate() {
@@ -34,8 +36,9 @@ final class PhoneConnectivityService: NSObject {
 
     /// Richiede l'invio del fototipo al Watch. Se la sessione non è ancora
     /// attiva il valore resta in coda e parte appena l'attivazione completa.
-    func sync(phototype: Fitzpatrick) {
+    func sync(phototype: Fitzpatrick, hasSoleaPlus: Bool = false) {
         pendingPhototypeRawValue = phototype.rawValue
+        pendingHasSoleaPlus = hasSoleaPlus
         flush()
     }
 
@@ -48,7 +51,10 @@ final class PhoneConnectivityService: NSObject {
             return
         }
         do {
-            try session.updateApplicationContext([Self.phototypeKey: rawValue])
+            try session.updateApplicationContext([
+                Self.phototypeKey: rawValue,
+                Self.plusKey: pendingHasSoleaPlus
+            ])
             pendingPhototypeRawValue = nil
             lastError = nil
         } catch {

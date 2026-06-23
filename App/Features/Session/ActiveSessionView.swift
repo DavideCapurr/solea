@@ -3,7 +3,10 @@ import SoleaCore
 
 struct ActiveSessionView: View {
     let manager: SessionManager
+    let hasSoleaPlus: Bool
     let onEnd: () -> Void
+
+    @State private var showPaywall = false
 
     var body: some View {
         Group {
@@ -14,14 +17,21 @@ struct ActiveSessionView: View {
                 ProgressView()
             }
         }
+        .sheet(isPresented: $showPaywall) {
+            SoleaPlusPaywallView(source: "active_session")
+        }
     }
 
     private func content(session: SessionManager.ActiveSession) -> some View {
         ScrollView {
             VStack(spacing: 20) {
                 doseRing(session: session)
-                goalProgress(session: session)
-                sideTracker(session: session)
+                if hasSoleaPlus {
+                    goalProgress(session: session)
+                    sideTracker(session: session)
+                } else {
+                    plusUpgradePanel
+                }
 
                 LabeledContent("Tempo trascorso") {
                     Text(formattedElapsed(session.elapsedSeconds))
@@ -46,11 +56,15 @@ struct ActiveSessionView: View {
                          ? String(localized: "Nessuna")
                          : "SPF \(Int(session.configuration.spf))")
                 }
-                reminderTimeline
+                if hasSoleaPlus {
+                    reminderTimeline
+                }
 
                 warnings
                 pauseButton(session: session)
-                reapplyButton(session: session)
+                if hasSoleaPlus {
+                    reapplyButton(session: session)
+                }
 
                 Button(role: .destructive) {
                     onEnd()
@@ -64,6 +78,27 @@ struct ActiveSessionView: View {
             .padding()
         }
         .navigationTitle("Sessione in corso")
+    }
+
+    private var plusUpgradePanel: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label("Timer base attivo", systemImage: "timer")
+                .font(.headline)
+            Text("Solea continuerà a mostrarti tempo, UV e limite prudente. Plus aggiunge tracciamento fronte/retro, obiettivo, reminder personalizzati e Live Activity avanzata.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            Button {
+                showPaywall = true
+            } label: {
+                Label("Sblocca strumenti Plus", systemImage: "sparkles")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .tint(.orange)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
     }
 
     private var reminderTimeline: some View {
@@ -88,7 +123,7 @@ struct ActiveSessionView: View {
                 reminderRow("Obiettivo", value: goalRemaining == 0 ? String(localized: "raggiunto") : formattedElapsed(goalRemaining), icon: "target")
             }
             if let remaining = manager.remainingSafeSeconds, remaining.isFinite {
-                reminderRow("Stop prudente", value: formattedElapsed(Int(remaining)), icon: "exclamationmark.triangle.fill")
+                reminderRow("Limite prudente", value: formattedElapsed(Int(remaining)), icon: "exclamationmark.triangle.fill")
             }
         }
         .padding()
@@ -132,7 +167,7 @@ struct ActiveSessionView: View {
 
     private func goalProgressText(session: SessionManager.ActiveSession) -> String {
         if session.isPaused {
-            return String(localized: "In pausa: il target non avanza finché non riprendi l'esposizione.")
+            return String(localized: "In pausa: l'obiettivo non avanza finché non riprendi l'esposizione.")
         }
         guard let remaining = manager.goalRemainingSeconds else {
             return String(localized: "Obiettivo di sessione non disponibile.")
@@ -140,12 +175,12 @@ struct ActiveSessionView: View {
         if remaining == 0 {
             return String(localized: "Obiettivo raggiunto: valuta ombra, doposole o una pausa.")
         }
-        return String(localized: "\(formattedElapsed(remaining)) all'obiettivo di oggi.")
+        return String(localized: "\(formattedElapsed(remaining)) al raggiungimento dell'obiettivo di oggi.")
     }
 
     private func sideTracker(session: SessionManager.ActiveSession) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label("Distribuzione del tan", systemImage: "arrow.triangle.2.circlepath")
+            Label("Distribuzione dell'abbronzatura", systemImage: "arrow.triangle.2.circlepath")
                 .font(.headline)
 
             Picker("Lato al sole", selection: Binding(
@@ -189,7 +224,7 @@ struct ActiveSessionView: View {
             return String(localized: "Parti da un lato e cambia quando arriva il promemoria.")
         }
         if difference >= 10 * 60 {
-            return String(localized: "Un lato sta prendendo molto più sole: cambia lato per rendere il tan più uniforme.")
+            return String(localized: "Un lato sta prendendo molto più sole: girati per ottenere un'abbronzatura più uniforme.")
         }
         if difference >= 5 * 60 {
             return String(localized: "Quasi equilibrato: il prossimo cambio aiuta a pareggiare fronte e retro.")
@@ -200,7 +235,7 @@ struct ActiveSessionView: View {
     private func goalTitle(_ goal: SunExposureGoal) -> LocalizedStringKey {
         switch goal {
         case .vitaminD: return "Vitamina D"
-        case .gradualTan: return "Tan graduale"
+        case .gradualTan: return "Abbronzatura graduale"
         case .lowRisk: return "Prudenza"
         }
     }
@@ -279,6 +314,9 @@ struct ActiveSessionView: View {
 
     @ViewBuilder
     private func pauseButton(session: SessionManager.ActiveSession) -> some View {
+        let title: LocalizedStringKey = session.isPaused
+            ? "Riprendi esposizione"
+            : "Pausa all'ombra"
         Button {
             if session.isPaused {
                 Task { await manager.resume() }
@@ -287,7 +325,7 @@ struct ActiveSessionView: View {
             }
         } label: {
             Label(
-                session.isPaused ? "Riprendi esposizione" : "Pausa all'ombra",
+                title,
                 systemImage: session.isPaused ? "play.circle.fill" : "pause.circle.fill"
             )
             .frame(maxWidth: .infinity)

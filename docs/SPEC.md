@@ -3,9 +3,14 @@
 > App iOS per abbronzarsi con più consapevolezza. **Tan-first, ma smart.**
 
 - **Filosofia**: l'obiettivo dell'utente è un'abbronzatura bella e uniforme; l'app lo aiuta a raggiungerla in modo intelligente e prudente. Tono motivazionale, non medicale.
-- **Prezzo**: completamente gratuita, nessun paywall.
+- **Prezzo**: freemium. Gratis: UV live, burn risk, limite prudente,
+  quiz fototipo, timer base, diario base e alert di sicurezza. Solea Plus:
+  planner vacanze completo, coach AI cloud, foto-diario prima/dopo,
+  statistiche storiche, reminder personalizzati, Watch/Live Activity avanzati
+  e share card premium.
 - **Piattaforma**: iOS 17+, SwiftUI, companion Apple Watch.
-- **Backend**: nessun server custom — WeatherKit, Game Center e CloudKit coprono tutto.
+- **Backend**: WeatherKit, Game Center, StoreKit e, solo per il Coach Plus se
+  configurato, proxy cloud senza API key nel binario.
 
 ---
 
@@ -33,14 +38,15 @@
 - Avvio sessione dal piano: durata, SPF e zone sono precompilati; l'utente può
   correggere dettagli pratici come SPF realmente applicato e zone esposte.
 - Countdown del limite prudente rimanente, ricalcolato se l'UV cambia.
-- Progresso verso il target della sessione, separato dal limite di sicurezza.
+- Progresso verso il target della sessione, separato dal limite di sicurezza
+  (Plus).
 - Pausa/riprendi per ombra, bagno o interruzioni: dose e target avanzano solo
   durante il tempo effettivamente esposto.
-- Tracking fronte/retro durante la sessione per mantenere uniforme l'abbronzatura.
-- Promemoria **"girati!"** a intervalli configurabili per un tan uniforme.
-- Promemoria quando la durata obiettivo è raggiunta.
-- Promemoria **riapplica la crema** (ogni 2h o dopo il bagno, configurabile).
-- Timeline dei prossimi promemoria visibile durante la sessione.
+- Tracking fronte/retro durante la sessione per mantenere uniforme l'abbronzatura (Plus).
+- Promemoria **"girati!"** a intervalli configurabili per un tan uniforme (Plus).
+- Promemoria quando la durata obiettivo è raggiunta (Plus).
+- Promemoria **riapplica la crema** (ogni 2h o dopo il bagno, configurabile) (Plus).
+- Timeline dei prossimi promemoria visibile durante la sessione (Plus).
 - Alert di stop all'avvicinarsi della soglia di rischio scottatura.
 - A fine sessione: riepilogo (tempo effettivo al sole, pause, UV medio, dose UV
   stimata, vitamina D stimata), bilanciamento fronte/retro e riflessione pelle/note.
@@ -48,7 +54,8 @@
 ### 1.4 Diario e statistiche
 - Storico sessioni con tempo effettivo al sole, pause, obiettivo, UV medio, SPF,
   bilanciamento fronte/retro, sensazione pelle, note e dose UV cumulativa.
-- Statistiche settimanali/mensili: tempo totale al sole, trend, giorni di streak.
+- Statistiche settimanali base gratuite; trend storici e andamento mensile in
+  Solea Plus.
 - Dose UV cumulata della giornata sempre visibile (somma di più sessioni).
 
 ---
@@ -56,7 +63,7 @@
 ## 2. Chicche (tutte in v1)
 
 ### 2.1 Live Activity + Dynamic Island
-- La sessione attiva vive nella Dynamic Island e in Live Activity sulla lock screen: countdown, UV attuale, prossimo promemoria.
+- Live Activity e Dynamic Island avanzate sono incluse in Solea Plus.
 
 ### 2.2 Widget
 - Widget home e lock screen: UV attuale, burn risk, limite prudente rimanente per il proprio fototipo.
@@ -66,15 +73,18 @@
 - Scrittura su Apple Health: *Time in Daylight* solo su azione dell'utente. La vitamina D resta una stima in-app e non viene scritta su HealthKit.
 
 ### 2.4 Foto-diario del tan
+- Feature Solea Plus.
 - Selfie periodici in condizioni di luce guidate (overlay di allineamento).
 - Confronto prima/dopo con slider e timeline dell'evoluzione del tono.
 - Analisi locale del tono pelle (Vision/CoreImage, nessun upload).
 
 ### 2.5 Tan planner vacanze
+- Feature Solea Plus.
 - Inserisci meta e date: previsioni UV della località e **piano di esposizione graduale** giorno per giorno per arrivare alla vacanza con tempi e SPF stimati.
 
 ### 2.6 Apple Watch companion
-- Timer al polso, haptic per "girati" e "riapplica crema", UV a colpo d'occhio, avvio sessione dal polso.
+- UV a colpo d'occhio e timer base al polso restano gratuiti; haptic e metriche
+  avanzate sono Solea Plus.
 
 ### 2.7 Consigli SPF dinamici
 - "Oggi UV 8: per il tuo fototipo usa SPF 50, riapplica ogni 90 minuti." Suggerimenti contestuali su quando e cosa applicare.
@@ -83,13 +93,15 @@
 - Tracking separato per sessioni indoor con potenza lampade e durata; conteggia nella dose UV cumulativa.
 
 ### 2.9 Idratazione & after-sun
-- Promemoria per bere acqua durante le sessioni lunghe e per il doposole la sera dopo una giornata di esposizione.
+- Promemoria per bere acqua durante le sessioni lunghe e per il doposole la sera
+  dopo una giornata di esposizione (Plus).
 
 ### 2.10 Streak e badge
 - Streak di "esposizione intelligente" (giorni con sessioni senza superare la soglia di rischio).
 - Badge: prima sessione, 7 giorni di streak, tan planner completato, 10.000 IU di vitamina D, ecc.
 
 ### 2.11 Coach Solare AI (ibrido on-device + Claude)
+- Feature Solea Plus.
 
 Un coach conversazionale che conosce il contesto dell'utente (fototipo, UV attuale, storico sessioni, piano vacanze) e risponde a domande tipo *"posso espormi oggi alle 14 senza crema?"*.
 
@@ -108,14 +120,27 @@ Un coach conversazionale che conosce il contesto dell'utente (fototipo, UV attua
 - Streaming SSE verso l'app.
 - Rate limit per utente (es. 10 messaggi Claude/giorno, illimitati on-device) per tenere i costi sotto controllo in un'app gratuita.
 
-**Privacy:** al proxy arriva solo il contesto minimo necessario (fototipo, UV, riepilogo sessioni) — mai le foto del tan né dati identificativi.
+**Privacy:** al proxy arriva solo il contesto minimo necessario (fototipo, UV, riepilogo sessioni) — mai le foto del tan né dati identificativi. Se il proxy non è configurato, il Coach Plus mostra lo stato non disponibile.
+
+## 2.12 Monetizzazione StoreKit
+
+- Prodotti iniziali in App Store Connect:
+  - `com.davidecapurro.Solea.plus.annual`: auto-renewable subscription, prezzo
+    indicativo `€19,99/anno`.
+  - `com.davidecapurro.Solea.plus.seasonal`: non-renewing subscription,
+    prezzo indicativo `€9,99`, accesso app-side di 120 giorni.
+  - `com.davidecapurro.Solea.plus.monthly`: definito a codice per eventuale
+    test o futura offerta, non promosso nel paywall iniziale (`€3,99/mese`).
+- Nessun pagamento esterno: le feature digitali Plus si acquistano e ripristinano
+  solo con StoreKit/In-App Purchase.
 
 ---
 
 ## 3. Social leggero (senza backend custom)
 
 - **Game Center**: classifiche tra amici (minuti di sole intelligenti della settimana, streak più lunga) e achievement nativi — zero gestione account.
-- **Share card**: immagine generata (streak, badge, progresso tan) condivisibile su Instagram/WhatsApp.
+- **Share card**: immagine generata (streak, badge, progresso tan)
+  condivisibile su Instagram/WhatsApp, feature Plus.
 - **CloudKit**: sync dei dati tra dispositivi dell'utente (iPhone/Watch/iPad) via iCloud privato.
 - Privacy: le foto del tan restano sempre locali/iCloud privato, mai condivise automaticamente.
 

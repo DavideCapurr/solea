@@ -4,6 +4,7 @@ import SoleaCore
 
 struct PlannerView: View {
     let phototype: Fitzpatrick
+    let hasSoleaPlus: Bool
 
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \VacationPlan.createdAt, order: .reverse) private var plans: [VacationPlan]
@@ -13,26 +14,37 @@ struct PlannerView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if plans.isEmpty {
-                    ContentUnavailableView {
-                        Label("Nessun piano", systemImage: "airplane.departure")
-                    } description: {
-                        Text("Crea un piano graduale con tempi e SPF stimati per la vacanza.")
-                    } actions: {
-                        Button("Nuovo piano") { showNewPlan = true }
-                            .buttonStyle(.borderedProminent)
+                if hasSoleaPlus {
+                    if plans.isEmpty {
+                        ContentUnavailableView {
+                            Label("Nessun piano", systemImage: "airplane.departure")
+                        } description: {
+                            Text("Crea un piano graduale con tempi e SPF stimati per la vacanza.")
+                        } actions: {
+                            Button("Nuovo piano") { showNewPlan = true }
+                                .buttonStyle(.borderedProminent)
+                        }
+                    } else {
+                        planList
                     }
                 } else {
-                    planList
+                    SoleaPlusLockedView(
+                        title: "Planner Plus",
+                        message: "Crea piani vacanza completi con UV di destinazione, progressione graduale e SPF stimato.",
+                        systemImage: "airplane.departure",
+                        source: "planner"
+                    )
                 }
             }
             .navigationTitle("Planner")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        showNewPlan = true
-                    } label: {
-                        Label("Nuovo piano", systemImage: "plus")
+                    if hasSoleaPlus {
+                        Button {
+                            showNewPlan = true
+                        } label: {
+                            Label("Nuovo piano", systemImage: "plus")
+                        }
                     }
                 }
             }
