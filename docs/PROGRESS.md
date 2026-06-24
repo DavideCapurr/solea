@@ -68,11 +68,18 @@
       ignorato da git per verificare Gemini senza consumare quota
 - [x] Limiti input lato app: messaggi troppo lunghi bloccati prima dell'invio
       e cronologia inviata al coach ridotta alla coda utile più recente
+- [x] Contesto Coach arricchito ma minimale: fototipo/UV, dose MED oggi,
+      sessioni recenti senza note/foto e prossimo piano vacanze; dati mancanti
+      dichiarati esplicitamente e destinazione sanitizzata
 - [x] OnDeviceCoach (FoundationModels, gated iOS 26)
 - [x] CloudCoach (consumo SSE dal proxy, errori propagati)
 - [x] CoachRouter ibrido con fallback bidirezionale (complessità/connettività)
 - [x] Chat UI del Coach Solare con contesto utente (solo fototipo/UV/sessioni, mai foto)
-- [ ] Deploy proxy + `SoleaCoachProxyURL` in Info.plist — a carico dell'utente
+- [x] Stato disponibilità Coach in UI: on-device, proxy cloud e connettività visibili
+      prima della chat
+- [x] Build setting `SOLEA_COACH_PROXY_URL` per abilitare Gemini cloud senza
+      hardcodare URL o secret nel repository
+- [ ] Deploy proxy + build con `SOLEA_COACH_PROXY_URL` — a carico dell'utente
       (istruzioni nel README)
 
 ## Attività a carico dell'utente (fuori dal codice)

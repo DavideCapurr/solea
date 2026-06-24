@@ -46,11 +46,11 @@ struct ActiveSessionView: View {
                         .font(.title3.bold().monospacedDigit())
                 }
                 if !hasSoleaPlus {
-                    LabeledContent("Piano consigliato") {
+                    LabeledContent("Timer obiettivo") {
                         Text("\(session.configuration.plannedDurationMinutes) min")
                             .bold()
                     }
-                    LabeledContent("Target rimanente") {
+                    LabeledContent("Tempo rimanente") {
                         targetRemainingLabel(session: session)
                     }
                 }
@@ -65,7 +65,7 @@ struct ActiveSessionView: View {
                     Text(session.currentUVIndex, format: .number.precision(.fractionLength(0)))
                         .bold()
                 }
-                LabeledContent("Limite prudente rimanente") {
+                LabeledContent("Stop sicurezza") {
                     remainingLabel
                 }
                 LabeledContent("SPF") {
@@ -113,9 +113,9 @@ struct ActiveSessionView: View {
 
     private var plusUpgradePanel: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Label("Timer base attivo", systemImage: "timer")
+            Label("Timer Solea attivo", systemImage: "timer")
                 .font(.headline)
-            Text("Solea continuerà a mostrarti target, tempo, UV e limite prudente. Plus aggiunge tracciamento fronte/retro, promemoria personalizzati e Live Activity avanzata.")
+            Text("Solea segue il timer scelto per il tuo obiettivo e continua a mostrarti UV e stop sicurezza. Plus aggiunge tracciamento fronte/retro, promemoria personalizzati e Live Activity avanzata.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Button {
@@ -154,7 +154,7 @@ struct ActiveSessionView: View {
                 reminderRow("Obiettivo", value: goalRemaining == 0 ? String(localized: "raggiunto") : formattedElapsed(goalRemaining), icon: "target")
             }
             if let remaining = manager.remainingSafeSeconds, remaining.isFinite {
-                reminderRow("Limite prudente", value: formattedElapsed(Int(remaining)), icon: "exclamationmark.triangle.fill")
+                reminderRow("Stop sicurezza", value: formattedElapsed(Int(remaining)), icon: "exclamationmark.triangle.fill")
             }
         }
         .padding()
@@ -286,7 +286,7 @@ struct ActiveSessionView: View {
         switch goal {
         case .vitaminD: return "Vitamina D"
         case .gradualTan: return "Abbronzatura graduale"
-        case .lowRisk: return "Prudenza"
+        case .lowRisk: return "Sessione leggera"
         }
     }
 
@@ -300,7 +300,7 @@ struct ActiveSessionView: View {
             VStack {
                 Text(fraction, format: .percent.precision(.fractionLength(0)))
                     .font(.title.bold())
-                Text("della soglia prudente")
+                Text("della soglia UV")
                     .font(.caption2)
             }
         }

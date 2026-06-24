@@ -770,6 +770,36 @@
         }
       }
     },
+    "Coach non configurato": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coach not configured"
+          }
+        }
+      }
+    },
+    "Cloud Gemini configurato": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemini cloud configured"
+          }
+        }
+      }
+    },
+    "Configura il proxy cloud o usa un dispositivo con modello on-device.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configure the cloud proxy or use a device with an on-device model."
+          }
+        }
+      }
+    },
     "Com'è la tua pelle dove non prende mai il sole?": {
       "extractionState": "stale",
       "localizations": {
@@ -1384,6 +1414,16 @@
         }
       }
     },
+    "Funziona offline su questo dispositivo. Configura il proxy per Gemini quando vuoi abilitare il cloud.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Works offline on this device. Configure the Gemini proxy when you want to enable cloud."
+          }
+        }
+      }
+    },
     "Fine": {
       "extractionState": "stale",
       "localizations": {
@@ -1743,12 +1783,42 @@
         }
       }
     },
-    "Il Coach richiede il modello on-device (iOS 26+) oppure la configurazione del proxy Claude.": {
+    "Il Coach richiede il modello on-device (iOS 26+) oppure la configurazione del proxy cloud.": {
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The Coach requires the on-device model (iOS 26+) or the Claude proxy to be configured."
+            "value": "The Coach requires the on-device model (iOS 26+) or the cloud proxy to be configured."
+          }
+        }
+      }
+    },
+    "Il proxy cloud è configurato, ma serve connessione per usarlo.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The cloud proxy is configured, but you need a connection to use it."
+          }
+        }
+      }
+    },
+    "Il proxy cloud è pronto; il modello locale non è disponibile su questo dispositivo.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The cloud proxy is ready; the local model is not available on this device."
+          }
+        }
+      }
+    },
+    "Il router sceglie tra privato/offline e cloud per le domande più complesse.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The router chooses between private/offline and cloud for more complex questions."
           }
         }
       }
@@ -2483,6 +2553,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Message too long: stay within 2000 characters."
+          }
+        }
+      }
+    },
+    "On-device + cloud pronti": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On-device + cloud ready"
+          }
+        }
+      }
+    },
+    "On-device attivo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On-device active"
           }
         }
       }

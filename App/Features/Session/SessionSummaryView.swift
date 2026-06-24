@@ -62,7 +62,7 @@ struct SessionSummaryView: View {
                             Text(durationText(seconds: session.pausedSeconds))
                         }
                     }
-                    LabeledContent("Durata obiettivo") {
+                    LabeledContent("Timer obiettivo") {
                         Text("\(session.plannedDurationMinutes) min")
                     }
                     LabeledContent("UV medio") {
@@ -264,7 +264,7 @@ struct SessionSummaryView: View {
         ))
         sharePayload = renderSharePayload(
             content: card,
-            caption: String(localized: "Sessione Solea completata: \(sessionDurationText), UV medio \(uv), \(doseFraction) della soglia prudente. ☀️"),
+            caption: String(localized: "Sessione Solea completata: \(sessionDurationText), UV medio \(uv), \(doseFraction) della soglia UV. ☀️"),
             source: "session_summary"
         )
     }
@@ -316,7 +316,7 @@ struct SessionSummaryView: View {
 
     private var sessionInsight: String {
         if session.fractionOfMED >= SafeExposure.recommendedLimitFractionOfMED {
-            return String(localized: "Hai raggiunto la soglia prudente: oggi basta sole diretto.")
+            return String(localized: "Hai raggiunto la soglia UV: oggi basta sole diretto.")
         }
         if session.fractionOfMED >= 0.55 {
             return String(localized: "Sessione intensa ma ancora sotto soglia: utile per abbronzarti gradualmente, senza aggiungere altro sole oggi.")
@@ -324,7 +324,7 @@ struct SessionSummaryView: View {
         if session.duration < Double(session.plannedDurationMinutes * 60) * 0.8 {
             return String(localized: "Sessione più breve dell'obiettivo: utile come esposizione leggera, ma il risultato sarà graduale.")
         }
-        return String(localized: "Bella sessione: sei rimasto sotto la soglia prudente.")
+        return String(localized: "Bella sessione: sei rimasto sotto la soglia UV.")
     }
 
     private var nextStepText: String {
@@ -344,7 +344,7 @@ struct SessionSummaryView: View {
         switch goal {
         case .vitaminD: return "Vitamina D"
         case .gradualTan: return "Abbronzatura graduale"
-        case .lowRisk: return "Prudenza"
+        case .lowRisk: return "Sessione leggera"
         }
     }
 

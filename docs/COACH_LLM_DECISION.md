@@ -42,5 +42,6 @@ Il Coach AI di Solea resta ibrido:
 ## Prossimi passi
 
 1. Configurare `GEMINI_API_KEY` come secret Cloudflare e deployare il proxy.
-2. Aggiungere una suite di eval minimale per il coach: tono, limiti medici, non-invenzione di numeri, rispetto del contesto Solea.
-3. Valutare Apple Private Cloud Compute appena il progetto passa a Xcode/iOS 26 come baseline di sviluppo per le feature AI avanzate.
+2. Compilare la build cloud passando `SOLEA_COACH_PROXY_URL=https://<worker>.workers.dev`; se resta vuoto, Solea usa solo il coach on-device.
+3. Aggiungere una suite di eval minimale per il coach: tono, limiti medici, non-invenzione di numeri, rispetto del contesto Solea.
+4. Valutare Apple Private Cloud Compute appena il progetto passa a Xcode/iOS 26 come baseline di sviluppo per le feature AI avanzate.

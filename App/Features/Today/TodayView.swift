@@ -354,7 +354,7 @@ struct TodayView: View {
         switch goal {
         case .vitaminD: return "Vitamina D"
         case .gradualTan: return "Abbronzatura graduale"
-        case .lowRisk: return "Prudenza"
+        case .lowRisk: return "Sessione leggera"
         }
     }
 
@@ -397,9 +397,9 @@ struct TodayView: View {
         let vitaminD = Int(recommendation.estimatedVitaminDIU.rounded())
         switch recommendation.goal {
         case .vitaminD:
-            return String(localized: "Stima breve per circa \(vitaminD) IU di vitamina D, poi protezione o ombra.")
+            return String(localized: "Obiettivo vitamina D: circa \(vitaminD) IU, poi protezione o ombra.")
         case .gradualTan:
-            return String(localized: "Dose pensata per abbronzarti gradualmente restando sotto il limite prudente del tuo fototipo.")
+            return String(localized: "Dose graduale: il tan resta una risposta agli UV, quindi Solea ferma prima del rossore.")
         case .lowRisk:
             return String(localized: "Dose ridotta per le giornate in cui vuoi minimizzare il rischio senza forzare l'abbronzatura.")
         }
@@ -415,12 +415,12 @@ struct TodayView: View {
         return names.joined(separator: ", ")
     }
 
-    // MARK: - Limite prudente
+    // MARK: - Stop sicurezza
 
     private func recommendedLimitCard(metrics: TodayMetrics) -> some View {
         card {
             VStack(alignment: .leading, spacing: 12) {
-                Text("Limite prudente al sole")
+                Text("Stop sicurezza al sole")
                     .font(.headline)
                 HStack {
                     recommendedLimitColumn(title: "Senza protezione", minutes: metrics.recommendedMinutesBareSkin)
@@ -511,7 +511,7 @@ struct TodayView: View {
                 }
             }
 
-            Text("Solea ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione prudente.")
+            Text("Solea ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione guidata.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 

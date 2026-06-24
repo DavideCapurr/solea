@@ -64,11 +64,12 @@ targets:
         SoleaAppStoreURL: ""
         SoleaPrivacyPolicyURL: ""
         SoleaSupportURL: ""
-        SoleaCoachProxyURL: ""
+        SoleaCoachProxyURL: "$(SOLEA_COACH_PROXY_URL)"
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.davidecapurro.Solea
         TARGETED_DEVICE_FAMILY: "1"
+        SOLEA_COACH_PROXY_URL: ""
       configs:
         Debug:
           APS_ENVIRONMENT: development

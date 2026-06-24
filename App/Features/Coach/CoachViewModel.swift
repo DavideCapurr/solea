@@ -17,7 +17,8 @@ final class CoachViewModel {
     private let router = CoachRouter()
     private var streamTask: Task<Void, Never>?
 
-    var isAvailable: Bool { router.hasAnyEngine }
+    var availability: CoachAvailability { router.availability }
+    var isAvailable: Bool { availability.hasAnyEngine }
 
     var canSend: Bool {
         !draft.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !isResponding

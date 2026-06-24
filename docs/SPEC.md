@@ -110,16 +110,16 @@ Un coach conversazionale che conosce il contesto dell'utente (fototipo, UV attua
 | Livello | Motore | Casi d'uso | Costo |
 |---|---|---|---|
 | **On-device** | Apple Foundation Models (iOS 26+) | Briefing mattutino, tip contestuali rapidi, frasi delle notifiche, Q&A semplici, modalità offline | Zero, privato, offline |
-| **Apple cloud privato** | Apple Foundation Models su Private Cloud Compute, quando disponibile | Richieste più complesse su dispositivi Apple Intelligence, senza API key developer | Zero token cost per developer, limiti giornalieri utente |
 | **Cloud esterno** | Proxy serverless con adapter LLM (Gemini 2.5 Flash-Lite come default scelto; Mistral `ministral-3b-latest` / Claude Sonnet fallback configurabili) | Chat multi-turno, domande complesse, generazione del piano vacanze personalizzato, spiegazioni dei dati | API a consumo |
 
-**Router:** decide il livello in base a complessità della richiesta, disponibilità del modello on-device/PCC (device/iOS version) e connettività. Fallback: on-device → cloud se la richiesta è troppo complessa; cloud → on-device se offline.
+**Router:** decide il livello in base a complessità della richiesta, disponibilità del modello on-device (device/iOS version) e connettività. Fallback: on-device → cloud se la richiesta è troppo complessa; cloud → on-device se offline.
 
-**Proxy minimale** (Cloudflare Worker / Vercel function, ~50 righe):
-- Custodisce la API key (mai nel binario iOS).
-- Inietta il system prompt del coach (statico, con `cache_control` per il prompt caching → ~90% di risparmio sui token ripetuti) + il contesto utente inviato dall'app.
+**Proxy cloud** (Cloudflare Worker):
+- Custodisce le API key dei provider (mai nel binario iOS).
+- Inietta il system prompt del coach + il contesto minimo inviato dall'app.
 - Streaming SSE verso l'app.
-- Adapter provider separato dalla forma SSE consumata dall'app, così il client iOS non cambia quando si passa da Claude a OpenAI/Gemini.
+- Adapter provider separato dalla forma SSE consumata dall'app, così il client iOS non cambia quando si passa tra Gemini, Mistral e Anthropic.
+- Health check `GET /health` per verificare configurazione, provider e limiti senza consumare quota.
 - Rate limit per utente (es. 10 messaggi cloud/giorno, illimitati on-device) per tenere i costi sotto controllo in un'app gratuita.
 
 **Privacy:** al proxy arriva solo il contesto minimo necessario (fototipo, UV, riepilogo sessioni) — mai le foto del tan né dati identificativi. Se il proxy non è configurato, il Coach Plus mostra lo stato non disponibile.
@@ -190,7 +190,7 @@ Un coach conversazionale che conosce il contesto dell'utente (fototipo, UV attua
 | **M3 — Sistema** | Live Activity, widget, notifiche, HealthKit Time in Daylight + vitamina D in-app |
 | **M4 — Chicche** | Foto-diario, tan planner, lettino, idratazione |
 | **M5 — Social & Watch** | Game Center, share card, app Watch, badge/streak |
-| **M6 — Coach AI** | Coach on-device (Foundation Models), poi proxy Claude + router ibrido e chat completa |
+| **M6 — Coach AI** | Coach on-device (Foundation Models), proxy cloud Gemini/provider-agnostic + router ibrido e chat completa |
 
 ---
 

@@ -19,6 +19,10 @@ enum CoachConfiguration {
         return url
     }
 
+    static var isCloudConfigured: Bool {
+        proxyURL != nil
+    }
+
     /// Identificativo anonimo e stabile (non personale), per il rate limit.
     static var anonymousUserID: String {
         let key = "coach.anonymousUserID"
@@ -60,7 +64,15 @@ final class CoachRouter {
 
     /// True se almeno un motore è utilizzabile.
     var hasAnyEngine: Bool {
-        OnDeviceCoach.isAvailable || cloud != nil
+        availability.hasAnyEngine
+    }
+
+    var availability: CoachAvailability {
+        CoachAvailability(
+            isOnDeviceAvailable: OnDeviceCoach.isAvailable,
+            isCloudConfigured: CoachConfiguration.isCloudConfigured,
+            isOnline: isOnline
+        )
     }
 
     func reply(

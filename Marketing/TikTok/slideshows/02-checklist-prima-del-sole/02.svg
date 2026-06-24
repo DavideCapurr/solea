@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff7df"/>
+      <stop offset="52%" stop-color="#ffd36e"/>
+      <stop offset="100%" stop-color="#ef7a3a"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="20" flood-color="#000000" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <path d="M0 1440 C220 1340 430 1450 650 1360 C835 1285 945 1265 1080 1320 L1080 1920 L0 1920 Z" fill="#fffaf0" opacity="0.82"/>
+  <path d="M-40 250 C230 140 520 210 780 120 C910 75 1010 80 1130 130" fill="none" stroke="#ffffff" stroke-width="18" opacity="0.34"/>
+  <circle cx="878" cy="282" r="118" fill="#ffffff" opacity="0.24"/>
+
+  <g transform="translate(80 92)">
+    <rect width="920" height="96" rx="48" fill="#171717" opacity="0.94"/>
+    <text x="48" y="62" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="34" font-weight="950" letter-spacing="4" fill="#ffffff">SOLEA</text>
+    <text x="250" y="62" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="27" font-weight="850" letter-spacing="2" fill="#ffffff" opacity="0.78">COSA CONTROLLO PRIMA DEL SOLE</text>
+    <text x="858" y="62" text-anchor="end" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="30" font-weight="900" fill="#ffffff" opacity="0.86">02/08</text>
+  </g>
+
+  <g transform="translate(80 308)">
+    <rect width="920" height="920" rx="56" fill="#ffffff" opacity="0.70" filter="url(#shadow)"/>
+    <text x="60" y="100" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="34" font-weight="950" letter-spacing="3" fill="#151515" opacity="0.54">UV</text>
+    <text x="60" y="270" text-anchor="start" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="102" font-weight="950" fill="#151515">1. UV reale,</text><text x="60" y="372" text-anchor="start" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="102" font-weight="950" fill="#151515">non solo</text><text x="60" y="474" text-anchor="start" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="102" font-weight="950" fill="#151515">temperatura.</text>
+  </g>
+
+  
+    <g transform="translate(0 1390)">
+      
+        <g transform="translate(120 0)">
+          <rect width="178" height="154" rx="32" fill="#ffffff" opacity="0.58"/>
+          <text x="24" y="50" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="26" font-weight="900" fill="#151515" opacity="0.55">UV</text>
+          <text x="24" y="110" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="46" font-weight="950" fill="#151515">8</text>
+        </g>
+        <g transform="translate(330 0)">
+          <rect width="178" height="154" rx="32" fill="#ffffff" opacity="0.58"/>
+          <text x="24" y="50" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="26" font-weight="900" fill="#151515" opacity="0.55">FOTOTIPO</text>
+          <text x="24" y="110" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="46" font-weight="950" fill="#151515">tuo</text>
+        </g>
+        <g transform="translate(540 0)">
+          <rect width="178" height="154" rx="32" fill="#ffffff" opacity="0.58"/>
+          <text x="24" y="50" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="26" font-weight="900" fill="#151515" opacity="0.55">SPF</text>
+          <text x="24" y="110" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="46" font-weight="950" fill="#151515">vero</text>
+        </g>
+        <g transform="translate(750 0)">
+          <rect width="178" height="154" rx="32" fill="#ffffff" opacity="0.58"/>
+          <text x="24" y="50" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="26" font-weight="900" fill="#151515" opacity="0.55">TIMER</text>
+          <text x="24" y="110" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="46" font-weight="950" fill="#151515">on</text>
+        </g>
+    </g>
+
+  <g transform="translate(80 1698)">
+    <rect width="920" height="116" rx="36" fill="#171717" opacity="0.94"/>
+    <text x="44" y="48" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="26" font-weight="900" fill="#ffffff" opacity="0.76">TAN-FIRST, MA SMART</text>
+    <text x="44" y="86" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="24" font-weight="750" fill="#ffffff" opacity="0.72">Stima informativa, non consiglio medico.</text>
+  </g>
+</svg>

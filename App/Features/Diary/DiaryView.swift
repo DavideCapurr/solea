@@ -163,7 +163,7 @@ struct DiaryView: View {
                 tint: SoleaTheme.mint
             )
             statTile(
-                title: "Soglia prudente",
+                title: "Soglia UV",
                 value: safetySummary,
                 detail: "sessioni sotto limite",
                 icon: "shield.lefthalf.filled",
@@ -573,7 +573,7 @@ struct DiaryView: View {
                     }
                 }
                 if session.plannedMinutes > 0 {
-                    LabeledContent("Durata obiettivo") {
+                    LabeledContent("Timer obiettivo") {
                         Text("\(session.plannedMinutes) min")
                     }
                 }
@@ -673,7 +673,7 @@ struct DiaryView: View {
         switch goal {
         case .vitaminD: return "Vitamina D"
         case .gradualTan: return "Abbronzatura graduale"
-        case .lowRisk: return "Prudenza"
+        case .lowRisk: return "Sessione leggera"
         }
     }
 

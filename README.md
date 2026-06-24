@@ -80,8 +80,20 @@ npm run deploy
 Verifica il deploy con `GET https://<tuo-worker>/health`: deve rispondere con
 `"ready": true`, provider `gemini` e modello `gemini-2.5-flash-lite`.
 
-Poi imposta l'URL del deploy in `project.yml` / `App/Info.plist` (`SoleaCoachProxyURL`).
-Finché `SoleaCoachProxyURL` è vuoto, l'app usa solo il coach on-device. Le API key dei provider non sono **mai** nell'app: vivono solo come secret di Cloudflare.
+Poi compila l'app passando l'URL del Worker al build setting
+`SOLEA_COACH_PROXY_URL`, che viene inserito in `SoleaCoachProxyURL`:
+
+```sh
+xcodebuild \
+  -project Solea.xcodeproj \
+  -scheme Solea \
+  -destination 'generic/platform=iOS Simulator' \
+  SOLEA_COACH_PROXY_URL='https://<tuo-worker>.workers.dev' \
+  build
+```
+
+Finché `SOLEA_COACH_PROXY_URL` resta vuoto, l'app usa solo il coach on-device.
+Le API key dei provider non sono **mai** nell'app: vivono solo come secret di Cloudflare.
 
 Verifica locale del proxy (senza deploy):
 
