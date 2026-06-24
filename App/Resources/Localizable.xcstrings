@@ -1,1393 +1,1554 @@
 {
-  "sourceLanguage": "it",
-  "version": "1.0",
-  "strings": {
-    "Oggi": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Today"
+  "sourceLanguage" : "it",
+  "strings" : {
+    "%@" : {
+
+    },
+    "%@ h" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ h"
           }
         }
       }
+    },
+    "%@ J/m²" : {
+
+    },
+    "%@ min" : {
+
     },
-    "Diario": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diary"
+    "%lld h %lld min" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld h %2$lld min"
           }
         }
       }
     },
-    "Profilo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profile"
+    "%lld J/m²" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld J/m²"
           }
         }
       }
     },
-    "Il diario delle sessioni arriva con la prossima milestone.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The session diary arrives in the next milestone."
+    "%lld min" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
           }
         }
       }
     },
-    "Benvenuto in Solea": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Welcome to Solea"
+    "≈ %@ IU" : {
+
+    },
+    "≈ %lld IU" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "≈ %lld IU"
           }
         }
       }
     },
-    "Abbronzati al meglio, senza scottarti: tempi di esposizione su misura per la tua pelle e l'UV reale della tua zona.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Get your best tan without burning: exposure times tailored to your skin and the real UV in your area."
+    "A volte mi scotto, poi mi abbronzo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I sometimes burn, then I tan"
           }
         }
       }
     },
-    "Solea fornisce stime informative, non consigli medici. In caso di dubbi sulla tua pelle consulta un dermatologo.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Solea provides informational estimates, not medical advice. If in doubt about your skin, consult a dermatologist."
+    "Abbronzati al meglio, senza scottarti: tempi di esposizione su misura per la tua pelle e l'UV reale della tua zona." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get your best tan without burning: exposure times tailored to your skin and the real UV in your area."
           }
         }
       }
     },
-    "Scopri il tuo fototipo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Discover your skin type"
+    "Aggiornamento UV non riuscito (uso l'ultimo valore noto): %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV update failed (using last known value): %@"
           }
         }
       }
     },
-    "Domanda %lld di %lld": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Question %1$lld of %2$lld"
+    "Alcune" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some"
           }
         }
       }
     },
-    "Indietro": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back"
+    "Annulla" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
           }
         }
       }
     },
-    "Il tuo fototipo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your skin type"
+    "Avvia" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
           }
         }
       }
     },
-    "Inizia": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Get started"
+    "Avvia la tua prima sessione dalla schermata Oggi: la troverai qui." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start your first session from the Today screen: it will show up here."
           }
         }
       }
     },
-    "Salvataggio non riuscito": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Could not save"
+    "Azzurri o grigi" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blue or gray"
           }
         }
       }
     },
-    "OK": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+    "Bella sessione! Sei rimasto sotto la soglia di sicurezza." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Great session! You stayed under the safety threshold."
           }
         }
       }
     },
-    "Caricamento dati UV…": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loading UV data…"
+    "Benvenuto in Solea" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to Solea"
           }
         }
       }
     },
-    "Dati UV non disponibili": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "UV data unavailable"
+    "Biondi" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blonde"
           }
         }
       }
     },
-    "Riprova": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Retry"
+    "Braccia" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arms"
           }
         }
       }
     },
-    "UV attuale": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Current UV"
+    "Calcolato per il tuo fototipo %@ all'UV attuale; si aggiorna se l'UV cambia." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculated for your skin type %@ at the current UV; it updates if UV changes."
           }
         }
       }
     },
-    "UV": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "UV"
+    "Caricamento dati UV…" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading UV data…"
           }
         }
       }
     },
-    "Rischio scottatura basso": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Low burn risk"
+    "Castano chiaro" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light brown"
           }
         }
       }
     },
-    "Rischio scottatura moderato": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Moderate burn risk"
+    "Castano scuro" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark brown"
           }
         }
       }
     },
-    "Rischio scottatura alto": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "High burn risk"
+    "Che grado di abbronzatura raggiungi?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How deep a tan do you get?"
           }
         }
       }
     },
-    "Fototipo %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skin type %@"
+    "Chiara" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fair"
           }
         }
       }
     },
-    "Tempo sicuro al sole": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Safe time in the sun"
+    "Chiara con sfumatura beige" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fair with a beige tint"
           }
         }
       }
     },
-    "Senza protezione": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No sunscreen"
+    "Com'è la tua pelle dove non prende mai il sole?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What does your skin look like where it never gets sun?"
           }
         }
       }
     },
-    "Con SPF 30": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "With SPF 30"
+    "Come reagisce la tua pelle al sole prolungato senza protezione?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How does your skin react to prolonged sun without sunscreen?"
           }
         }
       }
     },
-    "Illimitato": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unlimited"
+    "Con SPF 30" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "With SPF 30"
           }
         }
       }
     },
-    "%@ h": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ h"
+    "Dati UV non disponibili" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV data unavailable"
           }
         }
       }
     },
-    "%lld min": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld min"
+    "della dose massima" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "of maximum dose"
           }
         }
       }
     },
-    "Golden hours": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Golden hours"
+    "della soglia prudente" : {
+
+    },
+    "Di che colore sono i tuoi occhi?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What color are your eyes?"
           }
         }
       }
     },
-    "Nessuna finestra ideale nelle prossime 24 ore per il tuo fototipo.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No ideal window in the next 24 hours for your skin type."
+    "Diario" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diary"
           }
         }
       }
     },
-    "Le fasce in cui ti abbronzi bene con il minor rischio per il tuo fototipo.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The time slots where you tan well with the least risk for your skin type."
+    "Domanda %lld di %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Question %1$lld of %2$lld"
           }
         }
       }
     },
-    "Previsione UV": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "UV forecast"
+    "Dose massima (MED)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum dose (MED)"
           }
         }
       }
     },
-    "Inizia sessione": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Start session"
+    "Dose UV" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV dose"
           }
         }
       }
     },
-    "Il timer di sessione arriva con la prossima milestone.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The session timer arrives in the next milestone."
+    "Dose UV assorbita" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV dose absorbed"
           }
         }
       }
     },
-    "La tua pelle": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your skin"
+    "Durata" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duration"
           }
         }
       }
     },
-    "Fototipo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skin type"
+    "È il momento di cambiare lato per un'abbronzatura uniforme." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time to switch sides for an even tan."
           }
         }
       }
     },
-    "Dose massima (MED)": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maximum dose (MED)"
+    "Eliminazione non riuscita" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not delete"
           }
         }
       }
     },
-    "%lld J/m²": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld J/m²"
+    "Errore di localizzazione: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location error: %@"
           }
         }
       }
     },
-    "Rifai il quiz": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Retake the quiz"
+    "Errore nella programmazione dei promemoria: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error scheduling reminders: %@"
           }
         }
       }
     },
-    "Il fototipo determina i tempi di esposizione sicura: rifai il quiz se pensi che non ti rappresenti.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your skin type determines safe exposure times: retake the quiz if it doesn't feel right."
+    "Esaurito — mettiti all'ombra" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Used up — get in the shade"
           }
         }
       }
     },
-    "Vuoi rifare il quiz del fototipo?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Retake the skin type quiz?"
+    "Fine" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
           }
         }
       }
     },
-    "Annulla": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
+    "Fototipo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skin type"
           }
         }
       }
     },
-    "Operazione non riuscita": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Operation failed"
+    "Fototipo %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skin type %@"
           }
         }
       }
     },
-    "Permesso di posizione negato. Abilitalo in Impostazioni > Privacy > Localizzazione per vedere l'UV della tua zona.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Location permission denied. Enable it in Settings > Privacy > Location Services to see UV for your area."
+    "Gambe" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legs"
           }
         }
       }
     },
-    "Posizione non disponibile. Riprova tra qualche istante.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Location unavailable. Try again in a moment."
+    "Girati ogni" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flip every"
           }
         }
       }
     },
-    "Errore di localizzazione: %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Location error: %@"
+    "Girati!" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flip over!"
           }
         }
       }
     },
-    "Impossibile recuperare i dati UV: %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Could not fetch UV data: %@"
+    "Golden hours" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Golden hours"
           }
         }
       }
     },
-    "Di che colore sono i tuoi occhi?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "What color are your eyes?"
+    "Hai raggiunto la dose massima per la tua pelle: mettiti all'ombra." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've reached your skin's maximum dose: get in the shade."
           }
         }
       }
     },
-    "Azzurri o grigi": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Blue or gray"
+    "Hai sfiorato la dose massima: domani concedi una pausa alla tua pelle e idratati bene." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You came close to the maximum dose: give your skin a break tomorrow and hydrate well."
           }
         }
       }
     },
-    "Verdi": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Green"
+    "Il diario delle sessioni arriva con la prossima milestone." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The session diary arrives in the next milestone."
           }
         }
       }
+    },
+    "Il fototipo determina i limiti prudenti di esposizione: rifai il quiz se pensi che non ti rappresenti." : {
+
     },
-    "Nocciola": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hazel"
+    "Il fototipo determina i tempi di esposizione sicura: rifai il quiz se pensi che non ti rappresenti." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your skin type determines safe exposure times: retake the quiz if it doesn't feel right."
           }
         }
       }
     },
-    "Marrone scuro": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dark brown"
+    "Il timer di sessione arriva con la prossima milestone." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The session timer arrives in the next milestone."
           }
         }
       }
     },
-    "Quasi neri": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Almost black"
+    "Il tuo fototipo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your skin type"
           }
         }
       }
     },
-    "Qual è il colore naturale dei tuoi capelli?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "What is your natural hair color?"
+    "Illimitato" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlimited"
           }
         }
       }
     },
-    "Rossi": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Red"
+    "Impossibile recuperare i dati UV: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not fetch UV data: %@"
           }
         }
       }
     },
-    "Biondi": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Blonde"
+    "Indietro" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
           }
         }
       }
     },
-    "Castano chiaro": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Light brown"
+    "Inizia" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get started"
           }
         }
       }
     },
-    "Castano scuro": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dark brown"
+    "Inizia sessione" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start session"
           }
         }
       }
     },
-    "Neri": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Black"
+    "Intensa" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deep"
           }
         }
       }
     },
-    "Com'è la tua pelle dove non prende mai il sole?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "What does your skin look like where it never gets sun?"
+    "La mia pelle è naturalmente scura" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My skin is naturally dark"
           }
         }
       }
     },
-    "Molto chiara, lattea": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Very fair, milky"
+    "La tua pelle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your skin"
           }
         }
       }
     },
-    "Chiara": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fair"
+    "Le fasce in cui ti abbronzi bene con il minor rischio per il tuo fototipo." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The time slots where you tan well with the least risk for your skin type."
           }
         }
       }
     },
-    "Chiara con sfumatura beige": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fair with a beige tint"
+    "Le fasce più prudenti tra quelle utili per il tuo fototipo." : {
+
+    },
+    "Leggera" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
           }
         }
       }
     },
-    "Olivastra": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Olive"
+    "Limite prudente al sole" : {
+
+    },
+    "Marrone scuro" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark brown"
           }
         }
       }
     },
-    "Scura": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dark"
+    "Media" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium"
           }
         }
       }
     },
-    "Quante lentiggini hai sulle zone non esposte?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "How many freckles do you have on unexposed areas?"
+    "Mi scotto facilmente, mi abbronzo poco" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I burn easily, I tan a little"
           }
         }
       }
     },
-    "Moltissime": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Very many"
+    "Mi scotto sempre, non mi abbronzo mai" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I always burn, I never tan"
           }
         }
       }
     },
-    "Parecchie": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Several"
+    "Moltissime" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very many"
           }
         }
       }
     },
-    "Alcune": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Some"
+    "Molto chiara, lattea" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very fair, milky"
           }
         }
       }
     },
-    "Rare": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Few"
+    "Neri" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Black"
           }
         }
       }
     },
-    "Nessuna": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "None"
+    "Nessuna" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
           }
         }
       }
     },
-    "Come reagisce la tua pelle al sole prolungato senza protezione?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "How does your skin react to prolonged sun without sunscreen?"
+    "Nessuna finestra ideale nelle prossime 24 ore per il tuo fototipo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No ideal window in the next 24 hours for your skin type."
           }
         }
       }
     },
-    "Mi scotto sempre, non mi abbronzo mai": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I always burn, I never tan"
+    "Nessuna sessione" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No sessions"
           }
         }
       }
     },
-    "Mi scotto facilmente, mi abbronzo poco": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I burn easily, I tan a little"
+    "Nocciola" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazel"
           }
         }
       }
     },
-    "A volte mi scotto, poi mi abbronzo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I sometimes burn, then I tan"
+    "Non mi scotto quasi mai" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I almost never burn"
           }
         }
       }
     },
-    "Raramente mi scotto, mi abbronzo bene": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I rarely burn, I tan well"
+    "Notifiche disattivate: non riceverai i promemoria. Abilitale in Impostazioni > Notifiche." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications are off: you won't get reminders. Enable them in Settings > Notifications."
           }
         }
       }
     },
-    "Non mi scotto quasi mai": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "I almost never burn"
+    "Nuova sessione" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New session"
           }
         }
       }
     },
-    "Che grado di abbronzatura raggiungi?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "How deep a tan do you get?"
+    "Oggi" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today"
           }
         }
       }
     },
-    "Leggera": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Light"
+    "OK" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }
     },
-    "Media": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Medium"
+    "Olivastra" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Olive"
           }
         }
       }
     },
-    "Intensa": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deep"
+    "Operazione non riuscita" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operation failed"
           }
         }
       }
     },
-    "La mia pelle è naturalmente scura": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "My skin is naturally dark"
+    "Parecchie" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Several"
           }
         }
       }
     },
-    "Pelle molto chiara: si scotta sempre, non si abbronza.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Very fair skin: always burns, never tans."
+    "Pelle chiara: si scotta facilmente, si abbronza poco." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fair skin: burns easily, tans minimally."
           }
         }
       }
     },
-    "Pelle chiara: si scotta facilmente, si abbronza poco.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fair skin: burns easily, tans minimally."
+    "Pelle intermedia: a volte si scotta, si abbronza gradualmente." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium skin: sometimes burns, tans gradually."
           }
         }
       }
     },
-    "Pelle intermedia: a volte si scotta, si abbronza gradualmente.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Medium skin: sometimes burns, tans gradually."
+    "Pelle molto chiara: si scotta sempre, non si abbronza." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very fair skin: always burns, never tans."
           }
         }
       }
     },
-    "Pelle olivastra: si scotta raramente, si abbronza bene.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Olive skin: rarely burns, tans well."
+    "Pelle molto scura: non si scotta quasi mai." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very dark skin: almost never burns."
           }
         }
       }
     },
-    "Pelle scura: si scotta molto raramente, si abbronza intensamente.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dark skin: very rarely burns, tans deeply."
+    "Pelle olivastra: si scotta raramente, si abbronza bene." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Olive skin: rarely burns, tans well."
           }
         }
       }
     },
-    "Pelle molto scura: non si scotta quasi mai.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Very dark skin: almost never burns."
+    "Pelle scura: si scotta molto raramente, si abbronza intensamente." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark skin: very rarely burns, tans deeply."
           }
         }
       }
     },
-    "Errore nella programmazione dei promemoria: %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error scheduling reminders: %@"
+    "Permesso di posizione negato. Abilitalo in Impostazioni > Privacy > Localizzazione per vedere l'UV della tua zona." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location permission denied. Enable it in Settings > Privacy > Location Services to see UV for your area."
           }
         }
       }
     },
-    "Girati!": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Flip over!"
+    "Petto" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chest"
           }
         }
       }
     },
-    "È il momento di cambiare lato per un'abbronzatura uniforme.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Time to switch sides for an even tan."
+    "Posizione non disponibile. Riprova tra qualche istante." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location unavailable. Try again in a moment."
           }
         }
       }
     },
-    "Riapplica la crema": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reapply sunscreen"
+    "Previsione UV" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV forecast"
           }
         }
       }
     },
-    "Sono passate quasi due ore: rimetti la protezione solare.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "It's been almost two hours: put sunscreen back on."
+    "Profilo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
           }
         }
       }
     },
-    "Tempo sicuro esaurito": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Safe time is up"
+    "Promemoria" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders"
           }
         }
       }
     },
-    "Hai raggiunto la dose massima per la tua pelle: mettiti all'ombra.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You've reached your skin's maximum dose: get in the shade."
+    "Protezione" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Protection"
           }
         }
       }
     },
-    "Notifiche disattivate: non riceverai i promemoria. Abilitale in Impostazioni > Notifiche.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notifications are off: you won't get reminders. Enable them in Settings > Notifications."
+    "Qual è il colore naturale dei tuoi capelli?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is your natural hair color?"
           }
         }
       }
     },
-    "Protezione": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Protection"
+    "Quante lentiggini hai sulle zone non esposte?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How many freckles do you have on unexposed areas?"
           }
         }
       }
     },
-    "SPF applicato": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Applied SPF"
+    "Quasi neri" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almost black"
           }
         }
       }
     },
-    "SPF %lld": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SPF %lld"
+    "Questa settimana" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This week"
           }
         }
       }
     },
-    "Zone esposte": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Exposed areas"
+    "Quota della dose massima" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share of maximum dose"
           }
         }
       }
     },
-    "Viso": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Face"
+    "Raramente mi scotto, mi abbronzo bene" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I rarely burn, I tan well"
           }
         }
       }
     },
-    "Petto": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chest"
+    "Rare" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Few"
           }
         }
       }
     },
-    "Schiena": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back"
+    "Riapplica la crema" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reapply sunscreen"
           }
         }
       }
+    },
+    "Riapplica SPF o vai all'ombra" : {
+
     },
-    "Braccia": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arms"
+    "Riepilogo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summary"
           }
         }
       }
     },
-    "Gambe": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Legs"
+    "Rifai il quiz" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retake the quiz"
           }
         }
       }
     },
-    "Promemoria": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reminders"
+    "Riprova" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
           }
         }
       }
     },
-    "Girati ogni": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Flip every"
+    "Rischio scottatura alto" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High burn risk"
           }
         }
       }
     },
-    "Tempo sicuro stimato": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Estimated safe time"
+    "Rischio scottatura basso" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Low burn risk"
           }
         }
       }
     },
-    "Calcolato per il tuo fototipo %@ all'UV attuale; si aggiorna se l'UV cambia.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Calculated for your skin type %@ at the current UV; it updates if UV changes."
+    "Rischio scottatura moderato" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moderate burn risk"
           }
         }
       }
     },
-    "Nuova sessione": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New session"
+    "Rossi" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red"
           }
         }
       }
     },
-    "Avvia": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Start"
+    "Salvataggio non riuscito" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not save"
           }
         }
       }
     },
-    "Tempo trascorso": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Elapsed time"
+    "Schiena" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
           }
         }
       }
     },
-    "Tempo sicuro rimanente": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Safe time remaining"
+    "Scopri il tuo fototipo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discover your skin type"
           }
         }
       }
     },
-    "SPF": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SPF"
+    "Scura" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
           }
         }
       }
     },
-    "Termina sessione": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "End session"
+    "Senza protezione" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No sunscreen"
           }
         }
       }
     },
-    "Sessione in corso": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Session in progress"
+    "Sessione completata" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session complete"
           }
         }
       }
     },
-    "Dose UV": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "UV dose"
+    "Sessione in corso" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session in progress"
           }
         }
       }
     },
-    "della dose massima": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "of maximum dose"
+    "Sessioni" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessions"
           }
         }
       }
     },
-    "Esaurito — mettiti all'ombra": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Used up — get in the shade"
+    "Soglia raggiunta — mettiti all'ombra" : {
+
+    },
+    "Solea fornisce stime informative, non consigli medici. In caso di dubbi sulla tua pelle consulta un dermatologo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea provides informational estimates, not medical advice. If in doubt about your skin, consult a dermatologist."
           }
         }
       }
     },
-    "Aggiornamento UV non riuscito (uso l'ultimo valore noto): %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "UV update failed (using last known value): %@"
+    "Sono passate quasi due ore: rimetti la protezione solare." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's been almost two hours: put sunscreen back on."
           }
         }
       }
     },
-    "Riepilogo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Summary"
+    "SPF" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SPF"
           }
         }
       }
+    },
+    "SPF %@" : {
+
     },
-    "Durata": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Duration"
+    "SPF %lld" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SPF %lld"
           }
         }
       }
     },
-    "UV medio": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Average UV"
+    "SPF applicato" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Applied SPF"
           }
         }
       }
     },
-    "Dose UV assorbita": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "UV dose absorbed"
+    "Stimato per il tuo fototipo %@ all'UV attuale; si aggiorna se l'UV cambia." : {
+
+    },
+    "Tempo al sole" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time in the sun"
           }
         }
       }
     },
-    "Quota della dose massima": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Share of maximum dose"
+    "Tempo sicuro al sole" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safe time in the sun"
           }
         }
       }
     },
-    "Vitamina D stimata": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Estimated vitamin D"
+    "Tempo sicuro esaurito" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safe time is up"
           }
         }
       }
     },
-    "≈ %lld IU": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "≈ %lld IU"
+    "Tempo sicuro rimanente" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safe time remaining"
           }
         }
       }
     },
-    "Bella sessione! Sei rimasto sotto la soglia di sicurezza.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Great session! You stayed under the safety threshold."
+    "Tempo sicuro stimato" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated safe time"
           }
         }
       }
     },
-    "Hai sfiorato la dose massima: domani concedi una pausa alla tua pelle e idratati bene.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You came close to the maximum dose: give your skin a break tomorrow and hydrate well."
+    "Tempo trascorso" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elapsed time"
           }
         }
       }
     },
-    "Sessione completata": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Session complete"
+    "Termina sessione" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End session"
           }
         }
       }
     },
-    "Fine": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Done"
+    "UV" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV"
           }
         }
       }
     },
-    "%lld h %lld min": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$lld h %2$lld min"
+    "UV attuale" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current UV"
           }
         }
       }
     },
-    "Nessuna sessione": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No sessions"
+    "UV medio" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average UV"
           }
         }
       }
+    },
+    "UV trascurabile" : {
+
     },
-    "Avvia la tua prima sessione dalla schermata Oggi: la troverai qui.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Start your first session from the Today screen: it will show up here."
+    "Verdi" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Green"
           }
         }
       }
     },
-    "Eliminazione non riuscita": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Could not delete"
+    "Viso" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Face"
           }
         }
       }
     },
-    "Questa settimana": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This week"
+    "Vitamina D stimata" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimated vitamin D"
           }
         }
       }
     },
-    "Sessioni": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sessions"
+    "Vuoi rifare il quiz del fototipo?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retake the skin type quiz?"
           }
         }
       }
     },
-    "Tempo al sole": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Time in the sun"
+    "Zone esposte" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exposed areas"
           }
         }
       }
@@ -2362,5 +2523,6 @@
         }
       }
     }
-  }
+  },
+  "version" : "1.0"
 }
