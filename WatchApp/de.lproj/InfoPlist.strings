@@ -1,0 +1,3 @@
+"CFBundleDisplayName" = "Solea";
+"CFBundleName" = "Solea";
+"NSLocationWhenInUseUsageDescription" = "Solea verwendet deinen Standort, um dir den aktuellen UV-Index am Handgelenk anzuzeigen.";
