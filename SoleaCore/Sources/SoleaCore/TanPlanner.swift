@@ -17,7 +17,7 @@ public enum TanPlannerError: Error, Equatable {
 
 /// Piano di esposizione graduale per arrivare preparati a una vacanza.
 ///
-/// Euristica: si parte dal tempo sicuro a pelle nuda all'UV atteso e si cresce
+/// Euristica: si parte dal limite prudente a pelle nuda all'UV atteso e si cresce
 /// linearmente fino al doppio (la tolleranza aumenta con la melanina prodotta),
 /// con un tetto di 120 minuti/giorno. L'SPF consigliato parte alto e scende
 /// gradualmente, senza mai andare sotto il minimo del fototipo.

@@ -1,0 +1,3 @@
+- `ITSAppUsesNonExemptEncryption`: `false` in `App/Info.plist`.
+- Recommended answer: the app does not use proprietary or non-exempt encryption. It uses only standard platform APIs and protocols when the user accesses Apple services.
+- If the cloud coach proxy is enabled in the future, reassess this section before submission.

@@ -1,10 +1,10 @@
 import SwiftUI
 import SoleaCore
 
-/// Schermata principale al polso: UV a colpo d'occhio, tempo sicuro per il
+/// Schermata principale al polso: UV a colpo d'occhio, limite prudente per il
 /// fototipo scelto e un timer di sessione rapido con haptic.
 struct WatchRootView: View {
-    enum State {
+    enum ViewState {
         case loading
         case loaded(uvIndex: Double)
         case failed(String)
@@ -14,7 +14,8 @@ struct WatchRootView: View {
     // scrive su questa stessa chiave). Il picker resta come override locale e
     // come fallback finché non arriva la prima sincronizzazione.
     @AppStorage("watch.phototype") private var phototypeRaw = Fitzpatrick.typeIII.rawValue
-    @State private var state: State = .loading
+    @AppStorage("watch.soleaPlusActive") private var hasSoleaPlus = false
+    @State private var state: ViewState = .loading
     @State private var profileSync = WatchProfileSync()
 
     private let service = WatchUVService()
@@ -83,7 +84,11 @@ struct WatchRootView: View {
         .frame(height: 60)
 
         NavigationLink {
-            WatchSessionView(phototype: phototype, uvIndex: uvIndex)
+            WatchSessionView(
+                phototype: phototype,
+                uvIndex: uvIndex,
+                hasSoleaPlus: hasSoleaPlus
+            )
         } label: {
             Label("Sessione", systemImage: "timer")
         }
@@ -91,6 +96,12 @@ struct WatchRootView: View {
 
     private func load() async {
         state = .loading
+        #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("-soleaScreenshotDemo") {
+            state = .loaded(uvIndex: 6.4)
+            return
+        }
+        #endif
         do {
             let uv = try await service.currentUV()
             state = .loaded(uvIndex: uv.uvIndex)

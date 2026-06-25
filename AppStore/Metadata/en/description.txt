@@ -1,0 +1,7 @@
+Solea helps you approach tanning more mindfully, with cautious estimates based on your skin type and the UV level.
+
+Take a guided quiz to find your skin type, check the live UV index in your area, and start sessions with suggested durations, SPF, and reminders. During each session, Solea tracks your actual exposure time, breaks, front/back balance, and estimated UV dose.
+
+Review your session history, follow your progress, estimate vitamin D, use widgets and Live Activities, sync your skin type with Apple Watch, and optionally save Time in Daylight to Apple Health.
+
+Solea provides informational estimates, not medical advice. If you have questions about your skin, photosensitizing medication, or a dermatological condition, consult a doctor or dermatologist.

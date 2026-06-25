@@ -3,10 +3,11 @@ import WatchKit
 import SoleaCore
 
 /// Timer di sessione al polso: integra la dose e dà un feedback haptic ai
-/// promemoria "girati" e quando il tempo sicuro si esaurisce.
+/// promemoria "girati" e quando il limite prudente si esaurisce.
 struct WatchSessionView: View {
     let phototype: Fitzpatrick
     let uvIndex: Double
+    let hasSoleaPlus: Bool
 
     @Environment(\.dismiss) private var dismiss
     @State private var elapsedSeconds = 0
@@ -35,7 +36,14 @@ struct WatchSessionView: View {
             Text(elapsedText)
                 .font(.title3.monospacedDigit())
 
-            Button(running ? "Pausa" : "Avvia") {
+            if !hasSoleaPlus {
+                Text("Timer base. Sblocca Solea Plus su iPhone per haptic promemoria e metriche avanzate.")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+
+            Button(running ? String(localized: "Pausa") : String(localized: "Avvia")) {
                 running ? pause() : start()
             }
             .tint(running ? .orange : .green)
@@ -80,7 +88,7 @@ struct WatchSessionView: View {
         elapsedSeconds += 1
         effectiveDose += uvIndex * SafeExposure.wattsPerUVIndexUnit / spf
 
-        if elapsedSeconds % flipIntervalSeconds == 0 {
+        if hasSoleaPlus && elapsedSeconds % flipIntervalSeconds == 0 {
             WKInterfaceDevice.current().play(.notification)
         }
         if !safetyAlerted && doseFraction >= 1 {

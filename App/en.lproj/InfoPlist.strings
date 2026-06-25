@@ -1,0 +1,6 @@
+"CFBundleDisplayName" = "Solea";
+"CFBundleName" = "Solea";
+"NSLocationWhenInUseUsageDescription" = "Solea uses your location to show the current UV index and calculate a prudent exposure estimate.";
+"NSHealthUpdateUsageDescription" = "Solea saves the time spent in daylight during your sessions to Health.";
+"NSHealthShareUsageDescription" = "Solea does not read Health data; this permission is used only to write sessions.";
+"NSPhotoLibraryUsageDescription" = "Solea uses the photos you choose for your local tanning photo diary. Images stay on your device and are never uploaded.";

@@ -1,0 +1,3 @@
+- `ITSAppUsesNonExemptEncryption`: `false` in `App/Info.plist`.
+- Risposta consigliata: l'app non usa crittografia proprietaria o non esente. Usa solo API e protocolli standard della piattaforma quando i servizi Apple sono usati dall'utente.
+- Se in futuro abiliti il proxy cloud del coach, rivaluta questa sezione prima della submission.

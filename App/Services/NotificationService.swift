@@ -17,17 +17,37 @@ final class NotificationService {
     private enum Identifier {
         static let flip = "session.flip"
         static let reapply = "session.reapply"
+        static let goal = "session.goal"
         static let stop = "session.stop"
         static let hydration = "session.hydration"
         static let afterSun = "session.afterSun"
-        static let all = [flip, reapply, stop, hydration, afterSun]
+        static let all = [flip, reapply, goal, stop, hydration, afterSun]
+        static let goldenHourApproachingPrefix = "goldenHour.approaching."
+        static let goldenHourStartPrefix = "goldenHour.start."
+        static let maximumGoldenHourWindows = 6
+        static let goldenHourAll = (0..<maximumGoldenHourWindows).flatMap { index in
+            [
+                "\(goldenHourApproachingPrefix)\(index)",
+                "\(goldenHourStartPrefix)\(index)"
+            ]
+        }
     }
 
     private let center = UNUserNotificationCenter.current()
+    private static let goldenHourLeadTime: TimeInterval = 30 * 60
 
     /// Richiede l'autorizzazione. Ritorna `false` se l'utente la nega (scelta
     /// legittima, la UI lo segnala); lancia solo per errori reali del sistema.
     func requestAuthorization() async throws -> Bool {
+        do {
+            return try await center.requestAuthorization(options: [.alert, .sound, .criticalAlert])
+        } catch {
+            throw NotificationError.underlying(error)
+        }
+    }
+
+    /// Autorizzazione standard per promemoria non critici, come le ore ideali.
+    func requestStandardAuthorization() async throws -> Bool {
         do {
             return try await center.requestAuthorization(options: [.alert, .sound])
         } catch {
@@ -48,6 +68,12 @@ final class NotificationService {
     }
 
     func scheduleReapplyReminder(everyMinutes minutes: Int) async throws {
+        try await scheduleReapplyReminder(afterSeconds: Double(minutes) * 60)
+    }
+
+    func scheduleReapplyReminder(afterSeconds seconds: Double) async throws {
+        center.removePendingNotificationRequests(withIdentifiers: [Identifier.reapply])
+        guard seconds.isFinite, seconds >= 1 else { return }
         let content = UNMutableNotificationContent()
         content.title = String(localized: "Riapplica la crema")
         content.body = String(localized: "Sono passate quasi due ore: rimetti la protezione solare.")
@@ -55,7 +81,22 @@ final class NotificationService {
         try await schedule(
             id: Identifier.reapply,
             content: content,
-            trigger: UNTimeIntervalNotificationTrigger(timeInterval: Double(minutes) * 60, repeats: true)
+            trigger: UNTimeIntervalNotificationTrigger(timeInterval: max(seconds, 1), repeats: false)
+        )
+    }
+
+    /// Avviso quando la durata-obiettivo della sessione è stata raggiunta.
+    func scheduleGoalReminder(afterSeconds seconds: Double) async throws {
+        center.removePendingNotificationRequests(withIdentifiers: [Identifier.goal])
+        guard seconds.isFinite, seconds >= 1 else { return }
+        let content = UNMutableNotificationContent()
+        content.title = String(localized: "Obiettivo raggiunto")
+        content.body = String(localized: "Hai completato il tempo previsto: valuta ombra, doposole o una pausa.")
+        content.sound = .default
+        try await schedule(
+            id: Identifier.goal,
+            content: content,
+            trigger: UNTimeIntervalNotificationTrigger(timeInterval: max(seconds, 1), repeats: false)
         )
     }
 
@@ -66,7 +107,7 @@ final class NotificationService {
         let content = UNMutableNotificationContent()
         content.title = String(localized: "Limite prudente esaurito")
         content.body = String(localized: "Mettiti all'ombra o aggiorna la protezione prima di continuare.")
-        content.sound = .defaultCritical
+        content.sound = UNNotificationSound.defaultCritical
         try await schedule(
             id: Identifier.stop,
             content: content,
@@ -102,9 +143,89 @@ final class NotificationService {
         )
     }
 
+    /// Programma gli inviti ad aprire Solea prima e all'inizio delle prossime
+    /// finestre ideali di abbronzatura.
+    @discardableResult
+    func scheduleGoldenHourReminders(
+        for windows: [DateInterval],
+        now: Date = .now,
+        calendar: Calendar = .current
+    ) async throws -> Int {
+        center.removePendingNotificationRequests(withIdentifiers: Identifier.goldenHourAll)
+
+        let upcomingWindows = windows
+            .sorted { $0.start < $1.start }
+            .filter { $0.end > now }
+            .prefix(Identifier.maximumGoldenHourWindows)
+
+        var scheduledCount = 0
+        for (index, window) in upcomingWindows.enumerated() {
+            let approachingDate = window.start.addingTimeInterval(-Self.goldenHourLeadTime)
+            if approachingDate > now {
+                try await scheduleGoldenHourReminder(
+                    id: "\(Identifier.goldenHourApproachingPrefix)\(index)",
+                    title: String(localized: "Tra poco sole ideale"),
+                    body: String(localized: "La finestra migliore si avvicina. Apri Solea per controllare UV, SPF e durata prima di esporti."),
+                    date: approachingDate,
+                    calendar: calendar
+                )
+                scheduledCount += 1
+            }
+
+            if window.start > now {
+                try await scheduleGoldenHourReminder(
+                    id: "\(Identifier.goldenHourStartPrefix)\(index)",
+                    title: String(localized: "È il momento giusto per abbronzarti"),
+                    body: String(localized: "Le condizioni sono tra le più favorevoli per il tuo fototipo. Entra in Solea e avvia una sessione prudente."),
+                    date: window.start,
+                    calendar: calendar
+                )
+                scheduledCount += 1
+            }
+        }
+
+        return scheduledCount
+    }
+
+    func cancelGoldenHourReminders() {
+        center.removePendingNotificationRequests(withIdentifiers: Identifier.goldenHourAll)
+        center.removeDeliveredNotifications(withIdentifiers: Identifier.goldenHourAll)
+    }
+
     func cancelSessionReminders() {
         center.removePendingNotificationRequests(withIdentifiers: Identifier.all)
         center.removeDeliveredNotifications(withIdentifiers: Identifier.all)
+    }
+
+    func cancelExposureReminders() {
+        center.removePendingNotificationRequests(withIdentifiers: [
+            Identifier.flip,
+            Identifier.reapply,
+            Identifier.goal,
+            Identifier.stop,
+            Identifier.hydration
+        ])
+    }
+
+    private func scheduleGoldenHourReminder(
+        id: String,
+        title: String,
+        body: String,
+        date: Date,
+        calendar: Calendar
+    ) async throws {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = .default
+        content.threadIdentifier = "goldenHour"
+        content.userInfo = ["destination": "today"]
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        try await schedule(
+            id: id,
+            content: content,
+            trigger: UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        )
     }
 
     private func schedule(

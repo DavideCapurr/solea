@@ -18,12 +18,10 @@ enum HealthKitError: LocalizedError {
     }
 }
 
-/// Scrive su Apple Health il tempo alla luce del giorno e la vitamina D stimata
-/// di una sessione conclusa.
+/// Scrive su Apple Health il tempo alla luce del giorno di una sessione conclusa.
 final class HealthKitService {
     private let store = HKHealthStore()
     private let daylightType = HKQuantityType(.timeInDaylight)
-    private let vitaminDType = HKQuantityType(.dietaryVitaminD)
 
     func saveSession(_ session: FinishedSession) async throws {
         guard HKHealthStore.isHealthDataAvailable() else {
@@ -32,43 +30,26 @@ final class HealthKitService {
 
         do {
             try await store.requestAuthorization(
-                toShare: [daylightType, vitaminDType],
+                toShare: [daylightType],
                 read: []
             )
         } catch {
             throw HealthKitError.underlying(error)
         }
 
-        guard store.authorizationStatus(for: daylightType) == .sharingAuthorized
-                || store.authorizationStatus(for: vitaminDType) == .sharingAuthorized else {
+        guard store.authorizationStatus(for: daylightType) == .sharingAuthorized else {
             throw HealthKitError.writeDenied
         }
 
-        var samples: [HKQuantitySample] = []
-        if store.authorizationStatus(for: daylightType) == .sharingAuthorized {
-            samples.append(HKQuantitySample(
-                type: daylightType,
-                quantity: HKQuantity(unit: .minute(), doubleValue: session.duration / 60),
-                start: session.startedAt,
-                end: session.endedAt
-            ))
-        }
-        if session.vitaminDIU > 0,
-           store.authorizationStatus(for: vitaminDType) == .sharingAuthorized {
-            // Health registra la vitamina D in microgrammi: 1 µg = 40 IU.
-            samples.append(HKQuantitySample(
-                type: vitaminDType,
-                quantity: HKQuantity(
-                    unit: .gramUnit(with: .micro),
-                    doubleValue: session.vitaminDIU / 40
-                ),
-                start: session.startedAt,
-                end: session.endedAt
-            ))
-        }
+        let sample = HKQuantitySample(
+            type: daylightType,
+            quantity: HKQuantity(unit: .minute(), doubleValue: session.duration / 60),
+            start: session.startedAt,
+            end: session.endedAt
+        )
 
         do {
-            try await store.save(samples)
+            try await store.save(sample)
         } catch {
             throw HealthKitError.underlying(error)
         }

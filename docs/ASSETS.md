@@ -6,8 +6,15 @@ qui sotto. Finché mancano, l'app usa i fallback indicati.
 
 | Nome asset | Uso | Formato consigliato | Fallback attuale |
 |---|---|---|---|
-| `AppIcon` | Icona app | 1024×1024 PNG senza trasparenza | icona vuota |
-| `OnboardingHero` | Illustrazione schermata di benvenuto | PNG/HEIC ~1200px, tema sole | SF Symbol `sun.max.fill` |
-| `ShareCardBackground` | (M5) sfondo della share card | 1080×1920 PNG | gradiente di sistema |
+| `AppIcon` | Icona app | 1024×1024 PNG senza trasparenza | installata |
+| `OnboardingHero` | Illustrazione schermata di benvenuto | PNG 1536×1024, tema sole | installata |
+| Share card | Story condivisibile | 1080×1920 PNG | generata nativamente da SwiftUI |
 
 Linee guida di stile: caldo, solare, palette ambra/terracotta su crema; niente viola/gradienti "AI".
+
+Quando l'icona finale e' pronta, installala con:
+
+```sh
+scripts/install-app-icon.sh /percorso/alla/tua-icona-1024.png
+scripts/app-store-preflight.sh
+```

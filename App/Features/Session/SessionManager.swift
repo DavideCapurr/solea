@@ -7,6 +7,10 @@ struct SessionConfiguration {
     var zones: ExposedZones
     var flipIntervalMinutes: Int
     var kind: SessionKind = .sun
+    var goal: SunExposureGoal = .gradualTan
+    var plannedDurationMinutes: Int = 20
+    var advancedRemindersEnabled = false
+    var advancedCompanionsEnabled = false
 }
 
 /// Dati di una sessione conclusa, pronti per essere persistiti e riepilogati.
@@ -19,9 +23,16 @@ struct FinishedSession {
     /// Dose eritemale effettiva sulla pelle (J/m², attenuata dall'SPF).
     let effectiveDose: Double
     let vitaminDIU: Double
+    let frontExposureSeconds: Int
+    let backExposureSeconds: Int
+    let plannedDurationMinutes: Int
+    let exposureSeconds: Int
+    let pausedSeconds: Int
 
-    var duration: TimeInterval { endedAt.timeIntervalSince(startedAt) }
+    var duration: TimeInterval { TimeInterval(exposureSeconds) }
+    var totalDuration: TimeInterval { endedAt.timeIntervalSince(startedAt) }
     var fractionOfMED: Double { effectiveDose / phototype.med }
+    var goal: SunExposureGoal { configuration.goal }
 }
 
 extension FinishedSession: Identifiable {
@@ -43,6 +54,12 @@ final class SessionManager {
         var elapsedSeconds: Int
         var remindersEnabled: Bool
         var sunscreenAppliedAtElapsedSeconds: Int?
+        var lastHydrationAtElapsedSeconds: Int
+        var currentSide: ExposureSide
+        var frontExposureSeconds: Int
+        var backExposureSeconds: Int
+        var pausedSeconds: Int
+        var isPaused: Bool
     }
 
     private(set) var active: ActiveSession?
@@ -73,6 +90,7 @@ final class SessionManager {
 
     var remainingSafeSeconds: Double? {
         guard let session = active else { return nil }
+        guard !session.isPaused else { return nil }
         let remainingDose = SafeExposure.recommendedDoseLimit(phototype: session.phototype)
             - session.effectiveDose
         guard remainingDose > 0 else { return 0 }
@@ -96,6 +114,41 @@ final class SessionManager {
         return seconds <= 0
     }
 
+    var nextFlipSeconds: Int? {
+        guard let session = active else { return nil }
+        guard !session.isPaused else { return nil }
+        let interval = session.configuration.flipIntervalMinutes * 60
+        guard interval > 0 else { return nil }
+        let elapsedInInterval = session.elapsedSeconds % interval
+        return elapsedInInterval == 0 ? interval : interval - elapsedInInterval
+    }
+
+    var nextHydrationSeconds: Int? {
+        guard let session = active else { return nil }
+        guard !session.isPaused else { return nil }
+        let interval = Self.hydrationIntervalMinutes * 60
+        let sinceLast = max(0, session.elapsedSeconds - session.lastHydrationAtElapsedSeconds)
+        let elapsedInInterval = sinceLast % interval
+        return elapsedInInterval == 0 ? interval : interval - elapsedInInterval
+    }
+
+    var nextSunscreenReapplicationSeconds: Int? {
+        guard let session = active,
+              !session.isPaused,
+              let seconds = secondsUntilSunscreenReapplication(for: session)
+        else {
+            return nil
+        }
+        return Int(max(0, seconds.rounded()))
+    }
+
+    var goalRemainingSeconds: Int? {
+        guard let session = active else { return nil }
+        guard !session.isPaused else { return nil }
+        let plannedSeconds = max(0, session.configuration.plannedDurationMinutes * 60)
+        return max(0, plannedSeconds - session.elapsedSeconds)
+    }
+
     func start(
         configuration: SessionConfiguration,
         phototype: Fitzpatrick,
@@ -114,7 +167,13 @@ final class SessionManager {
             uvSamples: [initialUVIndex],
             elapsedSeconds: 0,
             remindersEnabled: false,
-            sunscreenAppliedAtElapsedSeconds: configuration.spf > 1 ? 0 : nil
+            sunscreenAppliedAtElapsedSeconds: configuration.spf > 1 ? 0 : nil,
+            lastHydrationAtElapsedSeconds: 0,
+            currentSide: .front,
+            frontExposureSeconds: 0,
+            backExposureSeconds: 0,
+            pausedSeconds: 0,
+            isPaused: false
         )
         await scheduleReminders()
         startLiveActivity()
@@ -124,6 +183,7 @@ final class SessionManager {
 
     private func startLiveActivity() {
         guard let session = active, let state = activityState() else { return }
+        guard session.configuration.advancedCompanionsEnabled else { return }
         do {
             try liveActivityService.start(
                 phototype: session.phototype,
@@ -149,7 +209,14 @@ final class SessionManager {
     }
 
     func reapplySunscreen() async {
-        guard var session = active, session.configuration.spf > 1 else { return }
+        // Disponibile anche senza Solea Plus (usato dalla Modalità spiaggia):
+        // resetta il timestamp di applicazione per la matematica della dose; la
+        // schedulazione notifiche resta protetta da `remindersEnabled` più sotto.
+        guard var session = active,
+              session.configuration.spf > 1
+        else {
+            return
+        }
         session.sunscreenAppliedAtElapsedSeconds = session.elapsedSeconds
         let remindersEnabled = session.remindersEnabled
         active = session
@@ -166,6 +233,51 @@ final class SessionManager {
         } catch {
             reminderWarning = error.localizedDescription
         }
+    }
+
+    func setExposureSide(_ side: ExposureSide) {
+        guard var session = active else { return }
+        session.currentSide = side
+        active = session
+    }
+
+    /// Registra un sorso d'acqua: resetta il countdown idratazione in-app
+    /// (mostrato dalla Modalità spiaggia) e, per le sessioni con promemoria
+    /// avanzati attivi, riallinea la notifica ripetuta.
+    func logHydration() async {
+        guard var session = active else { return }
+        session.lastHydrationAtElapsedSeconds = session.elapsedSeconds
+        active = session
+
+        guard session.remindersEnabled,
+              session.configuration.advancedRemindersEnabled
+        else {
+            return
+        }
+        do {
+            try await notificationService.scheduleHydrationReminder(
+                everyMinutes: Self.hydrationIntervalMinutes
+            )
+            reminderWarning = nil
+        } catch {
+            reminderWarning = error.localizedDescription
+        }
+    }
+
+    func pause() {
+        guard var session = active, !session.isPaused else { return }
+        session.isPaused = true
+        active = session
+        notificationService.cancelExposureReminders()
+    }
+
+    func resume() async {
+        guard var session = active, session.isPaused else { return }
+        session.isPaused = false
+        let remindersEnabled = session.remindersEnabled
+        active = session
+        guard remindersEnabled else { return }
+        await scheduleReminders(requestAuthorization: false)
     }
 
     func end() -> FinishedSession? {
@@ -193,34 +305,56 @@ final class SessionManager {
                 effectiveDoseJoulesPerSquareMeter: session.effectiveDose,
                 phototype: session.phototype,
                 zones: session.configuration.zones
-            )
+            ),
+            frontExposureSeconds: session.frontExposureSeconds,
+            backExposureSeconds: session.backExposureSeconds,
+            plannedDurationMinutes: session.configuration.plannedDurationMinutes,
+            exposureSeconds: session.elapsedSeconds,
+            pausedSeconds: session.pausedSeconds
         )
     }
 
     // MARK: - Promemoria
 
     private func scheduleReminders() async {
+        await scheduleReminders(requestAuthorization: true)
+    }
+
+    private func scheduleReminders(requestAuthorization: Bool) async {
         guard let session = active else { return }
+        guard !session.isPaused else { return }
         do {
-            let granted = try await notificationService.requestAuthorization()
-            guard granted else {
-                reminderWarning = String(localized: "Notifiche disattivate: non riceverai i promemoria. Abilitale in Impostazioni > Notifiche.")
-                return
+            if requestAuthorization {
+                let granted = try await notificationService.requestAuthorization()
+                guard granted else {
+                    reminderWarning = String(localized: "Notifiche disattivate: non riceverai i promemoria. Abilitale in Impostazioni > Notifiche.")
+                    return
+                }
             }
-            try await notificationService.scheduleFlipReminder(
-                everyMinutes: session.configuration.flipIntervalMinutes
-            )
-            try await notificationService.scheduleReapplyReminder(
-                everyMinutes: Self.reapplyIntervalMinutes
-            )
-            try await notificationService.scheduleHydrationReminder(
-                everyMinutes: Self.hydrationIntervalMinutes
-            )
-            // Doposole la sera: solo per le sessioni al sole, non per il lettino.
-            if session.configuration.kind == .sun,
-               let afterSun = Self.afterSunTime() {
-                try await notificationService.scheduleAfterSunReminder(at: afterSun)
+            notificationService.cancelExposureReminders()
+
+            if session.configuration.advancedRemindersEnabled {
+                try await notificationService.scheduleFlipReminder(
+                    everyMinutes: session.configuration.flipIntervalMinutes
+                )
+                if let reapplySeconds = secondsUntilSunscreenReapplication(for: session), reapplySeconds > 0 {
+                    try await notificationService.scheduleReapplyReminder(afterSeconds: reapplySeconds)
+                }
+                try await notificationService.scheduleHydrationReminder(
+                    everyMinutes: Self.hydrationIntervalMinutes
+                )
+                // Doposole la sera: solo per le sessioni al sole, non per il lettino.
+                if session.configuration.kind == .sun,
+                   let afterSun = Self.afterSunTime() {
+                    try await notificationService.scheduleAfterSunReminder(at: afterSun)
+                }
             }
+
+            let goalRemainingSeconds = session.configuration.plannedDurationMinutes * 60 - session.elapsedSeconds
+            if goalRemainingSeconds > 0 {
+                try await notificationService.scheduleGoalReminder(afterSeconds: Double(goalRemainingSeconds))
+            }
+
             if let remaining = remainingSafeSeconds, remaining.isFinite {
                 try await notificationService.scheduleStopAlert(afterSeconds: remaining)
             }
@@ -242,14 +376,26 @@ final class SessionManager {
                     return // cancellazione del task: la sessione è terminata
                 }
                 guard let self, var session = self.active else { return }
+                if session.isPaused {
+                    session.pausedSeconds += 1
+                    self.active = session
+                    continue
+                }
                 session.elapsedSeconds += 1
+                switch session.currentSide {
+                case .front:
+                    session.frontExposureSeconds += 1
+                case .back:
+                    session.backExposureSeconds += 1
+                }
                 let spfFactor = self.currentSPFFactor(for: session)
                 session.effectiveDose += session.currentUVIndex
                     * SafeExposure.wattsPerUVIndexUnit
                     / spfFactor
                 self.active = session
 
-                if session.elapsedSeconds % Self.liveActivityUpdateInterval == 0,
+                if session.configuration.advancedCompanionsEnabled,
+                   session.elapsedSeconds % Self.liveActivityUpdateInterval == 0,
                    let state = self.activityState() {
                     await self.liveActivityService.update(state: state)
                 }
@@ -286,7 +432,8 @@ final class SessionManager {
             active = session
             uvRefreshWarning = nil
 
-            if let state = activityState() {
+            if session.configuration.advancedCompanionsEnabled,
+               let state = activityState() {
                 await liveActivityService.update(state: state)
             }
 

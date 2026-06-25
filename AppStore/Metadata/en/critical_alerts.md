@@ -1,0 +1,3 @@
+- Requested entitlement: `com.apple.developer.usernotifications.critical-alerts`.
+- Declared use: only for the local safety stop alert shown when the recommended exposure limit is reached.
+- Critical Alerts are not used for marketing, engagement, or general reminders.

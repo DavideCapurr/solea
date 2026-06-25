@@ -115,9 +115,11 @@ struct UVWidgetView: View {
                 .tint(riskColor(snapshot))
                 Text(safeTimeText(snapshot))
                     .font(.caption)
-                Text(stale
-                     ? "Dati non aggiornati"
-                     : snapshot.updatedAt.formatted(date: .omitted, time: .shortened))
+                Text(
+                    stale
+                        ? String(localized: "Dati non aggiornati")
+                        : snapshot.updatedAt.formatted(date: .omitted, time: .shortened)
+                )
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
@@ -154,7 +156,7 @@ struct UVWidget: Widget {
             UVWidgetView(entry: entry)
         }
         .configurationDisplayName("UV adesso")
-        .description("Indice UV attuale e tempo sicuro per il tuo fototipo.")
+        .description("Indice UV attuale e limite prudente stimato per il tuo fototipo.")
         .supportedFamilies([.systemSmall, .accessoryCircular, .accessoryRectangular])
     }
 }

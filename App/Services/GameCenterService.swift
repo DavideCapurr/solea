@@ -1,6 +1,7 @@
 import Foundation
 import GameKit
 import SoleaCore
+import UIKit
 
 enum GameCenterError: LocalizedError {
     case notAuthenticated
@@ -26,12 +27,17 @@ final class GameCenterService {
     private(set) var isAuthenticated = false
 
     func authenticate() async {
-        // GKLocalPlayer presenta da sé la UI di login quando serve; qui registriamo
-        // solo l'esito. L'app resta pienamente utilizzabile anche da non autenticati.
+        // L'app resta pienamente utilizzabile anche da non autenticati.
         await withCheckedContinuation { continuation in
-            GKLocalPlayer.local.authenticateHandler = { _, _ in
-                self.isAuthenticated = GKLocalPlayer.local.isAuthenticated
-                continuation.resume()
+            let authContinuation = GameCenterAuthContinuation()
+            GKLocalPlayer.local.authenticateHandler = { viewController, _ in
+                Task { @MainActor in
+                    if let viewController, Self.present(viewController) {
+                        return
+                    }
+                    self.isAuthenticated = GKLocalPlayer.local.isAuthenticated
+                    authContinuation.resume(continuation)
+                }
             }
         }
     }
@@ -73,5 +79,32 @@ final class GameCenterService {
         } catch {
             throw GameCenterError.underlying(error)
         }
+    }
+
+    private static func present(_ viewController: UIViewController) -> Bool {
+        guard let presenter = UIApplication.shared.connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .flatMap(\.windows)
+            .first(where: \.isKeyWindow)?
+            .rootViewController else {
+            return false
+        }
+
+        var topPresenter = presenter
+        while let presented = topPresenter.presentedViewController {
+            topPresenter = presented
+        }
+        topPresenter.present(viewController, animated: true)
+        return true
+    }
+}
+
+private final class GameCenterAuthContinuation {
+    private var didResume = false
+
+    func resume(_ continuation: CheckedContinuation<Void, Never>) {
+        guard !didResume else { return }
+        didResume = true
+        continuation.resume()
     }
 }

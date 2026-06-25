@@ -1,9 +1,9 @@
 import Foundation
 
-/// Coach basato su Claude tramite il proxy serverless. Riceve gli SSE dal proxy
-/// e li riemette come frammenti di testo.
+/// Coach cloud basato sul proxy serverless. Riceve gli SSE dal proxy e li
+/// riemette come frammenti di testo.
 struct CloudCoach: CoachEngine {
-    /// URL del proxy. Da configurare in `CoachConfiguration`.
+    /// URL del proxy letto da `SoleaCoachProxyURL` tramite `CoachConfiguration`.
     let endpoint: URL
     /// Identificativo anonimo e stabile del dispositivo, per il rate limit.
     let userId: String

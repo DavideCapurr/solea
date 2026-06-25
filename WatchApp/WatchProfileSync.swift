@@ -16,8 +16,10 @@ final class WatchProfileSync: NSObject {
     /// Chiave dell'application context: deve combaciare con quella scritta
     /// dall'iPhone in `PhoneConnectivityService`.
     static let phototypeKey = "phototypeRawValue"
+    static let plusKey = "soleaPlusActive"
     /// Chiave `UserDefaults` condivisa con `@AppStorage("watch.phototype")`.
     static let defaultsKey = "watch.phototype"
+    static let plusDefaultsKey = "watch.soleaPlusActive"
 
     /// Esposto per eventuale diagnostica in UI: un'attivazione fallita non va
     /// nascosta.
@@ -35,11 +37,13 @@ final class WatchProfileSync: NSObject {
     }
 
     private func apply(_ context: [String: Any]) {
-        guard
-            let rawValue = context[Self.phototypeKey] as? Int,
-            Fitzpatrick(rawValue: rawValue) != nil
-        else { return }
-        UserDefaults.standard.set(rawValue, forKey: Self.defaultsKey)
+        if let rawValue = context[Self.phototypeKey] as? Int,
+           Fitzpatrick(rawValue: rawValue) != nil {
+            UserDefaults.standard.set(rawValue, forKey: Self.defaultsKey)
+        }
+        if let hasSoleaPlus = context[Self.plusKey] as? Bool {
+            UserDefaults.standard.set(hasSoleaPlus, forKey: Self.plusDefaultsKey)
+        }
     }
 }
 
