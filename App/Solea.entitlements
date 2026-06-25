@@ -8,8 +8,6 @@
 	<true/>
 	<key>com.apple.developer.healthkit</key>
 	<true/>
-	<key>com.apple.developer.usernotifications.critical-alerts</key>
-	<true/>
 	<key>com.apple.developer.weatherkit</key>
 	<true/>
 	<key>com.apple.security.application-groups</key>

@@ -134,3 +134,31 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.davidecapurro.Solea.watchkitapp
+
+  SoleaTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - Tests/SoleaTests
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.davidecapurro.SoleaTests
+
+schemes:
+  Solea:
+    build:
+      targets:
+        Solea: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - SoleaTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
