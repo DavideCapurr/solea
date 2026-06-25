@@ -141,6 +141,8 @@ struct TodayView: View {
                 .tint(Gradient(colors: [.green, .yellow, .orange, .red, .purple]))
                 .scaleEffect(1.3)
                 .frame(width: 90, height: 90)
+                .accessibilityLabel("Indice UV attuale")
+                .accessibilityValue(Text(metrics.conditions.currentUVIndex, format: .number.precision(.fractionLength(0))))
 
                 VStack(alignment: .leading, spacing: 6) {
                     Text("UV attuale")
@@ -148,10 +150,12 @@ struct TodayView: View {
                     Label(riskLabel(metrics.burnRisk), systemImage: "circle.fill")
                         .foregroundStyle(riskColor(metrics.burnRisk))
                         .font(.subheadline.bold())
+                        .accessibilityLabel(riskLabel(metrics.burnRisk))
                     Text("Fototipo \(phototype.romanNumeral)")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
+                .accessibilityElement(children: .combine)
                 Spacer()
             }
         }
@@ -198,6 +202,9 @@ struct TodayView: View {
                 .font(.title3.bold())
         }
         .frame(maxWidth: .infinity)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(title)
+        .accessibilityValue(Text(formattedMinutes(minutes)))
     }
 
     private func formattedMinutes(_ minutes: Double) -> String {
@@ -230,6 +237,8 @@ struct TodayView: View {
                             Text(intervalText(window))
                                 .font(.subheadline.monospacedDigit())
                         }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel(Text("Finestra ideale dalle \(intervalText(window))"))
                     }
                     Text("Le fasce più prudenti tra quelle utili per il tuo fototipo.")
                         .font(.caption)
@@ -259,12 +268,27 @@ struct TodayView: View {
                         y: .value("UV", hour.uvIndex)
                     )
                     .foregroundStyle(barColor(uv: hour.uvIndex))
+                    .accessibilityLabel(hour.date.formatted(date: .omitted, time: .shortened))
+                    .accessibilityValue(Text("UV \(hour.uvIndex, format: .number.precision(.fractionLength(0)))"))
                 }
                 .chartYScale(domain: 0...11)
                 .frame(height: 160)
+                .accessibilityLabel("Previsione UV delle prossime ore")
+                .accessibilityValue(Text(forecastSummary(metrics)))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+
+    /// Riassunto testuale del grafico per VoiceOver: picco UV e orario.
+    private func forecastSummary(_ metrics: TodayMetrics) -> String {
+        let window = metrics.conditions.hourly.prefix(12)
+        guard let peak = window.max(by: { $0.uvIndex < $1.uvIndex }) else {
+            return String(localized: "Nessun dato di previsione disponibile")
+        }
+        let time = peak.date.formatted(date: .omitted, time: .shortened)
+        let value = peak.uvIndex.formatted(.number.precision(.fractionLength(0)))
+        return String(localized: "UV massimo \(value) verso le \(time)")
     }
 
     private func barColor(uv: Double) -> Color {

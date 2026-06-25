@@ -169,14 +169,22 @@ retry). Prima della candidatura, verificare gli stati di errore in
 | Media | Supporto day-one ultimo iOS e design di sistema | configurazione progetto / `project.yml` |
 | Bassa | Privacy nutrition labels | App Store Connect |
 
-### 7.6 Definition of Done della "parte di codice"
+### 7.6 Definition of Done della "parte di codice" — stato
 
-- [ ] Icona 1024×1024 presente e referenziata nel `Contents.json`
-- [ ] `accessibilityLabel`/`Value` su tutti i valori dinamici chiave (UV, countdown, dose)
-- [ ] Riassunto testuale del grafico UV per VoiceOver
-- [ ] Layout verificato alle taglie Dynamic Type accessibili
-- [ ] Almeno 4 lingue oltre IT/EN in `Localizable.xcstrings`
-- [ ] Stati di errore WeatherKit/posizione con retry verificati
+- [x] Icona 1024×1024 presente e referenziata nel `Contents.json`
+      (`icon-1024.png`, sole su gradiente tramonto, RGB senza alpha)
+- [x] `accessibilityLabel`/`Value` su tutti i valori dinamici chiave (UV, countdown, dose)
+      — `TodayView.swift`, `ActiveSessionView.swift`
+- [x] Riassunto testuale del grafico UV per VoiceOver (`forecastSummary`, label per barra)
+- [x] Almeno 4 lingue oltre IT/EN in `Localizable.xcstrings` (ES, FR, DE, PT: 255/255 chiavi)
+- [x] EN completato (era 242/255 → 255/255)
+- [x] Stati di errore WeatherKit/posizione con retry verificati (`LocationError` tipizzato,
+      `ContentUnavailableView` + "Riprova", warning non bloccanti) — già robusti, nessuna modifica
+- [ ] Layout alle taglie Dynamic Type accessibili da verificare a runtime su device/simulatore
+
+> Tutti i gap di codice di questa sezione sono stati implementati sul branch
+> `claude/solea-app-store-positioning-x4sxym`. Restano voci che richiedono
+> Xcode/dispositivo (verifica Dynamic Type a runtime) o azioni fuori dal codice (§7.5).
 
 ---
 
