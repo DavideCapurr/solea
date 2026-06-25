@@ -136,7 +136,7 @@ final class CoachRouter {
     /// Euristica di complessità: messaggi lunghi o conversazioni con storia
     /// beneficiano del modello cloud più capace.
     private func shouldUseCloud(for messages: [CoachMessage]) -> Bool {
-        guard cloud != nil else { return false }
+        guard CoachConfiguration.isCloudConfigured else { return false }
         let lastUserLength = messages.last(where: { $0.role == .user })?.text.count ?? 0
         return messages.count > 2 || lastUserLength > 140
     }

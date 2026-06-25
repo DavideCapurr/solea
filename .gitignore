@@ -14,11 +14,13 @@ DerivedData/
 .build/
 .swiftpm/
 *.xcresult
+.swift-module-cache/
 
 # macOS
 .DS_Store
 
 # Node (server/coach-proxy)
 node_modules/
+.pnpm-store/
 dist/
 .wrangler/
