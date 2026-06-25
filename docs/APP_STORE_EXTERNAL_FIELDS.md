@@ -44,7 +44,7 @@ scripts/sync-app-store-urls.sh
 
 - Contact name: Davide Capurro
 - Contact email: davidecapurro@icloud.com
-- Contact phone: <telefono>
+- Contact phone: +39 3917342651
 
 ## App Information
 
