@@ -102,16 +102,81 @@ Gli editor valutano anche la pagina. Da curare come asset di prima classe:
 
 ---
 
-## 7. Gap attuali da chiudere prima di candidarsi
+## 7. Gap di codice da chiudere prima di candidarsi
 
-| Priorità | Gap | Riferimento |
+Audit dello stato attuale del repository (verificato sul codice, non stime).
+Ogni voce ha riscontro, riferimento di file e azione concreta.
+
+### 7.1 Icona app mancante — **bloccante**
+
+`App/Resources/Assets.xcassets/AppIcon.appiconset/Contents.json` dichiara un
+solo slot `1024x1024` **senza la chiave `filename`**: non esiste alcun file
+immagine, l'icona è un placeholder vuoto. Senza icona non si supera la review,
+men che meno un feature.
+
+```jsonc
+// stato attuale: nessun "filename" → nessuna immagine
+{ "idiom": "universal", "platform": "ios", "size": "1024x1024" }
+```
+
+- **Azione**: aggiungere il PNG 1024×1024 (senza alpha, angoli quadrati) e il
+  riferimento `"filename"` nel `Contents.json`. Per il look "moderno" iOS valutare
+  l'asset stratificato (`.icon` / Icon Composer) per il rendering Liquid Glass.
+
+### 7.2 Accessibilità: zero copertura — **alta priorità**
+
+Ricerca su tutto `App/`: **0 occorrenze** di `accessibilityLabel`,
+`accessibilityValue`, `accessibilityHint`, `accessibilityElement`,
+`dynamicTypeSize` o qualunque modificatore `.accessibility*`. L'accessibilità è
+un criterio esplicito di selezione editoriale, quindi va colmata in modo mirato:
+
+- **Valori dinamici → `accessibilityLabel` + `accessibilityValue`**: UV attuale,
+  countdown sessione, dose UV. Es. in `App/Features/Today/TodayView.swift` e
+  `App/Features/Session/ActiveSessionView.swift`.
+- **Semaforo burn risk**: già corretto — `TodayView.swift:148` usa `Label`
+  (testo + icona `circle.fill`), quindi **non** è un segnale solo-colore.
+  Aggiungere solo un `accessibilityLabel` esplicito col livello.
+- **Grafico UV** (`TodayView.swift`): fornire un riassunto testuale
+  (`accessibilityLabel`) perché il grafico non è leggibile da VoiceOver.
+- **Dynamic Type**: l'icona/numero UV usa `.frame(width: 90, height: 90)` fisso
+  (`TodayView.swift:143`); verificare che non tagli il testo alle taglie
+  accessibili (usare `minimumScaleFactor`/`ScaledMetric` o layout flessibile).
+- **Foto-diario** (`App/Features/Diary/PhotoDiaryView.swift`): label per gli
+  overlay di allineamento e per lo slider prima/dopo.
+
+### 7.3 Localizzazione limitata — **media priorità**
+
+`App/Resources/Localizable.xcstrings`: sorgente `it`, **249 chiavi**, un'unica
+lingua aggiunta (`en`). Più lingue = più mercati in cui Apple può fare feature.
+
+- **Azione**: aggiungere almeno ES, FR, DE, PT (mercati solari/turistici).
+  Verificare anche le stringhe dei target Watch/Widget e dei testi delle
+  notifiche generate dal coach.
+
+### 7.4 Gestione errori a prova di demo — **media priorità**
+
+WeatherKit/posizione devono fallire in modo pulito (già previsto da spec con
+retry). Prima della candidatura, verificare gli stati di errore in
+`App/Services/LocationService.swift` e nel flusso UV di
+`App/Features/Today/TodayViewModel.swift` (nessuno schermo bianco, sempre un CTA
+"Riprova").
+
+### 7.5 Altri controlli non di codice
+
+| Priorità | Gap | Dove |
 |---|---|---|
-| Alta | Icona app è un placeholder | `App/Resources/Assets.xcassets/AppIcon.appiconset/Contents.json` |
-| Alta | Audit accessibilità (VoiceOver, Dynamic Type) | tutta la UI in `App/Features/` |
-| Alta | Asset product page (preview video + screenshot) | da produrre (vedi `docs/ASSETS.md`) |
-| Media | Estendere localizzazione oltre l'italiano | `App/Resources/Localizable.xcstrings` |
-| Media | Verifica supporto day-one ultimo iOS e design di sistema | progetto |
-| Bassa | Privacy nutrition labels in App Store Connect | configurazione store |
+| Alta | Asset product page (preview video + screenshot) | produrre, vedi `docs/ASSETS.md` |
+| Media | Supporto day-one ultimo iOS e design di sistema | configurazione progetto / `project.yml` |
+| Bassa | Privacy nutrition labels | App Store Connect |
+
+### 7.6 Definition of Done della "parte di codice"
+
+- [ ] Icona 1024×1024 presente e referenziata nel `Contents.json`
+- [ ] `accessibilityLabel`/`Value` su tutti i valori dinamici chiave (UV, countdown, dose)
+- [ ] Riassunto testuale del grafico UV per VoiceOver
+- [ ] Layout verificato alle taglie Dynamic Type accessibili
+- [ ] Almeno 4 lingue oltre IT/EN in `Localizable.xcstrings`
+- [ ] Stati di errore WeatherKit/posizione con retry verificati
 
 ---
 
