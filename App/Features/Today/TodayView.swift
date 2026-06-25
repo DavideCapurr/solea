@@ -564,12 +564,27 @@ struct TodayView: View {
                         y: .value("UV", hour.uvIndex)
                     )
                     .foregroundStyle(barColor(uv: hour.uvIndex))
+                    .accessibilityLabel(hour.date.formatted(date: .omitted, time: .shortened))
+                    .accessibilityValue(Text("UV \(hour.uvIndex, format: .number.precision(.fractionLength(0)))"))
                 }
                 .chartYScale(domain: 0...11)
                 .frame(height: 160)
+                .accessibilityLabel("Previsione UV delle prossime ore")
+                .accessibilityValue(Text(forecastSummary(metrics)))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+
+    /// Riassunto testuale del grafico per VoiceOver: picco UV e orario.
+    private func forecastSummary(_ metrics: TodayMetrics) -> String {
+        let window = metrics.conditions.hourly.prefix(12)
+        guard let peak = window.max(by: { $0.uvIndex < $1.uvIndex }) else {
+            return String(localized: "Nessun dato di previsione disponibile")
+        }
+        let time = peak.date.formatted(date: .omitted, time: .shortened)
+        let value = peak.uvIndex.formatted(.number.precision(.fractionLength(0)))
+        return String(localized: "UV massimo \(value) verso le \(time)")
     }
 
     private func barColor(uv: Double) -> Color {

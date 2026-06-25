@@ -309,6 +309,9 @@ struct ActiveSessionView: View {
         .scaleEffect(2.2)
         .frame(width: 180, height: 180)
         .padding(.top, 24)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Dose UV rispetto alla soglia prudente")
+        .accessibilityValue(Text(fraction, format: .percent.precision(.fractionLength(0))))
     }
 
     @ViewBuilder
