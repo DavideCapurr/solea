@@ -169,8 +169,11 @@ if sign_in and normalize_value(sign_in).lower() not in {"yes", "no"}:
     checks.append("Sign-in required must be Yes or No")
 
 critical_alerts = field("Critical Alerts approval")
-if critical_alerts.lower() != "approved":
-    checks.append("Critical Alerts approval is not marked approved")
+# The app does not use Critical Alerts, so "not used"/"n/a"/"not requested" are
+# valid terminal states alongside an explicit Apple "approved".
+critical_ok = {"approved", "not used", "non usato", "non usate", "n/a", "na", "not requested"}
+if critical_alerts.strip().lower() not in critical_ok:
+    checks.append("Critical Alerts approval is not 'approved' or 'not used'")
 
 game_center = field("Game Center components")
 if game_center.lower() != "created":

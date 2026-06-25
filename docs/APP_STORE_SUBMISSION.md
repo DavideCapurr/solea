@@ -40,7 +40,7 @@ Review`, usa `docs/APP_STORE_UPLOAD_RUNBOOK.md`.
 
 Configura gli App ID espliciti con lo stesso bundle ID usato nel progetto.
 
-- `com.davidecapurro.Solea`: WeatherKit, HealthKit, Game Center, App Groups, Push Notifications, Critical Alerts.
+- `com.davidecapurro.Solea`: WeatherKit, HealthKit, Game Center, App Groups, Push Notifications.
 - `com.davidecapurro.Solea.Widgets`: App Groups.
 - `com.davidecapurro.Solea.watchkitapp`: WeatherKit.
 - App Group: crea/abilita `group.com.davidecapurro.solea` e associalo ad app iOS e widget.
@@ -61,13 +61,13 @@ Achievement da creare in App Store Connect con gli stessi ID usati da `Badge.raw
 
 Scheda operativa con nomi e descrizioni: `docs/GAME_CENTER_SETUP.md`.
 
-## Critical Alerts request
+## Critical Alerts — non usati
 
-Richiedi l'entitlement Critical Alerts per l'App ID `com.davidecapurro.Solea` prima dell'archivio finale. La build corrente presume che Apple approvi `com.apple.developer.usernotifications.critical-alerts`; senza quell'approvazione, prepara una build alternativa con avviso non critical.
-
-Testo suggerito per la richiesta Apple:
-
-> Solea uses Critical Alerts only for a local safety stop alert when the user reaches a prudential sun exposure limit calculated from UV index, Fitzpatrick phototype, SPF, exposed body areas, and elapsed session time. The alert is not used for marketing, engagement, reminders, or repeated notifications. The purpose is to interrupt an active exposure session so the user can move to shade or reapply protection before continuing. All other session reminders use standard notification sounds, and users can disable notifications in iOS Settings.
+Solea **non** usa Critical Alerts e **non** richiede l'entitlement
+`com.apple.developer.usernotifications.critical-alerts`. Lo stop di sicurezza e
+tutti i promemoria sono notifiche locali standard (`[.alert, .sound]`,
+`UNNotificationSound.default`). Nessun gate di approvazione Apple da attendere e
+nessun rischio di rifiuto legato a Critical Alerts.
 
 ## App Store Connect
 
@@ -89,7 +89,7 @@ Testo suggerito per la richiesta Apple:
   decidi di attivarlo. Sottoponi gli IAP alla review con la build.
 - Encryption: `ITSAppUsesNonExemptEncryption = false` è già impostato.
 - Push Notifications: `aps-environment` usa `$(APS_ENVIRONMENT)` nel file sorgente; Debug imposta `development`, Release imposta `production`. Il profilo di distribuzione deve comunque firmare il bundle finale con ambiente APNs `production`.
-- Critical Alerts: richieste. Lo stop alert usa `UNNotificationSound.defaultCritical`, quindi l'App ID e il profilo di provisioning devono includere l'entitlement Apple `com.apple.developer.usernotifications.critical-alerts`. Senza approvazione Apple, la validazione dell'archivio o la review possono fallire anche se il preflight locale passa.
+- Critical Alerts: **non usati**. Lo stop alert usa `UNNotificationSound.default` e l'autorizzazione richiesta è `[.alert, .sound]`. L'App ID e il profilo NON devono includere `com.apple.developer.usernotifications.critical-alerts`.
 - Age Rating: completa il questionario in App Store Connect.
 - Accessibility Nutrition Label: opzionale, ma consigliato per iOS 26+.
 
@@ -106,8 +106,8 @@ Testo suggerito per la richiesta Apple:
 9. Esegui `scripts/app-store-readiness-report.sh` per rivedere tutti i blocchi residui in un solo report.
 10. Esegui `scripts/app-store-final-check.sh`. Il gate finale richiama metadata, Game Center, campi esterni strict, preflight strict, screenshot e AppIcon. Finché l'icona finale non è inserita puoi usare `scripts/app-store-preflight.sh --skip-icon-check`, ma non per la verifica finale.
 11. Apri `Solea.xcodeproj`.
-12. In Signing & Capabilities seleziona il Team Apple Developer per tutti i target e verifica che il target iOS abbia l'entitlement Critical Alerts approvato.
+12. In Signing & Capabilities seleziona il Team Apple Developer per tutti i target. Nessun entitlement Critical Alerts richiesto.
 13. Build Release su device generico o archivio da Xcode.
-14. Dopo l'archive firmato, esegui `scripts/app-store-final-check.sh --archive <path>.xcarchive` per verificare firma, APNs `production`, Critical Alerts e capability effettive insieme agli altri gate.
+14. Dopo l'archive firmato, esegui `scripts/app-store-final-check.sh --archive <path>.xcarchive` per verificare firma, APNs `production` e capability effettive insieme agli altri gate.
 15. In Organizer valida l'archivio, poi carica su App Store Connect.
 16. Per archive/upload da CLI, usa `scripts/archive-app-store.sh --allow-provisioning-updates --export-path AppStore/Exports/Solea`.

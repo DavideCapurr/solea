@@ -50,8 +50,6 @@ targets:
           - group.com.davidecapurro.solea
         # Push Notifications — richiesto da Live Activity / ActivityKit
         aps-environment: "$(APS_ENVIRONMENT)"
-        # Critical Alerts — stop alert con UNNotificationSound.defaultCritical
-        com.apple.developer.usernotifications.critical-alerts: true
     info:
       path: App/Info.plist
       properties:
@@ -69,8 +67,8 @@ targets:
         NSHealthShareUsageDescription: "Solea non legge dati da Salute; il permesso serve solo per la scrittura delle sessioni."
         NSPhotoLibraryUsageDescription: "Solea usa le foto che scegli per il diario fotografico dell'abbronzatura. Le immagini restano sul tuo dispositivo e non vengono mai caricate."
         SoleaAppStoreURL: ""
-        SoleaPrivacyPolicyURL: ""
-        SoleaSupportURL: ""
+        SoleaPrivacyPolicyURL: "https://davidecapurr.github.io/solea/privacy/"
+        SoleaSupportURL: "https://davidecapurr.github.io/solea/support/"
         SoleaCoachProxyURL: "$(SOLEA_COACH_PROXY_URL)"
     settings:
       base:

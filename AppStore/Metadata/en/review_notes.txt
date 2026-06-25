@@ -1,5 +1,5 @@
 Solea uses WeatherKit for the UV index and forecasts, Core Location for local calculations based on the current location, HealthKit only after a user action to write Time in Daylight, Game Center for leaderboards and achievements, and local notifications for session reminders.
 
-Solea requests the Critical Alerts entitlement solely for the safety stop alert shown when the recommended exposure limit is reached. In code, this alert uses UNNotificationSound.defaultCritical; all other reminders use standard sounds. Critical Alerts are never used for marketing, engagement, or recurring reminders.
+Solea does NOT use Critical Alerts and does not request the com.apple.developer.usernotifications.critical-alerts entitlement. All reminders and the safety stop alert shown when the recommended exposure limit is reached are standard local notifications ([.alert, .sound]); the user can disable them in iOS Settings.
 
 The cloud coach is disabled in the current build (CoachConfiguration.proxyURL = nil); the app uses only the on-device engine when available. Diary photos stay on the device and are not uploaded to a server.

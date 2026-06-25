@@ -1,3 +1,3 @@
-- Capability richiesta: `com.apple.developer.usernotifications.critical-alerts`.
-- Uso dichiarato: solo per l'avviso locale di arresto quando il limite prudente di esposizione è esaurito.
-- Non usare Critical Alerts per marketing, engagement o promemoria generici.
+- Critical Alerts NON utilizzati: l'app non richiede l'entitlement `com.apple.developer.usernotifications.critical-alerts`.
+- Tutti i promemoria (girati, riapplica SPF, idratazione, ore ideali) e lo stop di sicurezza al raggiungimento del limite prudente sono notifiche locali standard.
+- L'autorizzazione richiesta è solo `[.alert, .sound]`.
