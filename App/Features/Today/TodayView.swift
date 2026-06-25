@@ -205,10 +205,14 @@ struct TodayView: View {
                 Label("SOLEA CHECK", systemImage: "sparkles")
                     .font(.caption.bold())
                     .tracking(1.1)
-                Spacer()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                Spacer(minLength: 8)
                 Text(Date.now, format: .dateTime.day().month(.abbreviated))
                     .font(.caption.bold())
                     .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
             }
 
             HStack(alignment: .firstTextBaseline, spacing: 8) {

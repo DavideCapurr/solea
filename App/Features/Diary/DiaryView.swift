@@ -60,10 +60,14 @@ struct DiaryView: View {
                 Label("DIARIO SOLEA", systemImage: "book.closed.fill")
                     .font(.caption.bold())
                     .tracking(1.1)
-                Spacer()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                Spacer(minLength: 8)
                 Text(Date.now, format: .dateTime.day().month(.abbreviated))
                     .font(.caption.bold())
                     .foregroundStyle(.black.opacity(0.58))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
             }
 
             VStack(alignment: .leading, spacing: 6) {

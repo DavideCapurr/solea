@@ -125,13 +125,19 @@ Nessun placeholder.
 - **Dose UV** in `ActiveSessionView.swift` (`doseRing` con label + percentuale).
 - **Modalità spiaggia / story** (da `main`): `accessibilityHint` sui CTA.
 
-### 7.3 Localizzazione — ✅ completa in 5 lingue
+### 7.3 Localizzazione — ✅ completa in 6 lingue (App + Watch + Widget)
 
 `App/Resources/Localizable.xcstrings`: sorgente `it`, **456 chiavi** tradotte al
 100% in **IT, EN, ES, FR, DE, PT** (456/456 per lingua). Parità dei format
-specifier (`%@`, `%lld`, `%%`) verificata. Restano da rifinire le stringhe dei
-target Watch/Widget (`*.lproj/Localizable.strings`) se si vogliono le stesse 4
-lingue extra anche lì.
+specifier (`%@`, `%lld`, `%%`) verificata.
+
+I target **Watch** e **Widget** sono allineati: `WatchApp/{it,en,es,fr,de,pt}.lproj/`
+contiene sia `Localizable.strings` (12 chiavi runtime: dose UV, controlli sessione,
+errori posizione) sia `InfoPlist.strings` (display name + `NSLocationWhenInUseUsageDescription`).
+`Widgets/{it,en,es,fr,de,pt}.lproj/InfoPlist.strings` localizza il display name del
+widget (le label runtime arrivano da `Localizable.xcstrings` condiviso). `project.yml`
+dichiara esplicitamente `knownRegions: [it, en, es, fr, de, pt]` così Xcode riconosce
+tutte le lingue indipendentemente da quali file siano presenti.
 
 ### 7.4 Gestione errori — ✅ robusta
 
@@ -139,14 +145,52 @@ lingue extra anche lì.
 warning non bloccanti in `TodayViewModel`/`SessionManager`. Nessuna modifica
 necessaria.
 
-### 7.5 Controlli residui (fuori dal codice o a runtime)
+### 7.5 Dynamic Type — ✅ verificato a `accessibility-XXXL`
 
-| Priorità | Voce | Dove |
-|---|---|---|
-| Alta | Verifica Dynamic Type a runtime (no clipping alle taglie accessibili) | Xcode/simulatore |
-| Media | Estendere ES/FR/DE/PT ai target Watch/Widget | `*/{en,it}.lproj/Localizable.strings` |
-| Media | Build & test su Mac (`xcodegen generate && ⌘U`) | host con Xcode |
-| Bassa | Privacy nutrition labels coerenti con `App/PrivacyInfo.xcprivacy` | App Store Connect |
+Build su `iPhone 17 Pro / iOS 26.4` (Xcode 26.4.1) e screenshot di tutte le tab
+con `xcrun simctl ui … content_size accessibility-extra-extra-extra-large`.
+Trovati e corretti due eyebrow label che si spezzavano char-by-char in HStack
+con una data accanto:
+
+- [TodayView.swift:205](App/Features/Today/TodayView.swift:205) — `Label("SOLEA CHECK", …)` ora ha `lineLimit(1)` + `minimumScaleFactor(0.7)`.
+- [DiaryView.swift:60](App/Features/Diary/DiaryView.swift:60) — `Label("DIARIO SOLEA", …)` idem.
+
+Tab Planner/Coach (paywall Solea Plus) e Profile rendono pulito a XXXL: testo
+con wrap a parola, niente clipping. Tab bar resta leggibile.
+
+### 7.6 Build & test — ✅ verde
+
+- `xcodegen generate` → progetto Xcode include 6 lingue note (`Base, de, en, es, fr, it, pt`).
+- `xcodebuild -scheme Solea -destination "platform=iOS Simulator,id=iPhone17Pro,OS=26.4" build` → **BUILD SUCCEEDED**.
+- `swift test` sul package `SoleaCore` → **63/63 test PASS** (TanPlannerTests, VitaminDTests, SunExposureAdvisorTests, SessionTrackingTests, …).
+
+### 7.7 Privacy nutrition labels — ✅ allineate al manifest
+
+`App/PrivacyInfo.xcprivacy` dichiara `NSPrivacyCollectedDataTypes` vuoto e
+`NSPrivacyTracking = false`. La build spedita ha `SOLEA_COACH_PROXY_URL = ""`
+([project.yml:79](project.yml:79)), quindi nessun dato lascia il dispositivo
+verso server Solea. WeatherKit / HealthKit / Game Center sono servizi
+Apple-managed e non costituiscono "data collected by Solea" secondo la
+definizione Apple.
+
+[`AppStore/Metadata/{it,en,es,fr,de,pt}/app_privacy.md`](AppStore/Metadata/it/app_privacy.md)
+ora dichiarano coerentemente **Data Not Collected** con spiegazione per ogni
+categoria potenzialmente sollevata da App Store Connect (Location, Health &
+Fitness, Photos, Game Center, Identifiers). Include la procedura per riallineare
+manifest + nutrition labels se in una release futura il proxy del coach verrà
+abilitato.
+
+> **Quando si invia su App Store Connect**, nel questionario "App Privacy"
+> rispondere: *Tracking* → No; *Data Collection* → "No, we do not collect data
+> from this app". Coerente al 100% con il manifest spedito.
+
+### 7.8 Controlli residui
+
+Nessuno bloccante. Voci di follow-up opzionali (post-release):
+
+- Estensione delle altre metadata App Store (description.txt, keywords.txt,
+  promotional_text.txt, ecc.) a ES/FR/DE/PT — al momento solo IT/EN sono
+  presenti in `AppStore/Metadata/`.
 
 > Nota: `main` include già `docs/APP_STORE_METADATA.md`, `APP_STORE_SUBMISSION.md`,
 > screenshot e script di preflight. Questo documento resta la **vista editoriale**
