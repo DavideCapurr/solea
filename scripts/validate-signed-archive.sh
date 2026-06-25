@@ -137,7 +137,6 @@ expect_entitlement_value "$app_entitlements" aps-environment production
 expect_entitlement_value "$app_entitlements" com.apple.developer.weatherkit true
 expect_entitlement_value "$app_entitlements" com.apple.developer.healthkit true
 expect_entitlement_value "$app_entitlements" com.apple.developer.game-center true
-expect_entitlement_value "$app_entitlements" com.apple.developer.usernotifications.critical-alerts true
 expect_entitlement_array_contains "$app_entitlements" com.apple.security.application-groups group.com.davidecapurro.solea
 
 step "Checking signed widget entitlements"

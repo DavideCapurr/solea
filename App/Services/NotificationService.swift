@@ -38,9 +38,14 @@ final class NotificationService {
 
     /// Richiede l'autorizzazione. Ritorna `false` se l'utente la nega (scelta
     /// legittima, la UI lo segnala); lancia solo per errori reali del sistema.
+    ///
+    /// Usa notifiche locali standard: anche lo stop di sicurezza è un avviso
+    /// normale. Non richiediamo l'entitlement Critical Alerts
+    /// (`com.apple.developer.usernotifications.critical-alerts`), riservato da
+    /// Apple ad app salvavita e non concesso a un'app di abbronzatura.
     func requestAuthorization() async throws -> Bool {
         do {
-            return try await center.requestAuthorization(options: [.alert, .sound, .criticalAlert])
+            return try await center.requestAuthorization(options: [.alert, .sound])
         } catch {
             throw NotificationError.underlying(error)
         }
@@ -107,7 +112,9 @@ final class NotificationService {
         let content = UNMutableNotificationContent()
         content.title = String(localized: "Limite prudente esaurito")
         content.body = String(localized: "Mettiti all'ombra o aggiorna la protezione prima di continuare.")
-        content.sound = UNNotificationSound.defaultCritical
+        // Suono standard: lo stop di sicurezza non usa Critical Alerts (entitlement
+        // non richiesto), così evitiamo un gate Apple non necessario per l'app.
+        content.sound = .default
         try await schedule(
             id: Identifier.stop,
             content: content,

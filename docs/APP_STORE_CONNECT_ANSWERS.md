@@ -58,9 +58,9 @@ Risposte consigliate per il questionario:
 
 ## Critical Alerts
 
-- Capability richiesta: `com.apple.developer.usernotifications.critical-alerts`.
-- Uso dichiarato: solo per l'avviso locale di arresto quando il limite prudente di esposizione è esaurito.
-- Non usare Critical Alerts per marketing, engagement o promemoria generici.
+- **Non usati.** Nessun entitlement `com.apple.developer.usernotifications.critical-alerts`.
+- Lo stop di sicurezza e tutti i promemoria sono notifiche locali standard (`[.alert, .sound]`, `UNNotificationSound.default`).
+- Nessuna richiesta di approvazione Apple necessaria.
 
 ## In-App Purchase
 
@@ -84,7 +84,7 @@ Includi anche:
 
 - Il coach cloud è disabilitato nella build corrente (`SoleaCoachProxyURL` vuoto).
 - HealthKit è usato solo per la scrittura opzionale di Time in Daylight.
-- Critical Alerts sono limitate allo stop alert di sicurezza.
+- Critical Alerts non usati: stop alert e promemoria sono notifiche locali standard.
 - Game Center deve avere classifiche e traguardi già creati in App Store Connect.
 - I prodotti In-App Purchase di Solea Plus devono essere creati in App Store
   Connect e disponibili in sandbox prima della review.

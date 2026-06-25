@@ -1,3 +1,3 @@
-- Requested entitlement: `com.apple.developer.usernotifications.critical-alerts`.
-- Declared use: only for the local safety stop alert shown when the recommended exposure limit is reached.
-- Critical Alerts are not used for marketing, engagement, or general reminders.
+- Critical Alerts are NOT used: the app does not request the `com.apple.developer.usernotifications.critical-alerts` entitlement.
+- All reminders (turn over, reapply SPF, hydration, ideal hours) and the safety stop when the recommended exposure limit is reached are standard local notifications.
+- The only authorization requested is `[.alert, .sound]`.

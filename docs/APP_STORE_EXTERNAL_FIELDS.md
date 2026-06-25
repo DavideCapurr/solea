@@ -16,8 +16,8 @@ parentesi angolari, come `<email>` o `<telefono>`.
 
 ## Required URLs
 
-- Privacy Policy URL: <https://example.com/solea/privacy>
-- Support URL: <https://example.com/solea/support>
+- Privacy Policy URL: <https://davidecapurr.github.io/solea/privacy/>
+- Support URL: <https://davidecapurr.github.io/solea/support/>
 
 Gli stessi URL devono essere copiati in `project.yml` nelle chiavi
 `SoleaPrivacyPolicyURL` e `SoleaSupportURL`, così l'app mostra i link nel
@@ -42,14 +42,14 @@ scripts/sync-app-store-urls.sh
 
 ## App Review Contact
 
-- Contact name: <nome e cognome>
-- Contact email: <email>
+- Contact name: Davide Capurro
+- Contact email: davidecapurro@icloud.com
 - Contact phone: <telefono>
 
 ## App Information
 
 - SKU: solea-ios
-- Copyright: <2026 titolare app>
+- Copyright: 2026 Davide Capurro
 
 ## Review Access
 
@@ -58,6 +58,5 @@ scripts/sync-app-store-urls.sh
 
 ## External Portal Gates
 
-- Critical Alerts approval: requested on 2026-06-22; Apple request ID
-  `SKFHX9458G`; approval pending
-- Game Center components: pending
+- Critical Alerts approval: Not used
+- Game Center components: created

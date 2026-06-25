@@ -1,5 +1,5 @@
 Solea usa WeatherKit per l'indice UV e le previsioni, Core Location per i calcoli locali basati sulla posizione corrente, HealthKit solo su azione dell'utente per scrivere Time in Daylight, Game Center per classifiche e traguardi e notifiche locali per i promemoria di sessione.
 
-Solea richiede Critical Alerts per l'avviso di sicurezza quando il limite prudente di esposizione è esaurito. Nel codice questo avviso usa UNNotificationSound.defaultCritical; gli altri promemoria usano suoni standard. Critical Alerts non vengono usate per marketing, coinvolgimento o promemoria ricorrenti.
+Solea NON usa Critical Alerts e non richiede l'entitlement com.apple.developer.usernotifications.critical-alerts. Tutti i promemoria e l'avviso di sicurezza al raggiungimento del limite prudente di esposizione sono notifiche locali standard ([.alert, .sound]); l'utente può disattivarle in Impostazioni iOS.
 
 Il coach cloud è disabilitato nella build corrente (CoachConfiguration.proxyURL = nil); il codice usa solo il motore on-device quando disponibile. Le foto del diario restano sul dispositivo e non vengono caricate su server.
