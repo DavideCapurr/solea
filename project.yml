@@ -122,6 +122,8 @@ targets:
       properties:
         # WeatherKit — UV index al polso
         com.apple.developer.weatherkit: true
+        # Game Center — classifiche e achievement (allineato all'app iOS)
+        com.apple.developer.game-center: true
     info:
       path: WatchApp/Info.plist
       properties:
