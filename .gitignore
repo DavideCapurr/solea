@@ -10,6 +10,8 @@ WatchApp/SoleaWatch.entitlements
 
 # Xcode / Swift
 build/
+AppStore/Archives/
+AppStore/Exports/
 xcuserdata/
 DerivedData/
 .build/
