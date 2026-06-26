@@ -23,6 +23,8 @@ struct TodayView: View {
     @State private var sharePayload: SharePayload?
     @State private var showPlusPaywall = false
     @State private var saveErrorMessage: String?
+    /// Ora selezionata toccando una colonna del grafico di previsione.
+    @State private var selectedForecastDate: Date?
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @AppStorage("goldenHourRemindersEnabled") private var goldenHourRemindersEnabled = false
     @AppStorage("currentSkinResponse") private var currentSkinResponseRawValue = SkinResponse.comfortable.rawValue
@@ -625,20 +627,43 @@ struct TodayView: View {
     // MARK: - Previsione oraria
 
     private func forecastCard(metrics: TodayMetrics) -> some View {
-        card {
+        let hourly = Array(metrics.conditions.hourly)
+        let selectedHour = selectedForecastDate.flatMap { date in
+            hourly.min(by: {
+                abs($0.date.timeIntervalSince(date)) < abs($1.date.timeIntervalSince(date))
+            })
+        }
+        return card {
             VStack(alignment: .leading, spacing: 12) {
-                Text("Previsione UV")
-                    .font(.headline)
-                Chart(metrics.conditions.hourly.prefix(12), id: \.date) { hour in
+                HStack {
+                    Text("Previsione UV")
+                        .font(.headline)
+                    Spacer()
+                    if let selectedHour {
+                        Text("\(selectedHour.date.formatted(date: .omitted, time: .shortened)) · UV \(selectedHour.uvIndex, format: .number.precision(.fractionLength(0)))")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(barColor(uv: selectedHour.uvIndex))
+                    } else {
+                        Text("Tocca una colonna")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                Chart(hourly, id: \.date) { hour in
                     BarMark(
                         x: .value("Ora", hour.date, unit: .hour),
                         y: .value("UV", hour.uvIndex)
                     )
                     .foregroundStyle(barColor(uv: hour.uvIndex))
+                    .opacity(selectedHour == nil || selectedHour?.date == hour.date ? 1 : 0.35)
                     .accessibilityLabel(hour.date.formatted(date: .omitted, time: .shortened))
                     .accessibilityValue(Text("UV \(hour.uvIndex, format: .number.precision(.fractionLength(0)))"))
                 }
                 .chartYScale(domain: 0...11)
+                // Mostra ~8 ore per volta e lascia scorrere lateralmente il resto.
+                .chartScrollableAxes(.horizontal)
+                .chartXVisibleDomain(length: 8 * 3600)
+                .chartXSelection(value: $selectedForecastDate)
                 .frame(height: 160)
                 .accessibilityLabel("Previsione UV delle prossime ore")
                 .accessibilityValue(Text(forecastSummary(metrics)))
