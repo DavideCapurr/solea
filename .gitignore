@@ -9,6 +9,7 @@ WatchApp/Info.plist
 WatchApp/SoleaWatch.entitlements
 
 # Xcode / Swift
+build/
 xcuserdata/
 DerivedData/
 .build/

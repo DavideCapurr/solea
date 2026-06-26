@@ -1,3 +1,3 @@
-- Critical Alerts NON utilizzati: l'app non richiede l'entitlement `com.apple.developer.usernotifications.critical-alerts`.
-- Tutti i promemoria (girati, riapplica SPF, idratazione, ore ideali) e lo stop di sicurezza al raggiungimento del limite prudente sono notifiche locali standard.
-- L'autorizzazione richiesta è solo `[.alert, .sound]`.
+- **Non usati.** Nessun entitlement `com.apple.developer.usernotifications.critical-alerts`.
+- Lo stop di sicurezza e tutti i promemoria sono notifiche locali standard (`[.alert, .sound]`, `UNNotificationSound.default`).
+- Nessuna richiesta di approvazione Apple necessaria.
