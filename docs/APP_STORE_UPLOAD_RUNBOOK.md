@@ -9,16 +9,14 @@ dell'upload.
 - Verifica che l'Account Holder abbia accettato gli accordi Apple correnti.
 - Nel Developer Portal configura gli App ID espliciti:
   - `com.davidecapurro.Solea`: WeatherKit, HealthKit, Game Center, App Groups,
-    Push Notifications e Critical Alerts.
+    Push Notifications.
   - `com.davidecapurro.Solea.Widgets`: App Groups.
   - `com.davidecapurro.Solea.watchkitapp`: WeatherKit.
 - Crea e associa `group.com.davidecapurro.solea` all'app iOS e al widget.
-- Ottieni l'approvazione Apple per
-  `com.apple.developer.usernotifications.critical-alerts`. Solea usa
-  `UNNotificationSound.defaultCritical`, quindi non procedere con un profilo
-  che non contiene questo entitlement.
-  - Richiesta inviata il 2026-06-22, request ID `SKFHX9458G`; in attesa di
-    approvazione Apple.
+- Solea NON usa Critical Alerts: non serve l'entitlement
+  `com.apple.developer.usernotifications.critical-alerts`. Tutti i promemoria e
+  lo stop di sicurezza sono notifiche locali standard (`[.alert, .sound]`,
+  `UNNotificationSound.default`).
 - Crea in App Store Connect tutti i componenti elencati in
   `docs/GAME_CENTER_SETUP.md`.
 - Pubblica Privacy Policy e pagina Support su URL HTTPS pubblici.
@@ -130,7 +128,7 @@ Apri `Solea.xcodeproj` in Xcode e controlla:
 - Team corretto per app, widget e Watch app;
 - Automatically manage signing attivo, oppure profili distribution equivalenti;
 - version `1.0.0`, build `1`;
-- profilo iOS con APNs `production` e Critical Alerts approvato.
+- profilo iOS con APNs `production`.
 
 Poi scegli `Product > Archive`.
 
@@ -155,7 +153,7 @@ Il controllo deve confermare:
 - bundle ID, versione e build corretti;
 - privacy manifest inclusi;
 - APNs `production`;
-- WeatherKit, HealthKit, Game Center, App Group e Critical Alerts effettivamente
+- WeatherKit, HealthKit, Game Center e App Group effettivamente
   presenti negli entitlements firmati.
 
 Non caricare l'archive se questo comando fallisce.

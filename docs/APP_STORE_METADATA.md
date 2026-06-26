@@ -38,7 +38,7 @@ Solea usa WeatherKit per l'indice UV e le previsioni, Core Location per i calcol
 
 Solea Plus usa due prodotti promossi nel paywall: annuale auto-rinnovabile (`com.davidecapurro.Solea.plus.annual`, prezzo indicativo €19,99/anno) e Summer Pass non-rinnovabile (`com.davidecapurro.Solea.plus.seasonal`, prezzo indicativo €9,99, accesso app-side di 120 giorni). Il prodotto mensile `com.davidecapurro.Solea.plus.monthly` è definito a codice ma non promosso nella UI iniziale.
 
-Solea richiede Critical Alerts per l'avviso di sicurezza quando il limite prudente di esposizione è esaurito. Nel codice questo avviso usa `UNNotificationSound.defaultCritical`; gli altri promemoria usano suoni standard. Critical Alerts non vengono usate per marketing, coinvolgimento o promemoria ricorrenti.
+Solea NON usa Critical Alerts e non richiede l'entitlement `com.apple.developer.usernotifications.critical-alerts`. Tutti i promemoria e l'avviso di sicurezza al raggiungimento del limite prudente di esposizione sono notifiche locali standard (`[.alert, .sound]`, `UNNotificationSound.default`); l'utente può disattivarle in Impostazioni iOS.
 
 Il coach cloud è disabilitato nella build corrente (`SoleaCoachProxyURL` vuoto); il codice usa solo il motore on-device quando disponibile. Le foto del diario restano sul dispositivo e non vengono caricate su server.
 

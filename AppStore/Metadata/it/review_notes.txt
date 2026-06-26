@@ -1,5 +1,7 @@
-Solea usa WeatherKit per l'indice UV e le previsioni, Core Location per i calcoli locali basati sulla posizione corrente, HealthKit solo su azione dell'utente per scrivere Time in Daylight, Game Center per classifiche e traguardi e notifiche locali per i promemoria di sessione.
+Solea usa WeatherKit per l'indice UV e le previsioni, Core Location per i calcoli locali basati sulla posizione corrente, StoreKit per Solea Plus, HealthKit solo su azione dell'utente per scrivere Time in Daylight, Game Center per classifiche e traguardi e notifiche locali per i promemoria di sessione.
 
-Solea NON usa Critical Alerts e non richiede l'entitlement com.apple.developer.usernotifications.critical-alerts. Tutti i promemoria e l'avviso di sicurezza al raggiungimento del limite prudente di esposizione sono notifiche locali standard ([.alert, .sound]); l'utente può disattivarle in Impostazioni iOS.
+Solea Plus usa due prodotti promossi nel paywall: annuale auto-rinnovabile (com.davidecapurro.Solea.plus.annual, prezzo indicativo €19,99/anno) e Summer Pass non-rinnovabile (com.davidecapurro.Solea.plus.seasonal, prezzo indicativo €9,99, accesso app-side di 120 giorni). Il prodotto mensile com.davidecapurro.Solea.plus.monthly è definito a codice ma non promosso nella UI iniziale.
 
-Il coach cloud è disabilitato nella build corrente (CoachConfiguration.proxyURL = nil); il codice usa solo il motore on-device quando disponibile. Le foto del diario restano sul dispositivo e non vengono caricate su server.
+Solea NON usa Critical Alerts e non richiede l'entitlement com.apple.developer.usernotifications.critical-alerts. Tutti i promemoria e l'avviso di sicurezza al raggiungimento del limite prudente di esposizione sono notifiche locali standard ([.alert, .sound], UNNotificationSound.default); l'utente può disattivarle in Impostazioni iOS.
+
+Il coach cloud è disabilitato nella build corrente (SoleaCoachProxyURL vuoto); il codice usa solo il motore on-device quando disponibile. Le foto del diario restano sul dispositivo e non vengono caricate su server.
