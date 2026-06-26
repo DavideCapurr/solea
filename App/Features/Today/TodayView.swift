@@ -23,6 +23,7 @@ struct TodayView: View {
     @State private var sharePayload: SharePayload?
     @State private var showPlusPaywall = false
     @State private var saveErrorMessage: String?
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @AppStorage("goldenHourRemindersEnabled") private var goldenHourRemindersEnabled = false
     @AppStorage("currentSkinResponse") private var currentSkinResponseRawValue = SkinResponse.comfortable.rawValue
 
@@ -178,6 +179,7 @@ struct TodayView: View {
                         .foregroundStyle(.orange)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                Color.clear.frame(height: 72)
             }
             .padding()
         }
@@ -201,38 +203,28 @@ struct TodayView: View {
     private func dailyCheckHero(metrics: TodayMetrics) -> some View {
         let recommendation = metrics.recommendedPlan
         return VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Label("SOLEA CHECK", systemImage: "sparkles")
-                    .font(.caption.bold())
-                    .tracking(1.1)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                Spacer(minLength: 8)
-                Text(Date.now, format: .dateTime.day().month(.abbreviated))
-                    .font(.caption.bold())
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-            }
+            adaptiveHeader("SOLEA CHECK", icon: "sparkles", dateStyle: .secondary)
 
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
-                Text(planHeadline(recommendation))
-                    .font(.system(size: 48, weight: .black, design: .rounded))
-                    .minimumScaleFactor(0.7)
-                    .lineLimit(1)
-                    .monospacedDigit()
-                Text(planUnit(recommendation))
-                    .font(.title3.bold())
-                    .foregroundStyle(.black.opacity(0.58))
+            ViewThatFits(in: .horizontal) {
+                planHeadlineRow(recommendation)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(planHeadline(recommendation))
+                        .font(.system(size: 38, weight: .black, design: .rounded))
+                        .monospacedDigit()
+                    Text(planUnit(recommendation))
+                        .font(.title3.bold())
+                        .foregroundStyle(.black.opacity(0.58))
+                }
             }
 
             Text(planExplanation(recommendation))
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(.black.opacity(0.68))
+                .fixedSize(horizontal: false, vertical: true)
 
             primarySessionCTA(metrics: metrics)
 
-            HStack(spacing: 8) {
+            LazyVGrid(columns: metricColumns, spacing: 8) {
                 checkMetric(
                     value: metrics.conditions.currentUVIndex.formatted(.number.precision(.fractionLength(0))),
                     label: "UV",
@@ -246,23 +238,12 @@ struct TodayView: View {
                 )
             }
 
-            HStack {
-                Label(riskText(metrics.burnRisk), systemImage: "circle.fill")
-                    .font(.caption.bold())
-                    .foregroundStyle(riskColor(metrics.burnRisk))
-                Spacer()
-                Button {
-                    if plusStore.hasPlus {
-                        shareDailyCheck(metrics)
-                    } else {
-                        showPlusPaywall = true
-                    }
-                } label: {
-                    Label("Condividi", systemImage: "square.and.arrow.up")
+            ViewThatFits(in: .horizontal) {
+                riskAndShareRow(metrics: metrics)
+                VStack(alignment: .leading, spacing: 10) {
+                    riskLabel(metrics.burnRisk)
+                    shareButton(metrics: metrics)
                 }
-                .buttonStyle(.bordered)
-                .tint(.black)
-                .accessibilityHint("Crea una storia verticale senza posizione o dati personali")
             }
         }
         .padding(20)
@@ -272,6 +253,81 @@ struct TodayView: View {
             RoundedRectangle(cornerRadius: 24)
                 .stroke(.orange.opacity(0.18), lineWidth: 1)
         }
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+    }
+
+    private var metricColumns: [GridItem] {
+        Array(repeating: GridItem(.flexible(), spacing: 8), count: 3)
+    }
+
+    private func adaptiveHeader(
+        _ title: LocalizedStringKey,
+        icon: String,
+        dateStyle: Color
+    ) -> some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(alignment: .firstTextBaseline) {
+                Label(title, systemImage: icon)
+                    .font(.caption.bold())
+                    .tracking(1.1)
+                Spacer(minLength: 8)
+                Text(Date.now, format: .dateTime.day().month(.abbreviated))
+                    .font(.caption.bold())
+                    .foregroundStyle(dateStyle)
+            }
+
+            VStack(alignment: .leading, spacing: 4) {
+                Label(title, systemImage: icon)
+                    .font(.caption.bold())
+                    .tracking(1.1)
+                Text(Date.now, format: .dateTime.day().month(.abbreviated))
+                    .font(.caption.bold())
+                    .foregroundStyle(dateStyle)
+            }
+        }
+    }
+
+    private func planHeadlineRow(_ recommendation: SunExposureRecommendation) -> some View {
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Text(planHeadline(recommendation))
+                .font(.system(size: 48, weight: .black, design: .rounded))
+                .minimumScaleFactor(0.7)
+                .lineLimit(1)
+                .monospacedDigit()
+            Text(planUnit(recommendation))
+                .font(.title3.bold())
+                .foregroundStyle(.black.opacity(0.58))
+        }
+    }
+
+    private func riskAndShareRow(metrics: TodayMetrics) -> some View {
+        HStack {
+            riskLabel(metrics.burnRisk)
+            Spacer()
+            shareButton(metrics: metrics)
+        }
+    }
+
+    private func riskLabel(_ risk: BurnRisk) -> some View {
+        Label(riskText(risk), systemImage: "circle.fill")
+            .font(.caption.bold())
+            .foregroundStyle(riskColor(risk))
+            .fixedSize(horizontal: false, vertical: true)
+    }
+
+    private func shareButton(metrics: TodayMetrics) -> some View {
+        Button {
+            if plusStore.hasPlus {
+                shareDailyCheck(metrics)
+            } else {
+                showPlusPaywall = true
+            }
+        } label: {
+            Label("Condividi", systemImage: "square.and.arrow.up")
+        }
+        .buttonStyle(.bordered)
+        .tint(.black)
+        .accessibilityHint("Crea una storia verticale senza posizione o dati personali")
     }
 
     private func checkMetric(value: String, label: LocalizedStringKey, icon: String) -> some View {
@@ -281,6 +337,8 @@ struct TodayView: View {
             Text(value)
                 .font(.headline.bold())
                 .monospacedDigit()
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
             Text(label)
                 .font(.caption2.bold())
                 .foregroundStyle(.black.opacity(0.54))
@@ -303,6 +361,7 @@ struct TodayView: View {
                     Text("Rossa").tag(SkinResponse.red)
                 }
                 .pickerStyle(.segmented)
+                .dynamicTypeSize(...DynamicTypeSize.accessibility2)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -426,10 +485,17 @@ struct TodayView: View {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Stop sicurezza al sole")
                     .font(.headline)
-                HStack {
-                    recommendedLimitColumn(title: "Senza protezione", minutes: metrics.recommendedMinutesBareSkin)
-                    Divider()
-                    recommendedLimitColumn(title: "Con SPF 30", minutes: metrics.recommendedMinutesSPF30)
+                ViewThatFits(in: .horizontal) {
+                    HStack {
+                        recommendedLimitColumn(title: "Senza protezione", minutes: metrics.recommendedMinutesBareSkin)
+                        Divider()
+                        recommendedLimitColumn(title: "Con SPF 30", minutes: metrics.recommendedMinutesSPF30)
+                    }
+                    VStack(spacing: 12) {
+                        recommendedLimitColumn(title: "Senza protezione", minutes: metrics.recommendedMinutesBareSkin)
+                        Divider()
+                        recommendedLimitColumn(title: "Con SPF 30", minutes: metrics.recommendedMinutesSPF30)
+                    }
                 }
             }
         }
@@ -610,15 +676,22 @@ struct TodayView: View {
         return Button {
             showSessionSetup = true
         } label: {
-            HStack(spacing: 10) {
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 10) {
+                    Label(
+                        title,
+                        systemImage: metrics.recommendedPlan.minutes <= 0 ? "sun.horizon.fill" : "timer"
+                    )
+                    .font(.headline)
+                    Spacer()
+                    Image(systemName: "arrow.right.circle.fill")
+                        .font(.title3)
+                }
                 Label(
                     title,
                     systemImage: metrics.recommendedPlan.minutes <= 0 ? "sun.horizon.fill" : "timer"
                 )
                 .font(.headline)
-                Spacer()
-                Image(systemName: "arrow.right.circle.fill")
-                    .font(.title3)
             }
             .foregroundStyle(.white)
             .padding(.horizontal, 16)

@@ -16,6 +16,7 @@ struct SoleaPlusPaywallView: View {
                     productList
                     restoreSection
                     complianceNote
+                    Color.clear.frame(height: 48)
                 }
                 .padding()
             }
@@ -262,32 +263,36 @@ struct SoleaPlusLockedView: View {
     let source: String
 
     @State private var showPaywall = false
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 18) {
-                VStack(spacing: 14) {
+            VStack(spacing: dynamicTypeSize.isAccessibilitySize ? 12 : 18) {
+                VStack(spacing: dynamicTypeSize.isAccessibilitySize ? 10 : 14) {
                     Label("SOLEA PLUS", systemImage: "sparkles")
                         .font(.caption.bold())
                         .tracking(1.1)
                         .foregroundStyle(.black.opacity(0.62))
 
                     Image(systemName: systemImage)
-                        .font(.system(size: 52, weight: .bold))
+                        .font(.system(size: dynamicTypeSize.isAccessibilitySize ? 34 : 52, weight: .bold))
                         .foregroundStyle(.black.opacity(0.78))
 
                     Text(title)
-                        .font(.system(size: 34, weight: .black, design: .rounded))
+                        .font(.system(size: dynamicTypeSize.isAccessibilitySize ? 23 : 34, weight: .black, design: .rounded))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.black.opacity(0.84))
+                        .fixedSize(horizontal: false, vertical: true)
 
                     Text(message)
                         .font(.subheadline.weight(.medium))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.black.opacity(0.68))
+                        .fixedSize(horizontal: false, vertical: true)
                 }
-                .padding(26)
+                .padding(dynamicTypeSize.isAccessibilitySize ? 20 : 26)
                 .frame(maxWidth: .infinity)
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                 .background(
                     LinearGradient(
                         colors: [.yellow.opacity(0.72), .orange.opacity(0.42)],
@@ -301,6 +306,8 @@ struct SoleaPlusLockedView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
 
                 Button {
                     showPaywall = true
@@ -311,6 +318,7 @@ struct SoleaPlusLockedView: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .tint(.orange)
+                Color.clear.frame(height: dynamicTypeSize.isAccessibilitySize ? 104 : 72)
             }
             .padding()
         }

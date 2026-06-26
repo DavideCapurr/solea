@@ -18,6 +18,7 @@ struct ProfileView: View {
     @State private var showPlusPaywall = false
     @State private var gameCenterWarning: String?
     @Environment(\.openURL) private var openURL
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     // MARK: - Progressi derivati (logica in SoleaCore)
 
@@ -65,6 +66,7 @@ struct ProfileView: View {
             }
             .scrollContentBackground(.hidden)
             .background(SoleaTheme.screenGradient.ignoresSafeArea())
+            .contentMargins(.bottom, 96, for: .scrollContent)
             .navigationTitle("Profilo")
             .task { await authenticateAndSync() }
             .confirmationDialog(
@@ -98,17 +100,15 @@ struct ProfileView: View {
 
     private var skinSection: some View {
         Section("La tua pelle") {
-            HStack {
-                Text("Fototipo")
-                Spacer()
+            valueRow("Fototipo") {
                 Text(phototype.romanNumeral).bold().foregroundStyle(.orange)
             }
             Text(LocalizedStringKey(phototype.summaryKey))
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
-            HStack {
-                Text("Dose massima (MED)")
-                Spacer()
+                .fixedSize(horizontal: false, vertical: true)
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+            valueRow("Dose massima (MED)") {
                 Text("\(Int(phototype.med)) J/m²").foregroundStyle(.secondary)
             }
             if let warning = connectivity.lastError {
@@ -118,34 +118,48 @@ struct ProfileView: View {
                 )
                 .font(.footnote)
                 .foregroundStyle(.orange)
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
             }
         }
     }
 
     private var streakSection: some View {
         Section("Serie") {
-            HStack {
-                Label("Giorni di sole intelligente", systemImage: "flame.fill")
-                    .foregroundStyle(.orange)
-                Spacer()
-                Text("\(currentStreak)").bold()
+            ViewThatFits(in: .horizontal) {
+                HStack {
+                    Label("Giorni di sole intelligente", systemImage: "flame.fill")
+                        .foregroundStyle(.orange)
+                    Spacer()
+                    Text("\(currentStreak)").bold()
+                }
+                VStack(alignment: .leading, spacing: 6) {
+                    Label("Giorni di sole intelligente", systemImage: "flame.fill")
+                        .foregroundStyle(.orange)
+                    Text("\(currentStreak)").bold()
+                }
             }
         }
     }
 
     private var plusSection: some View {
         Section("Solea Plus") {
-            HStack {
-                Label(
-                    plusStore.hasPlus ? "Plus attivo" : "Piano gratuito",
-                    systemImage: plusStore.hasPlus ? "sparkles" : "sun.max"
-                )
-                .foregroundStyle(plusStore.hasPlus ? .orange : .primary)
-                Spacer()
-                if let validUntil = plusStore.entitlement.validUntil, plusStore.hasPlus {
-                    Text(validUntil, format: .dateTime.day().month().year())
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+            ViewThatFits(in: .horizontal) {
+                HStack {
+                    plusStatusLabel
+                    Spacer()
+                    if let validUntil = plusStore.entitlement.validUntil, plusStore.hasPlus {
+                        Text(validUntil, format: .dateTime.day().month().year())
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                VStack(alignment: .leading, spacing: 6) {
+                    plusStatusLabel
+                    if let validUntil = plusStore.entitlement.validUntil, plusStore.hasPlus {
+                        Text(validUntil, format: .dateTime.day().month().year())
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
 
@@ -161,7 +175,16 @@ struct ProfileView: View {
             Text("Gratis: UV live, rischio scottatura, limite prudente, quiz, timer base, diario base e alert sicurezza. Plus: planner, coach cloud, foto-diario, trend, reminder, Watch/Live Activity e share card premium.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
         }
+    }
+
+    private var plusStatusLabel: some View {
+        Label(
+            plusStore.hasPlus ? "Plus attivo" : "Piano gratuito",
+            systemImage: plusStore.hasPlus ? "sparkles" : "sun.max"
+        )
+        .foregroundStyle(plusStore.hasPlus ? .orange : .primary)
     }
 
     private var badgesSection: some View {
@@ -243,6 +266,25 @@ struct ProfileView: View {
             }
         } footer: {
             Text("Il fototipo determina i limiti prudenti di esposizione: rifai il quiz se pensi che non ti rappresenti.")
+        }
+    }
+
+    private func valueRow<Value: View>(
+        _ title: LocalizedStringKey,
+        @ViewBuilder value: () -> Value
+    ) -> some View {
+        ViewThatFits(in: .horizontal) {
+            HStack {
+                Text(title)
+                Spacer()
+                value()
+            }
+            .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(title)
+                value()
+            }
+            .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         }
     }
 

@@ -9,12 +9,10 @@ struct DiaryView: View {
     @Query(sort: \TanSession.startedAt, order: .reverse) private var sessions: [TanSession]
     @State private var deleteErrorMessage: String?
     @State private var showPlusPaywall = false
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     private var statColumns: [GridItem] {
-        [
-            GridItem(.flexible(), spacing: 12),
-            GridItem(.flexible(), spacing: 12)
-        ]
+        Array(repeating: GridItem(.flexible(), spacing: 12), count: dynamicTypeSize.isAccessibilitySize ? 1 : 2)
     }
 
     var body: some View {
@@ -46,6 +44,7 @@ struct DiaryView: View {
                 weeklyStatsGrid
                 quickFeatureCards
                 sessionsSection
+                Color.clear.frame(height: 72)
             }
             .padding()
         }
@@ -56,32 +55,22 @@ struct DiaryView: View {
         let summary = lifetimeSummary
 
         return VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Label("DIARIO SOLEA", systemImage: "book.closed.fill")
-                    .font(.caption.bold())
-                    .tracking(1.1)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                Spacer(minLength: 8)
-                Text(Date.now, format: .dateTime.day().month(.abbreviated))
-                    .font(.caption.bold())
-                    .foregroundStyle(.black.opacity(0.58))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-            }
+            adaptiveHeader("DIARIO SOLEA", icon: "book.closed.fill")
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(heroTitle)
                     .font(.system(.largeTitle, design: .rounded, weight: .black))
                     .foregroundStyle(.black.opacity(0.86))
-                    .lineLimit(2)
+                    .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 2)
                     .minimumScaleFactor(0.78)
+                    .fixedSize(horizontal: false, vertical: true)
                 Text(heroSubtitle)
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(.black.opacity(0.68))
+                    .fixedSize(horizontal: false, vertical: true)
             }
 
-            HStack(spacing: 8) {
+            LazyVGrid(columns: heroMetricColumns, spacing: 8) {
                 heroMetric(
                     value: "\(summary.count)",
                     label: "sessioni",
@@ -105,6 +94,34 @@ struct DiaryView: View {
         .overlay {
             RoundedRectangle(cornerRadius: 24)
                 .stroke(.orange.opacity(0.20), lineWidth: 1)
+        }
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+    }
+
+    private var heroMetricColumns: [GridItem] {
+        Array(repeating: GridItem(.flexible(), spacing: 8), count: 3)
+    }
+
+    private func adaptiveHeader(_ title: LocalizedStringKey, icon: String) -> some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(alignment: .firstTextBaseline) {
+                Label(title, systemImage: icon)
+                    .font(.caption.bold())
+                    .tracking(1.1)
+                Spacer(minLength: 8)
+                Text(Date.now, format: .dateTime.day().month(.abbreviated))
+                    .font(.caption.bold())
+                    .foregroundStyle(.black.opacity(0.58))
+            }
+
+            VStack(alignment: .leading, spacing: 4) {
+                Label(title, systemImage: icon)
+                    .font(.caption.bold())
+                    .tracking(1.1)
+                Text(Date.now, format: .dateTime.day().month(.abbreviated))
+                    .font(.caption.bold())
+                    .foregroundStyle(.black.opacity(0.58))
+            }
         }
     }
 
@@ -135,6 +152,7 @@ struct DiaryView: View {
             Text(label)
                 .font(.caption2.bold())
                 .foregroundStyle(.black.opacity(0.54))
+                .fixedSize(horizontal: false, vertical: true)
         }
         .padding(10)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -201,11 +219,12 @@ struct DiaryView: View {
                 Text(detail)
                     .font(.caption2)
                     .foregroundStyle(.secondary)
-                    .lineLimit(2)
+                    .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 2)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
         .padding(14)
-        .frame(maxWidth: .infinity, minHeight: 136, alignment: .topLeading)
+        .frame(maxWidth: .infinity, minHeight: dynamicTypeSize.isAccessibilitySize ? nil : 136, alignment: .topLeading)
         .background(SoleaTheme.softGradient(from: tint), in: RoundedRectangle(cornerRadius: 18))
         .overlay {
             RoundedRectangle(cornerRadius: 18)
@@ -269,36 +288,9 @@ struct DiaryView: View {
         tint: Color,
         badge: LocalizedStringKey? = nil
     ) -> some View {
-        HStack(spacing: 14) {
-            Image(systemName: icon)
-                .font(.title3)
-                .foregroundStyle(tint)
-                .frame(width: 44, height: 44)
-                .background(tint.opacity(0.16), in: RoundedRectangle(cornerRadius: 14))
-
-            VStack(alignment: .leading, spacing: 4) {
-                HStack(spacing: 8) {
-                    Text(title)
-                        .font(.headline)
-                    if let badge {
-                        Text(badge)
-                            .font(.caption2.bold())
-                            .foregroundStyle(.black.opacity(0.76))
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(SoleaTheme.sunshine.opacity(0.62), in: Capsule())
-                    }
-                }
-                Text(subtitle)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
-            }
-
-            Spacer(minLength: 8)
-            Image(systemName: "chevron.right")
-                .font(.caption.bold())
-                .foregroundStyle(.secondary)
+        ViewThatFits(in: .horizontal) {
+            featureCardHorizontal(title: title, subtitle: subtitle, icon: icon, tint: tint, badge: badge)
+            featureCardVertical(title: title, subtitle: subtitle, icon: icon, tint: tint, badge: badge)
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -309,6 +301,87 @@ struct DiaryView: View {
         }
     }
 
+    private func featureCardHorizontal(
+        title: LocalizedStringKey,
+        subtitle: LocalizedStringKey,
+        icon: String,
+        tint: Color,
+        badge: LocalizedStringKey?
+    ) -> some View {
+        HStack(spacing: 14) {
+            Image(systemName: icon)
+                .font(.title3)
+                .foregroundStyle(tint)
+                .frame(width: 44, height: 44)
+                .background(tint.opacity(0.16), in: RoundedRectangle(cornerRadius: 14))
+
+            VStack(alignment: .leading, spacing: 4) {
+                titleAndBadge(title: title, badge: badge)
+                Text(subtitle)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 2)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            Spacer(minLength: 8)
+            Image(systemName: "chevron.right")
+                .font(.caption.bold())
+                .foregroundStyle(.secondary)
+        }
+    }
+
+    private func featureCardVertical(
+        title: LocalizedStringKey,
+        subtitle: LocalizedStringKey,
+        icon: String,
+        tint: Color,
+        badge: LocalizedStringKey?
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Image(systemName: icon)
+                .font(.title3)
+                .foregroundStyle(tint)
+                .frame(width: 44, height: 44)
+                .background(tint.opacity(0.16), in: RoundedRectangle(cornerRadius: 14))
+
+            titleAndBadge(title: title, badge: badge)
+
+            Text(subtitle)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private func titleAndBadge(title: LocalizedStringKey, badge: LocalizedStringKey?) -> some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 8) {
+                Text(title)
+                    .font(.headline)
+                if let badge {
+                    badgeView(badge)
+                }
+            }
+            VStack(alignment: .leading, spacing: 6) {
+                Text(title)
+                    .font(.headline)
+                if let badge {
+                    badgeView(badge)
+                }
+            }
+        }
+    }
+
+    private func badgeView(_ badge: LocalizedStringKey) -> some View {
+        Text(badge)
+            .font(.caption2.bold())
+            .foregroundStyle(.black.opacity(0.76))
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(SoleaTheme.sunshine.opacity(0.62), in: Capsule())
+    }
+
     private var historicalTrendCard: some View {
         let summary = historicalSummary
 
@@ -316,19 +389,35 @@ struct DiaryView: View {
             VStack(alignment: .leading, spacing: 14) {
                 sectionHeader("Trend storici", icon: "chart.xyaxis.line", tint: SoleaTheme.violet)
 
-                HStack(spacing: 12) {
-                    trendMetric("30 giorni", value: "\(summary.last30)", detail: "sessioni")
-                    Divider()
-                    trendMetric("Minuti smart", value: "\(summary.smartMinutes)", detail: trendText(
-                        current: summary.smartMinutes,
-                        previous: summary.previousSmartMinutes
-                    ))
-                    Divider()
-                    trendMetric(
-                        "Dose media",
-                        value: "\(Int(summary.doseAverage.rounded()))%",
-                        detail: "MED"
-                    )
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: 12) {
+                        trendMetric("30 giorni", value: "\(summary.last30)", detail: "sessioni")
+                        Divider()
+                        trendMetric("Minuti smart", value: "\(summary.smartMinutes)", detail: trendText(
+                            current: summary.smartMinutes,
+                            previous: summary.previousSmartMinutes
+                        ))
+                        Divider()
+                        trendMetric(
+                            "Dose media",
+                            value: "\(Int(summary.doseAverage.rounded()))%",
+                            detail: "MED"
+                        )
+                    }
+                    VStack(alignment: .leading, spacing: 12) {
+                        trendMetric("30 giorni", value: "\(summary.last30)", detail: "sessioni")
+                        Divider()
+                        trendMetric("Minuti smart", value: "\(summary.smartMinutes)", detail: trendText(
+                            current: summary.smartMinutes,
+                            previous: summary.previousSmartMinutes
+                        ))
+                        Divider()
+                        trendMetric(
+                            "Dose media",
+                            value: "\(Int(summary.doseAverage.rounded()))%",
+                            detail: "MED"
+                        )
+                    }
                 }
             }
         }
@@ -388,7 +477,7 @@ struct DiaryView: View {
     }
 
     private func sessionRow(_ session: TanSession) -> some View {
-        HStack(alignment: .center, spacing: 10) {
+        HStack(alignment: .top, spacing: 10) {
             NavigationLink {
                 sessionDetail(session)
             } label: {
@@ -415,53 +504,59 @@ struct DiaryView: View {
 
     private func sessionCard(_ session: TanSession) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .top, spacing: 12) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(session.startedAt.formatted(date: .abbreviated, time: .shortened))
-                        .font(.headline)
-                    Label {
-                        Text(goalTitle(session.goal))
-                    } icon: {
-                        Image(systemName: "target")
+            ViewThatFits(in: .horizontal) {
+                HStack(alignment: .top, spacing: 12) {
+                    sessionTitleBlock(session)
+                    Spacer(minLength: 8)
+                    sessionDurationBlock(session)
+                }
+                VStack(alignment: .leading, spacing: 8) {
+                    sessionTitleBlock(session)
+                    sessionDurationBlock(session)
+                }
+            }
+
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 8) {
+                    miniPill("SPF \(Int(session.spf))", icon: "shield.lefthalf.filled", tint: SoleaTheme.aqua)
+                    miniPill("≈ \(Int(session.vitaminDIU)) IU", icon: "pills.fill", tint: SoleaTheme.mint)
+                    if let fraction = session.fractionOfMED {
+                        miniPill(
+                            fraction.formatted(.percent.precision(.fractionLength(0))),
+                            icon: "gauge.with.needle",
+                            tint: fraction < SafeExposure.recommendedLimitFractionOfMED ? SoleaTheme.mint : .red
+                        )
                     }
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
                 }
-
-                Spacer(minLength: 8)
-
-                VStack(alignment: .trailing, spacing: 4) {
-                    Text(durationText(session.duration))
-                        .font(.title3.bold())
-                        .monospacedDigit()
-                    Text("UV \(session.averageUVIndex.formatted(.number.precision(.fractionLength(1))))")
-                        .font(.caption.bold())
-                        .foregroundStyle(SoleaTheme.sunset)
+                VStack(alignment: .leading, spacing: 8) {
+                    miniPill("SPF \(Int(session.spf))", icon: "shield.lefthalf.filled", tint: SoleaTheme.aqua)
+                    miniPill("≈ \(Int(session.vitaminDIU)) IU", icon: "pills.fill", tint: SoleaTheme.mint)
+                    if let fraction = session.fractionOfMED {
+                        miniPill(
+                            fraction.formatted(.percent.precision(.fractionLength(0))),
+                            icon: "gauge.with.needle",
+                            tint: fraction < SafeExposure.recommendedLimitFractionOfMED ? SoleaTheme.mint : .red
+                        )
+                    }
                 }
             }
 
-            HStack(spacing: 8) {
-                miniPill("SPF \(Int(session.spf))", icon: "shield.lefthalf.filled", tint: SoleaTheme.aqua)
-                miniPill("≈ \(Int(session.vitaminDIU)) IU", icon: "pills.fill", tint: SoleaTheme.mint)
-                if let fraction = session.fractionOfMED {
-                    miniPill(
-                        fraction.formatted(.percent.precision(.fractionLength(0))),
-                        icon: "gauge.with.needle",
-                        tint: fraction < SafeExposure.recommendedLimitFractionOfMED ? SoleaTheme.mint : .red
-                    )
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 10) {
+                    Label(sideSplitText(session), systemImage: "arrow.left.and.right")
+                    if session.skinResponse != .notLogged {
+                        Label(skinResponseTitle(session.skinResponse), systemImage: "hand.raised.fill")
+                    }
                 }
-            }
-
-            HStack(spacing: 10) {
-                Label(sideSplitText(session), systemImage: "arrow.left.and.right")
-                if session.skinResponse != .notLogged {
-                    Label(skinResponseTitle(session.skinResponse), systemImage: "hand.raised.fill")
+                VStack(alignment: .leading, spacing: 6) {
+                    Label(sideSplitText(session), systemImage: "arrow.left.and.right")
+                    if session.skinResponse != .notLogged {
+                        Label(skinResponseTitle(session.skinResponse), systemImage: "hand.raised.fill")
+                    }
                 }
             }
             .font(.caption2)
             .foregroundStyle(.secondary)
-            .lineLimit(1)
-            .minimumScaleFactor(0.75)
         }
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -469,6 +564,34 @@ struct DiaryView: View {
         .overlay {
             RoundedRectangle(cornerRadius: 18)
                 .stroke(SoleaTheme.sunset.opacity(0.14), lineWidth: 1)
+        }
+    }
+
+    private func sessionTitleBlock(_ session: TanSession) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(session.startedAt.formatted(date: .abbreviated, time: .shortened))
+                .font(.headline)
+                .fixedSize(horizontal: false, vertical: true)
+            Label {
+                Text(goalTitle(session.goal))
+            } icon: {
+                Image(systemName: "target")
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
+        }
+    }
+
+    private func sessionDurationBlock(_ session: TanSession) -> some View {
+        VStack(alignment: dynamicTypeSize.isAccessibilitySize ? .leading : .trailing, spacing: 4) {
+            Text(durationText(session.duration))
+                .font(.title3.bold())
+                .monospacedDigit()
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+            Text("UV \(session.averageUVIndex.formatted(.number.precision(.fractionLength(1))))")
+                .font(.caption.bold())
+                .foregroundStyle(SoleaTheme.sunset)
         }
     }
 
