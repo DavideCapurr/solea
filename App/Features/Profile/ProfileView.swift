@@ -17,6 +17,9 @@ struct ProfileView: View {
     @State private var sharePayload: SharePayload?
     @State private var showPlusPaywall = false
     @State private var gameCenterWarning: String?
+    @State private var showScientificSources = false
+    @State private var showDeleteAccountConfirmation = false
+    @State private var deleteErrorMessage: String?
     @Environment(\.openURL) private var openURL
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
@@ -63,6 +66,7 @@ struct ProfileView: View {
                 shareSection
                 informationSection
                 resetSection
+                accountSection
             }
             .scrollContentBackground(.hidden)
             .background(SoleaTheme.screenGradient.ignoresSafeArea())
@@ -93,6 +97,30 @@ struct ProfileView: View {
             }
             .sheet(isPresented: $showPlusPaywall) {
                 SoleaPlusPaywallView(source: "profile")
+            }
+            .sheet(isPresented: $showScientificSources) {
+                ScientificSourcesView()
+            }
+            .confirmationDialog(
+                "Eliminare account e dati?",
+                isPresented: $showDeleteAccountConfirmation,
+                titleVisibility: .visible
+            ) {
+                Button("Elimina tutto", role: .destructive) { deleteAccount() }
+                Button("Annulla", role: .cancel) {}
+            } message: {
+                Text("Vengono eliminati definitivamente dal dispositivo fototipo, sessioni, diario, foto, piani e progressi. L'azione non è reversibile.")
+            }
+            .alert(
+                "Eliminazione non riuscita",
+                isPresented: Binding(
+                    get: { deleteErrorMessage != nil },
+                    set: { if !$0 { deleteErrorMessage = nil } }
+                )
+            ) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(deleteErrorMessage ?? "")
             }
         }
         .tint(SoleaTheme.sunset)
@@ -237,12 +265,24 @@ struct ProfileView: View {
 
     private var informationSection: some View {
         Section("Informazioni") {
+            Button {
+                showScientificSources = true
+            } label: {
+                Label("Fonti scientifiche", systemImage: "books.vertical")
+            }
+
             if let privacyPolicyURL = AppStoreLinks.privacyPolicyURL {
                 Button {
                     openURL(privacyPolicyURL)
                 } label: {
                     Label("Informativa privacy", systemImage: "hand.raised")
                 }
+            }
+
+            Button {
+                openURL(AppStoreLinks.termsOfUseURL)
+            } label: {
+                Label("Termini d'uso (EULA)", systemImage: "doc.text")
             }
 
             if let supportURL = AppStoreLinks.supportURL {
@@ -253,7 +293,7 @@ struct ProfileView: View {
                 }
             }
 
-            Text("Solea fornisce stime informative, non consigli medici.")
+            Text("Solea fornisce stime informative, non consigli medici. Tocca \"Fonti scientifiche\" per le fonti dei calcoli.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
@@ -266,6 +306,20 @@ struct ProfileView: View {
             }
         } footer: {
             Text("Il fototipo determina i limiti prudenti di esposizione: rifai il quiz se pensi che non ti rappresenti.")
+        }
+    }
+
+    private var accountSection: some View {
+        Section {
+            Button(role: .destructive) {
+                showDeleteAccountConfirmation = true
+            } label: {
+                Label("Elimina account e dati", systemImage: "trash")
+            }
+        } header: {
+            Text("Account")
+        } footer: {
+            Text("Solea conserva i dati solo sul tuo dispositivo. L'eliminazione rimuove definitivamente profilo, sessioni, diario, foto, piani e progressi, azzera i traguardi Game Center e riporta l'app all'onboarding. L'account Game Center si gestisce nelle Impostazioni di iOS.")
         }
     }
 
@@ -347,6 +401,15 @@ struct ProfileView: View {
             try modelContext.save()
         } catch {
             resetErrorMessage = error.localizedDescription
+        }
+    }
+
+    private func deleteAccount() {
+        do {
+            try AccountDataEraser.eraseAllData(in: modelContext)
+            // Senza UserProfile la RootView torna automaticamente all'onboarding.
+        } catch {
+            deleteErrorMessage = error.localizedDescription
         }
     }
 }

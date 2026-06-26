@@ -107,7 +107,7 @@ private struct PlanDetailView: View {
         List {
             switch Result(catching: { try plan.days() }) {
             case .success(let days):
-                Section("Esposizione giorno per giorno") {
+                Section {
                     ForEach(days) { day in
                         HStack {
                             Text(day.date.formatted(date: .abbreviated, time: .omitted))
@@ -116,6 +116,13 @@ private struct PlanDetailView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
+                } header: {
+                    Text("Esposizione giorno per giorno")
+                } footer: {
+                    // Il piano usa l'UV di destinazione da WeatherKit: attribuzione
+                    // richiesta da Apple (linea guida 5.2.5).
+                    WeatherAttributionView()
+                        .padding(.top, 4)
                 }
             case .failure(let error):
                 Section {

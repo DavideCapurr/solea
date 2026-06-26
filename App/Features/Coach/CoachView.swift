@@ -123,6 +123,10 @@ struct CoachView: View {
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
             availabilityBadge(viewModel.availability)
+            Text("I consigli sono stime informative, non un parere medico.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            ScientificSourcesLink()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.bottom, 8)

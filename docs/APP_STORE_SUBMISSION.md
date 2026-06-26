@@ -76,6 +76,7 @@ nessun rischio di rifiuto legato a Critical Alerts.
 - Completa `docs/APP_STORE_EXTERNAL_FIELDS.md` con Privacy Policy URL, Support URL, contatto App Review, copyright, stato Critical Alerts e stato Game Center.
 - Pubblica una Privacy Policy su URL pubblico. Puoi partire da `docs/PRIVACY_POLICY_DRAFT.md`, ma prima rimuovi il placeholder di contatto finale.
 - Pubblica una pagina Support su URL pubblico. Puoi partire da `docs/SUPPORT_PAGE_DRAFT.md`, ma prima inserisci contatto reale.
+- Termini d'uso (EULA): Solea usa l'EULA standard di Apple, già linkata nella App Description e in-app (paywall e Profilo). Lascia il default in App Store Connect, senza EULA custom (richiesto dalla linea guida 3.1.2).
 - Puoi generare HTML statico pronto da caricare con `scripts/export-public-pages.sh --contact-email <email> --privacy-url <url> --support-url <url>`.
 - Inserisci Privacy Policy URL in App Store Connect e copia Privacy/Support URL in `project.yml` (`SoleaPrivacyPolicyURL`, `SoleaSupportURL`) per mostrarli anche dentro l'app.
 - Quando è disponibile l'URL pubblico della scheda App Store, valorizza `SoleaAppStoreURL` in `project.yml`: verrà aggiunto automaticamente alle condivisioni social.

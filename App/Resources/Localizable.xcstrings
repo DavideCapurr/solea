@@ -15950,6 +15950,856 @@
           }
         }
       }
+    },
+    "Termini d'uso (EULA)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzungsbedingungen (EULA)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use (EULA)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Términos de uso (EULA)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conditions d'utilisation (CLUF)"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termos de Uso (EULA)"
+          }
+        }
+      }
+    },
+    "Fonti scientifiche" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wissenschaftliche Quellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scientific sources"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuentes científicas"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sources scientifiques"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fontes científicas"
+          }
+        }
+      }
+    },
+    "Chiudi" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fechar"
+          }
+        }
+      }
+    },
+    "Indice UV e rischio scottatura" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV-Index und Sonnenbrandrisiko"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV index and sunburn risk"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Índice UV y riesgo de quemadura"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indice UV et risque de coup de soleil"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Índice UV e risco de queimadura"
+          }
+        }
+      }
+    },
+    "Fototipo (scala Fitzpatrick)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hauttyp (Fitzpatrick-Skala)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skin type (Fitzpatrick scale)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fototipo (escala de Fitzpatrick)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phototype (échelle de Fitzpatrick)"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fototipo (escala de Fitzpatrick)"
+          }
+        }
+      }
+    },
+    "Limite prudente, MED e dose eritemale" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorsichtiges Limit, MED und erythemale Dosis"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cautious limit, MED and erythemal dose"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Límite prudente, DEM y dosis eritematógena"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limite prudente, DEM et dose érythémale"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limite prudente, DEM e dose eritematosa"
+          }
+        }
+      }
+    },
+    "SPF e protezione solare" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LSF und Sonnenschutz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SPF and sun protection"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FPS y protección solar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FPS et protection solaire"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FPS e proteção solar"
+          }
+        }
+      }
+    },
+    "Stima della vitamina D" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin-D-Schätzung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin D estimate"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimación de vitamina D"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimation de la vitamine D"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estimativa de vitamina D"
+          }
+        }
+      }
+    },
+    "Solea usa l'indice UV per stimare il rischio di scottatura e le ore più prudenti." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea nutzt den UV-Index, um das Sonnenbrandrisiko und die vorsichtigsten Stunden zu schätzen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea uses the UV index to estimate sunburn risk and the most cautious hours."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea usa el índice UV para estimar el riesgo de quemadura y las horas más prudentes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea utilise l'indice UV pour estimer le risque de coup de soleil et les heures les plus prudentes."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Solea usa o índice UV para estimar o risco de queimadura e os horários mais prudentes."
+          }
+        }
+      }
+    },
+    "Il quiz iniziale stima il tuo fototipo Fitzpatrick, base dei limiti personalizzati." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das anfängliche Quiz schätzt deinen Fitzpatrick-Hauttyp – die Grundlage für personalisierte Limits."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The initial quiz estimates your Fitzpatrick skin type, the basis for your personalized limits."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El cuestionario inicial estima tu fototipo de Fitzpatrick, base de los límites personalizados."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le quiz initial estime votre phototype de Fitzpatrick, base des limites personnalisées."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O questionário inicial estima o seu fototipo de Fitzpatrick, base dos limites personalizados."
+          }
+        }
+      }
+    },
+    "Il limite prudente resta sotto la dose minima eritemale (MED), misurata in dose eritemale standard (SED)." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das vorsichtige Limit bleibt unter der minimalen erythemalen Dosis (MED), gemessen in Standard-Erythemdosis (SED)."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The cautious limit stays below the minimal erythemal dose (MED), measured in standard erythemal dose (SED)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El límite prudente se mantiene por debajo de la dosis eritematógena mínima (DEM), medida en dosis eritematógena estándar (DEE)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La limite prudente reste sous la dose érythémale minimale (DEM), mesurée en dose érythémale standard (DES)."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O limite prudente permanece abaixo da dose eritematosa mínima (DEM), medida em dose eritematosa padrão (DEP)."
+          }
+        }
+      }
+    },
+    "Lo SPF attenua la dose stimata, ma non moltiplica liberamente il tempo al sole." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der LSF senkt die geschätzte Dosis, vervielfacht die Sonnenzeit aber nicht beliebig."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SPF reduces the estimated dose, but doesn't freely multiply your time in the sun."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El FPS reduce la dosis estimada, pero no multiplica libremente el tiempo al sol."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le FPS atténue la dose estimée, mais ne multiplie pas librement le temps au soleil."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O FPS reduz a dose estimada, mas não multiplica livremente o tempo ao sol."
+          }
+        }
+      }
+    },
+    "La vitamina D è una stima euristica: non sostituisce l'esame del 25(OH)D nel sangue." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin D ist eine heuristische Schätzung: Sie ersetzt keinen 25(OH)D-Bluttest."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitamin D is a heuristic estimate: it doesn't replace a blood 25(OH)D test."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La vitamina D es una estimación heurística: no sustituye el análisis de 25(OH)D en sangre."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La vitamine D est une estimation heuristique : elle ne remplace pas le dosage sanguin de 25(OH)D."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A vitamina D é uma estimativa heurística: não substitui o exame de 25(OH)D no sangue."
+          }
+        }
+      }
+    },
+    "Solea fornisce stime informative basate su fonti di salute pubblica e letteratura scientifica. Non è un dispositivo medico e non sostituisce il parere di un medico o di un dermatologo." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea liefert informative Schätzungen auf Basis von Quellen des öffentlichen Gesundheitswesens und wissenschaftlicher Literatur. Es ist kein Medizinprodukt und ersetzt nicht den Rat einer Ärztin oder eines Arztes bzw. einer Dermatologin oder eines Dermatologen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea provides informational estimates based on public-health sources and scientific literature. It is not a medical device and does not replace the advice of a doctor or dermatologist."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea ofrece estimaciones informativas basadas en fuentes de salud pública y literatura científica. No es un dispositivo médico y no sustituye el consejo de un médico o dermatólogo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea fournit des estimations informatives basées sur des sources de santé publique et la littérature scientifique. Ce n'est pas un dispositif médical et cela ne remplace pas l'avis d'un médecin ou d'un dermatologue."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Solea fornece estimativas informativas baseadas em fontes de saúde pública e literatura científica. Não é um dispositivo médico e não substitui a opinião de um médico ou dermatologista."
+          }
+        }
+      }
+    },
+    "Account" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuenta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compte"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conta"
+          }
+        }
+      }
+    },
+    "Elimina account e dati" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account und Daten löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete account and data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar cuenta y datos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le compte et les données"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluir conta e dados"
+          }
+        }
+      }
+    },
+    "Solea conserva i dati solo sul tuo dispositivo. L'eliminazione rimuove definitivamente profilo, sessioni, diario, foto, piani e progressi, azzera i traguardi Game Center e riporta l'app all'onboarding. L'account Game Center si gestisce nelle Impostazioni di iOS." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea speichert deine Daten nur auf deinem Gerät. Das Löschen entfernt Profil, Sitzungen, Tagebuch, Fotos, Pläne und Fortschritt dauerhaft, setzt die Game-Center-Erfolge zurück und bringt die App zurück zum Onboarding. Dein Game-Center-Account wird in den iOS-Einstellungen verwaltet."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea keeps your data only on your device. Deleting it permanently removes your profile, sessions, diary, photos, plans and progress, resets your Game Center achievements and returns the app to onboarding. Your Game Center account is managed in iOS Settings."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea guarda tus datos solo en tu dispositivo. La eliminación borra de forma permanente perfil, sesiones, diario, fotos, planes y progreso, restablece los logros de Game Center y devuelve la app a la introducción. La cuenta de Game Center se gestiona en los Ajustes de iOS."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea conserve tes données uniquement sur ton appareil. La suppression efface définitivement profil, sessions, journal, photos, plans et progression, réinitialise les succès Game Center et ramène l'app à l'écran d'accueil. Le compte Game Center se gère dans les Réglages iOS."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Solea mantém os seus dados apenas no seu dispositivo. A exclusão remove permanentemente perfil, sessões, diário, fotos, planos e progresso, redefine as conquistas do Game Center e retorna o app à introdução. A conta do Game Center é gerida nos Ajustes do iOS."
+          }
+        }
+      }
+    },
+    "Eliminare account e dati?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account und Daten löschen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete account and data?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Eliminar cuenta y datos?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le compte et les données ?"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluir conta e dados?"
+          }
+        }
+      }
+    },
+    "Elimina tutto" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete everything"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar todo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout supprimer"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluir tudo"
+          }
+        }
+      }
+    },
+    "Vengono eliminati definitivamente dal dispositivo fototipo, sessioni, diario, foto, piani e progressi. L'azione non è reversibile." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hauttyp, Sitzungen, Tagebuch, Fotos, Pläne und Fortschritt werden dauerhaft vom Gerät gelöscht. Diese Aktion kann nicht rückgängig gemacht werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your skin type, sessions, diary, photos, plans and progress are permanently deleted from the device. This action can't be undone."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se eliminan de forma permanente del dispositivo fototipo, sesiones, diario, fotos, planes y progreso. La acción no se puede deshacer."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phototype, sessions, journal, photos, plans et progression sont définitivement supprimés de l'appareil. Cette action est irréversible."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fototipo, sessões, diário, fotos, planos e progresso são excluídos permanentemente do dispositivo. A ação não pode ser desfeita."
+          }
+        }
+      }
+    },
+    "Altre fonti dati" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weitere Datenquellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other data sources"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otras fuentes de datos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autres sources de données"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outras fontes de dados"
+          }
+        }
+      }
+    },
+    "Apple Weather. Apri le fonti dei dati meteo." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Weather. Wetterdatenquellen öffnen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Weather. Open the weather data sources."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Weather. Abre las fuentes de los datos meteorológicos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Weather. Ouvrir les sources des données météo."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Weather. Abrir as fontes dos dados meteorológicos."
+          }
+        }
+      }
+    },
+    "I consigli sono stime informative, non un parere medico." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Tipps sind informative Schätzungen, kein medizinischer Rat."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This advice is an informational estimate, not medical advice."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los consejos son estimaciones informativas, no una opinión médica."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les conseils sont des estimations informatives, pas un avis médical."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os conselhos são estimativas informativas, não um parecer médico."
+          }
+        }
+      }
+    },
+    "Solea Plus annuale (€19,99/anno) è un abbonamento auto-rinnovabile: si rinnova automaticamente allo stesso prezzo salvo disdetta almeno 24 ore prima della fine del periodo, e si gestisce o annulla dalle impostazioni dell'account Apple. Il Summer Pass (€9,99) è un acquisto una tantum valido 120 giorni, non si rinnova. Gli acquisti e il ripristino passano sempre dall'In-App Purchase dell'App Store. Solea Plus non sostituisce il parere medico." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea Plus Jahresabo (19,99 €/Jahr) ist ein automatisch verlängertes Abo: Es verlängert sich automatisch zum gleichen Preis, sofern nicht mindestens 24 Stunden vor Ende des Zeitraums gekündigt wird, und wird in den Einstellungen deines Apple-Accounts verwaltet oder gekündigt. Der Summer Pass (9,99 €) ist ein einmaliger Kauf mit 120 Tagen Gültigkeit und verlängert sich nicht. Käufe und Wiederherstellung laufen immer über den In-App-Kauf des App Store. Solea Plus ersetzt keinen ärztlichen Rat."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea Plus annual (€19.99/year) is an auto-renewable subscription: it renews automatically at the same price unless cancelled at least 24 hours before the end of the period, and is managed or cancelled in your Apple account settings. The Summer Pass (€9.99) is a one-time purchase valid for 120 days and does not renew. Purchases and restore always go through the App Store's In-App Purchase. Solea Plus is not a substitute for medical advice."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea Plus anual (€19,99/año) es una suscripción de renovación automática: se renueva automáticamente al mismo precio salvo cancelación al menos 24 horas antes del fin del periodo, y se gestiona o cancela en los ajustes de tu cuenta de Apple. El Summer Pass (€9,99) es una compra única válida 120 días y no se renueva. Las compras y la restauración pasan siempre por la compra integrada de la App Store. Solea Plus no sustituye la opinión médica."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea Plus annuel (19,99 €/an) est un abonnement à renouvellement automatique : il se renouvelle automatiquement au même prix sauf résiliation au moins 24 heures avant la fin de la période, et se gère ou s'annule dans les réglages de votre compte Apple. Le Summer Pass (9,99 €) est un achat unique valable 120 jours et ne se renouvelle pas. Les achats et la restauration passent toujours par l'achat intégré de l'App Store. Solea Plus ne remplace pas un avis médical."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Solea Plus anual (€19,99/ano) é uma assinatura de renovação automática: renova-se automaticamente pelo mesmo preço, salvo cancelamento com pelo menos 24 horas de antecedência ao fim do período, e é gerido ou cancelado nos ajustes da sua conta Apple. O Summer Pass (€9,99) é uma compra única válida por 120 dias e não se renova. As compras e a restauração passam sempre pela compra dentro do app da App Store. O Solea Plus não substitui o parecer médico."
+          }
+        }
+      }
+    },
+    "Solea fornisce stime informative, non consigli medici. Tocca \"Fonti scientifiche\" per le fonti dei calcoli." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea liefert informative Schätzungen, keinen medizinischen Rat. Tippe auf „Wissenschaftliche Quellen“ für die Quellen der Berechnungen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea provides informational estimates, not medical advice. Tap \"Scientific sources\" for the sources behind the calculations."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea ofrece estimaciones informativas, no consejos médicos. Toca \"Fuentes científicas\" para ver las fuentes de los cálculos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solea fournit des estimations informatives, pas des conseils médicaux. Touchez « Sources scientifiques » pour les sources des calculs."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Solea fornece estimativas informativas, não conselhos médicos. Toque em \"Fontes científicas\" para ver as fontes dos cálculos."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

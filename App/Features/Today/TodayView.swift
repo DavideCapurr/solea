@@ -179,6 +179,7 @@ struct TodayView: View {
                         .foregroundStyle(.orange)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                medicalSourcesFooter
                 Color.clear.frame(height: 72)
             }
             .padding()
@@ -641,9 +642,23 @@ struct TodayView: View {
                 .frame(height: 160)
                 .accessibilityLabel("Previsione UV delle prossime ore")
                 .accessibilityValue(Text(forecastSummary(metrics)))
+                // Attribuzione WeatherKit richiesta da Apple (linea guida 5.2.5).
+                WeatherAttributionView()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+
+    private var medicalSourcesFooter: some View {
+        VStack(spacing: 6) {
+            Text("Solea fornisce stime informative, non consigli medici.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+            ScientificSourcesLink()
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 4)
     }
 
     /// Riassunto testuale del grafico per VoiceOver: picco UV e orario.

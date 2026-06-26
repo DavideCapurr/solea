@@ -3,3 +3,13 @@ Solea uses WeatherKit for the UV index and forecasts, Core Location for local ca
 Solea does NOT use Critical Alerts and does not request the com.apple.developer.usernotifications.critical-alerts entitlement. All reminders and the safety stop alert shown when the recommended exposure limit is reached are standard local notifications ([.alert, .sound]); the user can disable them in iOS Settings.
 
 The cloud coach is disabled in the current build (CoachConfiguration.proxyURL = nil); the app uses only the on-device engine when available. Diary photos stay on the device and are not uploaded to a server.
+
+RESPONSES TO THE PREVIOUS REVIEW ITEMS
+
+3.1.2(c) Terms of Use (EULA): Solea uses Apple's standard EULA (https://www.apple.com/legal/internet-services/itunes/dev/stdeula/). The Solea Plus paywall shows each product's title, length and price and includes functional "Terms of Use (EULA)" and "Privacy Policy" links; the same links are in Profile > Information. Apple's standard EULA is also linked in the App Store description; the privacy policy is https://davidecapurr.github.io/solea/privacy/.
+
+1.4.1 Medical citations: health estimates cite their sources in the "Scientific sources" screen (Profile > Information > Scientific sources), also reachable from the disclaimers in Today, Onboarding and Coach. It links to WHO, EPA, FDA, NIH ODS, DermNet, ICNIRP and CIE.
+
+5.1.1(v) Account deletion: Profile > Account section > "Delete account and data". Solea has no server account (data stays on device): the action permanently deletes the profile, sessions, diary, photos, plans and progress, resets Game Center achievements, and returns the app to onboarding.
+
+5.2.5 WeatherKit attribution: UV/weather data comes from WeatherKit. The "Apple Weather" trademark and the legal data-source link (https://weather-data.apple.com/legal-attribution.html) are shown under the "UV forecast" chart on the Today screen and in the plan detail in the Planner.

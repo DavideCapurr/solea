@@ -1,6 +1,14 @@
 import Foundation
 
 enum AppStoreLinks {
+    /// Termini d'uso (EULA): Solea adotta l'EULA standard di Apple per le app
+    /// (linea guida App Store 3.1.2), così il link richiesto in-app e nei
+    /// metadati è sempre funzionante senza una pagina custom da mantenere.
+    static let termsOfUseURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
+
+    /// Pagina legale Apple con le fonti dei dati meteo (richiesta WeatherKit).
+    static let weatherKitAttributionURL = URL(string: "https://weather-data.apple.com/legal-attribution.html")!
+
     static var appStoreURL: URL? {
         bundleURL(for: "SoleaAppStoreURL")
     }

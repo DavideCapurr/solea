@@ -16,6 +16,7 @@ struct SoleaPlusPaywallView: View {
                     productList
                     restoreSection
                     complianceNote
+                    legalLinks
                     Color.clear.frame(height: 48)
                 }
                 .padding()
@@ -249,10 +250,29 @@ struct SoleaPlusPaywallView: View {
     }
 
     private var complianceNote: some View {
-        Text("Gli acquisti sono gestiti dall'App Store con In-App Purchase. L'abbonamento annuale si gestisce o annulla dalle impostazioni dell'account Apple. Solea Plus non sostituisce il parere medico.")
+        Text("Solea Plus annuale (€19,99/anno) è un abbonamento auto-rinnovabile: si rinnova automaticamente allo stesso prezzo salvo disdetta almeno 24 ore prima della fine del periodo, e si gestisce o annulla dalle impostazioni dell'account Apple. Il Summer Pass (€9,99) è un acquisto una tantum valido 120 giorni, non si rinnova. Gli acquisti e il ripristino passano sempre dall'In-App Purchase dell'App Store. Solea Plus non sostituisce il parere medico.")
             .font(.caption)
             .foregroundStyle(.secondary)
             .multilineTextAlignment(.leading)
+    }
+
+    private var legalLinks: some View {
+        // Linee guida App Store 3.1.2: il flusso di acquisto deve contenere
+        // link funzionanti a Termini d'uso (EULA) e informativa privacy.
+        VStack(alignment: .leading, spacing: 8) {
+            Link(destination: AppStoreLinks.termsOfUseURL) {
+                Label("Termini d'uso (EULA)", systemImage: "doc.text")
+            }
+            if let privacyPolicyURL = AppStoreLinks.privacyPolicyURL {
+                Link(destination: privacyPolicyURL) {
+                    Label("Informativa privacy", systemImage: "hand.raised")
+                }
+            }
+        }
+        .font(.caption.weight(.medium))
+        .tint(.orange)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityElement(children: .contain)
     }
 }
 

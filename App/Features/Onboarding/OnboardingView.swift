@@ -92,6 +92,8 @@ struct OnboardingView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
+
+                ScientificSourcesLink()
             }
             .padding()
         }

@@ -5,3 +5,13 @@ Solea Plus usa due prodotti promossi nel paywall: annuale auto-rinnovabile (com.
 Solea NON usa Critical Alerts e non richiede l'entitlement com.apple.developer.usernotifications.critical-alerts. Tutti i promemoria e l'avviso di sicurezza al raggiungimento del limite prudente di esposizione sono notifiche locali standard ([.alert, .sound], UNNotificationSound.default); l'utente può disattivarle in Impostazioni iOS.
 
 Il coach cloud è disabilitato nella build corrente (SoleaCoachProxyURL vuoto); il codice usa solo il motore on-device quando disponibile. Le foto del diario restano sul dispositivo e non vengono caricate su server.
+
+RISPOSTE AI RILIEVI DELLA REVIEW PRECEDENTE
+
+3.1.2(c) Termini d'uso (EULA): Solea adotta l'EULA standard di Apple (https://www.apple.com/legal/internet-services/itunes/dev/stdeula/). Il paywall di Solea Plus mostra titolo, durata e prezzo di ogni prodotto e include link funzionanti a "Termini d'uso (EULA)" e "Informativa privacy"; gli stessi link sono in Profilo > Informazioni. L'EULA standard Apple è linkata anche nella descrizione App Store; la privacy policy è https://davidecapurr.github.io/solea/privacy/.
+
+1.4.1 Citazioni mediche: le stime di salute citano le fonti nella schermata "Fonti scientifiche" (Profilo > Informazioni > Fonti scientifiche), raggiungibile anche dai disclaimer in Oggi, Onboarding e Coach. Include link a OMS, EPA, FDA, NIH ODS, DermNet, ICNIRP e CIE.
+
+5.1.1(v) Eliminazione account: Profilo > sezione Account > "Elimina account e dati". Solea non ha account server (i dati restano sul dispositivo): l'azione elimina definitivamente profilo, sessioni, diario, foto, piani e progressi, azzera i traguardi Game Center e riporta l'app all'onboarding.
+
+5.2.5 Attribuzione WeatherKit: i dati UV/meteo vengono da WeatherKit. Il marchio "Apple Weather" e il link legale alle fonti (https://weather-data.apple.com/legal-attribution.html) sono mostrati sotto il grafico "Previsione UV" nella schermata Oggi e nel dettaglio del piano nel Planner.

@@ -7,3 +7,6 @@ Puoi consultare il diario delle sessioni, seguire i tuoi progressi, stimare la v
 Solea Plus sblocca planner vacanze, coach AI cloud quando configurato, foto-diario prima/dopo, statistiche storiche, reminder personalizzati, Watch/Live Activity avanzati e share card premium. Gli acquisti e il ripristino passano sempre da In-App Purchase dell'App Store.
 
 Solea fornisce stime informative, non consigli medici. Per dubbi sulla pelle, farmaci fotosensibilizzanti o condizioni dermatologiche, consulta un medico o un dermatologo.
+
+Informativa privacy: https://davidecapurr.github.io/solea/privacy/
+Termini d'uso (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

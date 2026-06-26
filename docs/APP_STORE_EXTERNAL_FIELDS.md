@@ -18,10 +18,14 @@ parentesi angolari, come `<email>` o `<telefono>`.
 
 - Privacy Policy URL: <https://davidecapurr.github.io/solea/privacy/>
 - Support URL: <https://davidecapurr.github.io/solea/support/>
+- Terms of Use (EULA): EULA standard di Apple, <https://www.apple.com/legal/internet-services/itunes/dev/stdeula/>
 
-Gli stessi URL devono essere copiati in `project.yml` nelle chiavi
+Privacy e Support vanno copiati in `project.yml` nelle chiavi
 `SoleaPrivacyPolicyURL` e `SoleaSupportURL`, così l'app mostra i link nel
-Profilo.
+Profilo. Solea usa l'**EULA standard di Apple** (linea guida 3.1.2): nessun EULA
+custom da impostare in App Store Connect, basta tenere il link nella App
+Description. L'app linka l'EULA standard Apple nel paywall di Solea Plus e in
+Profilo (`AppStoreLinks.termsOfUseURL`).
 
 Bozze pubblicabili:
 
@@ -33,6 +37,9 @@ Export HTML statico:
 ```sh
 scripts/export-public-pages.sh --contact-email <email> --privacy-url <privacy-url> --support-url <support-url>
 ```
+
+Le pagine in `AppStore/Public/` vanno pubblicate sul branch `gh-pages` come
+`privacy/index.html` e `support/index.html`.
 
 Sync URL dentro l'app:
 
