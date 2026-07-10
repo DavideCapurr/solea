@@ -2,6 +2,11 @@
 
 Aggiornato: 2026-06-25
 
+> **Superato (2026-07-10):** voce e priorita' aggiornate in
+> [`TIKTOK_TAN_TREND_PLAN.md`](TIKTOK_TAN_TREND_PLAN.md) (tan-first puro,
+> niente ottica salutista). Restano validi qui il formato 70/30, il codice
+> visivo e la regola delle foto vere.
+
 Direzione: tan-first, marketing velato, old money/resort aesthetic.
 
 Solea non deve sembrare un contenuto sulla protezione dal sole. Deve sembrare un

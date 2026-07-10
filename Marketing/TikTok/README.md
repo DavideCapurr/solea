@@ -1,42 +1,46 @@
 # Solea TikTok assets
 
-Asset pronti per testare slideshow/photo-mode su TikTok.
+Direzione aggiornata (2026-07-10): tan-first puro, niente ottica salutista.
+Il piano operativo e' [`docs/TIKTOK_TAN_TREND_PLAN.md`](../../docs/TIKTOK_TAN_TREND_PLAN.md).
 
-## Primo batch
+## Regola d'oro
 
-Cartella: `Marketing/TikTok/slideshows`
+I PNG sintetici in `slideshows/` sono un **fallback**, non il formato
+principale. Il formato principale e': foto vere scattate con l'iPhone
+(mare, piscina, lettino, crema, lino) + testo aggiunto con l'editor nativo
+di TikTok + screenshot dell'app solo alla slide 3-4. Il post deve sembrare
+di una persona, non di un brand.
 
-Carousel generati:
+Le foto vere vanno in `backgrounds/<deck-id>/<slide>.jpg` (cartella oggi
+vuota: riempirla e' il primo passo del piano).
 
-1. `01-mare-uv-8`
-   - 7 slide PNG 1080 x 1920.
-   - Caption: `Prima di stendermi: UV, fototipo, SPF, timer. Stima informativa, non consiglio medico.`
-   - Commento fissato: `Che UV c'e' oggi dove sei?`
-2. `02-checklist-prima-del-sole`
-   - 8 slide PNG 1080 x 1920.
-   - Caption: `La checklist che avrei voluto prima di mille "ancora 10 minuti".`
-   - Commento fissato: `Quale punto salti piu' spesso?`
-3. `03-piscina`
-   - 7 slide PNG 1080 x 1920.
-   - Caption: `La piscina sembra piu' controllata, ma e' facilissimo perdere il conto.`
-   - Commento fissato: `Team mare o piscina?`
+## Deck copy (fallback sintetico)
 
-Carica i PNG in ordine numerico dentro ogni cartella.
+Il copy dei deck vive in `scripts/render-tiktok-slideshows.mjs` ed e'
+allineato al piano tan-first:
 
-## Rigenerare
+1. `01-primo-giorno-di-mare` — "Il primo giorno di mare decide tutta la tua estate."
+2. `02-abbronzatura-a-chiazze` — "Il motivo per cui ti abbronzi a chiazze."
+3. `03-golden-tan-hours` — "L'orario in cui ti abbronzi meglio non e' quello che pensi."
+4. `04-base-tan-vacanza` — "Base tan in 7 giorni prima della partenza."
+5. `05-piscina-vs-mare` — "Piscina o mare per abbronzarsi? Facciamo i conti."
+6. `06-diario-tan-30-giorni` — "Ho tracciato la mia abbronzatura per 30 giorni: risultati."
+
+La prima slide di ogni deck e' solo hook: nessun header brand (regola
+tan-first, il brand entra dalla slide 2).
+
+## Rigenerare (solo su Mac)
 
 ```sh
 node scripts/render-tiktok-slideshows.mjs
 ```
 
-Lo script rigenera SVG sorgenti e PNG finali in `Marketing/TikTok/slideshows`.
+Attenzione: lo script **cancella e ricrea** `Marketing/TikTok/slideshows/`
+e converte SVG→PNG con `sips`/`qlmanage` (solo macOS). I PNG attualmente
+committati vengono da una generazione precedente (copy vecchio): vanno
+rigenerati prima di usarli come fallback.
 
 ## Priorita' di pubblicazione
 
-1. `01-mare-uv-8`
-2. `02-checklist-prima-del-sole`
-3. `03-piscina`
-
-Pubblica i primi due nello stesso giorno se possibile: uno situazionale e uno
-checklist. Il terzo va bene come test del giorno dopo o come secondo post se i
-primi commenti parlano di piscina.
+Seguire il calendario 14 giorni in `docs/TIKTOK_TAN_TREND_PLAN.md`:
+si parte con "How I tan" su foto vere, non con i deck sintetici.
