@@ -1,6 +1,40 @@
 {
   "sourceLanguage" : "it",
   "strings" : {
+    "Disdici quando vuoi" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jederzeit kündbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel anytime"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancela cuando quieras"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résiliable à tout moment"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancele quando quiser"
+          }
+        }
+      }
+    },
     "%@" : {
       "localizations" : {
         "de" : {
@@ -8638,36 +8672,36 @@
         }
       }
     },
-    "MY SUN, SMARTER" : {
+    "TAN SMARTER" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "MY SUN, SMARTER"
+            "value" : "TAN SMARTER"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "MY SUN, SMARTER"
+            "value" : "TAN SMARTER"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "MY SUN, SMARTER"
+            "value" : "TAN SMARTER"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "MY SUN, SMARTER"
+            "value" : "TAN SMARTER"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "MY SUN, SMARTER"
+            "value" : "TAN SMARTER"
           }
         }
       }

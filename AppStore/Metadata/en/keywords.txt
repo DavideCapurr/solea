@@ -1,1 +1,1 @@
-tanning,sunscreen,spf,vitamin,skin,weather,health,summer,uv,diary,skin type
+tanning,sunbathing,tan lines,base tan,spf,summer,beach,pool,skin type,vitamin d,golden hour

@@ -267,7 +267,7 @@ private struct PhotoComparisonShareCard: View {
                     Label("SOLEA", systemImage: "sun.max.fill")
                         .font(.system(size: 18, weight: .black, design: .rounded))
                     Spacer()
-                    Text("MY SUN, SMARTER")
+                    Text("TAN SMARTER")
                         .font(.system(size: 9, weight: .bold, design: .rounded))
                         .tracking(0.8)
                 }

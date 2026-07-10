@@ -1,4 +1,4 @@
-Solea helps you approach tanning more mindfully, with cautious estimates based on your skin type and the UV level.
+Solea is the tan timer that builds your tan with method: more even, more consistent, no guesswork. Real UV, your skin type, and a front/back timer instead of improvising.
 
 Take a guided quiz to find your skin type, check the live UV index in your area, and start sessions with suggested durations, SPF, and reminders. During each session, Solea tracks your actual exposure time, breaks, front/back balance, and estimated UV dose.
 

@@ -4,8 +4,8 @@ Bozza operativa per creare la scheda App Store Connect di Solea.
 
 ## Nome e categoria
 
-- Nome app: Solea
-- Sottotitolo: UV, SPF e diario solare
+- Nome app: Solea: abbronzatura smart
+- Sottotitolo: Tan timer, UV live e diario
 - Categoria primaria: Salute e fitness
 - Categoria secondaria: Lifestyle
 - Prezzo: gratuita con In-App Purchase per Solea Plus
@@ -14,11 +14,11 @@ Bozza operativa per creare la scheda App Store Connect di Solea.
 
 ### Promotional text
 
-Tempi di esposizione personalizzati in base a fototipo, UV reale e sessioni già svolte, con timer, diario locale e Solea Plus opzionale.
+Quanto sole ti serve oggi per il tuo tan? UV live, timer fronte/retro e diario: costruisci un'abbronzatura più uniforme, che dura di più. L'estate non aspetta.
 
 ### Description
 
-Solea ti aiuta ad abbronzarti in modo più consapevole, con stime prudenti basate su fototipo e UV.
+Solea è il tan timer che costruisce la tua abbronzatura con metodo: più uniforme, più costante, senza andare a sensazione. UV reale, fototipo e timer fronte/retro al posto delle improvvisazioni.
 
 Imposta il tuo fototipo con un quiz guidato, controlla l'indice UV reale della tua zona e avvia sessioni con durata, SPF e promemoria suggeriti. Durante la sessione Solea tiene traccia del tempo effettivo al sole, delle pause, del bilanciamento fronte/retro e della dose UV stimata.
 
@@ -35,7 +35,10 @@ Termini d'uso (EULA): https://www.apple.com/legal/internet-services/itunes/dev/s
 
 ### Keywords
 
-abbronzatura,protezione,spf,vitamina,pelle,meteo,salute,estate,raggi,diario,fototipo
+tintarella,abbronzarsi,sole,spf,estate,mare,piscina,fototipo,vitamina d,scottatura,solarium
+
+(la parola "abbronzatura" vive già nel nome e "tan timer"/"UV" nel sottotitolo: non
+va ripetuta nelle keywords, Apple indicizza nome + sottotitolo + keywords insieme)
 
 ## Review notes
 

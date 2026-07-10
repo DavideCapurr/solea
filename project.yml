@@ -66,6 +66,8 @@ targets:
         NSHealthUpdateUsageDescription: "Solea salva su Salute il tempo trascorso alla luce del giorno durante le tue sessioni."
         NSHealthShareUsageDescription: "Solea non legge dati da Salute; il permesso serve solo per la scrittura delle sessioni."
         NSPhotoLibraryUsageDescription: "Solea usa le foto che scegli per il diario fotografico dell'abbronzatura. Le immagini restano sul tuo dispositivo e non vengono mai caricate."
+        # TODO: valorizzare con l'URL pubblico della scheda (https://apps.apple.com/it/app/solea/idXXXXXXXXX):
+        # finché resta vuoto, le share card condivise dagli utenti escono SENZA link all'App Store.
         SoleaAppStoreURL: ""
         SoleaPrivacyPolicyURL: "https://davidecapurr.github.io/solea/privacy/"
         SoleaSupportURL: "https://davidecapurr.github.io/solea/support/"
