@@ -10,105 +10,99 @@ const OUT_DIR = "Marketing/TikTok/slideshows";
 
 const slideshows = [
   {
-    id: "01-tan-plan-mare",
-    title: "Tan plan al mare",
+    id: "01-primo-giorno-di-mare",
+    title: "Primo giorno di mare",
     caption:
-      "La differenza tra abbronzarsi a caso e abbronzarsi con metodo.",
-    pinnedComment: "Commenta MARE + fototipo e preparo un tan plan esempio.",
+      "Il tan dell'estate si costruisce il primo giorno, non l'ultimo.",
+    pinnedComment: "Fototipo + citta' e ti dico il piano tan di oggi.",
     theme: "sun",
     slides: [
-      "Vuoi abbronzarti al mare? Parti da un tan plan.",
-      "Non e' solo mettersi al sole: e' scegliere quando, quanto e da che lato.",
-      "Solea guarda UV reale, fototipo e sole gia' preso oggi.",
-      "Poi trasformi tutto in durata, lato e diario.",
-      "Fronte, retro, pausa, riprendi: niente abbronzatura a memoria.",
-      "A fine giornata sai cosa ha funzionato davvero.",
-      "Commenta MARE + fototipo e preparo un esempio."
+      "Il primo giorno di mare decide tutta la tua estate.",
+      "Se lo sbagli, ti sbucci e riparti da zero.",
+      "Io lo imposto in 30 secondi: UV reale + fototipo + sole gia' preso.",
+      "Solea lo trasforma in timer: quanto, quando, da che lato.",
+      "Colore che resta. Niente chiazze, niente sbucciature.",
+      "Commenta MARE + fototipo e ti mostro il piano di oggi."
     ]
   },
   {
-    id: "02-abbronzatura-uniforme",
-    title: "Abbronzatura uniforme",
+    id: "02-abbronzatura-a-chiazze",
+    title: "Tan uniforme",
     caption:
-      "Il tan uniforme non e' fortuna: e' timing, lato e costanza.",
-    pinnedComment: "Quale zona ti si abbronza sempre peggio?",
+      "Tan uniforme non e' fortuna: e' sapere quando girarti.",
+    pinnedComment: "Quale zona ti resta sempre piu' chiara?",
     theme: "gold",
     slides: [
-      "Il trucco per abbronzarti uniforme non e' stare di piu'.",
-      "E' girarti meglio.",
-      "Solea tiene il conto di fronte e retro.",
-      "Ti ricorda quando cambiare lato.",
-      "Segni le zone esposte: viso, braccia, gambe, schiena.",
-      "Meno chiazze, piu' metodo.",
-      "Salva se vuoi un tan piu' ordinato."
+      "Il motivo per cui ti abbronzi a chiazze.",
+      "Non e' il sole. E' che non tieni il conto dei lati.",
+      "Io uso un timer fronte/retro: mi dice quando girarmi.",
+      "Segno le zone esposte: viso, spalle, gambe, schiena.",
+      "Risultato: colore uniforme, non a strisce.",
+      "Salva per la prossima giornata al sole."
     ]
   },
   {
     id: "03-golden-tan-hours",
     title: "Golden tan hours",
     caption:
-      "Non inseguire solo il picco UV: cerca l'ora in cui il tan plan ha piu' senso.",
-    pinnedComment: "Commenta citta' + fototipo e faccio un esempio.",
+      "Il tan e' una questione di timing, non di ore in piu'.",
+    pinnedComment: "Citta' + fototipo e ti dico le tue golden tan hours.",
     theme: "sun",
     slides: [
-      "Non cercare solo il sole piu' forte.",
-      "Cerca la finestra migliore per abbronzarti con metodo.",
-      "Solea legge la curva UV della giornata.",
-      "Poi trova le ore piu' interessanti per il tuo fototipo.",
-      "Non e' magia: e' smettere di scegliere l'orario a caso.",
-      "Golden tan hours > improvvisazione.",
-      "Commenta citta' + fototipo e faccio un esempio."
+      "L'orario in cui ti abbronzi meglio non e' quello che pensi.",
+      "Il sole delle 13 ti cuoce. Quello giusto ti colora.",
+      "Solea legge la curva UV della tua giornata.",
+      "E mi da' le golden tan hours per il mio fototipo.",
+      "Stesso colore, zero sbucciature: solo timing.",
+      "Commenta citta' + fototipo e ti dico le tue."
     ]
   },
   {
-    id: "04-base-vacanza",
-    title: "Base vacanza",
+    id: "04-base-tan-vacanza",
+    title: "Base tan",
     caption:
-      "Se parti tra pochi giorni, il piano e' piu' utile della fretta.",
-    pinnedComment: "Dove parti? Scrivi meta + giorni alla partenza.",
+      "La base tan si costruisce prima di partire.",
+    pinnedComment: "Meta + giorni alla partenza e ti faccio il piano base tan.",
     theme: "travel",
     slides: [
-      "Parti tra 7 giorni? Costruisci la base, non improvvisare.",
-      "Il primo giorno di vacanza non deve fare tutto da solo.",
-      "Solea parte da meta, date, UV e fototipo.",
-      "Poi crea un piano graduale giorno per giorno.",
-      "Tu vedi quando esporti, quanto e cosa segnare nel diario.",
-      "Arrivi alla vacanza con una strategia, non con la fretta.",
-      "Commenta la meta e faccio un tan plan esempio."
+      "Base tan in 7 giorni prima della partenza.",
+      "Cosi' il primo giorno di vacanza parti gia' con il colore.",
+      "Solea parte da meta, date e UV dei prossimi giorni.",
+      "E costruisce il piano giorno per giorno.",
+      "Arrivo in vacanza con la base, non con la fretta.",
+      "Dove parti? Scrivi meta + giorni alla partenza."
     ]
   },
   {
-    id: "05-piscina-tan-routine",
-    title: "Piscina tan routine",
+    id: "05-piscina-vs-mare",
+    title: "Piscina vs mare",
     caption:
-      "La piscina e' perfetta per una routine tan precisa: timer, lato, diario.",
-    pinnedComment: "Team mare o piscina?",
+      "La piscina e' sottovalutata per il tan: basta tenere il conto.",
+    pinnedComment: "Team mare o team piscina?",
     theme: "pool",
     slides: [
-      "Piscina: routine abbronzatura in 6 slide.",
-      "1. Controllo UV e fototipo.",
-      "2. Scelgo durata della sessione.",
-      "3. Tengo fronte e retro bilanciati.",
-      "4. Pausa quando entro in acqua o mi sposto.",
-      "5. Salvo tutto nel diario tan.",
-      "Team mare o team piscina?"
+      "Piscina o mare per abbronzarsi? Facciamo i conti.",
+      "In piscina il riflesso dell'acqua lavora per te.",
+      "Ma tra un tuffo e l'altro perdi il conto. Sempre.",
+      "Timer: pausa quando entro in acqua, riprendo al lettino.",
+      "Fine giornata: tutto nel diario tan, colore tracciato.",
+      "Team mare o team piscina? Commenta."
     ]
   },
   {
-    id: "06-diario-tan",
+    id: "06-diario-tan-30-giorni",
     title: "Diario tan",
     caption:
-      "Il prima/dopo ha piu' senso quando lo segui con la stessa luce e lo stesso metodo.",
-    pinnedComment: "Useresti un diario prima/dopo per il tan?",
+      "Il before/after funziona solo se lo fai con metodo.",
+    pinnedComment: "Lo faresti un diario tan di 30 giorni?",
     theme: "gold",
     slides: [
-      "Il prima/dopo dell'abbronzatura non dovrebbe essere casuale.",
-      "Stessa luce.",
-      "Stesso angolo.",
-      "Stesso diario.",
-      "Solea ti aiuta a seguire il progresso nel tempo.",
-      "Foto tue, ritmo tuo, tan piu' leggibile.",
-      "Salva se ami i progressi visibili."
+      "Ho tracciato la mia abbronzatura per 30 giorni: risultati.",
+      "Prima/dopo vero: stessa luce, stesso angolo, stesso orario.",
+      "Le foto restano sul mio telefono, non su un server.",
+      "Solea mi mostra il progresso settimana per settimana.",
+      "Vedere il colore salire e' la motivazione migliore.",
+      "Salva se vuoi iniziare il tuo diario tan."
     ]
   }
 ];
@@ -268,7 +262,17 @@ function slideSvg({ slideshow, slideText, slideIndex, total }) {
   const isOpening = slideIndex === 0;
   const isClosing = slideIndex === total - 1;
   const headlineSize = isOpening ? 116 : slideText.length > 58 ? 88 : 102;
-  const kicker = isClosing ? "TOCCA A TE" : isOpening ? "SOLEA CHECK" : slideshow.title.toUpperCase();
+  const kicker = isClosing ? "TOCCA A TE" : slideshow.title.toUpperCase();
+
+  // Regola tan-first: la prima slide e' solo hook, niente brand.
+  const header = isOpening
+    ? ""
+    : `<g transform="translate(80 92)">
+    <rect width="920" height="96" rx="48" fill="${theme.chip}" opacity="0.94"/>
+    <text x="48" y="62" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="34" font-weight="950" letter-spacing="4" fill="#ffffff">SOLEA</text>
+    <text x="250" y="62" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="27" font-weight="850" letter-spacing="2" fill="#ffffff" opacity="0.78">${escapeXml(kicker)}</text>
+    <text x="858" y="62" text-anchor="end" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="30" font-weight="900" fill="#ffffff" opacity="0.86">${slideNo}</text>
+  </g>`;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}">
@@ -288,12 +292,7 @@ function slideSvg({ slideshow, slideText, slideIndex, total }) {
   <path d="M-40 250 C230 140 520 210 780 120 C910 75 1010 80 1130 130" fill="none" stroke="${theme.accent}" stroke-width="18" opacity="0.34"/>
   <circle cx="878" cy="282" r="118" fill="${theme.accent}" opacity="0.24"/>
 
-  <g transform="translate(80 92)">
-    <rect width="920" height="96" rx="48" fill="${theme.chip}" opacity="0.94"/>
-    <text x="48" y="62" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="34" font-weight="950" letter-spacing="4" fill="#ffffff">SOLEA</text>
-    <text x="250" y="62" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="27" font-weight="850" letter-spacing="2" fill="#ffffff" opacity="0.78">${escapeXml(kicker)}</text>
-    <text x="858" y="62" text-anchor="end" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="30" font-weight="900" fill="#ffffff" opacity="0.86">${slideNo}</text>
-  </g>
+  ${header}
 
   <g transform="translate(80 308)">
     <rect width="920" height="920" rx="56" fill="${theme.accent}" opacity="0.70" filter="url(#shadow)"/>

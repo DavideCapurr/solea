@@ -164,7 +164,7 @@ struct ShareCardView: View {
                 .font(.system(size: 19, weight: .black, design: .rounded))
                 .tracking(1.6)
             Spacer()
-            Text("MY SUN, SMARTER")
+            Text("TAN SMARTER")
                 .font(.system(size: 9, weight: .bold, design: .rounded))
                 .tracking(0.8)
                 .opacity(0.62)

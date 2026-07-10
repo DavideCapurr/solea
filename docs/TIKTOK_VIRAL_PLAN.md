@@ -2,6 +2,11 @@
 
 Aggiornato: 2026-06-24
 
+> **Superato (2026-07-10):** la direzione editoriale e' cambiata: tan-first
+> puro, niente ottica salutista nel contenuto. Vedi
+> [`TIKTOK_TAN_TREND_PLAN.md`](TIKTOK_TAN_TREND_PLAN.md). Questo documento
+> resta come archivio di format, shot list e metriche.
+
 Obiettivo: far crescere Solea su TikTok con un content lab ripetibile, non con
 post casuali. "Virale" qui significa: aumentare probabilita' di reach organica,
 commenti, salvataggi, visite profilo e install intent, senza promesse mediche.

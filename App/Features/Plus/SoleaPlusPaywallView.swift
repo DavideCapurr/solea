@@ -71,7 +71,7 @@ struct SoleaPlusPaywallView: View {
             HStack(spacing: 8) {
                 heroChip("€19,99/anno", icon: "calendar")
                 heroChip("Summer pass", icon: "sun.horizon.fill")
-                heroChip("StoreKit", icon: "checkmark.seal.fill")
+                heroChip("Disdici quando vuoi", icon: "checkmark.seal.fill")
             }
         }
         .padding(22)
