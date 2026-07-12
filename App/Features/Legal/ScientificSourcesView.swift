@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Fonti scientifiche delle stime mostrate da Solea (indice UV, fototipo, limite
+/// Fonti scientifiche delle stime mostrate da Tanora (indice UV, fototipo, limite
 /// prudente, SPF, vitamina D). Richiesta dalla linea guida App Store 1.4.1:
 /// le informazioni di salute devono citare fonti facili da trovare.
 struct ScientificSourcesView: View {
@@ -29,7 +29,7 @@ struct ScientificSourcesView: View {
     private let topics: [Topic] = [
         Topic(
             header: "Indice UV e rischio scottatura",
-            footer: "Solea usa l'indice UV per stimare il rischio di scottatura e le ore più prudenti.",
+            footer: "Tanora usa l'indice UV per stimare il rischio di scottatura e le ore più prudenti.",
             sources: [
                 Source(
                     "Global Solar UV Index: A Practical Guide",
@@ -113,7 +113,7 @@ struct ScientificSourcesView: View {
         NavigationStack {
             List {
                 Section {
-                    Text("Solea fornisce stime informative basate su fonti di salute pubblica e letteratura scientifica. Non è un dispositivo medico e non sostituisce il parere di un medico o di un dermatologo.")
+                    Text("Tanora fornisce stime informative basate su fonti di salute pubblica e letteratura scientifica. Non è un dispositivo medico e non sostituisce il parere di un medico o di un dermatologo.")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -159,7 +159,7 @@ struct ScientificSourcesView: View {
 
 /// Pulsante riutilizzabile che apre le fonti scientifiche. Va messo accanto ai
 /// disclaimer ("stime informative, non consigli medici") così le citazioni
-/// restano facili da trovare ovunque Solea mostri stime di salute.
+/// restano facili da trovare ovunque Tanora mostri stime di salute.
 struct ScientificSourcesLink: View {
     var label: LocalizedStringKey = "Fonti scientifiche"
     @State private var showSources = false

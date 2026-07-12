@@ -81,14 +81,14 @@ struct OnboardingView: View {
                 Button {
                     step = .question(0)
                 } label: {
-                    Label("Fai il mio Solea Check", systemImage: "sparkles")
+                    Label("Fai il mio Tan Check", systemImage: "sparkles")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .tint(.orange)
 
-                Text("Solea fornisce stime informative, non consigli medici. In caso di dubbi sulla tua pelle consulta un dermatologo.")
+                Text("Tanora fornisce stime informative, non consigli medici. In caso di dubbi sulla tua pelle consulta un dermatologo.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -264,7 +264,7 @@ struct OnboardingView: View {
         ))
         sharePayload = renderSharePayload(
             content: card,
-            caption: String(localized: "Ho scoperto il mio fototipo con Solea: \(phototype.romanNumeral). Ora posso fare il mio check solare quotidiano. ☀️"),
+            caption: String(localized: "Ho scoperto il mio fototipo con Tanora: \(phototype.romanNumeral). Ora posso fare il mio check solare quotidiano. ☀️"),
             source: "onboarding_phototype"
         )
     }

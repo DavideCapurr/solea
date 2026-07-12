@@ -209,7 +209,7 @@ final class SessionManager {
     }
 
     func reapplySunscreen() async {
-        // Disponibile anche senza Solea Plus (usato dalla Modalità spiaggia):
+        // Disponibile anche senza Tanora Plus (usato dalla Modalità spiaggia):
         // resetta il timestamp di applicazione per la matematica della dose; la
         // schedulazione notifiche resta protetta da `remindersEnabled` più sotto.
         guard var session = active,

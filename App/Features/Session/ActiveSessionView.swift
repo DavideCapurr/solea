@@ -113,9 +113,9 @@ struct ActiveSessionView: View {
 
     private var plusUpgradePanel: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Label("Timer Solea attivo", systemImage: "timer")
+            Label("Timer Tanora attivo", systemImage: "timer")
                 .font(.headline)
-            Text("Solea segue il timer scelto per il tuo obiettivo e continua a mostrarti UV e stop sicurezza. Plus aggiunge tracciamento fronte/retro, promemoria personalizzati e Live Activity avanzata.")
+            Text("Tanora segue il timer scelto per il tuo obiettivo e continua a mostrarti UV e stop sicurezza. Plus aggiunge tracciamento fronte/retro, promemoria personalizzati e Live Activity avanzata.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Button {

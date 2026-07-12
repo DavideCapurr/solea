@@ -14,25 +14,25 @@ Für den aktuellen Build: **Data Not Collected**.
 
 Alle Daten, die die App liest oder schreibt, verbleiben auf dem Gerät des
 Nutzers oder werden von Apple-Diensten verwaltet (WeatherKit, HealthKit,
-Game Center). Solea überträgt keine personenbezogenen Daten an eigene Server
+Game Center). Tanora überträgt keine personenbezogenen Daten an eigene Server
 oder Dritte.
 
 Details pro Kategorie, die App Store Connect im Fragebogen ausspielen könnte:
 
 - **Location**: in der App nur für den Aufruf von Apples WeatherKit (UV-Index
-  und Wetter) verwendet. Apple verarbeitet die Anfrage als Systemdienst; Solea
+  und Wetter) verwendet. Apple verarbeitet die Anfrage als Systemdienst; Tanora
   protokolliert oder überträgt den Standort nicht weiter.
-  → *Nicht von Solea erhoben.*
-- **Health & Fitness**: Solea **schreibt** Time in Daylight in den HealthKit
+  → *Nicht von Tanora erhoben.*
+- **Health & Fitness**: Tanora **schreibt** Time in Daylight in den HealthKit
   des Nutzers, sofern explizit autorisiert. HealthKit-Daten werden nicht
   gelesen. Werte verbleiben im Health-Speicher des Nutzers.
-  → *Nicht von Solea erhoben.*
+  → *Nicht von Tanora erhoben.*
 - **Photos**: Das Foto-Tagebuch speichert die vom Nutzer ausgewählten Bilder
-  im lokalen SwiftData (App-Sandbox). Kein Upload an Solea oder Dritte.
-  → *Nicht von Solea erhoben.*
+  im lokalen SwiftData (App-Sandbox). Kein Upload an Tanora oder Dritte.
+  → *Nicht von Tanora erhoben.*
 - **Game Center**: Bestenlisten und Erfolge werden von Apple via GameKit
   verwaltet; Game-Center-Daten unterliegen Apples Datenschutzerklärung, nicht
-  der von Solea. → *Nicht von Solea erhoben.*
+  der von Tanora. → *Nicht von Tanora erhoben.*
 - **Identifiers**: Eine anonyme Geräte-UUID (in UserDefaults gespeichert,
   Gründe `CA92.1` / `1C8F.1` im Manifest) wird nur zum Rate-Limit am
   Coach-Proxy verwendet, **wenn** der Proxy konfiguriert ist. Im
@@ -47,7 +47,7 @@ verbunden.
 
 # Falls der Coach-Proxy künftig aktiviert wird
 
-Sollte eine künftige Version `SOLEA_COACH_PROXY_URL` setzen (z. B. Solea Plus
+Sollte eine künftige Version `SOLEA_COACH_PROXY_URL` setzen (z. B. Tanora Plus
 mit serverseitigen Antworten), Nutrition Labels und Manifest entsprechend
 aktualisieren:
 

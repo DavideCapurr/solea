@@ -91,7 +91,7 @@ struct SessionSetupView: View {
     private var planHero: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Label("PIANO SOLEA", systemImage: "sparkles")
+                Label("PIANO TAN", systemImage: "sparkles")
                     .font(.caption.bold())
                     .tracking(1.1)
                 Spacer()
@@ -161,7 +161,7 @@ struct SessionSetupView: View {
                             Text("Molto alta").tag(SolariumPower.veryHigh)
                         }
                         .pickerStyle(.menu)
-                        Text("Solea non consiglia i lettini: sono UV concentrati. Se procedi, usa protezioni oculari e segui le indicazioni del centro.")
+                        Text("Tanora non consiglia i lettini: sono UV concentrati. Se procedi, usa protezioni oculari e segui le indicazioni del centro.")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -314,11 +314,11 @@ struct SessionSetupView: View {
     private var setupReasonText: String {
         switch currentSkinResponse {
         case .red:
-            return String(localized: "La pelle è arrossata: Solea blocca il sole diretto per oggi.")
+            return String(localized: "La pelle è arrossata: Tanora blocca il sole diretto per oggi.")
         case .tight:
             return String(localized: "La pelle tira: il recupero viene prima dell'abbronzatura.")
         case .warm:
-            return String(localized: "La pelle è calda: Solea riduce automaticamente dose e obiettivo.")
+            return String(localized: "La pelle è calda: Tanora riduce automaticamente dose e obiettivo.")
         case .comfortable, .notLogged:
             break
         }
@@ -337,7 +337,7 @@ struct SessionSetupView: View {
         case .vitaminD:
             return String(localized: "Timer scelto per \(goalTitleText(goal)), fototipo \(phototype.romanNumeral), UV attuale e pelle \(skinResponseTitleText(currentSkinResponse)).")
         case .gradualTan:
-            return String(localized: "Dose graduale: il tan resta una risposta agli UV, quindi Solea ferma prima del rossore.")
+            return String(localized: "Dose graduale: il tan resta una risposta agli UV, quindi Tanora ferma prima del rossore.")
         case .lowRisk:
             return String(localized: "Dose ridotta per minimizzare il rischio oggi, in base a UV, fototipo e pelle.")
         }
@@ -408,14 +408,14 @@ struct SessionSetupView: View {
     }
 
     private var startButtonTitle: LocalizedStringKey {
-        targetMinutes > 0 ? "Avvia timer Solea" : "Ombra oggi"
+        targetMinutes > 0 ? "Avvia timer Tanora" : "Ombra oggi"
     }
 
     private var startDisabledText: String {
         if zones.isEmpty {
             return String(localized: "Seleziona almeno una zona esposta nei dettagli pratici.")
         }
-        return String(localized: "Oggi Solea non consiglia un timer al sole diretto.")
+        return String(localized: "Oggi Tanora non consiglia un timer al sole diretto.")
     }
 
     private func planRow(_ title: LocalizedStringKey, value: String, icon: String) -> some View {

@@ -3,11 +3,11 @@ import SwiftData
 import GameKit
 import UserNotifications
 
-/// Esegue l'eliminazione completa dei dati locali di Solea, richiesta dalla
+/// Esegue l'eliminazione completa dei dati locali di Tanora, richiesta dalla
 /// linea guida App Store 5.1.1(v) per le app che permettono la creazione di un
 /// profilo/account.
 ///
-/// Solea non ha account su server: tutti i dati vivono sul dispositivo, quindi
+/// Tanora non ha account su server: tutti i dati vivono sul dispositivo, quindi
 /// "elimina account" coincide con un wipe completo che riporta l'app
 /// all'onboarding (la `RootView` torna all'onboarding quando non c'è più un
 /// `UserProfile`).

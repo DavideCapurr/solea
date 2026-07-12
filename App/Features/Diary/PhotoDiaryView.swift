@@ -226,7 +226,7 @@ private struct ComparisonSlider: View {
         )
         sharePayload = renderSharePayload(
             content: card,
-            caption: String(localized: "Il mio prima / dopo con Solea. Ho scelto io di condividere queste foto; gli originali restano sul dispositivo. ☀️"),
+            caption: String(localized: "Il mio prima / dopo con Tanora. Ho scelto io di condividere queste foto; gli originali restano sul dispositivo. ☀️"),
             source: "photo_comparison"
         )
     }
@@ -264,7 +264,7 @@ private struct PhotoComparisonShareCard: View {
 
             VStack(alignment: .leading, spacing: 18) {
                 HStack {
-                    Label("SOLEA", systemImage: "sun.max.fill")
+                    Label("TANORA", systemImage: "sun.max.fill")
                         .font(.system(size: 18, weight: .black, design: .rounded))
                     Spacer()
                     Text("TAN SMARTER")

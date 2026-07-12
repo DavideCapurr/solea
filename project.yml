@@ -53,7 +53,7 @@ targets:
     info:
       path: App/Info.plist
       properties:
-        CFBundleDisplayName: Solea
+        CFBundleDisplayName: Tanora
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         GKGameCenterEnabled: true
@@ -62,13 +62,12 @@ targets:
         NSSupportsLiveActivities: true
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
-        NSLocationWhenInUseUsageDescription: "Solea usa la tua posizione per mostrarti l'indice UV attuale e calcolare un limite prudente di esposizione."
-        NSHealthUpdateUsageDescription: "Solea salva su Salute il tempo trascorso alla luce del giorno durante le tue sessioni."
-        NSHealthShareUsageDescription: "Solea non legge dati da Salute; il permesso serve solo per la scrittura delle sessioni."
-        NSPhotoLibraryUsageDescription: "Solea usa le foto che scegli per il diario fotografico dell'abbronzatura. Le immagini restano sul tuo dispositivo e non vengono mai caricate."
-        # TODO: valorizzare con l'URL pubblico della scheda (https://apps.apple.com/it/app/solea/idXXXXXXXXX):
-        # finché resta vuoto, le share card condivise dagli utenti escono SENZA link all'App Store.
-        SoleaAppStoreURL: ""
+        NSLocationWhenInUseUsageDescription: "Tanora usa la tua posizione per mostrarti l'indice UV attuale e calcolare un limite prudente di esposizione."
+        NSHealthUpdateUsageDescription: "Tanora salva su Salute il tempo trascorso alla luce del giorno durante le tue sessioni."
+        NSHealthShareUsageDescription: "Tanora non legge dati da Salute; il permesso serve solo per la scrittura delle sessioni."
+        NSPhotoLibraryUsageDescription: "Tanora usa le foto che scegli per il diario fotografico dell'abbronzatura. Le immagini restano sul tuo dispositivo e non vengono mai caricate."
+        # URL id-based: resta valido anche se il nome/slug della scheda cambia.
+        SoleaAppStoreURL: "https://apps.apple.com/it/app/solea/id6782854851"
         SoleaPrivacyPolicyURL: "https://davidecapurr.github.io/solea/privacy/"
         SoleaSupportURL: "https://davidecapurr.github.io/solea/support/"
         SoleaCoachProxyURL: "$(SOLEA_COACH_PROXY_URL)"
@@ -101,7 +100,7 @@ targets:
     info:
       path: Widgets/Info.plist
       properties:
-        CFBundleDisplayName: Solea Widgets
+        CFBundleDisplayName: Tanora Widgets
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         NSExtension:
@@ -129,12 +128,12 @@ targets:
     info:
       path: WatchApp/Info.plist
       properties:
-        CFBundleDisplayName: Solea
+        CFBundleDisplayName: Tanora
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         WKApplication: true
         WKCompanionAppBundleIdentifier: com.davidecapurro.Solea
-        NSLocationWhenInUseUsageDescription: "Solea usa la tua posizione per mostrarti l'indice UV attuale al polso."
+        NSLocationWhenInUseUsageDescription: "Tanora usa la tua posizione per mostrarti l'indice UV attuale al polso."
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.davidecapurro.Solea.watchkitapp

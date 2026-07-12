@@ -50,7 +50,7 @@ struct OnDeviceCoach: CoachEngine {
     }
 
     private static let instructions = """
-    Sei il Coach Solare dell'app Solea. Aiuti a pianificare esposizioni più consapevoli e prudenti.
+    Sei il Coach Solare dell'app Tanora. Aiuti a pianificare esposizioni più consapevoli e prudenti.
     Tono amichevole e conciso (max 3-4 frasi). Usi il contesto fornito (fototipo, UV, sessioni).
     Niente consigli medici: per dubbi sulla pelle rimanda a un dermatologo.
     """
