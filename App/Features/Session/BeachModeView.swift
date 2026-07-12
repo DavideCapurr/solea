@@ -7,7 +7,7 @@ import UIKit
 /// Modalità spiaggia super rapida: schermata a tutto schermo, leggibile a colpo
 /// d'occhio e resistente ai tocchi accidentali. Mostra solo i 5 controlli
 /// essenziali — Target, Lato, SPF, Acqua, Stop — mentre il telefono è poggiato
-/// al sole. Tutto gratis: non richiede Abbronzo Plus.
+/// al sole. Tutto gratis: non richiede Tanora Plus.
 struct BeachModeView: View {
     let manager: SessionManager
     /// Termina la sessione (stessa callback usata da ActiveSessionView).

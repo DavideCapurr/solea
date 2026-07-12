@@ -160,7 +160,7 @@ struct ShareCardView: View {
             }
             .frame(width: 38, height: 38)
 
-            Text("ABBRONZO")
+            Text("TANORA")
                 .font(.system(size: 19, weight: .black, design: .rounded))
                 .tracking(1.6)
             Spacer()

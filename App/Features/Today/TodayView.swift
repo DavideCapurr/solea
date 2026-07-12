@@ -465,7 +465,7 @@ struct TodayView: View {
         case .vitaminD:
             return String(localized: "Obiettivo vitamina D: circa \(vitaminD) IU, poi protezione o ombra.")
         case .gradualTan:
-            return String(localized: "Dose graduale: il tan resta una risposta agli UV, quindi Abbronzo ferma prima del rossore.")
+            return String(localized: "Dose graduale: il tan resta una risposta agli UV, quindi Tanora ferma prima del rossore.")
         case .lowRisk:
             return String(localized: "Dose ridotta per le giornate in cui vuoi minimizzare il rischio senza forzare l'abbronzatura.")
         }
@@ -584,7 +584,7 @@ struct TodayView: View {
                 }
             }
 
-            Text("Abbronzo ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione guidata.")
+            Text("Tanora ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione guidata.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
@@ -676,7 +676,7 @@ struct TodayView: View {
 
     private var medicalSourcesFooter: some View {
         VStack(spacing: 6) {
-            Text("Abbronzo fornisce stime informative, non consigli medici.")
+            Text("Tanora fornisce stime informative, non consigli medici.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

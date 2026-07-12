@@ -170,7 +170,7 @@ struct ProfileView: View {
     }
 
     private var plusSection: some View {
-        Section("Abbronzo Plus") {
+        Section("Tanora Plus") {
             ViewThatFits(in: .horizontal) {
                 HStack {
                     plusStatusLabel
@@ -195,7 +195,7 @@ struct ProfileView: View {
                 showPlusPaywall = true
             } label: {
                 Label(
-                    plusStore.hasPlus ? "Vedi opzioni App Store" : "Passa a Abbronzo Plus",
+                    plusStore.hasPlus ? "Vedi opzioni App Store" : "Passa a Tanora Plus",
                     systemImage: plusStore.hasPlus ? "checkmark.seal" : "sparkles"
                 )
             }
@@ -293,7 +293,7 @@ struct ProfileView: View {
                 }
             }
 
-            Text("Abbronzo fornisce stime informative, non consigli medici. Tocca \"Fonti scientifiche\" per le fonti dei calcoli.")
+            Text("Tanora fornisce stime informative, non consigli medici. Tocca \"Fonti scientifiche\" per le fonti dei calcoli.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
@@ -319,7 +319,7 @@ struct ProfileView: View {
         } header: {
             Text("Account")
         } footer: {
-            Text("Abbronzo conserva i dati solo sul tuo dispositivo. L'eliminazione rimuove definitivamente profilo, sessioni, diario, foto, piani e progressi, azzera i traguardi Game Center e riporta l'app all'onboarding. L'account Game Center si gestisce nelle Impostazioni di iOS.")
+            Text("Tanora conserva i dati solo sul tuo dispositivo. L'eliminazione rimuove definitivamente profilo, sessioni, diario, foto, piani e progressi, azzera i traguardi Game Center e riporta l'app all'onboarding. L'account Game Center si gestisce nelle Impostazioni di iOS.")
         }
     }
 
@@ -373,7 +373,7 @@ struct ProfileView: View {
             ? String(localized: "Una serie costruita restando sotto la soglia prudente.")
             : String(localized: "Ogni giornata smart inizia da un check consapevole.")
         let card = ShareCardView(content: ShareCardContent(
-            eyebrow: String(localized: "La mia serie Abbronzo"),
+            eyebrow: String(localized: "La mia serie Tanora"),
             headline: "\(currentStreak)",
             unit: String(localized: "giorni di sole intelligente"),
             message: message,
@@ -386,7 +386,7 @@ struct ProfileView: View {
         ))
         guard let payload = renderSharePayload(
             content: card,
-            caption: String(localized: "La mia serie Abbronzo è di \(currentStreak) giorni di sole intelligente. ☀️"),
+            caption: String(localized: "La mia serie Tanora è di \(currentStreak) giorni di sole intelligente. ☀️"),
             source: "profile_streak"
         ) else {
             gameCenterWarning = String(localized: "Impossibile generare l'immagine da condividere.")

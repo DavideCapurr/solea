@@ -1,10 +1,10 @@
-Abbronzo is the tan timer that builds your tan with method: more even, more consistent, no guesswork. Real UV, your skin type, and a front/back timer instead of improvising.
+Tanora is the tan timer that builds your tan with method: more even, more consistent, no guesswork. Real UV, your skin type, and a front/back timer instead of improvising.
 
-Take a guided quiz to find your skin type, check the live UV index in your area, and start sessions with suggested durations, SPF, and reminders. During each session, Abbronzo tracks your actual exposure time, breaks, front/back balance, and estimated UV dose.
+Take a guided quiz to find your skin type, check the live UV index in your area, and start sessions with suggested durations, SPF, and reminders. During each session, Tanora tracks your actual exposure time, breaks, front/back balance, and estimated UV dose.
 
 Review your session history, follow your progress, estimate vitamin D, use widgets and Live Activities, sync your skin type with Apple Watch, and optionally save Time in Daylight to Apple Health.
 
-Abbronzo provides informational estimates, not medical advice. If you have questions about your skin, photosensitizing medication, or a dermatological condition, consult a doctor or dermatologist.
+Tanora provides informational estimates, not medical advice. If you have questions about your skin, photosensitizing medication, or a dermatological condition, consult a doctor or dermatologist.
 
 Privacy Policy: https://davidecapurr.github.io/solea/privacy/
 Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

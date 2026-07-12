@@ -14,25 +14,25 @@ Pour la build actuelle : **Data Not Collected**.
 
 Toutes les données que l'app lit ou écrit restent sur l'appareil de l'utilisateur
 ou sont gérées par des services Apple (WeatherKit, HealthKit, Game Center).
-Abbronzo ne transmet aucune donnée personnelle à ses propres serveurs ou à des
+Tanora ne transmet aucune donnée personnelle à ses propres serveurs ou à des
 tiers.
 
 Détail par catégorie qu'App Store Connect pourrait faire apparaître :
 
 - **Location** : utilisée dans l'app uniquement pour appeler WeatherKit d'Apple
-  (indice UV et météo). Apple gère la requête comme service système ; Abbronzo
+  (indice UV et météo). Apple gère la requête comme service système ; Tanora
   n'enregistre ni ne transmet la position ailleurs.
-  → *Non collectée par Abbronzo.*
-- **Health & Fitness** : Abbronzo **écrit** Time in Daylight dans le HealthKit
+  → *Non collectée par Tanora.*
+- **Health & Fitness** : Tanora **écrit** Time in Daylight dans le HealthKit
   de l'utilisateur lorsque celui-ci l'autorise. Aucune lecture HealthKit.
   Les valeurs restent dans le Health store de l'utilisateur.
-  → *Non collectée par Abbronzo.*
+  → *Non collectée par Tanora.*
 - **Photos** : le journal photo enregistre les images choisies par l'utilisateur
-  dans le SwiftData local (sandbox de l'app). Aucun upload vers Abbronzo ou tiers.
-  → *Non collectée par Abbronzo.*
+  dans le SwiftData local (sandbox de l'app). Aucun upload vers Tanora ou tiers.
+  → *Non collectée par Tanora.*
 - **Game Center** : classements et succès sont gérés par Apple via GameKit ;
   les données Game Center sont couvertes par la politique de confidentialité
-  d'Apple, pas celle de Abbronzo. → *Non collectée par Abbronzo.*
+  d'Apple, pas celle de Tanora. → *Non collectée par Tanora.*
 - **Identifiers** : un UUID anonyme de l'appareil (stocké dans UserDefaults,
   motifs `CA92.1` / `1C8F.1` dans le manifeste) sert uniquement au rate-limit
   côté proxy du coach **si** le proxy est configuré. Dans la build distribuée
@@ -46,7 +46,7 @@ données associé.
 
 # Si le proxy du coach est activé à l'avenir
 
-Si une future version définit `SOLEA_COACH_PROXY_URL` (par ex. Abbronzo Plus avec
+Si une future version définit `SOLEA_COACH_PROXY_URL` (par ex. Tanora Plus avec
 réponses côté serveur), mettre à jour nutrition labels et manifeste en ajoutant :
 
 - *Identifiers → Device ID* (linked / non-tracking, objectif App Functionality).

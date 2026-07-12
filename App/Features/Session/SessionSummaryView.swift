@@ -264,7 +264,7 @@ struct SessionSummaryView: View {
         ))
         sharePayload = renderSharePayload(
             content: card,
-            caption: String(localized: "Sessione Abbronzo completata: \(sessionDurationText), UV medio \(uv), \(doseFraction) della soglia UV. ☀️"),
+            caption: String(localized: "Sessione Tanora completata: \(sessionDurationText), UV medio \(uv), \(doseFraction) della soglia UV. ☀️"),
             source: "session_summary"
         )
     }

@@ -29,7 +29,7 @@ struct SoleaPlusPaywallView: View {
                 )
                 .ignoresSafeArea()
             )
-            .navigationTitle("Abbronzo Plus")
+            .navigationTitle("Tanora Plus")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -50,7 +50,7 @@ struct SoleaPlusPaywallView: View {
     private var hero: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                Label("ABBRONZO PLUS", systemImage: "sparkles")
+                Label("TANORA PLUS", systemImage: "sparkles")
                     .font(.caption.bold())
                     .tracking(1.1)
                 Spacer()
@@ -64,7 +64,7 @@ struct SoleaPlusPaywallView: View {
                 .minimumScaleFactor(0.72)
                 .foregroundStyle(.black.opacity(0.84))
 
-            Text("Abbronzo resta prudente gratis. Plus aggiunge planner, coach, trend, foto-diario e companion avanzati quando vuoi preparare davvero una stagione.")
+            Text("Tanora resta prudente gratis. Plus aggiunge planner, coach, trend, foto-diario e companion avanzati quando vuoi preparare davvero una stagione.")
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(.black.opacity(0.68))
 
@@ -174,7 +174,7 @@ struct SoleaPlusPaywallView: View {
         let canSelect = product != nil
         #endif
         let subtitle: LocalizedStringKey = id == .annual
-            ? "Miglior valore se usi Abbronzo tutto l'anno."
+            ? "Miglior valore se usi Tanora tutto l'anno."
             : "Accesso Plus per la stagione estiva."
 
         return Button {
@@ -250,7 +250,7 @@ struct SoleaPlusPaywallView: View {
     }
 
     private var complianceNote: some View {
-        Text("Abbronzo Plus annuale (€19,99/anno) è un abbonamento auto-rinnovabile: si rinnova automaticamente allo stesso prezzo salvo disdetta almeno 24 ore prima della fine del periodo, e si gestisce o annulla dalle impostazioni dell'account Apple. Il Summer Pass (€9,99) è un acquisto una tantum valido 120 giorni, non si rinnova. Gli acquisti e il ripristino passano sempre dall'In-App Purchase dell'App Store. Abbronzo Plus non sostituisce il parere medico.")
+        Text("Tanora Plus annuale (€19,99/anno) è un abbonamento auto-rinnovabile: si rinnova automaticamente allo stesso prezzo salvo disdetta almeno 24 ore prima della fine del periodo, e si gestisce o annulla dalle impostazioni dell'account Apple. Il Summer Pass (€9,99) è un acquisto una tantum valido 120 giorni, non si rinnova. Gli acquisti e il ripristino passano sempre dall'In-App Purchase dell'App Store. Tanora Plus non sostituisce il parere medico.")
             .font(.caption)
             .foregroundStyle(.secondary)
             .multilineTextAlignment(.leading)
@@ -289,7 +289,7 @@ struct SoleaPlusLockedView: View {
         ScrollView {
             VStack(spacing: dynamicTypeSize.isAccessibilitySize ? 12 : 18) {
                 VStack(spacing: dynamicTypeSize.isAccessibilitySize ? 10 : 14) {
-                    Label("ABBRONZO PLUS", systemImage: "sparkles")
+                    Label("TANORA PLUS", systemImage: "sparkles")
                         .font(.caption.bold())
                         .tracking(1.1)
                         .foregroundStyle(.black.opacity(0.62))
@@ -332,7 +332,7 @@ struct SoleaPlusLockedView: View {
                 Button {
                     showPaywall = true
                 } label: {
-                    Label("Scopri Abbronzo Plus", systemImage: "sparkles")
+                    Label("Scopri Tanora Plus", systemImage: "sparkles")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)

@@ -1,4 +1,4 @@
-# Abbronzo — Piano sponsorizzazioni (estate 2026)
+# Tanora — Piano sponsorizzazioni (estate 2026)
 
 Aggiornato: 2026-07-10
 
@@ -8,7 +8,7 @@ Collected": nessun SDK di tracking in-app).
 
 ## Principio guida
 
-Con Abbronzo Plus a €19,99/anno e Summer Pass a €9,99, e una conversione
+Con Tanora Plus a €19,99/anno e Summer Pass a €9,99, e una conversione
 free→paid realistica del 2-5%, un install "vale" indicativamente €0,30-0,90.
 Nessun canale paid è ROI-positivo a questi numeri nel breve: il budget va
 trattato come **investimento di momentum estivo con un tetto fisso**, non
@@ -20,11 +20,11 @@ totali**. Quando finiscono, si valuta con i dati.
 1. **`SoleaAppStoreURL`** valorizzato in `project.yml` (fatto:
    `https://apps.apple.com/it/app/solea/id6782854851`, link id-based che
    sopravvive al rename) → serve inviare la release che lo contiene.
-2. **Nuovi metadata inviati in App Store Connect** (nome "Abbronzo: tan
+2. **Nuovi metadata inviati in App Store Connect** (nome "Tanora: tan
    timer e UV", sottotitolo "Abbronzatura uniforme, diario", keywords):
    gli annunci Apple Ads usano la scheda così com'è; con la scheda vecchia
    la conversione è più bassa. Il rename in App Information richiede che il
-   nome "Abbronzo" sia libero su App Store Connect: verificarlo al momento
+   nome "Tanora" sia libero su App Store Connect: verificarlo al momento
    dell'invio.
 3. **Custom Product Page** in App Store Connect per il traffico TikTok
    (screenshot in ordine tan-first: timer fronte/retro, UV live, diario
@@ -46,7 +46,7 @@ Setup (ads.apple.com, account con lo stesso Apple ID sviluppatore):
 
 ### Campagna Brand (difesa, budget minimo)
 
-Exact match: `abbronzo`, `abbronzo app`, `abbronzo tan timer`
+Exact match: `tanora`, `tanora app`, `tanora tan timer`
 (più `solea` finché il rename non è live, per chi ha visto la scheda vecchia)
 
 ### Campagna Generica (il cuore, ~70% del budget)

@@ -72,7 +72,7 @@ struct UVWidgetView: View {
         case .stale(let snapshot):
             snapshotView(snapshot, stale: true)
         case .missing:
-            messageView("Apri Abbronzo per caricare i dati UV.")
+            messageView("Apri Tanora per caricare i dati UV.")
         case .error(let message):
             messageView(message)
         }

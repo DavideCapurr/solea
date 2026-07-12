@@ -1,12 +1,12 @@
-Abbronzo è il tan timer che costruisce la tua abbronzatura con metodo: più uniforme, più costante, senza andare a sensazione. UV reale, fototipo e timer fronte/retro al posto delle improvvisazioni.
+Tanora è il tan timer che costruisce la tua abbronzatura con metodo: più uniforme, più costante, senza andare a sensazione. UV reale, fototipo e timer fronte/retro al posto delle improvvisazioni.
 
-Imposta il tuo fototipo con un quiz guidato, controlla l'indice UV reale della tua zona e avvia sessioni con durata, SPF e promemoria suggeriti. Durante la sessione Abbronzo tiene traccia del tempo effettivo al sole, delle pause, del bilanciamento fronte/retro e della dose UV stimata.
+Imposta il tuo fototipo con un quiz guidato, controlla l'indice UV reale della tua zona e avvia sessioni con durata, SPF e promemoria suggeriti. Durante la sessione Tanora tiene traccia del tempo effettivo al sole, delle pause, del bilanciamento fronte/retro e della dose UV stimata.
 
 Puoi consultare il diario delle sessioni, seguire i tuoi progressi, stimare la vitamina D, usare widget, sincronizzare il fototipo con Apple Watch e salvare opzionalmente su Apple Health il tempo alla luce del giorno.
 
-Abbronzo Plus sblocca planner vacanze, coach AI cloud quando configurato, foto-diario prima/dopo, statistiche storiche, reminder personalizzati, Watch/Live Activity avanzati e share card premium. Gli acquisti e il ripristino passano sempre da In-App Purchase dell'App Store.
+Tanora Plus sblocca planner vacanze, coach AI cloud quando configurato, foto-diario prima/dopo, statistiche storiche, reminder personalizzati, Watch/Live Activity avanzati e share card premium. Gli acquisti e il ripristino passano sempre da In-App Purchase dell'App Store.
 
-Abbronzo fornisce stime informative, non consigli medici. Per dubbi sulla pelle, farmaci fotosensibilizzanti o condizioni dermatologiche, consulta un medico o un dermatologo.
+Tanora fornisce stime informative, non consigli medici. Per dubbi sulla pelle, farmaci fotosensibilizzanti o condizioni dermatologiche, consulta un medico o un dermatologo.
 
 Informativa privacy: https://davidecapurr.github.io/solea/privacy/
 Termini d'uso (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

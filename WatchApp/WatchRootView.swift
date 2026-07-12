@@ -44,7 +44,7 @@ struct WatchRootView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Abbronzo")
+            .navigationTitle("Tanora")
         }
         .task {
             profileSync.activate()
