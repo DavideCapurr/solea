@@ -9,7 +9,7 @@ enum LiveActivityError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .notEnabled:
-            return String(localized: "Le attività in tempo reale sono disattivate: abilitale in Impostazioni > Solea per vedere il timer nella Dynamic Island.")
+            return String(localized: "Le attività in tempo reale sono disattivate: abilitale in Impostazioni > Abbronzo per vedere il timer nella Dynamic Island.")
         case .underlying(let error):
             return String(localized: "Impossibile avviare l'attività in tempo reale: \(error.localizedDescription)")
         }

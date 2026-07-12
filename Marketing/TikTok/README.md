@@ -1,4 +1,4 @@
-# Solea TikTok assets
+# Abbronzo TikTok assets
 
 Direzione aggiornata (2026-07-10): tan-first puro, niente ottica salutista.
 Il piano operativo e' [`docs/TIKTOK_TAN_TREND_PLAN.md`](../../docs/TIKTOK_TAN_TREND_PLAN.md).

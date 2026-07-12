@@ -20,7 +20,7 @@ const slideshows = [
       "Il primo giorno di mare decide tutta la tua estate.",
       "Se lo sbagli, ti sbucci e riparti da zero.",
       "Io lo imposto in 30 secondi: UV reale + fototipo + sole gia' preso.",
-      "Solea lo trasforma in timer: quanto, quando, da che lato.",
+      "Abbronzo lo trasforma in timer: quanto, quando, da che lato.",
       "Colore che resta. Niente chiazze, niente sbucciature.",
       "Commenta MARE + fototipo e ti mostro il piano di oggi."
     ]
@@ -51,7 +51,7 @@ const slideshows = [
     slides: [
       "L'orario in cui ti abbronzi meglio non e' quello che pensi.",
       "Il sole delle 13 ti cuoce. Quello giusto ti colora.",
-      "Solea legge la curva UV della tua giornata.",
+      "Abbronzo legge la curva UV della tua giornata.",
       "E mi da' le golden tan hours per il mio fototipo.",
       "Stesso colore, zero sbucciature: solo timing.",
       "Commenta citta' + fototipo e ti dico le tue."
@@ -67,7 +67,7 @@ const slideshows = [
     slides: [
       "Base tan in 7 giorni prima della partenza.",
       "Cosi' il primo giorno di vacanza parti gia' con il colore.",
-      "Solea parte da meta, date e UV dei prossimi giorni.",
+      "Abbronzo parte da meta, date e UV dei prossimi giorni.",
       "E costruisce il piano giorno per giorno.",
       "Arrivo in vacanza con la base, non con la fretta.",
       "Dove parti? Scrivi meta + giorni alla partenza."
@@ -100,7 +100,7 @@ const slideshows = [
       "Ho tracciato la mia abbronzatura per 30 giorni: risultati.",
       "Prima/dopo vero: stessa luce, stesso angolo, stesso orario.",
       "Le foto restano sul mio telefono, non su un server.",
-      "Solea mi mostra il progresso settimana per settimana.",
+      "Abbronzo mi mostra il progresso settimana per settimana.",
       "Vedere il colore salire e' la motivazione migliore.",
       "Salva se vuoi iniziare il tuo diario tan."
     ]
@@ -269,7 +269,7 @@ function slideSvg({ slideshow, slideText, slideIndex, total }) {
     ? ""
     : `<g transform="translate(80 92)">
     <rect width="920" height="96" rx="48" fill="${theme.chip}" opacity="0.94"/>
-    <text x="48" y="62" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="34" font-weight="950" letter-spacing="4" fill="#ffffff">SOLEA</text>
+    <text x="48" y="62" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="34" font-weight="950" letter-spacing="4" fill="#ffffff">ABBRONZO</text>
     <text x="250" y="62" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="27" font-weight="850" letter-spacing="2" fill="#ffffff" opacity="0.78">${escapeXml(kicker)}</text>
     <text x="858" y="62" text-anchor="end" font-family="Inter, SF Pro Display, Arial, sans-serif" font-size="30" font-weight="900" fill="#ffffff" opacity="0.86">${slideNo}</text>
   </g>`;

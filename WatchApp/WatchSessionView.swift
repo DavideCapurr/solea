@@ -37,7 +37,7 @@ struct WatchSessionView: View {
                 .font(.title3.monospacedDigit())
 
             if !hasSoleaPlus {
-                Text("Timer base. Sblocca Solea Plus su iPhone per haptic promemoria e metriche avanzate.")
+                Text("Timer base. Sblocca Abbronzo Plus su iPhone per haptic promemoria e metriche avanzate.")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)

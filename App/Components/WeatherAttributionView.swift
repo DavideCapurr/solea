@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Attribuzione richiesta da Apple per le app che usano WeatherKit
 /// (linea guida App Store 5.2.5): marchio "Apple Weather" + link alle fonti
-/// legali dei dati meteo. Va mostrata ovunque Solea presenti dati WeatherKit
+/// legali dei dati meteo. Va mostrata ovunque Abbronzo presenti dati WeatherKit
 /// (indice UV e previsioni).
 struct WeatherAttributionView: View {
     var body: some View {

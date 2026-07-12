@@ -11,7 +11,7 @@ enum HealthKitError: LocalizedError {
         case .notAvailable:
             return String(localized: "Apple Health non è disponibile su questo dispositivo.")
         case .writeDenied:
-            return String(localized: "Permesso di scrittura su Salute negato. Puoi abilitarlo in Salute > Profilo > App > Solea.")
+            return String(localized: "Permesso di scrittura su Salute negato. Puoi abilitarlo in Salute > Profilo > App > Abbronzo.")
         case .underlying(let error):
             return String(localized: "Salvataggio su Salute non riuscito: \(error.localizedDescription)")
         }

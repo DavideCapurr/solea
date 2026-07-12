@@ -130,7 +130,7 @@ struct ShareCardView: View {
                 HStack(alignment: .center, spacing: 10) {
                     Image(systemName: "sparkles")
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Fai il tuo Solea Check")
+                        Text("Fai il tuo Tan Check")
                             .font(.system(size: 15, weight: .bold, design: .rounded))
                         Text("Stime informative basate su UV e fototipo")
                             .font(.system(size: 10, weight: .medium, design: .rounded))
@@ -160,7 +160,7 @@ struct ShareCardView: View {
             }
             .frame(width: 38, height: 38)
 
-            Text("SOLEA")
+            Text("ABBRONZO")
                 .font(.system(size: 19, weight: .black, design: .rounded))
                 .tracking(1.6)
             Spacer()

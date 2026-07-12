@@ -55,7 +55,7 @@ struct DiaryView: View {
         let summary = lifetimeSummary
 
         return VStack(alignment: .leading, spacing: 16) {
-            adaptiveHeader("DIARIO SOLEA", icon: "book.closed.fill")
+            adaptiveHeader("DIARIO TAN", icon: "book.closed.fill")
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(heroTitle)

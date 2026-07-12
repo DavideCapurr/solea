@@ -1,7 +1,7 @@
 import Foundation
 
 enum AppStoreLinks {
-    /// Termini d'uso (EULA): Solea adotta l'EULA standard di Apple per le app
+    /// Termini d'uso (EULA): Abbronzo adotta l'EULA standard di Apple per le app
     /// (linea guida App Store 3.1.2), così il link richiesto in-app e nei
     /// metadati è sempre funzionante senza una pagina custom da mantenere.
     static let termsOfUseURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!

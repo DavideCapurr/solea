@@ -36,11 +36,11 @@ enum SoleaPlusProductID: String, CaseIterable {
     var fallbackTitle: String {
         switch self {
         case .monthly:
-            return String(localized: "Solea Plus mensile")
+            return String(localized: "Abbronzo Plus mensile")
         case .annual:
-            return String(localized: "Solea Plus annuale")
+            return String(localized: "Abbronzo Plus annuale")
         case .seasonal:
-            return String(localized: "Solea Plus Summer Pass")
+            return String(localized: "Abbronzo Plus Summer Pass")
         }
     }
 }
@@ -118,7 +118,7 @@ final class SoleaPlusStore {
                 await refreshEntitlement()
                 noticeMessage = nil
             case .pending:
-                noticeMessage = String(localized: "Acquisto in attesa di approvazione. Solea Plus si sbloccherà appena Apple conferma la transazione.")
+                noticeMessage = String(localized: "Acquisto in attesa di approvazione. Abbronzo Plus si sbloccherà appena Apple conferma la transazione.")
             case .userCancelled:
                 break
             @unknown default:
@@ -135,7 +135,7 @@ final class SoleaPlusStore {
             await refreshEntitlement()
             noticeMessage = hasPlus
                 ? String(localized: "Acquisti ripristinati.")
-                : String(localized: "Nessun accesso Solea Plus attivo trovato per questo Apple ID.")
+                : String(localized: "Nessun accesso Abbronzo Plus attivo trovato per questo Apple ID.")
         } catch {
             noticeMessage = String(localized: "Ripristino non riuscito: \(error.localizedDescription)")
         }

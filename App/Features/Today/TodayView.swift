@@ -190,7 +190,7 @@ struct TodayView: View {
         .tint(SoleaTheme.sunset)
     }
 
-    // MARK: - Solea Check
+    // MARK: - Tan Check
 
     private var currentSkinResponse: SkinResponse {
         SkinResponse(rawValue: currentSkinResponseRawValue) ?? .comfortable
@@ -206,7 +206,7 @@ struct TodayView: View {
     private func dailyCheckHero(metrics: TodayMetrics) -> some View {
         let recommendation = metrics.recommendedPlan
         return VStack(alignment: .leading, spacing: 16) {
-            adaptiveHeader("SOLEA CHECK", icon: "sparkles", dateStyle: .secondary)
+            adaptiveHeader("TAN CHECK", icon: "sparkles", dateStyle: .secondary)
 
             ViewThatFits(in: .horizontal) {
                 planHeadlineRow(recommendation)
@@ -394,7 +394,7 @@ struct TodayView: View {
         let recommendation = metrics.recommendedPlan
         let uv = metrics.conditions.currentUVIndex.formatted(.number.precision(.fractionLength(0)))
         let card = ShareCardView(content: ShareCardContent(
-            eyebrow: String(localized: "Il mio Solea Check di oggi"),
+            eyebrow: String(localized: "Il mio Tan Check di oggi"),
             headline: planHeadline(recommendation),
             unit: planUnit(recommendation),
             message: planExplanation(recommendation),
@@ -411,7 +411,7 @@ struct TodayView: View {
         ))
         sharePayload = renderSharePayload(
             content: card,
-            caption: String(localized: "Il mio Solea Check di oggi: \(planHeadline(recommendation)) \(planUnit(recommendation)), UV \(uv), SPF \(recommendation.suggestedSPF). Stima informativa, non consiglio medico. ☀️"),
+            caption: String(localized: "Il mio Tan Check di oggi: \(planHeadline(recommendation)) \(planUnit(recommendation)), UV \(uv), SPF \(recommendation.suggestedSPF). Stima informativa, non consiglio medico. ☀️"),
             source: "daily_check"
         )
     }
@@ -465,7 +465,7 @@ struct TodayView: View {
         case .vitaminD:
             return String(localized: "Obiettivo vitamina D: circa \(vitaminD) IU, poi protezione o ombra.")
         case .gradualTan:
-            return String(localized: "Dose graduale: il tan resta una risposta agli UV, quindi Solea ferma prima del rossore.")
+            return String(localized: "Dose graduale: il tan resta una risposta agli UV, quindi Abbronzo ferma prima del rossore.")
         case .lowRisk:
             return String(localized: "Dose ridotta per le giornate in cui vuoi minimizzare il rischio senza forzare l'abbronzatura.")
         }
@@ -584,7 +584,7 @@ struct TodayView: View {
                 }
             }
 
-            Text("Solea ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione guidata.")
+            Text("Abbronzo ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione guidata.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
@@ -676,7 +676,7 @@ struct TodayView: View {
 
     private var medicalSourcesFooter: some View {
         VStack(spacing: 6) {
-            Text("Solea fornisce stime informative, non consigli medici.")
+            Text("Abbronzo fornisce stime informative, non consigli medici.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

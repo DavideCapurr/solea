@@ -150,7 +150,7 @@ final class NotificationService {
         )
     }
 
-    /// Programma gli inviti ad aprire Solea prima e all'inizio delle prossime
+    /// Programma gli inviti ad aprire Abbronzo prima e all'inizio delle prossime
     /// finestre ideali di abbronzatura.
     @discardableResult
     func scheduleGoldenHourReminders(
@@ -172,7 +172,7 @@ final class NotificationService {
                 try await scheduleGoldenHourReminder(
                     id: "\(Identifier.goldenHourApproachingPrefix)\(index)",
                     title: String(localized: "Tra poco sole ideale"),
-                    body: String(localized: "La finestra migliore si avvicina. Apri Solea per controllare UV, SPF e durata prima di esporti."),
+                    body: String(localized: "La finestra migliore si avvicina. Apri Abbronzo per controllare UV, SPF e durata prima di esporti."),
                     date: approachingDate,
                     calendar: calendar
                 )
@@ -183,7 +183,7 @@ final class NotificationService {
                 try await scheduleGoldenHourReminder(
                     id: "\(Identifier.goldenHourStartPrefix)\(index)",
                     title: String(localized: "È il momento giusto per abbronzarti"),
-                    body: String(localized: "Le condizioni sono tra le più favorevoli per il tuo fototipo. Entra in Solea e avvia una sessione prudente."),
+                    body: String(localized: "Le condizioni sono tra le più favorevoli per il tuo fototipo. Entra in Abbronzo e avvia una sessione prudente."),
                     date: window.start,
                     calendar: calendar
                 )

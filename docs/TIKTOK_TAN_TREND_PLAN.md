@@ -1,4 +1,4 @@
-# Solea — Piano TikTok tan-first (estate 2026)
+# Abbronzo — Piano TikTok tan-first (estate 2026)
 
 Aggiornato: 2026-07-10
 
@@ -12,7 +12,7 @@ priorita' sono queste.
 Prima: "tan-first, ma smart", con guardrail sanitari visibili ovunque
 (limite prudente, stima informativa, non consiglio medico).
 
-Ora: Solea si vende come **l'app del risultato**. Abbronzatura piu' scura,
+Ora: Abbronzo si vende come **l'app del risultato**. Abbronzatura piu' scura,
 piu' uniforme, costruita piu' in fretta, che dura di piu'. Il metodo resta
 dentro il prodotto; nel contenuto non si parla mai di salute, si parla di
 tan.
@@ -64,8 +64,8 @@ una routine personale non e' un consiglio medico.
 2. **Tan line check** — il segno del costume come flex e come misura del
    progresso. Serie: "tan line check, giorno 12".
 3. **"How I got this tan"** — la routine completa (olio, SPF, timer, lato,
-   after-sun) e' il formato piu' cercato dell'estate. Solea entra a meta'.
-4. **Before/after** — il foto-diario locale di Solea e' nato per questo
+   after-sun) e' il formato piu' cercato dell'estate. Abbronzo entra a meta'.
+4. **Before/after** — il foto-diario locale di Abbronzo e' nato per questo
    formato: stessa luce, stesso angolo, 2 settimane di differenza.
 5. **European summer / old money** — l'estetica c'era gia' nei deck: ora va
    fatta con foto vere, non con gradienti sintetici.
@@ -207,11 +207,15 @@ organicamente, mai per rianimare un post morto.
 
 ## Allineamenti fuori da TikTok (bloccanti per il funnel)
 
-1. `SoleaAppStoreURL` in `project.yml` e' vuoto: le share card escono senza
-   link App Store. Da valorizzare e rilasciare — e' il loop virale in-app.
-2. Scheda App Store da riallineare al tan: sottotitolo tipo "Abbronzatura
-   con metodo" (oggi: "UV, SPF e diario solare"), keywords con "tintarella",
-   "tan", "abbronzarsi". I disclaimer restano nella scheda e nell'app: e' il
-   posto giusto, le caption TikTok no.
+1. `SoleaAppStoreURL` valorizzato in `project.yml` con il link id-based
+   (`https://apps.apple.com/it/app/solea/id6782854851`): resta da inviare la
+   release che lo contiene — e' il loop virale delle share card.
+2. Rebrand **Abbronzo** (l'app non era prima nella ricerca "solea"): nome
+   "Abbronzo: tan timer e UV", sottotitolo "Abbronzatura uniforme, diario",
+   display name sotto l'icona "Abbronzo". Nei repo e' fatto; in App Store
+   Connect va cambiato il nome in App Information con la prossima versione
+   (verificare che "Abbronzo" sia libero). Nei video il CTA diventa:
+   "cerca *Abbronzo* sull'App Store". I disclaimer restano nella scheda e
+   nell'app: e' il posto giusto, le caption TikTok no.
 3. Promotional text stagionale, aggiornabile senza review ("Ondata di caldo:
    il tuo tan check di oggi").

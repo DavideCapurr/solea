@@ -143,7 +143,7 @@ struct SessionSummaryView: View {
 
     private var sessionHighlight: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Label("SOLEA MOMENT", systemImage: "sparkles")
+            Label("TAN MOMENT", systemImage: "sparkles")
                 .font(.caption.bold())
                 .tracking(1.1)
                 .foregroundStyle(.orange)
@@ -264,7 +264,7 @@ struct SessionSummaryView: View {
         ))
         sharePayload = renderSharePayload(
             content: card,
-            caption: String(localized: "Sessione Solea completata: \(sessionDurationText), UV medio \(uv), \(doseFraction) della soglia UV. ☀️"),
+            caption: String(localized: "Sessione Abbronzo completata: \(sessionDurationText), UV medio \(uv), \(doseFraction) della soglia UV. ☀️"),
             source: "session_summary"
         )
     }

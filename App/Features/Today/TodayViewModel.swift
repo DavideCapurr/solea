@@ -124,7 +124,7 @@ final class TodayViewModel {
         do {
             let granted = try await notificationService.requestStandardAuthorization()
             guard granted else {
-                goldenHourReminderMessage = String(localized: "Notifiche disattivate: abilita Solea in Impostazioni > Notifiche per ricevere gli avvisi sulle ore ideali.")
+                goldenHourReminderMessage = String(localized: "Notifiche disattivate: abilita Abbronzo in Impostazioni > Notifiche per ricevere gli avvisi sulle ore ideali.")
                 return false
             }
 

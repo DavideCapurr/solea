@@ -1297,37 +1297,37 @@
         }
       }
     },
-    "Apri Solea per caricare i dati UV." : {
+    "Apri Abbronzo per caricare i dati UV." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öffne Solea, um die UV-Daten zu laden."
+            "value" : "Öffne Abbronzo, um die UV-Daten zu laden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open Solea to load UV data."
+            "value" : "Open Abbronzo to load UV data."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abre Solea para cargar los datos UV."
+            "value" : "Abre Abbronzo para cargar los datos UV."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ouvrez Solea pour charger les données UV."
+            "value" : "Ouvrez Abbronzo pour charger les données UV."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abre o Solea para carregar os dados UV."
+            "value" : "Abre o Abbronzo para carregar os dados UV."
           }
         }
       }
@@ -1788,37 +1788,37 @@
         }
       }
     },
-    "Benvenuto in Solea" : {
+    "Benvenuto in Abbronzo" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Willkommen bei Solea"
+            "value" : "Willkommen bei Abbronzo"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Welcome to Solea"
+            "value" : "Welcome to Abbronzo"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenido a Solea"
+            "value" : "Bienvenido a Abbronzo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenue dans Solea"
+            "value" : "Bienvenue dans Abbronzo"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bem-vindo ao Solea"
+            "value" : "Bem-vindo ao Abbronzo"
           }
         }
       }
@@ -3049,37 +3049,37 @@
         }
       }
     },
-    "Crea la tua Solea Story" : {
+    "Crea la tua Tan Story" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erstelle deine Solea Story"
+            "value" : "Erstelle deine Tan Story"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Create your Solea Story"
+            "value" : "Create your Tan Story"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crea tu Solea Story"
+            "value" : "Crea tu Tan Story"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Créez votre Solea Story"
+            "value" : "Créez votre Tan Story"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cria a tua Solea Story"
+            "value" : "Cria a tua Tan Story"
           }
         }
       }
@@ -4552,71 +4552,71 @@
         }
       }
     },
-    "Fai il mio Solea Check" : {
+    "Fai il mio Tan Check" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meinen Solea Check machen"
+            "value" : "Meinen Tan Check machen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Do my Solea Check"
+            "value" : "Do my Tan Check"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haz mi Solea Check"
+            "value" : "Haz mi Tan Check"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Faire mon Solea Check"
+            "value" : "Faire mon Tan Check"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Faz o meu Solea Check"
+            "value" : "Faz o meu Tan Check"
           }
         }
       }
     },
-    "Fai il tuo Solea Check" : {
+    "Fai il tuo Tan Check" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mach deinen Solea Check"
+            "value" : "Mach deinen Tan Check"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Do your Solea Check"
+            "value" : "Do your Tan Check"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haz tu Solea Check"
+            "value" : "Haz tu Tan Check"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Faites votre Solea Check"
+            "value" : "Faites votre Tan Check"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Faz o teu Solea Check"
+            "value" : "Faz o teu Tan Check"
           }
         }
       }
@@ -5458,7 +5458,7 @@
         }
       }
     },
-    "Gli acquisti sono gestiti dall'App Store con In-App Purchase. L'abbonamento annuale si gestisce o annulla dalle impostazioni dell'account Apple. Solea Plus non sostituisce il parere medico." : {
+    "Gli acquisti sono gestiti dall'App Store con In-App Purchase. L'abbonamento annuale si gestisce o annulla dalle impostazioni dell'account Apple. Abbronzo Plus non sostituisce il parere medico." : {
 
     },
     "Golden hours" : {
@@ -5814,37 +5814,37 @@
         }
       }
     },
-    "Ho scoperto il mio fototipo con Solea: %@. Ora posso fare il mio check solare quotidiano. ☀️" : {
+    "Ho scoperto il mio fototipo con Abbronzo: %@. Ora posso fare il mio check solare quotidiano. ☀️" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ich habe meinen Hauttyp mit Solea entdeckt: %@. Jetzt kann ich meinen täglichen Sonnen-Check machen. ☀️"
+            "value" : "Ich habe meinen Hauttyp mit Abbronzo entdeckt: %@. Jetzt kann ich meinen täglichen Sonnen-Check machen. ☀️"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I discovered my skin type with Solea: %@. Now I can do my daily sun check. ☀️"
+            "value" : "I discovered my skin type with Abbronzo: %@. Now I can do my daily sun check. ☀️"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "He descubierto mi fototipo con Solea: %@. Ahora puedo hacer mi check solar diario. ☀️"
+            "value" : "He descubierto mi fototipo con Abbronzo: %@. Ahora puedo hacer mi check solar diario. ☀️"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "J'ai découvert mon phototype avec Solea : %@. Je peux maintenant faire mon check solaire quotidien. ☀️"
+            "value" : "J'ai découvert mon phototype avec Abbronzo : %@. Je peux maintenant faire mon check solaire quotidien. ☀️"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descobri o meu fototipo com o Solea: %@. Agora posso fazer o meu check solar diário. ☀️"
+            "value" : "Descobri o meu fototipo com o Abbronzo: %@. Agora posso fazer o meu check solar diário. ☀️"
           }
         }
       }
@@ -6056,72 +6056,72 @@
         }
       }
     },
-    "Il mio prima / dopo con Solea. Foto condivise su mia scelta; gli originali restano sul dispositivo. ☀️" : {
+    "Il mio prima / dopo con Abbronzo. Foto condivise su mia scelta; gli originali restano sul dispositivo. ☀️" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mein Vorher/Nachher mit Solea. Fotos auf meinen Wunsch geteilt; die Originale bleiben auf dem Gerät. ☀️"
+            "value" : "Mein Vorher/Nachher mit Abbronzo. Fotos auf meinen Wunsch geteilt; die Originale bleiben auf dem Gerät. ☀️"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My before and after with Solea. I chose to share these photos; the originals stay on my device. ☀️"
+            "value" : "My before and after with Abbronzo. I chose to share these photos; the originals stay on my device. ☀️"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mi antes / después con Solea. Fotos compartidas por decisión mía; los originales permanecen en el dispositivo. ☀️"
+            "value" : "Mi antes / después con Abbronzo. Fotos compartidas por decisión mía; los originales permanecen en el dispositivo. ☀️"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mon avant / après avec Solea. Photos partagées à mon choix ; les originaux restent sur l'appareil. ☀️"
+            "value" : "Mon avant / après avec Abbronzo. Photos partagées à mon choix ; les originaux restent sur l'appareil. ☀️"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O meu antes / depois com o Solea. Fotos partilhadas por minha escolha; os originais ficam no dispositivo. ☀️"
+            "value" : "O meu antes / depois com o Abbronzo. Fotos partilhadas por minha escolha; os originais ficam no dispositivo. ☀️"
           }
         }
       }
     },
-    "Il mio prima / dopo con Solea. Ho scelto io di condividere queste foto; gli originali restano sul dispositivo. ☀️" : {
+    "Il mio prima / dopo con Abbronzo. Ho scelto io di condividere queste foto; gli originali restano sul dispositivo. ☀️" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mein Vorher/Nachher mit Solea. Ich habe mich entschieden, diese Fotos zu teilen; die Originale bleiben auf dem Gerät. ☀️"
+            "value" : "Mein Vorher/Nachher mit Abbronzo. Ich habe mich entschieden, diese Fotos zu teilen; die Originale bleiben auf dem Gerät. ☀️"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My before and after with Solea. I chose to share these photos; the originals stay on my device. ☀️"
+            "value" : "My before and after with Abbronzo. I chose to share these photos; the originals stay on my device. ☀️"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mi antes / después con Solea. He elegido compartir estas fotos; los originales permanecen en el dispositivo. ☀️"
+            "value" : "Mi antes / después con Abbronzo. He elegido compartir estas fotos; los originales permanecen en el dispositivo. ☀️"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mon avant / après avec Solea. J'ai choisi de partager ces photos ; les originaux restent sur l'appareil. ☀️"
+            "value" : "Mon avant / après avec Abbronzo. J'ai choisi de partager ces photos ; les originaux restent sur l'appareil. ☀️"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O meu antes / depois com o Solea. Escolhi partilhar estas fotos; os originais ficam no dispositivo. ☀️"
+            "value" : "O meu antes / depois com o Abbronzo. Escolhi partilhar estas fotos; os originais ficam no dispositivo. ☀️"
           }
         }
       }
@@ -6161,72 +6161,72 @@
         }
       }
     },
-    "Il mio Solea Check di oggi" : {
+    "Il mio Tan Check di oggi" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mein Solea Check von heute"
+            "value" : "Mein Tan Check von heute"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My Solea Check today"
+            "value" : "My Tan Check today"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mi Solea Check de hoy"
+            "value" : "Mi Tan Check de hoy"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mon Solea Check d'aujourd'hui"
+            "value" : "Mon Tan Check d'aujourd'hui"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O meu Solea Check de hoje"
+            "value" : "O meu Tan Check de hoje"
           }
         }
       }
     },
-    "Il mio Solea Check di oggi: %@ %@, UV %@, SPF %lld. Stima informativa, non consiglio medico. ☀️" : {
+    "Il mio Tan Check di oggi: %@ %@, UV %@, SPF %lld. Stima informativa, non consiglio medico. ☀️" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mein Solea Check von heute: %@ %@, UV %@, LSF %lld. Informative Schätzung, keine medizinische Beratung. ☀️"
+            "value" : "Mein Tan Check von heute: %@ %@, UV %@, LSF %lld. Informative Schätzung, keine medizinische Beratung. ☀️"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My Solea Check today: %@ %@, UV %@, SPF %lld. Informational estimate, not medical advice. ☀️"
+            "value" : "My Tan Check today: %@ %@, UV %@, SPF %lld. Informational estimate, not medical advice. ☀️"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mi Solea Check de hoy: %@ %@, UV %@, SPF %lld. Estimación informativa, no consejo médico. ☀️"
+            "value" : "Mi Tan Check de hoy: %@ %@, UV %@, SPF %lld. Estimación informativa, no consejo médico. ☀️"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mon Solea Check d'aujourd'hui : %@ %@, UV %@, SPF %lld. Estimation informative, pas un conseil médical. ☀️"
+            "value" : "Mon Tan Check d'aujourd'hui : %@ %@, UV %@, SPF %lld. Estimation informative, pas un conseil médical. ☀️"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O meu Solea Check de hoje: %@ %@, UV %@, FPS %lld. Estimativa informativa, não conselho médico. ☀️"
+            "value" : "O meu Tan Check de hoje: %@ %@, UV %@, FPS %lld. Estimativa informativa, não conselho médico. ☀️"
           }
         }
       }
@@ -7379,37 +7379,37 @@
         }
       }
     },
-    "La finestra migliore si avvicina. Apri Solea per controllare UV, SPF e durata prima di esporti." : {
+    "La finestra migliore si avvicina. Apri Abbronzo per controllare UV, SPF e durata prima di esporti." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Das beste Zeitfenster naht. Öffne Solea, um UV, LSF und Dauer zu prüfen, bevor du dich der Sonne aussetzt."
+            "value" : "Das beste Zeitfenster naht. Öffne Abbronzo, um UV, LSF und Dauer zu prüfen, bevor du dich der Sonne aussetzt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The best window is coming up. Open Solea to check UV, SPF and duration before you go into the sun."
+            "value" : "The best window is coming up. Open Abbronzo to check UV, SPF and duration before you go into the sun."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La mejor franja se acerca. Abre Solea para comprobar UV, SPF y duración antes de exponerte."
+            "value" : "La mejor franja se acerca. Abre Abbronzo para comprobar UV, SPF y duración antes de exponerte."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le meilleur créneau approche. Ouvrez Solea pour vérifier l'UV, le SPF et la durée avant de vous exposer."
+            "value" : "Le meilleur créneau approche. Ouvrez Abbronzo pour vérifier l'UV, le SPF et la durée avant de vous exposer."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A melhor janela aproxima-se. Abre o Solea para verificar UV, FPS e duração antes de te expores."
+            "value" : "A melhor janela aproxima-se. Abre o Abbronzo para verificar UV, FPS e duração antes de te expores."
           }
         }
       }
@@ -7449,212 +7449,212 @@
         }
       }
     },
-    "La mia serie Solea" : {
+    "La mia serie Abbronzo" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meine Solea-Serie"
+            "value" : "Meine Abbronzo-Serie"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My Solea streak"
+            "value" : "My Abbronzo streak"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mi racha Solea"
+            "value" : "Mi racha Abbronzo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ma série Solea"
+            "value" : "Ma série Abbronzo"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A minha sequência Solea"
+            "value" : "A minha sequência Abbronzo"
           }
         }
       }
     },
-    "La mia serie Solea è di %lld giorni di sole intelligente. ☀️" : {
+    "La mia serie Abbronzo è di %lld giorni di sole intelligente. ☀️" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meine Solea-Serie beträgt %lld Tage mit smartem Sonnen. ☀️"
+            "value" : "Meine Abbronzo-Serie beträgt %lld Tage mit smartem Sonnen. ☀️"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My Solea streak is %lld sun-smart days. ☀️"
+            "value" : "My Abbronzo streak is %lld sun-smart days. ☀️"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mi racha Solea es de %lld días de sol inteligente. ☀️"
+            "value" : "Mi racha Abbronzo es de %lld días de sol inteligente. ☀️"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ma série Solea est de %lld jours de soleil intelligent. ☀️"
+            "value" : "Ma série Abbronzo est de %lld jours de soleil intelligent. ☀️"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A minha sequência Solea é de %lld dias de sol inteligente. ☀️"
+            "value" : "A minha sequência Abbronzo é de %lld dias de sol inteligente. ☀️"
           }
         }
       }
     },
-    "La mia streak Solea" : {
+    "La mia streak Abbronzo" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meine Solea-Streak"
+            "value" : "Meine Abbronzo-Streak"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My Solea streak"
+            "value" : "My Abbronzo streak"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mi racha Solea"
+            "value" : "Mi racha Abbronzo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ma série Solea"
+            "value" : "Ma série Abbronzo"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A minha streak Solea"
+            "value" : "A minha streak Abbronzo"
           }
         }
       }
     },
-    "La mia streak Solea è di %lld giorni di sole intelligente. ☀️" : {
+    "La mia streak Abbronzo è di %lld giorni di sole intelligente. ☀️" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Meine Solea-Streak beträgt %lld Tage mit smartem Sonnen. ☀️"
+            "value" : "Meine Abbronzo-Streak beträgt %lld Tage mit smartem Sonnen. ☀️"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My Solea streak is %lld sun-smart days. ☀️"
+            "value" : "My Abbronzo streak is %lld sun-smart days. ☀️"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mi racha Solea es de %lld días de sol inteligente. ☀️"
+            "value" : "Mi racha Abbronzo es de %lld días de sol inteligente. ☀️"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ma série Solea est de %lld jours de soleil intelligent. ☀️"
+            "value" : "Ma série Abbronzo est de %lld jours de soleil intelligent. ☀️"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A minha streak Solea é de %lld dias de sol inteligente. ☀️"
+            "value" : "A minha streak Abbronzo é de %lld dias de sol inteligente. ☀️"
           }
         }
       }
     },
-    "La pelle è arrossata: Solea blocca il sole diretto per oggi." : {
+    "La pelle è arrossata: Abbronzo blocca il sole diretto per oggi." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Haut ist gerötet: Solea blockiert für heute die direkte Sonne."
+            "value" : "Die Haut ist gerötet: Abbronzo blockiert für heute die direkte Sonne."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your skin is red, so Solea blocks direct sun exposure for today."
+            "value" : "Your skin is red, so Abbronzo blocks direct sun exposure for today."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La piel está enrojecida: Solea bloquea el sol directo por hoy."
+            "value" : "La piel está enrojecida: Abbronzo bloquea el sol directo por hoy."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La peau est rougie : Solea bloque le soleil direct pour aujourd'hui."
+            "value" : "La peau est rougie : Abbronzo bloque le soleil direct pour aujourd'hui."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A pele está avermelhada: o Solea bloqueia o sol direto por hoje."
+            "value" : "A pele está avermelhada: o Abbronzo bloqueia o sol direto por hoje."
           }
         }
       }
     },
-    "La pelle è calda: Solea riduce automaticamente dose e obiettivo." : {
+    "La pelle è calda: Abbronzo riduce automaticamente dose e obiettivo." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Haut ist warm: Solea reduziert automatisch Dosis und Ziel."
+            "value" : "Die Haut ist warm: Abbronzo reduziert automatisch Dosis und Ziel."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your skin feels warm, so Solea automatically reduces the dose and goal."
+            "value" : "Your skin feels warm, so Abbronzo automatically reduces the dose and goal."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La piel está caliente: Solea reduce automáticamente la dosis y el objetivo."
+            "value" : "La piel está caliente: Abbronzo reduce automáticamente la dosis y el objetivo."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La peau est chaude : Solea réduit automatiquement la dose et l'objectif."
+            "value" : "La peau est chaude : Abbronzo réduit automatiquement la dose et l'objectif."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A pele está quente: o Solea reduz automaticamente a dose e o objetivo."
+            "value" : "A pele está quente: o Abbronzo reduz automaticamente a dose e o objetivo."
           }
         }
       }
@@ -7837,72 +7837,72 @@
         }
       }
     },
-    "Le attività in tempo reale sono disattivate: abilitale in Impostazioni > Solea per vedere il timer nella Dynamic Island." : {
+    "Le attività in tempo reale sono disattivate: abilitale in Impostazioni > Abbronzo per vedere il timer nella Dynamic Island." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Echtzeitaktivitäten sind deaktiviert: Aktiviere sie in Einstellungen > Solea, um den Timer in der Dynamic Island zu sehen."
+            "value" : "Echtzeitaktivitäten sind deaktiviert: Aktiviere sie in Einstellungen > Abbronzo, um den Timer in der Dynamic Island zu sehen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live Activities are turned off. Enable them in Settings > Solea to see the timer in the Dynamic Island."
+            "value" : "Live Activities are turned off. Enable them in Settings > Abbronzo to see the timer in the Dynamic Island."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las actividades en tiempo real están desactivadas: actívalas en Ajustes > Solea para ver el temporizador en la Dynamic Island."
+            "value" : "Las actividades en tiempo real están desactivadas: actívalas en Ajustes > Abbronzo para ver el temporizador en la Dynamic Island."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les activités en temps réel sont désactivées : activez-les dans Réglages > Solea pour voir le minuteur dans la Dynamic Island."
+            "value" : "Les activités en temps réel sont désactivées : activez-les dans Réglages > Abbronzo pour voir le minuteur dans la Dynamic Island."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "As atividades em tempo real estão desativadas: ativa-as em Definições > Solea para veres o temporizador na Dynamic Island."
+            "value" : "As atividades em tempo real estão desativadas: ativa-as em Definições > Abbronzo para veres o temporizador na Dynamic Island."
           }
         }
       }
     },
-    "Le condizioni sono tra le più favorevoli per il tuo fototipo. Entra in Solea e avvia una sessione prudente." : {
+    "Le condizioni sono tra le più favorevoli per il tuo fototipo. Entra in Abbronzo e avvia una sessione prudente." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Bedingungen gehören zu den günstigsten für deinen Hauttyp. Öffne Solea und starte eine umsichtige Sitzung."
+            "value" : "Die Bedingungen gehören zu den günstigsten für deinen Hauttyp. Öffne Abbronzo und starte eine umsichtige Sitzung."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conditions are among the best for your skin type. Open Solea and start a cautious session."
+            "value" : "Conditions are among the best for your skin type. Open Abbronzo and start a cautious session."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las condiciones son de las más favorables para tu fototipo. Entra en Solea e inicia una sesión prudente."
+            "value" : "Las condiciones son de las más favorables para tu fototipo. Entra en Abbronzo e inicia una sesión prudente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les conditions sont parmi les plus favorables pour votre phototype. Entrez dans Solea et lancez une séance prudente."
+            "value" : "Les conditions sont parmi les plus favorables pour votre phototype. Entrez dans Abbronzo et lancez une séance prudente."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "As condições estão entre as mais favoráveis para o teu fototipo. Entra no Solea e inicia uma sessão prudente."
+            "value" : "As condições estão entre as mais favoráveis para o teu fototipo. Entra no Abbronzo e inicia uma sessão prudente."
           }
         }
       }
@@ -7976,37 +7976,37 @@
         }
       }
     },
-    "Le Live Activity sono disattivate: abilitale in Impostazioni > Solea per vedere il timer nella Dynamic Island." : {
+    "Le Live Activity sono disattivate: abilitale in Impostazioni > Abbronzo per vedere il timer nella Dynamic Island." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live Activities sind deaktiviert: aktiviere sie in Einstellungen > Solea, um den Timer in der Dynamic Island zu sehen."
+            "value" : "Live Activities sind deaktiviert: aktiviere sie in Einstellungen > Abbronzo, um den Timer in der Dynamic Island zu sehen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Live Activities are off: enable them in Settings > Solea to see the timer in the Dynamic Island."
+            "value" : "Live Activities are off: enable them in Settings > Abbronzo to see the timer in the Dynamic Island."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Las Live Activities están desactivadas: actívalas en Ajustes > Solea para ver el temporizador en la Dynamic Island."
+            "value" : "Las Live Activities están desactivadas: actívalas en Ajustes > Abbronzo para ver el temporizador en la Dynamic Island."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Les activités en direct sont désactivées : activez-les dans Réglages > Solea pour voir le minuteur dans la Dynamic Island."
+            "value" : "Les activités en direct sont désactivées : activez-les dans Réglages > Abbronzo pour voir le minuteur dans la Dynamic Island."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "As Live Activities estão desativadas: ativa-as em Definições > Solea para veres o temporizador na Dynamic Island."
+            "value" : "As Live Activities estão desativadas: ativa-as em Definições > Abbronzo para veres o temporizador na Dynamic Island."
           }
         }
       }
@@ -9231,37 +9231,37 @@
         }
       }
     },
-    "Notifiche disattivate: abilita Solea in Impostazioni > Notifiche per ricevere gli avvisi sulle ore ideali." : {
+    "Notifiche disattivate: abilita Abbronzo in Impostazioni > Notifiche per ricevere gli avvisi sulle ore ideali." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mitteilungen deaktiviert: Aktiviere Solea in Einstellungen > Mitteilungen, um Hinweise zu den idealen Zeiten zu erhalten."
+            "value" : "Mitteilungen deaktiviert: Aktiviere Abbronzo in Einstellungen > Mitteilungen, um Hinweise zu den idealen Zeiten zu erhalten."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifications are off: enable Solea in Settings > Notifications to get ideal-hours alerts."
+            "value" : "Notifications are off: enable Abbronzo in Settings > Notifications to get ideal-hours alerts."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notificaciones desactivadas: activa Solea en Ajustes > Notificaciones para recibir los avisos de las horas ideales."
+            "value" : "Notificaciones desactivadas: activa Abbronzo en Ajustes > Notificaciones para recibir los avisos de las horas ideales."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notifications désactivées : activez Solea dans Réglages > Notifications pour recevoir les alertes des heures idéales."
+            "value" : "Notifications désactivées : activez Abbronzo dans Réglages > Notifications pour recevoir les alertes des heures idéales."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notificações desativadas: ativa o Solea em Definições > Notificações para receber os avisos das horas ideais."
+            "value" : "Notificações desativadas: ativa o Abbronzo em Definições > Notificações para receber os avisos das horas ideais."
           }
         }
       }
@@ -10804,37 +10804,37 @@
         }
       }
     },
-    "Permesso di scrittura su Salute negato. Puoi abilitarlo in Salute > Profilo > App > Solea." : {
+    "Permesso di scrittura su Salute negato. Puoi abilitarlo in Salute > Profilo > App > Abbronzo." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Schreibzugriff auf Health verweigert. Du kannst ihn in Health > Profil > Apps > Solea aktivieren."
+            "value" : "Schreibzugriff auf Health verweigert. Du kannst ihn in Health > Profil > Apps > Abbronzo aktivieren."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Health write permission denied. You can enable it in Health > Profile > Apps > Solea."
+            "value" : "Health write permission denied. You can enable it in Health > Profile > Apps > Abbronzo."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permiso de escritura en Salud denegado. Puedes activarlo en Salud > Perfil > Apps > Solea."
+            "value" : "Permiso de escritura en Salud denegado. Puedes activarlo en Salud > Perfil > Apps > Abbronzo."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Autorisation d'écriture dans Santé refusée. Activez-la dans Santé > Profil > Apps > Solea."
+            "value" : "Autorisation d'écriture dans Santé refusée. Activez-la dans Santé > Profil > Apps > Abbronzo."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permissão de escrita na Saúde negada. Podes ativá-la em Saúde > Perfil > Apps > Solea."
+            "value" : "Permissão de escrita na Saúde negada. Podes ativá-la em Saúde > Perfil > Apps > Abbronzo."
           }
         }
       }
@@ -13460,37 +13460,37 @@
         }
       }
     },
-    "Sessione Solea completata: %@, UV medio %@, %@ della soglia prudente. ☀️" : {
+    "Sessione Abbronzo completata: %@, UV medio %@, %@ della soglia prudente. ☀️" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea-Sitzung abgeschlossen: %@, durchschnittlicher UV %@, %@ der empfohlenen Schwelle. ☀️"
+            "value" : "Abbronzo-Sitzung abgeschlossen: %@, durchschnittlicher UV %@, %@ der empfohlenen Schwelle. ☀️"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea session completed: %@, average UV %@, %@ of the recommended limit. ☀️"
+            "value" : "Abbronzo session completed: %@, average UV %@, %@ of the recommended limit. ☀️"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sesión Solea completada: %@, UV medio %@, %@ del umbral prudente. ☀️"
+            "value" : "Sesión Abbronzo completada: %@, UV medio %@, %@ del umbral prudente. ☀️"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Séance Solea terminée : %@, UV moyen %@, %@ du seuil prudent. ☀️"
+            "value" : "Séance Abbronzo terminée : %@, UV moyen %@, %@ du seuil prudent. ☀️"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sessão Solea concluída: %@, UV médio %@, %@ do limite prudente. ☀️"
+            "value" : "Sessão Abbronzo concluída: %@, UV médio %@, %@ do limite prudente. ☀️"
           }
         }
       }
@@ -13738,291 +13738,291 @@
         }
       }
     },
-    "Solea" : {
+    "Abbronzo" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea"
+            "value" : "Abbronzo"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea"
+            "value" : "Abbronzo"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea"
+            "value" : "Abbronzo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea"
+            "value" : "Abbronzo"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea"
+            "value" : "Abbronzo"
           }
         }
       }
     },
-    "SOLEA" : {
+    "ABBRONZO" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA"
+            "value" : "ABBRONZO"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA"
+            "value" : "ABBRONZO"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA"
+            "value" : "ABBRONZO"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA"
+            "value" : "ABBRONZO"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA"
+            "value" : "ABBRONZO"
           }
         }
       }
     },
-    "SOLEA CHECK" : {
+    "TAN CHECK" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA CHECK"
+            "value" : "TAN CHECK"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA CHECK"
+            "value" : "TAN CHECK"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA CHECK"
+            "value" : "TAN CHECK"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA CHECK"
+            "value" : "TAN CHECK"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA CHECK"
+            "value" : "TAN CHECK"
           }
         }
       }
     },
-    "Solea continuerà a mostrarti target, tempo, UV e limite prudente. Plus aggiunge tracciamento fronte/retro, promemoria personalizzati e Live Activity avanzata." : {
+    "Abbronzo continuerà a mostrarti target, tempo, UV e limite prudente. Plus aggiunge tracciamento fronte/retro, promemoria personalizzati e Live Activity avanzata." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea zeigt dir weiterhin Ziel, Zeit, UV und empfohlenes Limit. Plus ergänzt Vorder-/Rückseiten-Tracking, personalisierte Erinnerungen und eine erweiterte Live Activity."
+            "value" : "Abbronzo zeigt dir weiterhin Ziel, Zeit, UV und empfohlenes Limit. Plus ergänzt Vorder-/Rückseiten-Tracking, personalisierte Erinnerungen und eine erweiterte Live Activity."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea will keep showing your target, time, UV and recommended limit. Plus adds front/back tracking, custom reminders and advanced Live Activity."
+            "value" : "Abbronzo will keep showing your target, time, UV and recommended limit. Plus adds front/back tracking, custom reminders and advanced Live Activity."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea seguirá mostrándote objetivo, tiempo, UV y límite prudente. Plus añade seguimiento delante/detrás, recordatorios personalizados y Live Activity avanzada."
+            "value" : "Abbronzo seguirá mostrándote objetivo, tiempo, UV y límite prudente. Plus añade seguimiento delante/detrás, recordatorios personalizados y Live Activity avanzada."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea continuera de vous montrer objectif, temps, UV et limite prudente. Plus ajoute le suivi avant/arrière, des rappels personnalisés et une Live Activity avancée."
+            "value" : "Abbronzo continuera de vous montrer objectif, temps, UV et limite prudente. Plus ajoute le suivi avant/arrière, des rappels personnalisés et une Live Activity avancée."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Solea continuará a mostrar-te objetivo, tempo, UV e limite prudente. O Plus acrescenta registo frente/costas, lembretes personalizados e Live Activity avançada."
+            "value" : "O Abbronzo continuará a mostrar-te objetivo, tempo, UV e limite prudente. O Plus acrescenta registo frente/costas, lembretes personalizados e Live Activity avançada."
           }
         }
       }
     },
-    "Solea fornisce stime informative, non consigli medici." : {
+    "Abbronzo fornisce stime informative, non consigli medici." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea liefert informative Schätzungen, keine medizinische Beratung."
+            "value" : "Abbronzo liefert informative Schätzungen, keine medizinische Beratung."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea provides informational estimates, not medical advice."
+            "value" : "Abbronzo provides informational estimates, not medical advice."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea ofrece estimaciones informativas, no consejos médicos."
+            "value" : "Abbronzo ofrece estimaciones informativas, no consejos médicos."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea fournit des estimations informatives, pas des conseils médicaux."
+            "value" : "Abbronzo fournit des estimations informatives, pas des conseils médicaux."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A Solea fornece estimativas informativas, não conselhos médicos."
+            "value" : "A Abbronzo fornece estimativas informativas, não conselhos médicos."
           }
         }
       }
     },
-    "Solea fornisce stime informative, non consigli medici. In caso di dubbi sulla tua pelle consulta un dermatologo." : {
+    "Abbronzo fornisce stime informative, non consigli medici. In caso di dubbi sulla tua pelle consulta un dermatologo." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea liefert informative Schätzungen, keine medizinische Beratung. Bei Zweifeln zu deiner Haut wende dich an eine Dermatologin oder einen Dermatologen."
+            "value" : "Abbronzo liefert informative Schätzungen, keine medizinische Beratung. Bei Zweifeln zu deiner Haut wende dich an eine Dermatologin oder einen Dermatologen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea provides informational estimates, not medical advice. If in doubt about your skin, consult a dermatologist."
+            "value" : "Abbronzo provides informational estimates, not medical advice. If in doubt about your skin, consult a dermatologist."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea ofrece estimaciones informativas, no consejos médicos. Ante cualquier duda sobre tu piel, consulta a un dermatólogo."
+            "value" : "Abbronzo ofrece estimaciones informativas, no consejos médicos. Ante cualquier duda sobre tu piel, consulta a un dermatólogo."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea fournit des estimations informatives, pas des conseils médicaux. En cas de doute sur votre peau, consultez un dermatologue."
+            "value" : "Abbronzo fournit des estimations informatives, pas des conseils médicaux. En cas de doute sur votre peau, consultez un dermatologue."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A Solea fornece estimativas informativas, não conselhos médicos. Em caso de dúvidas sobre a tua pele, consulta um dermatologista."
+            "value" : "A Abbronzo fornece estimativas informativas, não conselhos médicos. Em caso de dúvidas sobre a tua pele, consulta um dermatologista."
           }
         }
       }
     },
-    "SOLEA MOMENT" : {
+    "TAN MOMENT" : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA MOMENT"
+            "value" : "TAN MOMENT"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA MOMENT"
+            "value" : "TAN MOMENT"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA MOMENT"
+            "value" : "TAN MOMENT"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA MOMENT"
+            "value" : "TAN MOMENT"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOLEA MOMENT"
+            "value" : "TAN MOMENT"
           }
         }
       }
     },
-    "Solea non consiglia i lettini: sono UV concentrati. Se procedi, usa protezioni oculari e segui le indicazioni del centro." : {
+    "Abbronzo non consiglia i lettini: sono UV concentrati. Se procedi, usa protezioni oculari e segui le indicazioni del centro." : {
 
     },
-    "Solea resta prudente gratis. Plus aggiunge planner, coach, trend, foto-diario e companion avanzati quando vuoi preparare davvero una stagione." : {
+    "Abbronzo resta prudente gratis. Plus aggiunge planner, coach, trend, foto-diario e companion avanzati quando vuoi preparare davvero una stagione." : {
 
     },
-    "Solea segue il timer scelto per il tuo obiettivo e continua a mostrarti UV e stop sicurezza. Plus aggiunge tracciamento fronte/retro, promemoria personalizzati e Live Activity avanzata." : {
+    "Abbronzo segue il timer scelto per il tuo obiettivo e continua a mostrarti UV e stop sicurezza. Plus aggiunge tracciamento fronte/retro, promemoria personalizzati e Live Activity avanzata." : {
 
     },
-    "Solea ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione guidata." : {
+    "Abbronzo ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione guidata." : {
 
     },
-    "Solea ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione prudente." : {
+    "Abbronzo ti richiama 30 minuti prima e quando inizia una finestra ideale, così puoi entrare nell'app e avviare una sessione prudente." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea erinnert dich 30 Minuten vorher und zu Beginn eines idealen Zeitfensters, damit du die App öffnen und eine umsichtige Sitzung starten kannst."
+            "value" : "Abbronzo erinnert dich 30 Minuten vorher und zu Beginn eines idealen Zeitfensters, damit du die App öffnen und eine umsichtige Sitzung starten kannst."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea reminds you 30 minutes before and when an ideal window starts, so you can open the app and begin a cautious session."
+            "value" : "Abbronzo reminds you 30 minutes before and when an ideal window starts, so you can open the app and begin a cautious session."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea te avisa 30 minutos antes y cuando empieza una franja ideal, para que puedas entrar en la app e iniciar una sesión prudente."
+            "value" : "Abbronzo te avisa 30 minutos antes y cuando empieza una franja ideal, para que puedas entrar en la app e iniciar una sesión prudente."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea vous rappelle 30 minutes avant et au début d'un créneau idéal, pour que vous puissiez ouvrir l'app et lancer une séance prudente."
+            "value" : "Abbronzo vous rappelle 30 minutes avant et au début d'un créneau idéal, pour que vous puissiez ouvrir l'app et lancer une séance prudente."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Solea avisa-te 30 minutos antes e quando começa uma janela ideal, para que possas abrir a app e iniciar uma sessão prudente."
+            "value" : "O Abbronzo avisa-te 30 minutos antes e quando começa uma janela ideal, para que possas abrir a app e iniciar uma sessão prudente."
           }
         }
       }
@@ -15320,37 +15320,37 @@
         }
       }
     },
-    "UV basso o moderato: Solea privilegia una breve esposizione utile." : {
+    "UV basso o moderato: Abbronzo privilegia una breve esposizione utile." : {
       "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Niedriger oder mäßiger UV: Solea bevorzugt eine kurze, nützliche Exposition."
+            "value" : "Niedriger oder mäßiger UV: Abbronzo bevorzugt eine kurze, nützliche Exposition."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "With low or moderate UV, Solea recommends a short, purposeful exposure."
+            "value" : "With low or moderate UV, Abbronzo recommends a short, purposeful exposure."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UV bajo o moderado: Solea prioriza una breve exposición útil."
+            "value" : "UV bajo o moderado: Abbronzo prioriza una breve exposición útil."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UV faible ou modéré : Solea privilégie une courte exposition utile."
+            "value" : "UV faible ou modéré : Abbronzo privilégie une courte exposition utile."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UV baixo ou moderado: o Solea privilegia uma breve exposição útil."
+            "value" : "UV baixo ou moderado: o Abbronzo privilegia uma breve exposição útil."
           }
         }
       }
@@ -16257,36 +16257,36 @@
         }
       }
     },
-    "Solea usa l'indice UV per stimare il rischio di scottatura e le ore più prudenti." : {
+    "Abbronzo usa l'indice UV per stimare il rischio di scottatura e le ore più prudenti." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea nutzt den UV-Index, um das Sonnenbrandrisiko und die vorsichtigsten Stunden zu schätzen."
+            "value" : "Abbronzo nutzt den UV-Index, um das Sonnenbrandrisiko und die vorsichtigsten Stunden zu schätzen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea uses the UV index to estimate sunburn risk and the most cautious hours."
+            "value" : "Abbronzo uses the UV index to estimate sunburn risk and the most cautious hours."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea usa el índice UV para estimar el riesgo de quemadura y las horas más prudentes."
+            "value" : "Abbronzo usa el índice UV para estimar el riesgo de quemadura y las horas más prudentes."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea utilise l'indice UV pour estimer le risque de coup de soleil et les heures les plus prudentes."
+            "value" : "Abbronzo utilise l'indice UV pour estimer le risque de coup de soleil et les heures les plus prudentes."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A Solea usa o índice UV para estimar o risco de queimadura e os horários mais prudentes."
+            "value" : "A Abbronzo usa o índice UV para estimar o risco de queimadura e os horários mais prudentes."
           }
         }
       }
@@ -16427,36 +16427,36 @@
         }
       }
     },
-    "Solea fornisce stime informative basate su fonti di salute pubblica e letteratura scientifica. Non è un dispositivo medico e non sostituisce il parere di un medico o di un dermatologo." : {
+    "Abbronzo fornisce stime informative basate su fonti di salute pubblica e letteratura scientifica. Non è un dispositivo medico e non sostituisce il parere di un medico o di un dermatologo." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea liefert informative Schätzungen auf Basis von Quellen des öffentlichen Gesundheitswesens und wissenschaftlicher Literatur. Es ist kein Medizinprodukt und ersetzt nicht den Rat einer Ärztin oder eines Arztes bzw. einer Dermatologin oder eines Dermatologen."
+            "value" : "Abbronzo liefert informative Schätzungen auf Basis von Quellen des öffentlichen Gesundheitswesens und wissenschaftlicher Literatur. Es ist kein Medizinprodukt und ersetzt nicht den Rat einer Ärztin oder eines Arztes bzw. einer Dermatologin oder eines Dermatologen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea provides informational estimates based on public-health sources and scientific literature. It is not a medical device and does not replace the advice of a doctor or dermatologist."
+            "value" : "Abbronzo provides informational estimates based on public-health sources and scientific literature. It is not a medical device and does not replace the advice of a doctor or dermatologist."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea ofrece estimaciones informativas basadas en fuentes de salud pública y literatura científica. No es un dispositivo médico y no sustituye el consejo de un médico o dermatólogo."
+            "value" : "Abbronzo ofrece estimaciones informativas basadas en fuentes de salud pública y literatura científica. No es un dispositivo médico y no sustituye el consejo de un médico o dermatólogo."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea fournit des estimations informatives basées sur des sources de santé publique et la littérature scientifique. Ce n'est pas un dispositif médical et cela ne remplace pas l'avis d'un médecin ou d'un dermatologue."
+            "value" : "Abbronzo fournit des estimations informatives basées sur des sources de santé publique et la littérature scientifique. Ce n'est pas un dispositif médical et cela ne remplace pas l'avis d'un médecin ou d'un dermatologue."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A Solea fornece estimativas informativas baseadas em fontes de saúde pública e literatura científica. Não é um dispositivo médico e não substitui a opinião de um médico ou dermatologista."
+            "value" : "A Abbronzo fornece estimativas informativas baseadas em fontes de saúde pública e literatura científica. Não é um dispositivo médico e não substitui a opinião de um médico ou dermatologista."
           }
         }
       }
@@ -16529,36 +16529,36 @@
         }
       }
     },
-    "Solea conserva i dati solo sul tuo dispositivo. L'eliminazione rimuove definitivamente profilo, sessioni, diario, foto, piani e progressi, azzera i traguardi Game Center e riporta l'app all'onboarding. L'account Game Center si gestisce nelle Impostazioni di iOS." : {
+    "Abbronzo conserva i dati solo sul tuo dispositivo. L'eliminazione rimuove definitivamente profilo, sessioni, diario, foto, piani e progressi, azzera i traguardi Game Center e riporta l'app all'onboarding. L'account Game Center si gestisce nelle Impostazioni di iOS." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea speichert deine Daten nur auf deinem Gerät. Das Löschen entfernt Profil, Sitzungen, Tagebuch, Fotos, Pläne und Fortschritt dauerhaft, setzt die Game-Center-Erfolge zurück und bringt die App zurück zum Onboarding. Dein Game-Center-Account wird in den iOS-Einstellungen verwaltet."
+            "value" : "Abbronzo speichert deine Daten nur auf deinem Gerät. Das Löschen entfernt Profil, Sitzungen, Tagebuch, Fotos, Pläne und Fortschritt dauerhaft, setzt die Game-Center-Erfolge zurück und bringt die App zurück zum Onboarding. Dein Game-Center-Account wird in den iOS-Einstellungen verwaltet."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea keeps your data only on your device. Deleting it permanently removes your profile, sessions, diary, photos, plans and progress, resets your Game Center achievements and returns the app to onboarding. Your Game Center account is managed in iOS Settings."
+            "value" : "Abbronzo keeps your data only on your device. Deleting it permanently removes your profile, sessions, diary, photos, plans and progress, resets your Game Center achievements and returns the app to onboarding. Your Game Center account is managed in iOS Settings."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea guarda tus datos solo en tu dispositivo. La eliminación borra de forma permanente perfil, sesiones, diario, fotos, planes y progreso, restablece los logros de Game Center y devuelve la app a la introducción. La cuenta de Game Center se gestiona en los Ajustes de iOS."
+            "value" : "Abbronzo guarda tus datos solo en tu dispositivo. La eliminación borra de forma permanente perfil, sesiones, diario, fotos, planes y progreso, restablece los logros de Game Center y devuelve la app a la introducción. La cuenta de Game Center se gestiona en los Ajustes de iOS."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea conserve tes données uniquement sur ton appareil. La suppression efface définitivement profil, sessions, journal, photos, plans et progression, réinitialise les succès Game Center et ramène l'app à l'écran d'accueil. Le compte Game Center se gère dans les Réglages iOS."
+            "value" : "Abbronzo conserve tes données uniquement sur ton appareil. La suppression efface définitivement profil, sessions, journal, photos, plans et progression, réinitialise les succès Game Center et ramène l'app à l'écran d'accueil. Le compte Game Center se gère dans les Réglages iOS."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A Solea mantém os seus dados apenas no seu dispositivo. A exclusão remove permanentemente perfil, sessões, diário, fotos, planos e progresso, redefine as conquistas do Game Center e retorna o app à introdução. A conta do Game Center é gerida nos Ajustes do iOS."
+            "value" : "A Abbronzo mantém os seus dados apenas no seu dispositivo. A exclusão remove permanentemente perfil, sessões, diário, fotos, planos e progresso, redefine as conquistas do Game Center e retorna o app à introdução. A conta do Game Center é gerida nos Ajustes do iOS."
           }
         }
       }
@@ -16767,70 +16767,70 @@
         }
       }
     },
-    "Solea Plus annuale (€19,99/anno) è un abbonamento auto-rinnovabile: si rinnova automaticamente allo stesso prezzo salvo disdetta almeno 24 ore prima della fine del periodo, e si gestisce o annulla dalle impostazioni dell'account Apple. Il Summer Pass (€9,99) è un acquisto una tantum valido 120 giorni, non si rinnova. Gli acquisti e il ripristino passano sempre dall'In-App Purchase dell'App Store. Solea Plus non sostituisce il parere medico." : {
+    "Abbronzo Plus annuale (€19,99/anno) è un abbonamento auto-rinnovabile: si rinnova automaticamente allo stesso prezzo salvo disdetta almeno 24 ore prima della fine del periodo, e si gestisce o annulla dalle impostazioni dell'account Apple. Il Summer Pass (€9,99) è un acquisto una tantum valido 120 giorni, non si rinnova. Gli acquisti e il ripristino passano sempre dall'In-App Purchase dell'App Store. Abbronzo Plus non sostituisce il parere medico." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea Plus Jahresabo (19,99 €/Jahr) ist ein automatisch verlängertes Abo: Es verlängert sich automatisch zum gleichen Preis, sofern nicht mindestens 24 Stunden vor Ende des Zeitraums gekündigt wird, und wird in den Einstellungen deines Apple-Accounts verwaltet oder gekündigt. Der Summer Pass (9,99 €) ist ein einmaliger Kauf mit 120 Tagen Gültigkeit und verlängert sich nicht. Käufe und Wiederherstellung laufen immer über den In-App-Kauf des App Store. Solea Plus ersetzt keinen ärztlichen Rat."
+            "value" : "Abbronzo Plus Jahresabo (19,99 €/Jahr) ist ein automatisch verlängertes Abo: Es verlängert sich automatisch zum gleichen Preis, sofern nicht mindestens 24 Stunden vor Ende des Zeitraums gekündigt wird, und wird in den Einstellungen deines Apple-Accounts verwaltet oder gekündigt. Der Summer Pass (9,99 €) ist ein einmaliger Kauf mit 120 Tagen Gültigkeit und verlängert sich nicht. Käufe und Wiederherstellung laufen immer über den In-App-Kauf des App Store. Abbronzo Plus ersetzt keinen ärztlichen Rat."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea Plus annual (€19.99/year) is an auto-renewable subscription: it renews automatically at the same price unless cancelled at least 24 hours before the end of the period, and is managed or cancelled in your Apple account settings. The Summer Pass (€9.99) is a one-time purchase valid for 120 days and does not renew. Purchases and restore always go through the App Store's In-App Purchase. Solea Plus is not a substitute for medical advice."
+            "value" : "Abbronzo Plus annual (€19.99/year) is an auto-renewable subscription: it renews automatically at the same price unless cancelled at least 24 hours before the end of the period, and is managed or cancelled in your Apple account settings. The Summer Pass (€9.99) is a one-time purchase valid for 120 days and does not renew. Purchases and restore always go through the App Store's In-App Purchase. Abbronzo Plus is not a substitute for medical advice."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea Plus anual (€19,99/año) es una suscripción de renovación automática: se renueva automáticamente al mismo precio salvo cancelación al menos 24 horas antes del fin del periodo, y se gestiona o cancela en los ajustes de tu cuenta de Apple. El Summer Pass (€9,99) es una compra única válida 120 días y no se renueva. Las compras y la restauración pasan siempre por la compra integrada de la App Store. Solea Plus no sustituye la opinión médica."
+            "value" : "Abbronzo Plus anual (€19,99/año) es una suscripción de renovación automática: se renueva automáticamente al mismo precio salvo cancelación al menos 24 horas antes del fin del periodo, y se gestiona o cancela en los ajustes de tu cuenta de Apple. El Summer Pass (€9,99) es una compra única válida 120 días y no se renueva. Las compras y la restauración pasan siempre por la compra integrada de la App Store. Abbronzo Plus no sustituye la opinión médica."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea Plus annuel (19,99 €/an) est un abonnement à renouvellement automatique : il se renouvelle automatiquement au même prix sauf résiliation au moins 24 heures avant la fin de la période, et se gère ou s'annule dans les réglages de votre compte Apple. Le Summer Pass (9,99 €) est un achat unique valable 120 jours et ne se renouvelle pas. Les achats et la restauration passent toujours par l'achat intégré de l'App Store. Solea Plus ne remplace pas un avis médical."
+            "value" : "Abbronzo Plus annuel (19,99 €/an) est un abonnement à renouvellement automatique : il se renouvelle automatiquement au même prix sauf résiliation au moins 24 heures avant la fin de la période, et se gère ou s'annule dans les réglages de votre compte Apple. Le Summer Pass (9,99 €) est un achat unique valable 120 jours et ne se renouvelle pas. Les achats et la restauration passent toujours par l'achat intégré de l'App Store. Abbronzo Plus ne remplace pas un avis médical."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O Solea Plus anual (€19,99/ano) é uma assinatura de renovação automática: renova-se automaticamente pelo mesmo preço, salvo cancelamento com pelo menos 24 horas de antecedência ao fim do período, e é gerido ou cancelado nos ajustes da sua conta Apple. O Summer Pass (€9,99) é uma compra única válida por 120 dias e não se renova. As compras e a restauração passam sempre pela compra dentro do app da App Store. O Solea Plus não substitui o parecer médico."
+            "value" : "O Abbronzo Plus anual (€19,99/ano) é uma assinatura de renovação automática: renova-se automaticamente pelo mesmo preço, salvo cancelamento com pelo menos 24 horas de antecedência ao fim do período, e é gerido ou cancelado nos ajustes da sua conta Apple. O Summer Pass (€9,99) é uma compra única válida por 120 dias e não se renova. As compras e a restauração passam sempre pela compra dentro do app da App Store. O Abbronzo Plus não substitui o parecer médico."
           }
         }
       }
     },
-    "Solea fornisce stime informative, non consigli medici. Tocca \"Fonti scientifiche\" per le fonti dei calcoli." : {
+    "Abbronzo fornisce stime informative, non consigli medici. Tocca \"Fonti scientifiche\" per le fonti dei calcoli." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea liefert informative Schätzungen, keinen medizinischen Rat. Tippe auf „Wissenschaftliche Quellen“ für die Quellen der Berechnungen."
+            "value" : "Abbronzo liefert informative Schätzungen, keinen medizinischen Rat. Tippe auf „Wissenschaftliche Quellen“ für die Quellen der Berechnungen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea provides informational estimates, not medical advice. Tap \"Scientific sources\" for the sources behind the calculations."
+            "value" : "Abbronzo provides informational estimates, not medical advice. Tap \"Scientific sources\" for the sources behind the calculations."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea ofrece estimaciones informativas, no consejos médicos. Toca \"Fuentes científicas\" para ver las fuentes de los cálculos."
+            "value" : "Abbronzo ofrece estimaciones informativas, no consejos médicos. Toca \"Fuentes científicas\" para ver las fuentes de los cálculos."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solea fournit des estimations informatives, pas des conseils médicaux. Touchez « Sources scientifiques » pour les sources des calculs."
+            "value" : "Abbronzo fournit des estimations informatives, pas des conseils médicaux. Touchez « Sources scientifiques » pour les sources des calculs."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A Solea fornece estimativas informativas, não conselhos médicos. Toque em \"Fontes científicas\" para ver as fontes dos cálculos."
+            "value" : "A Abbronzo fornece estimativas informativas, não conselhos médicos. Toque em \"Fontes científicas\" para ver as fontes dos cálculos."
           }
         }
       }
